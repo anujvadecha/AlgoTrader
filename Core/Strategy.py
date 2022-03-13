@@ -68,6 +68,7 @@ class Strategy():
         from Managers.BrokerManager import BrokerManager
         self.broker_alias = inputs['broker_alias']
         self.broker = BrokerManager.get_instance().get_broker(broker_alias=inputs['broker_alias'])
+        self.data_broker = BrokerManager.get_instance().get_broker()
         self.messages.running_strategies.update_running_strategy(strategy=self)
         self.define_attributes()
         self.state = StrategyState.RUNNING

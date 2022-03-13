@@ -20,29 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b780fad-25fa-4319-91f4-dc6a406d980e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Strategies/Choppy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AlgoTrader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlgoTrader.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/accesstoken.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BrokerCache/accesstoken.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/instruments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BrokerCache/instruments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brokers/ZerodhaBroker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brokers/ZerodhaBroker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUIFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIFunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/BrokerManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/BrokerManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/Manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/MarketDataManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/MarketDataManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Managers/StrategyManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/StrategyManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageClasses.py" beforeDir="false" afterPath="$PROJECT_DIR$/MessageClasses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Strategies/DemoStrategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Strategies/DemoStrategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UIElements/StrategyInputs.py" beforeDir="false" afterPath="$PROJECT_DIR$/UIElements/StrategyInputs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UIElements/UIFirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/UIElements/UIFirst.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_classes/Broker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_classes/Enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_classes/Strategy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -425,7 +405,7 @@
       <workItem from="1643561434362" duration="3919000" />
       <workItem from="1643639137464" duration="9000" />
       <workItem from="1644422158083" duration="2710000" />
-      <workItem from="1647068610796" duration="522000" />
+      <workItem from="1647068610796" duration="524000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ import datetime
 import schedule
 # from Managers.BrokerManager import BrokerManager
 from Core.Enums import StrategyState
+from Managers.BrokerManager import BrokerManager
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Managers.OrderManager import OrderManager
@@ -42,6 +43,8 @@ class DemoStrategy(Strategy):
         self.x = inputs["x"]
         self.y = inputs["y"]
         print(f"on create for strategy demo called")
+        self.broker.get_connection_object()
+        self.data_broker = BrokerManager.get_instance().get_broker()
 
     def every_second(self):
         print("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))
