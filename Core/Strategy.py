@@ -62,17 +62,17 @@ class Strategy():
     def main(self,inputs):
         from MessageClasses import Messages
         self.messages = Messages.getInstance()
-        self.on_create(inputs)
         self.schedule=schedule
         self.schedule_tasks()
         from Managers.BrokerManager import BrokerManager
         self.broker_alias = inputs['broker_alias']
         self.broker = BrokerManager.get_instance().get_broker(broker_alias=inputs['broker_alias'])
-        self.data_broker = BrokerManager.get_instance().get_broker()
+        self.data_broker = BrokerManager.get_instance().get_data_broker()
         self.messages.running_strategies.update_running_strategy(strategy=self)
         self.define_attributes()
         self.state = StrategyState.RUNNING
         self.messages.running_strategies.update_running_strategy(strategy=self)
+        self.on_create(inputs)
         while True:
              schedule.run_pending()
 

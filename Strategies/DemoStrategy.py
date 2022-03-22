@@ -4,7 +4,7 @@ import datetime
 import schedule
 # from Managers.BrokerManager import BrokerManager
 from Core.Enums import StrategyState
-from Managers.BrokerManager import BrokerManager
+# from Managers.BrokerManager import BrokerManager
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Managers.OrderManager import OrderManager
@@ -13,6 +13,7 @@ from Models.Models import Instrument, Order
 from Core.Strategy import Strategy
 import functools
 import time
+
 
 def timer(func):
     """ Print the runtime of the decorated function """
@@ -26,12 +27,13 @@ def timer(func):
         return value
     return wrapper_timer
 
+
 class DemoStrategy(Strategy):
 
     def define_inputs(self):
         inputs = {
-            "x":5,
-            "y":14,
+            "x": 5,
+            "y": 14,
         }
         return inputs
 
@@ -39,7 +41,7 @@ class DemoStrategy(Strategy):
         print("demo strategy define inputs called")
         self.attributes = self.attributes + ['inputs', 'x', 'y']
 
-    def on_create(self,inputs):
+    def on_create(self, inputs):
         self.x = inputs["x"]
         self.y = inputs["y"]
         print(f"on create for strategy demo called")
@@ -48,7 +50,8 @@ class DemoStrategy(Strategy):
 
     def every_second(self):
         print("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))
-        self.messages.usermessages.info("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))
+        self.messages.usermessages.info(
+            "every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))
         print(self.broker.get_connection_object())
         # order=Order(order_id=1232,status=self.state)
         # Messages.getInstance().orders.addOrder(order)
@@ -64,4 +67,3 @@ class DemoStrategy(Strategy):
     def stop(self):
         super().stop()
         print("stop called")
-
