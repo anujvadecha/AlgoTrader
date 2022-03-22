@@ -1,12 +1,10 @@
 import datetime
 import pandas as pd
-
 from Utils.execution_logic import ExecutionLogic
 from Utils.indicator_manager import IndicatorManager
 from Utils.position_manager import PositionManager
 from Utils.positions import Position
 import Utils.indicators as indicators
-
 
 # classes
 # position setup
@@ -124,14 +122,8 @@ exc_log = None
 exc_data = ExecutionData()
 
 
-def ATR_trigger_start(connection_object, data_connection_object, inputs, messaging):
-    global data_obj, con_obj, msg_obj, sys_inputs
-    data_obj = data_connection_object
-    con_obj = connection_object
-    sys_inputs = inputs
-    msg_obj = messaging
-    system_setup(sys_inputs)
-    msg_obj.usermessages.info("Hey ATR is started")
+
+
 
 
 def ATR_trigger_stop():
@@ -397,41 +389,58 @@ def exc_seq():
         entries()
 
 
-# # starting execution -----------------
-# # Initialise
+# starting execution -----------------
+# Initialise
 # kws1 = KiteTicker(key_secret[0], data["access_token"])
-#
-#
-# def on_ticks(ws, ticks):
-#     # Callback to receive ticks.
-#     IM.new_ticks(ticks)
-#     exc_log._execute()
-#     fill_orders(ticks)
-#     if chart.new_candle:
-#         print("--------------------")
-#
-#
-# def on_connect(ws, response):
-#     # Callback on successful connect.
-#     ws.subscribe(sub_token)
-#     ws.set_mode(ws.MODE_FULL, sub_token)
-#
-#
-# def on_close(ws, code, reason):
-#     # On connection close stop the event loop.
-#     # Reconnection will not happen after executing `ws.stop()`
-#     ws.stop()
-#
-#
-# def on_order_update(ws, data):
-#     print(data)
-#
-#
-# # Assign the callbacks.
-# kws1.on_ticks = on_ticks
-# kws1.on_connect = on_connect
-# kws1.on_close = on_close
-# kws1.on_order_update = on_order_update
-# # Infinite loop on the main thread. Nothing after this will run.
-# # You have to use the pre-defined callbacks to manage subscriptions.
+
+
+def on_ticks(ws, ticks):
+    # Callback to receive ticks.
+    IM.new_ticks(ticks)
+    exc_log._execute()
+    fill_orders(ticks)
+    if chart.new_candle:
+        print("--------------------")
+
+
+def on_connect(ws, response):
+    print("connection successfull")
+    # Callback on successful connect.
+    # TODO Uncomment the below @Rishabh
+    # ws.subscribe(sub_token)
+    # ws.set_mode(ws.MODE_FULL, sub_token)
+
+
+def on_close(ws, code, reason):
+    # On connection close stop the event loop.
+    # Reconnection will not happen after executing `ws.stop()`
+    print(f"connection closed {reason}")
+    ws.stop()
+
+
+def on_order_update(ws, data):
+    print(data)
+
+
+# Assign the callbacks.
+
+# Infinite loop on the main thread. Nothing after this will run.
+# You have to use the pre-defined callbacks to manage subscriptions.
 # kws1.connect(threaded=True)
+
+
+def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging):
+    global data_obj, con_obj, msg_obj, sys_inputs
+    data_obj = data_connection_object
+    con_obj = connection_object
+    sys_inputs = inputs
+    msg_obj = messaging
+    system_setup(sys_inputs)
+    msg_obj.usermessages.info("Hey ATR is started")
+    kws1 = ticker_connection_object
+    # ticker_connection_object.close()
+    kws1.on_ticks = on_ticks
+    kws1.on_connect = on_connect
+    kws1.on_close = on_close
+    kws1.on_order_update = on_order_update
+    kws1.connect(threaded=True)

@@ -48,6 +48,7 @@ class ZerodhaBroker(Broker):
         pass
 
     def on_close(broker, ws, code, reason):
+        print(f"connection closed by broker class {reason}")
         ws.stop()
 
     def __readInstrumentsfromCsv(self):
@@ -100,6 +101,9 @@ class ZerodhaBroker(Broker):
         messages.trades.addAll(self.get_trades())
         messages.positions.addAll(self.get_positions())
         messages.orders.addAll(self.get_orders())
+
+    def get_ticker_connection(self):
+        return self.kws
 
     def load_instruments(self):
         self.__instrument_store()
