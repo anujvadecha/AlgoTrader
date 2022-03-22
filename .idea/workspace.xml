@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95ed565a-16e3-4078-a0b5-8142ff4e74ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Utils/chart_builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/chart_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/execution_logic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/indicator_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/indicators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/position_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Utils/positions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AlgoTrader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AlgoTrader.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/accesstoken.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BrokerCache/accesstoken.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/instruments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BrokerCache/instruments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Strategies/DemoStrategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Strategies/DemoStrategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
