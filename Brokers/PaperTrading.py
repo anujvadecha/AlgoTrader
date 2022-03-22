@@ -13,7 +13,7 @@ class PaperTradingBroker():
     instrumentFactory = []
     orderFactory = []
 
-    def placeMarketOrder(self, instrument, side, quantity, type):
+    def place_market_order(self, instrument, side, quantity, type):
         order = self.kite.place_order(tradingsymbol=instrument.tradingsymbol,
                                       exchange=instrument.exchange,
                                       transaction_type=self.kite.TRANSACTION_TYPE_SELL,
@@ -24,7 +24,7 @@ class PaperTradingBroker():
         order = self.kite.order_history(order["data"]["order_id"])
         self.orderFactory.append(order)
 
-    def placeLimitOrder(self, instrument, side, quantity, price):
+    def place_limit_order(self, instrument, side, quantity, price):
         order = self.kite.place_order(
             tradingsymbol=instrument.tradingsymbol,
             exchange=instrument.exchange,

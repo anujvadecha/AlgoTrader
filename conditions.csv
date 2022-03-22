@@ -1,0 +1,1297 @@
+,yesterdays_candle,todays_candle,condition,candle_type,script
+0,> r3,> r3,no_trade,bearish,nifty
+1,r3-r2,> r3,no_trade,bearish,nifty
+2,r2-pdh,> r3,no_trade,bearish,nifty
+3,r2-r1,> r3,no_trade,bearish,nifty
+4,pdh-r1,> r3,no_trade,bearish,nifty
+5,r1-pdh,> r3,no_trade,bearish,nifty
+6,r1-tc,> r3,no_trade,bearish,nifty
+7,pdh-tc,> r3,no_trade,bearish,nifty
+8,tc-pp,> r3,no_trade,bearish,nifty
+9,pp-bc,> r3,no_trade,bearish,nifty
+10,bc-pdl,> r3,no_trade,bearish,nifty
+11,bc-s1,> r3,no_trade,bearish,nifty
+12,pdl-s1,> r3,no_trade,bearish,nifty
+13,s1-pdl,> r3,no_trade,bearish,nifty
+14,pdl-s2,> r3,no_trade,bearish,nifty
+15,s1-s2,> r3,no_trade,bearish,nifty
+16,s2-s3,> r3,no_trade,bearish,nifty
+17,< s3,> r3,no_trade,bearish,nifty
+18,> r3,r3-r2,sell,bearish,nifty
+19,r3-r2,r3-r2,sell,bearish,nifty
+20,r2-pdh,r3-r2,buy,bearish,nifty
+21,r2-r1,r3-r2,buy,bearish,nifty
+22,pdh-r1,r3-r2,sell,bearish,nifty
+23,r1-pdh,r3-r2,sell,bearish,nifty
+24,r1-tc,r3-r2,sell,bearish,nifty
+25,pdh-tc,r3-r2,sell,bearish,nifty
+26,tc-pp,r3-r2,sell,bearish,nifty
+27,pp-bc,r3-r2,sell,bearish,nifty
+28,bc-pdl,r3-r2,sell,bearish,nifty
+29,bc-s1,r3-r2,sell,bearish,nifty
+30,pdl-s1,r3-r2,sell,bearish,nifty
+31,s1-pdl,r3-r2,sell,bearish,nifty
+32,pdl-s2,r3-r2,sell,bearish,nifty
+33,s1-s2,r3-r2,sell,bearish,nifty
+34,s2-s3,r3-r2,sell,bearish,nifty
+35,< s3,r3-r2,sell,bearish,nifty
+36,> r3,r2-pdh,sell,bearish,nifty
+37,r3-r2,r2-pdh,sell,bearish,nifty
+38,r2-pdh,r2-pdh,sell,bearish,nifty
+39,r2-r1,r2-pdh,sell,bearish,nifty
+40,pdh-r1,r2-pdh,sell,bearish,nifty
+41,r1-pdh,r2-pdh,sell,bearish,nifty
+42,r1-tc,r2-pdh,buy,bearish,nifty
+43,pdh-tc,r2-pdh,sell,bearish,nifty
+44,tc-pp,r2-pdh,sell,bearish,nifty
+45,pp-bc,r2-pdh,sell,bearish,nifty
+46,bc-pdl,r2-pdh,sell,bearish,nifty
+47,bc-s1,r2-pdh,sell,bearish,nifty
+48,pdl-s1,r2-pdh,sell,bearish,nifty
+49,s1-pdl,r2-pdh,sell,bearish,nifty
+50,pdl-s2,r2-pdh,sell,bearish,nifty
+51,s1-s2,r2-pdh,sell,bearish,nifty
+52,s2-s3,r2-pdh,sell,bearish,nifty
+53,< s3,r2-pdh,sell,bearish,nifty
+54,> r3,r2-r1,sell,bearish,nifty
+55,r3-r2,r2-r1,buy,bearish,nifty
+56,r2-pdh,r2-r1,buy,bearish,nifty
+57,r2-r1,r2-r1,sell,bearish,nifty
+58,pdh-r1,r2-r1,sell,bearish,nifty
+59,r1-pdh,r2-r1,sell,bearish,nifty
+60,r1-tc,r2-r1,sell,bearish,nifty
+61,pdh-tc,r2-r1,buy,bearish,nifty
+62,tc-pp,r2-r1,sell,bearish,nifty
+63,pp-bc,r2-r1,sell,bearish,nifty
+64,bc-pdl,r2-r1,sell,bearish,nifty
+65,bc-s1,r2-r1,sell,bearish,nifty
+66,pdl-s1,r2-r1,sell,bearish,nifty
+67,s1-pdl,r2-r1,sell,bearish,nifty
+68,pdl-s2,r2-r1,sell,bearish,nifty
+69,s1-s2,r2-r1,sell,bearish,nifty
+70,s2-s3,r2-r1,sell,bearish,nifty
+71,< s3,r2-r1,sell,bearish,nifty
+72,> r3,pdh-r1,sell,bearish,nifty
+73,r3-r2,pdh-r1,sell,bearish,nifty
+74,r2-pdh,pdh-r1,sell,bearish,nifty
+75,r2-r1,pdh-r1,sell,bearish,nifty
+76,pdh-r1,pdh-r1,sell,bearish,nifty
+77,r1-pdh,pdh-r1,sell,bearish,nifty
+78,r1-tc,pdh-r1,sell,bearish,nifty
+79,pdh-tc,pdh-r1,buy,bearish,nifty
+80,tc-pp,pdh-r1,sell,bearish,nifty
+81,pp-bc,pdh-r1,sell,bearish,nifty
+82,bc-pdl,pdh-r1,sell,bearish,nifty
+83,bc-s1,pdh-r1,sell,bearish,nifty
+84,pdl-s1,pdh-r1,sell,bearish,nifty
+85,s1-pdl,pdh-r1,sell,bearish,nifty
+86,pdl-s2,pdh-r1,sell,bearish,nifty
+87,s1-s2,pdh-r1,sell,bearish,nifty
+88,s2-s3,pdh-r1,sell,bearish,nifty
+89,< s3,pdh-r1,sell,bearish,nifty
+90,> r3,r1-pdh,sell,bearish,nifty
+91,r3-r2,r1-pdh,sell,bearish,nifty
+92,r2-pdh,r1-pdh,sell,bearish,nifty
+93,r2-r1,r1-pdh,sell,bearish,nifty
+94,pdh-r1,r1-pdh,buy,bearish,nifty
+95,r1-pdh,r1-pdh,sell,bearish,nifty
+96,r1-tc,r1-pdh,sell,bearish,nifty
+97,pdh-tc,r1-pdh,sell,bearish,nifty
+98,tc-pp,r1-pdh,sell,bearish,nifty
+99,pp-bc,r1-pdh,sell,bearish,nifty
+100,bc-pdl,r1-pdh,sell,bearish,nifty
+101,bc-s1,r1-pdh,sell,bearish,nifty
+102,pdl-s1,r1-pdh,sell,bearish,nifty
+103,s1-pdl,r1-pdh,sell,bearish,nifty
+104,pdl-s2,r1-pdh,sell,bearish,nifty
+105,s1-s2,r1-pdh,sell,bearish,nifty
+106,s2-s3,r1-pdh,sell,bearish,nifty
+107,< s3,r1-pdh,sell,bearish,nifty
+108,> r3,r1-tc,sell,bearish,nifty
+109,r3-r2,r1-tc,sell,bearish,nifty
+110,r2-pdh,r1-tc,sell,bearish,nifty
+111,r2-r1,r1-tc,sell,bearish,nifty
+112,pdh-r1,r1-tc,sell,bearish,nifty
+113,r1-pdh,r1-tc,sell,bearish,nifty
+114,r1-tc,r1-tc,sell,bearish,nifty
+115,pdh-tc,r1-tc,sell,bearish,nifty
+116,tc-pp,r1-tc,buy,bearish,nifty
+117,pp-bc,r1-tc,sell,bearish,nifty
+118,bc-pdl,r1-tc,sell,bearish,nifty
+119,bc-s1,r1-tc,sell,bearish,nifty
+120,pdl-s1,r1-tc,sell,bearish,nifty
+121,s1-pdl,r1-tc,sell,bearish,nifty
+122,pdl-s2,r1-tc,sell,bearish,nifty
+123,s1-s2,r1-tc,sell,bearish,nifty
+124,s2-s3,r1-tc,sell,bearish,nifty
+125,< s3,r1-tc,sell,bearish,nifty
+126,> r3,pdh-tc,sell,bearish,nifty
+127,r3-r2,pdh-tc,sell,bearish,nifty
+128,r2-pdh,pdh-tc,sell,bearish,nifty
+129,r2-r1,pdh-tc,sell,bearish,nifty
+130,pdh-r1,pdh-tc,buy,bearish,nifty
+131,r1-pdh,pdh-tc,sell,bearish,nifty
+132,r1-tc,pdh-tc,sell,bearish,nifty
+133,pdh-tc,pdh-tc,sell,bearish,nifty
+134,tc-pp,pdh-tc,sell,bearish,nifty
+135,pp-bc,pdh-tc,sell,bearish,nifty
+136,bc-pdl,pdh-tc,buy,bearish,nifty
+137,bc-s1,pdh-tc,sell,bearish,nifty
+138,pdl-s1,pdh-tc,sell,bearish,nifty
+139,s1-pdl,pdh-tc,sell,bearish,nifty
+140,pdl-s2,pdh-tc,sell,bearish,nifty
+141,s1-s2,pdh-tc,sell,bearish,nifty
+142,s2-s3,pdh-tc,sell,bearish,nifty
+143,< s3,pdh-tc,sell,bearish,nifty
+144,> r3,tc-pp,sell,bearish,nifty
+145,r3-r2,tc-pp,sell,bearish,nifty
+146,r2-pdh,tc-pp,sell,bearish,nifty
+147,r2-r1,tc-pp,sell,bearish,nifty
+148,pdh-r1,tc-pp,sell,bearish,nifty
+149,r1-pdh,tc-pp,sell,bearish,nifty
+150,r1-tc,tc-pp,buy,bearish,nifty
+151,pdh-tc,tc-pp,sell,bearish,nifty
+152,tc-pp,tc-pp,sell,bearish,nifty
+153,pp-bc,tc-pp,sell,bearish,nifty
+154,bc-pdl,tc-pp,sell,bearish,nifty
+155,bc-s1,tc-pp,sell,bearish,nifty
+156,pdl-s1,tc-pp,sell,bearish,nifty
+157,s1-pdl,tc-pp,sell,bearish,nifty
+158,pdl-s2,tc-pp,buy,bearish,nifty
+159,s1-s2,tc-pp,sell,bearish,nifty
+160,s2-s3,tc-pp,sell,bearish,nifty
+161,< s3,tc-pp,sell,bearish,nifty
+162,> r3,pp-bc,buy,bearish,nifty
+163,r3-r2,pp-bc,buy,bearish,nifty
+164,r2-pdh,pp-bc,buy,bearish,nifty
+165,r2-r1,pp-bc,buy,bearish,nifty
+166,pdh-r1,pp-bc,buy,bearish,nifty
+167,r1-pdh,pp-bc,sell,bearish,nifty
+168,r1-tc,pp-bc,buy,bearish,nifty
+169,pdh-tc,pp-bc,buy,bearish,nifty
+170,tc-pp,pp-bc,buy,bearish,nifty
+171,pp-bc,pp-bc,buy,bearish,nifty
+172,bc-pdl,pp-bc,buy,bearish,nifty
+173,bc-s1,pp-bc,buy,bearish,nifty
+174,pdl-s1,pp-bc,buy,bearish,nifty
+175,s1-pdl,pp-bc,buy,bearish,nifty
+176,pdl-s2,pp-bc,buy,bearish,nifty
+177,s1-s2,pp-bc,sell,bearish,nifty
+178,s2-s3,pp-bc,sell,bearish,nifty
+179,< s3,pp-bc,buy,bearish,nifty
+180,> r3,bc-pdl,buy,bearish,nifty
+181,r3-r2,bc-pdl,buy,bearish,nifty
+182,r2-pdh,bc-pdl,buy,bearish,nifty
+183,r2-r1,bc-pdl,buy,bearish,nifty
+184,pdh-r1,bc-pdl,buy,bearish,nifty
+185,r1-pdh,bc-pdl,buy,bearish,nifty
+186,r1-tc,bc-pdl,buy,bearish,nifty
+187,pdh-tc,bc-pdl,sell,bearish,nifty
+188,tc-pp,bc-pdl,buy,bearish,nifty
+189,pp-bc,bc-pdl,sell,bearish,nifty
+190,bc-pdl,bc-pdl,buy,bearish,nifty
+191,bc-s1,bc-pdl,buy,bearish,nifty
+192,pdl-s1,bc-pdl,sell,bearish,nifty
+193,s1-pdl,bc-pdl,buy,bearish,nifty
+194,pdl-s2,bc-pdl,sell,bearish,nifty
+195,s1-s2,bc-pdl,sell,bearish,nifty
+196,s2-s3,bc-pdl,sell,bearish,nifty
+197,< s3,bc-pdl,sell,bearish,nifty
+198,> r3,bc-s1,buy,bearish,nifty
+199,r3-r2,bc-s1,buy,bearish,nifty
+200,r2-pdh,bc-s1,sell,bearish,nifty
+201,r2-r1,bc-s1,buy,bearish,nifty
+202,pdh-r1,bc-s1,buy,bearish,nifty
+203,r1-pdh,bc-s1,buy,bearish,nifty
+204,r1-tc,bc-s1,buy,bearish,nifty
+205,pdh-tc,bc-s1,buy,bearish,nifty
+206,tc-pp,bc-s1,buy,bearish,nifty
+207,pp-bc,bc-s1,buy,bearish,nifty
+208,bc-pdl,bc-s1,sell,bearish,nifty
+209,bc-s1,bc-s1,buy,bearish,nifty
+210,pdl-s1,bc-s1,sell,bearish,nifty
+211,s1-pdl,bc-s1,buy,bearish,nifty
+212,pdl-s2,bc-s1,buy,bearish,nifty
+213,s1-s2,bc-s1,buy,bearish,nifty
+214,s2-s3,bc-s1,buy,bearish,nifty
+215,< s3,bc-s1,buy,bearish,nifty
+216,> r3,pdl-s1,buy,bearish,nifty
+217,r3-r2,pdl-s1,buy,bearish,nifty
+218,r2-pdh,pdl-s1,buy,bearish,nifty
+219,r2-r1,pdl-s1,buy,bearish,nifty
+220,pdh-r1,pdl-s1,buy,bearish,nifty
+221,r1-pdh,pdl-s1,buy,bearish,nifty
+222,r1-tc,pdl-s1,buy,bearish,nifty
+223,pdh-tc,pdl-s1,buy,bearish,nifty
+224,tc-pp,pdl-s1,buy,bearish,nifty
+225,pp-bc,pdl-s1,buy,bearish,nifty
+226,bc-pdl,pdl-s1,buy,bearish,nifty
+227,bc-s1,pdl-s1,buy,bearish,nifty
+228,pdl-s1,pdl-s1,buy,bearish,nifty
+229,s1-pdl,pdl-s1,sell,bearish,nifty
+230,pdl-s2,pdl-s1,sell,bearish,nifty
+231,s1-s2,pdl-s1,buy,bearish,nifty
+232,s2-s3,pdl-s1,sell,bearish,nifty
+233,< s3,pdl-s1,buy,bearish,nifty
+234,> r3,s1-pdl,buy,bearish,nifty
+235,r3-r2,s1-pdl,buy,bearish,nifty
+236,r2-pdh,s1-pdl,buy,bearish,nifty
+237,r2-r1,s1-pdl,buy,bearish,nifty
+238,pdh-r1,s1-pdl,buy,bearish,nifty
+239,r1-pdh,s1-pdl,buy,bearish,nifty
+240,r1-tc,s1-pdl,buy,bearish,nifty
+241,pdh-tc,s1-pdl,sell,bearish,nifty
+242,tc-pp,s1-pdl,buy,bearish,nifty
+243,pp-bc,s1-pdl,buy,bearish,nifty
+244,bc-pdl,s1-pdl,buy,bearish,nifty
+245,bc-s1,s1-pdl,buy,bearish,nifty
+246,pdl-s1,s1-pdl,buy,bearish,nifty
+247,s1-pdl,s1-pdl,buy,bearish,nifty
+248,pdl-s2,s1-pdl,buy,bearish,nifty
+249,s1-s2,s1-pdl,buy,bearish,nifty
+250,s2-s3,s1-pdl,sell,bearish,nifty
+251,< s3,s1-pdl,buy,bearish,nifty
+252,> r3,pdl-s2,buy,bearish,nifty
+253,r3-r2,pdl-s2,buy,bearish,nifty
+254,r2-pdh,pdl-s2,buy,bearish,nifty
+255,r2-r1,pdl-s2,buy,bearish,nifty
+256,pdh-r1,pdl-s2,buy,bearish,nifty
+257,r1-pdh,pdl-s2,buy,bearish,nifty
+258,r1-tc,pdl-s2,buy,bearish,nifty
+259,pdh-tc,pdl-s2,buy,bearish,nifty
+260,tc-pp,pdl-s2,buy,bearish,nifty
+261,pp-bc,pdl-s2,buy,bearish,nifty
+262,bc-pdl,pdl-s2,buy,bearish,nifty
+263,bc-s1,pdl-s2,buy,bearish,nifty
+264,pdl-s1,pdl-s2,buy,bearish,nifty
+265,s1-pdl,pdl-s2,buy,bearish,nifty
+266,pdl-s2,pdl-s2,buy,bearish,nifty
+267,s1-s2,pdl-s2,buy,bearish,nifty
+268,s2-s3,pdl-s2,buy,bearish,nifty
+269,< s3,pdl-s2,buy,bearish,nifty
+270,> r3,s1-s2,buy,bearish,nifty
+271,r3-r2,s1-s2,buy,bearish,nifty
+272,r2-pdh,s1-s2,buy,bearish,nifty
+273,r2-r1,s1-s2,buy,bearish,nifty
+274,pdh-r1,s1-s2,buy,bearish,nifty
+275,r1-pdh,s1-s2,buy,bearish,nifty
+276,r1-tc,s1-s2,buy,bearish,nifty
+277,pdh-tc,s1-s2,buy,bearish,nifty
+278,tc-pp,s1-s2,buy,bearish,nifty
+279,pp-bc,s1-s2,buy,bearish,nifty
+280,bc-pdl,s1-s2,buy,bearish,nifty
+281,bc-s1,s1-s2,sell,bearish,nifty
+282,pdl-s1,s1-s2,buy,bearish,nifty
+283,s1-pdl,s1-s2,sell,bearish,nifty
+284,pdl-s2,s1-s2,buy,bearish,nifty
+285,s1-s2,s1-s2,buy,bearish,nifty
+286,s2-s3,s1-s2,buy,bearish,nifty
+287,< s3,s1-s2,buy,bearish,nifty
+288,> r3,s2-s3,buy,bearish,nifty
+289,r3-r2,s2-s3,buy,bearish,nifty
+290,r2-pdh,s2-s3,buy,bearish,nifty
+291,r2-r1,s2-s3,buy,bearish,nifty
+292,pdh-r1,s2-s3,buy,bearish,nifty
+293,r1-pdh,s2-s3,buy,bearish,nifty
+294,r1-tc,s2-s3,buy,bearish,nifty
+295,pdh-tc,s2-s3,buy,bearish,nifty
+296,tc-pp,s2-s3,buy,bearish,nifty
+297,pp-bc,s2-s3,buy,bearish,nifty
+298,bc-pdl,s2-s3,buy,bearish,nifty
+299,bc-s1,s2-s3,buy,bearish,nifty
+300,pdl-s1,s2-s3,buy,bearish,nifty
+301,s1-pdl,s2-s3,buy,bearish,nifty
+302,pdl-s2,s2-s3,buy,bearish,nifty
+303,s1-s2,s2-s3,buy,bearish,nifty
+304,s2-s3,s2-s3,sell,bearish,nifty
+305,< s3,s2-s3,buy,bearish,nifty
+306,> r3,< s3,no_trade,bearish,nifty
+307,r3-r2,< s3,no_trade,bearish,nifty
+308,r2-pdh,< s3,no_trade,bearish,nifty
+309,r2-r1,< s3,no_trade,bearish,nifty
+310,pdh-r1,< s3,no_trade,bearish,nifty
+311,r1-pdh,< s3,no_trade,bearish,nifty
+312,r1-tc,< s3,no_trade,bearish,nifty
+313,pdh-tc,< s3,no_trade,bearish,nifty
+314,tc-pp,< s3,no_trade,bearish,nifty
+315,pp-bc,< s3,no_trade,bearish,nifty
+316,bc-pdl,< s3,no_trade,bearish,nifty
+317,bc-s1,< s3,no_trade,bearish,nifty
+318,pdl-s1,< s3,no_trade,bearish,nifty
+319,s1-pdl,< s3,no_trade,bearish,nifty
+320,pdl-s2,< s3,no_trade,bearish,nifty
+321,s1-s2,< s3,no_trade,bearish,nifty
+322,s2-s3,< s3,no_trade,bearish,nifty
+323,< s3,< s3,no_trade,bearish,nifty
+324,> r3,> r3,no_trade,bullish,nifty
+325,r3-r2,> r3,no_trade,bullish,nifty
+326,r2-pdh,> r3,no_trade,bullish,nifty
+327,r2-r1,> r3,no_trade,bullish,nifty
+328,pdh-r1,> r3,no_trade,bullish,nifty
+329,r1-pdh,> r3,no_trade,bullish,nifty
+330,r1-tc,> r3,no_trade,bullish,nifty
+331,pdh-tc,> r3,no_trade,bullish,nifty
+332,tc-pp,> r3,no_trade,bullish,nifty
+333,pp-bc,> r3,no_trade,bullish,nifty
+334,bc-pdl,> r3,no_trade,bullish,nifty
+335,bc-s1,> r3,no_trade,bullish,nifty
+336,pdl-s1,> r3,no_trade,bullish,nifty
+337,s1-pdl,> r3,no_trade,bullish,nifty
+338,pdl-s2,> r3,no_trade,bullish,nifty
+339,s1-s2,> r3,no_trade,bullish,nifty
+340,s2-s3,> r3,no_trade,bullish,nifty
+341,< s3,> r3,no_trade,bullish,nifty
+342,> r3,r3-r2,sell,bullish,nifty
+343,r3-r2,r3-r2,sell,bullish,nifty
+344,r2-pdh,r3-r2,sell,bullish,nifty
+345,r2-r1,r3-r2,buy,bullish,nifty
+346,pdh-r1,r3-r2,buy,bullish,nifty
+347,r1-pdh,r3-r2,sell,bullish,nifty
+348,r1-tc,r3-r2,sell,bullish,nifty
+349,pdh-tc,r3-r2,sell,bullish,nifty
+350,tc-pp,r3-r2,sell,bullish,nifty
+351,pp-bc,r3-r2,sell,bullish,nifty
+352,bc-pdl,r3-r2,sell,bullish,nifty
+353,bc-s1,r3-r2,sell,bullish,nifty
+354,pdl-s1,r3-r2,sell,bullish,nifty
+355,s1-pdl,r3-r2,sell,bullish,nifty
+356,pdl-s2,r3-r2,sell,bullish,nifty
+357,s1-s2,r3-r2,buy,bullish,nifty
+358,s2-s3,r3-r2,sell,bullish,nifty
+359,< s3,r3-r2,sell,bullish,nifty
+360,> r3,r2-pdh,sell,bullish,nifty
+361,r3-r2,r2-pdh,sell,bullish,nifty
+362,r2-pdh,r2-pdh,sell,bullish,nifty
+363,r2-r1,r2-pdh,buy,bullish,nifty
+364,pdh-r1,r2-pdh,sell,bullish,nifty
+365,r1-pdh,r2-pdh,sell,bullish,nifty
+366,r1-tc,r2-pdh,sell,bullish,nifty
+367,pdh-tc,r2-pdh,sell,bullish,nifty
+368,tc-pp,r2-pdh,buy,bullish,nifty
+369,pp-bc,r2-pdh,sell,bullish,nifty
+370,bc-pdl,r2-pdh,sell,bullish,nifty
+371,bc-s1,r2-pdh,sell,bullish,nifty
+372,pdl-s1,r2-pdh,sell,bullish,nifty
+373,s1-pdl,r2-pdh,sell,bullish,nifty
+374,pdl-s2,r2-pdh,sell,bullish,nifty
+375,s1-s2,r2-pdh,sell,bullish,nifty
+376,s2-s3,r2-pdh,buy,bullish,nifty
+377,< s3,r2-pdh,sell,bullish,nifty
+378,> r3,r2-r1,sell,bullish,nifty
+379,r3-r2,r2-r1,sell,bullish,nifty
+380,r2-pdh,r2-r1,sell,bullish,nifty
+381,r2-r1,r2-r1,sell,bullish,nifty
+382,pdh-r1,r2-r1,sell,bullish,nifty
+383,r1-pdh,r2-r1,sell,bullish,nifty
+384,r1-tc,r2-r1,sell,bullish,nifty
+385,pdh-tc,r2-r1,sell,bullish,nifty
+386,tc-pp,r2-r1,sell,bullish,nifty
+387,pp-bc,r2-r1,sell,bullish,nifty
+388,bc-pdl,r2-r1,sell,bullish,nifty
+389,bc-s1,r2-r1,sell,bullish,nifty
+390,pdl-s1,r2-r1,sell,bullish,nifty
+391,s1-pdl,r2-r1,sell,bullish,nifty
+392,pdl-s2,r2-r1,sell,bullish,nifty
+393,s1-s2,r2-r1,sell,bullish,nifty
+394,s2-s3,r2-r1,sell,bullish,nifty
+395,< s3,r2-r1,sell,bullish,nifty
+396,> r3,pdh-r1,sell,bullish,nifty
+397,r3-r2,pdh-r1,sell,bullish,nifty
+398,r2-pdh,pdh-r1,sell,bullish,nifty
+399,r2-r1,pdh-r1,sell,bullish,nifty
+400,pdh-r1,pdh-r1,buy,bullish,nifty
+401,r1-pdh,pdh-r1,sell,bullish,nifty
+402,r1-tc,pdh-r1,sell,bullish,nifty
+403,pdh-tc,pdh-r1,sell,bullish,nifty
+404,tc-pp,pdh-r1,sell,bullish,nifty
+405,pp-bc,pdh-r1,sell,bullish,nifty
+406,bc-pdl,pdh-r1,sell,bullish,nifty
+407,bc-s1,pdh-r1,sell,bullish,nifty
+408,pdl-s1,pdh-r1,sell,bullish,nifty
+409,s1-pdl,pdh-r1,sell,bullish,nifty
+410,pdl-s2,pdh-r1,sell,bullish,nifty
+411,s1-s2,pdh-r1,sell,bullish,nifty
+412,s2-s3,pdh-r1,sell,bullish,nifty
+413,< s3,pdh-r1,sell,bullish,nifty
+414,> r3,r1-pdh,sell,bullish,nifty
+415,r3-r2,r1-pdh,sell,bullish,nifty
+416,r2-pdh,r1-pdh,sell,bullish,nifty
+417,r2-r1,r1-pdh,sell,bullish,nifty
+418,pdh-r1,r1-pdh,sell,bullish,nifty
+419,r1-pdh,r1-pdh,sell,bullish,nifty
+420,r1-tc,r1-pdh,sell,bullish,nifty
+421,pdh-tc,r1-pdh,sell,bullish,nifty
+422,tc-pp,r1-pdh,sell,bullish,nifty
+423,pp-bc,r1-pdh,sell,bullish,nifty
+424,bc-pdl,r1-pdh,buy,bullish,nifty
+425,bc-s1,r1-pdh,sell,bullish,nifty
+426,pdl-s1,r1-pdh,sell,bullish,nifty
+427,s1-pdl,r1-pdh,sell,bullish,nifty
+428,pdl-s2,r1-pdh,sell,bullish,nifty
+429,s1-s2,r1-pdh,sell,bullish,nifty
+430,s2-s3,r1-pdh,sell,bullish,nifty
+431,< s3,r1-pdh,sell,bullish,nifty
+432,> r3,r1-tc,sell,bullish,nifty
+433,r3-r2,r1-tc,sell,bullish,nifty
+434,r2-pdh,r1-tc,buy,bullish,nifty
+435,r2-r1,r1-tc,sell,bullish,nifty
+436,pdh-r1,r1-tc,sell,bullish,nifty
+437,r1-pdh,r1-tc,buy,bullish,nifty
+438,r1-tc,r1-tc,sell,bullish,nifty
+439,pdh-tc,r1-tc,sell,bullish,nifty
+440,tc-pp,r1-tc,sell,bullish,nifty
+441,pp-bc,r1-tc,sell,bullish,nifty
+442,bc-pdl,r1-tc,sell,bullish,nifty
+443,bc-s1,r1-tc,sell,bullish,nifty
+444,pdl-s1,r1-tc,sell,bullish,nifty
+445,s1-pdl,r1-tc,sell,bullish,nifty
+446,pdl-s2,r1-tc,sell,bullish,nifty
+447,s1-s2,r1-tc,buy,bullish,nifty
+448,s2-s3,r1-tc,sell,bullish,nifty
+449,< s3,r1-tc,sell,bullish,nifty
+450,> r3,pdh-tc,sell,bullish,nifty
+451,r3-r2,pdh-tc,sell,bullish,nifty
+452,r2-pdh,pdh-tc,sell,bullish,nifty
+453,r2-r1,pdh-tc,sell,bullish,nifty
+454,pdh-r1,pdh-tc,sell,bullish,nifty
+455,r1-pdh,pdh-tc,sell,bullish,nifty
+456,r1-tc,pdh-tc,sell,bullish,nifty
+457,pdh-tc,pdh-tc,sell,bullish,nifty
+458,tc-pp,pdh-tc,sell,bullish,nifty
+459,pp-bc,pdh-tc,buy,bullish,nifty
+460,bc-pdl,pdh-tc,sell,bullish,nifty
+461,bc-s1,pdh-tc,sell,bullish,nifty
+462,pdl-s1,pdh-tc,sell,bullish,nifty
+463,s1-pdl,pdh-tc,sell,bullish,nifty
+464,pdl-s2,pdh-tc,sell,bullish,nifty
+465,s1-s2,pdh-tc,sell,bullish,nifty
+466,s2-s3,pdh-tc,sell,bullish,nifty
+467,< s3,pdh-tc,sell,bullish,nifty
+468,> r3,tc-pp,buy,bullish,nifty
+469,r3-r2,tc-pp,sell,bullish,nifty
+470,r2-pdh,tc-pp,sell,bullish,nifty
+471,r2-r1,tc-pp,sell,bullish,nifty
+472,pdh-r1,tc-pp,sell,bullish,nifty
+473,r1-pdh,tc-pp,sell,bullish,nifty
+474,r1-tc,tc-pp,buy,bullish,nifty
+475,pdh-tc,tc-pp,buy,bullish,nifty
+476,tc-pp,tc-pp,sell,bullish,nifty
+477,pp-bc,tc-pp,buy,bullish,nifty
+478,bc-pdl,tc-pp,sell,bullish,nifty
+479,bc-s1,tc-pp,sell,bullish,nifty
+480,pdl-s1,tc-pp,sell,bullish,nifty
+481,s1-pdl,tc-pp,sell,bullish,nifty
+482,pdl-s2,tc-pp,sell,bullish,nifty
+483,s1-s2,tc-pp,buy,bullish,nifty
+484,s2-s3,tc-pp,sell,bullish,nifty
+485,< s3,tc-pp,sell,bullish,nifty
+486,> r3,pp-bc,buy,bullish,nifty
+487,r3-r2,pp-bc,buy,bullish,nifty
+488,r2-pdh,pp-bc,buy,bullish,nifty
+489,r2-r1,pp-bc,buy,bullish,nifty
+490,pdh-r1,pp-bc,buy,bullish,nifty
+491,r1-pdh,pp-bc,buy,bullish,nifty
+492,r1-tc,pp-bc,buy,bullish,nifty
+493,pdh-tc,pp-bc,sell,bullish,nifty
+494,tc-pp,pp-bc,buy,bullish,nifty
+495,pp-bc,pp-bc,buy,bullish,nifty
+496,bc-pdl,pp-bc,buy,bullish,nifty
+497,bc-s1,pp-bc,buy,bullish,nifty
+498,pdl-s1,pp-bc,buy,bullish,nifty
+499,s1-pdl,pp-bc,buy,bullish,nifty
+500,pdl-s2,pp-bc,buy,bullish,nifty
+501,s1-s2,pp-bc,sell,bullish,nifty
+502,s2-s3,pp-bc,buy,bullish,nifty
+503,< s3,pp-bc,buy,bullish,nifty
+504,> r3,bc-pdl,buy,bullish,nifty
+505,r3-r2,bc-pdl,buy,bullish,nifty
+506,r2-pdh,bc-pdl,buy,bullish,nifty
+507,r2-r1,bc-pdl,buy,bullish,nifty
+508,pdh-r1,bc-pdl,buy,bullish,nifty
+509,r1-pdh,bc-pdl,buy,bullish,nifty
+510,r1-tc,bc-pdl,buy,bullish,nifty
+511,pdh-tc,bc-pdl,buy,bullish,nifty
+512,tc-pp,bc-pdl,buy,bullish,nifty
+513,pp-bc,bc-pdl,buy,bullish,nifty
+514,bc-pdl,bc-pdl,buy,bullish,nifty
+515,bc-s1,bc-pdl,buy,bullish,nifty
+516,pdl-s1,bc-pdl,sell,bullish,nifty
+517,s1-pdl,bc-pdl,buy,bullish,nifty
+518,pdl-s2,bc-pdl,buy,bullish,nifty
+519,s1-s2,bc-pdl,buy,bullish,nifty
+520,s2-s3,bc-pdl,buy,bullish,nifty
+521,< s3,bc-pdl,sell,bullish,nifty
+522,> r3,bc-s1,sell,bullish,nifty
+523,r3-r2,bc-s1,buy,bullish,nifty
+524,r2-pdh,bc-s1,buy,bullish,nifty
+525,r2-r1,bc-s1,buy,bullish,nifty
+526,pdh-r1,bc-s1,buy,bullish,nifty
+527,r1-pdh,bc-s1,buy,bullish,nifty
+528,r1-tc,bc-s1,buy,bullish,nifty
+529,pdh-tc,bc-s1,buy,bullish,nifty
+530,tc-pp,bc-s1,buy,bullish,nifty
+531,pp-bc,bc-s1,buy,bullish,nifty
+532,bc-pdl,bc-s1,buy,bullish,nifty
+533,bc-s1,bc-s1,buy,bullish,nifty
+534,pdl-s1,bc-s1,buy,bullish,nifty
+535,s1-pdl,bc-s1,buy,bullish,nifty
+536,pdl-s2,bc-s1,buy,bullish,nifty
+537,s1-s2,bc-s1,buy,bullish,nifty
+538,s2-s3,bc-s1,buy,bullish,nifty
+539,< s3,bc-s1,buy,bullish,nifty
+540,> r3,pdl-s1,buy,bullish,nifty
+541,r3-r2,pdl-s1,buy,bullish,nifty
+542,r2-pdh,pdl-s1,buy,bullish,nifty
+543,r2-r1,pdl-s1,buy,bullish,nifty
+544,pdh-r1,pdl-s1,buy,bullish,nifty
+545,r1-pdh,pdl-s1,buy,bullish,nifty
+546,r1-tc,pdl-s1,buy,bullish,nifty
+547,pdh-tc,pdl-s1,buy,bullish,nifty
+548,tc-pp,pdl-s1,buy,bullish,nifty
+549,pp-bc,pdl-s1,buy,bullish,nifty
+550,bc-pdl,pdl-s1,buy,bullish,nifty
+551,bc-s1,pdl-s1,buy,bullish,nifty
+552,pdl-s1,pdl-s1,buy,bullish,nifty
+553,s1-pdl,pdl-s1,buy,bullish,nifty
+554,pdl-s2,pdl-s1,sell,bullish,nifty
+555,s1-s2,pdl-s1,buy,bullish,nifty
+556,s2-s3,pdl-s1,buy,bullish,nifty
+557,< s3,pdl-s1,buy,bullish,nifty
+558,> r3,s1-pdl,buy,bullish,nifty
+559,r3-r2,s1-pdl,buy,bullish,nifty
+560,r2-pdh,s1-pdl,buy,bullish,nifty
+561,r2-r1,s1-pdl,buy,bullish,nifty
+562,pdh-r1,s1-pdl,buy,bullish,nifty
+563,r1-pdh,s1-pdl,buy,bullish,nifty
+564,r1-tc,s1-pdl,buy,bullish,nifty
+565,pdh-tc,s1-pdl,buy,bullish,nifty
+566,tc-pp,s1-pdl,buy,bullish,nifty
+567,pp-bc,s1-pdl,buy,bullish,nifty
+568,bc-pdl,s1-pdl,buy,bullish,nifty
+569,bc-s1,s1-pdl,buy,bullish,nifty
+570,pdl-s1,s1-pdl,buy,bullish,nifty
+571,s1-pdl,s1-pdl,buy,bullish,nifty
+572,pdl-s2,s1-pdl,buy,bullish,nifty
+573,s1-s2,s1-pdl,buy,bullish,nifty
+574,s2-s3,s1-pdl,buy,bullish,nifty
+575,< s3,s1-pdl,buy,bullish,nifty
+576,> r3,pdl-s2,buy,bullish,nifty
+577,r3-r2,pdl-s2,buy,bullish,nifty
+578,r2-pdh,pdl-s2,buy,bullish,nifty
+579,r2-r1,pdl-s2,buy,bullish,nifty
+580,pdh-r1,pdl-s2,buy,bullish,nifty
+581,r1-pdh,pdl-s2,buy,bullish,nifty
+582,r1-tc,pdl-s2,buy,bullish,nifty
+583,pdh-tc,pdl-s2,buy,bullish,nifty
+584,tc-pp,pdl-s2,buy,bullish,nifty
+585,pp-bc,pdl-s2,buy,bullish,nifty
+586,bc-pdl,pdl-s2,buy,bullish,nifty
+587,bc-s1,pdl-s2,buy,bullish,nifty
+588,pdl-s1,pdl-s2,buy,bullish,nifty
+589,s1-pdl,pdl-s2,buy,bullish,nifty
+590,pdl-s2,pdl-s2,buy,bullish,nifty
+591,s1-s2,pdl-s2,buy,bullish,nifty
+592,s2-s3,pdl-s2,buy,bullish,nifty
+593,< s3,pdl-s2,buy,bullish,nifty
+594,> r3,s1-s2,buy,bullish,nifty
+595,r3-r2,s1-s2,buy,bullish,nifty
+596,r2-pdh,s1-s2,buy,bullish,nifty
+597,r2-r1,s1-s2,buy,bullish,nifty
+598,pdh-r1,s1-s2,buy,bullish,nifty
+599,r1-pdh,s1-s2,buy,bullish,nifty
+600,r1-tc,s1-s2,buy,bullish,nifty
+601,pdh-tc,s1-s2,buy,bullish,nifty
+602,tc-pp,s1-s2,buy,bullish,nifty
+603,pp-bc,s1-s2,buy,bullish,nifty
+604,bc-pdl,s1-s2,buy,bullish,nifty
+605,bc-s1,s1-s2,buy,bullish,nifty
+606,pdl-s1,s1-s2,buy,bullish,nifty
+607,s1-pdl,s1-s2,buy,bullish,nifty
+608,pdl-s2,s1-s2,buy,bullish,nifty
+609,s1-s2,s1-s2,buy,bullish,nifty
+610,s2-s3,s1-s2,buy,bullish,nifty
+611,< s3,s1-s2,buy,bullish,nifty
+612,> r3,s2-s3,buy,bullish,nifty
+613,r3-r2,s2-s3,buy,bullish,nifty
+614,r2-pdh,s2-s3,buy,bullish,nifty
+615,r2-r1,s2-s3,buy,bullish,nifty
+616,pdh-r1,s2-s3,buy,bullish,nifty
+617,r1-pdh,s2-s3,buy,bullish,nifty
+618,r1-tc,s2-s3,buy,bullish,nifty
+619,pdh-tc,s2-s3,sell,bullish,nifty
+620,tc-pp,s2-s3,buy,bullish,nifty
+621,pp-bc,s2-s3,buy,bullish,nifty
+622,bc-pdl,s2-s3,buy,bullish,nifty
+623,bc-s1,s2-s3,buy,bullish,nifty
+624,pdl-s1,s2-s3,buy,bullish,nifty
+625,s1-pdl,s2-s3,buy,bullish,nifty
+626,pdl-s2,s2-s3,buy,bullish,nifty
+627,s1-s2,s2-s3,buy,bullish,nifty
+628,s2-s3,s2-s3,buy,bullish,nifty
+629,< s3,s2-s3,buy,bullish,nifty
+630,> r3,< s3,no_trade,bullish,nifty
+631,r3-r2,< s3,no_trade,bullish,nifty
+632,r2-pdh,< s3,no_trade,bullish,nifty
+633,r2-r1,< s3,no_trade,bullish,nifty
+634,pdh-r1,< s3,no_trade,bullish,nifty
+635,r1-pdh,< s3,no_trade,bullish,nifty
+636,r1-tc,< s3,no_trade,bullish,nifty
+637,pdh-tc,< s3,no_trade,bullish,nifty
+638,tc-pp,< s3,no_trade,bullish,nifty
+639,pp-bc,< s3,no_trade,bullish,nifty
+640,bc-pdl,< s3,no_trade,bullish,nifty
+641,bc-s1,< s3,no_trade,bullish,nifty
+642,pdl-s1,< s3,no_trade,bullish,nifty
+643,s1-pdl,< s3,no_trade,bullish,nifty
+644,pdl-s2,< s3,no_trade,bullish,nifty
+645,s1-s2,< s3,no_trade,bullish,nifty
+646,s2-s3,< s3,no_trade,bullish,nifty
+647,< s3,< s3,no_trade,bullish,nifty
+648,> r3,> r3,no_trade,bullish,banknifty
+649,r3-r2,> r3,no_trade,bullish,banknifty
+650,r2-pdh,> r3,no_trade,bullish,banknifty
+651,r2-r1,> r3,no_trade,bullish,banknifty
+652,pdh-r1,> r3,no_trade,bullish,banknifty
+653,r1-pdh,> r3,no_trade,bullish,banknifty
+654,r1-tc,> r3,no_trade,bullish,banknifty
+655,pdh-tc,> r3,no_trade,bullish,banknifty
+656,tc-pp,> r3,no_trade,bullish,banknifty
+657,pp-bc,> r3,no_trade,bullish,banknifty
+658,bc-pdl,> r3,no_trade,bullish,banknifty
+659,bc-s1,> r3,no_trade,bullish,banknifty
+660,pdl-s1,> r3,no_trade,bullish,banknifty
+661,s1-pdl,> r3,no_trade,bullish,banknifty
+662,pdl-s2,> r3,no_trade,bullish,banknifty
+663,s1-s2,> r3,no_trade,bullish,banknifty
+664,s2-s3,> r3,no_trade,bullish,banknifty
+665,< s3,> r3,no_trade,bullish,banknifty
+666,> r3,r3-r2,sell,bullish,banknifty
+667,r3-r2,r3-r2,sell,bullish,banknifty
+668,r2-pdh,r3-r2,sell,bullish,banknifty
+669,r2-r1,r3-r2,sell,bullish,banknifty
+670,pdh-r1,r3-r2,sell,bullish,banknifty
+671,r1-pdh,r3-r2,sell,bullish,banknifty
+672,r1-tc,r3-r2,buy,bullish,banknifty
+673,pdh-tc,r3-r2,sell,bullish,banknifty
+674,tc-pp,r3-r2,sell,bullish,banknifty
+675,pp-bc,r3-r2,sell,bullish,banknifty
+676,bc-pdl,r3-r2,sell,bullish,banknifty
+677,bc-s1,r3-r2,sell,bullish,banknifty
+678,pdl-s1,r3-r2,sell,bullish,banknifty
+679,s1-pdl,r3-r2,sell,bullish,banknifty
+680,pdl-s2,r3-r2,sell,bullish,banknifty
+681,s1-s2,r3-r2,sell,bullish,banknifty
+682,s2-s3,r3-r2,sell,bullish,banknifty
+683,< s3,r3-r2,sell,bullish,banknifty
+684,> r3,r2-pdh,sell,bullish,banknifty
+685,r3-r2,r2-pdh,sell,bullish,banknifty
+686,r2-pdh,r2-pdh,sell,bullish,banknifty
+687,r2-r1,r2-pdh,sell,bullish,banknifty
+688,pdh-r1,r2-pdh,sell,bullish,banknifty
+689,r1-pdh,r2-pdh,sell,bullish,banknifty
+690,r1-tc,r2-pdh,sell,bullish,banknifty
+691,pdh-tc,r2-pdh,sell,bullish,banknifty
+692,tc-pp,r2-pdh,sell,bullish,banknifty
+693,pp-bc,r2-pdh,sell,bullish,banknifty
+694,bc-pdl,r2-pdh,sell,bullish,banknifty
+695,bc-s1,r2-pdh,sell,bullish,banknifty
+696,pdl-s1,r2-pdh,sell,bullish,banknifty
+697,s1-pdl,r2-pdh,sell,bullish,banknifty
+698,pdl-s2,r2-pdh,sell,bullish,banknifty
+699,s1-s2,r2-pdh,sell,bullish,banknifty
+700,s2-s3,r2-pdh,sell,bullish,banknifty
+701,< s3,r2-pdh,sell,bullish,banknifty
+702,> r3,r2-r1,sell,bullish,banknifty
+703,r3-r2,r2-r1,sell,bullish,banknifty
+704,r2-pdh,r2-r1,buy,bullish,banknifty
+705,r2-r1,r2-r1,sell,bullish,banknifty
+706,pdh-r1,r2-r1,sell,bullish,banknifty
+707,r1-pdh,r2-r1,sell,bullish,banknifty
+708,r1-tc,r2-r1,sell,bullish,banknifty
+709,pdh-tc,r2-r1,buy,bullish,banknifty
+710,tc-pp,r2-r1,sell,bullish,banknifty
+711,pp-bc,r2-r1,sell,bullish,banknifty
+712,bc-pdl,r2-r1,sell,bullish,banknifty
+713,bc-s1,r2-r1,sell,bullish,banknifty
+714,pdl-s1,r2-r1,sell,bullish,banknifty
+715,s1-pdl,r2-r1,sell,bullish,banknifty
+716,pdl-s2,r2-r1,sell,bullish,banknifty
+717,s1-s2,r2-r1,sell,bullish,banknifty
+718,s2-s3,r2-r1,sell,bullish,banknifty
+719,< s3,r2-r1,sell,bullish,banknifty
+720,> r3,pdh-r1,sell,bullish,banknifty
+721,r3-r2,pdh-r1,sell,bullish,banknifty
+722,r2-pdh,pdh-r1,sell,bullish,banknifty
+723,r2-r1,pdh-r1,sell,bullish,banknifty
+724,pdh-r1,pdh-r1,sell,bullish,banknifty
+725,r1-pdh,pdh-r1,sell,bullish,banknifty
+726,r1-tc,pdh-r1,sell,bullish,banknifty
+727,pdh-tc,pdh-r1,sell,bullish,banknifty
+728,tc-pp,pdh-r1,sell,bullish,banknifty
+729,pp-bc,pdh-r1,sell,bullish,banknifty
+730,bc-pdl,pdh-r1,sell,bullish,banknifty
+731,bc-s1,pdh-r1,sell,bullish,banknifty
+732,pdl-s1,pdh-r1,sell,bullish,banknifty
+733,s1-pdl,pdh-r1,sell,bullish,banknifty
+734,pdl-s2,pdh-r1,sell,bullish,banknifty
+735,s1-s2,pdh-r1,buy,bullish,banknifty
+736,s2-s3,pdh-r1,sell,bullish,banknifty
+737,< s3,pdh-r1,sell,bullish,banknifty
+738,> r3,r1-pdh,sell,bullish,banknifty
+739,r3-r2,r1-pdh,buy,bullish,banknifty
+740,r2-pdh,r1-pdh,sell,bullish,banknifty
+741,r2-r1,r1-pdh,sell,bullish,banknifty
+742,pdh-r1,r1-pdh,sell,bullish,banknifty
+743,r1-pdh,r1-pdh,sell,bullish,banknifty
+744,r1-tc,r1-pdh,sell,bullish,banknifty
+745,pdh-tc,r1-pdh,sell,bullish,banknifty
+746,tc-pp,r1-pdh,sell,bullish,banknifty
+747,pp-bc,r1-pdh,sell,bullish,banknifty
+748,bc-pdl,r1-pdh,sell,bullish,banknifty
+749,bc-s1,r1-pdh,sell,bullish,banknifty
+750,pdl-s1,r1-pdh,sell,bullish,banknifty
+751,s1-pdl,r1-pdh,sell,bullish,banknifty
+752,pdl-s2,r1-pdh,sell,bullish,banknifty
+753,s1-s2,r1-pdh,sell,bullish,banknifty
+754,s2-s3,r1-pdh,sell,bullish,banknifty
+755,< s3,r1-pdh,sell,bullish,banknifty
+756,> r3,r1-tc,sell,bullish,banknifty
+757,r3-r2,r1-tc,sell,bullish,banknifty
+758,r2-pdh,r1-tc,sell,bullish,banknifty
+759,r2-r1,r1-tc,sell,bullish,banknifty
+760,pdh-r1,r1-tc,sell,bullish,banknifty
+761,r1-pdh,r1-tc,sell,bullish,banknifty
+762,r1-tc,r1-tc,buy,bullish,banknifty
+763,pdh-tc,r1-tc,sell,bullish,banknifty
+764,tc-pp,r1-tc,sell,bullish,banknifty
+765,pp-bc,r1-tc,sell,bullish,banknifty
+766,bc-pdl,r1-tc,sell,bullish,banknifty
+767,bc-s1,r1-tc,sell,bullish,banknifty
+768,pdl-s1,r1-tc,sell,bullish,banknifty
+769,s1-pdl,r1-tc,sell,bullish,banknifty
+770,pdl-s2,r1-tc,sell,bullish,banknifty
+771,s1-s2,r1-tc,sell,bullish,banknifty
+772,s2-s3,r1-tc,sell,bullish,banknifty
+773,< s3,r1-tc,sell,bullish,banknifty
+774,> r3,pdh-tc,sell,bullish,banknifty
+775,r3-r2,pdh-tc,sell,bullish,banknifty
+776,r2-pdh,pdh-tc,sell,bullish,banknifty
+777,r2-r1,pdh-tc,sell,bullish,banknifty
+778,pdh-r1,pdh-tc,sell,bullish,banknifty
+779,r1-pdh,pdh-tc,sell,bullish,banknifty
+780,r1-tc,pdh-tc,buy,bullish,banknifty
+781,pdh-tc,pdh-tc,sell,bullish,banknifty
+782,tc-pp,pdh-tc,sell,bullish,banknifty
+783,pp-bc,pdh-tc,sell,bullish,banknifty
+784,bc-pdl,pdh-tc,sell,bullish,banknifty
+785,bc-s1,pdh-tc,sell,bullish,banknifty
+786,pdl-s1,pdh-tc,buy,bullish,banknifty
+787,s1-pdl,pdh-tc,sell,bullish,banknifty
+788,pdl-s2,pdh-tc,sell,bullish,banknifty
+789,s1-s2,pdh-tc,sell,bullish,banknifty
+790,s2-s3,pdh-tc,sell,bullish,banknifty
+791,< s3,pdh-tc,sell,bullish,banknifty
+792,> r3,tc-pp,sell,bullish,banknifty
+793,r3-r2,tc-pp,sell,bullish,banknifty
+794,r2-pdh,tc-pp,sell,bullish,banknifty
+795,r2-r1,tc-pp,sell,bullish,banknifty
+796,pdh-r1,tc-pp,buy,bullish,banknifty
+797,r1-pdh,tc-pp,sell,bullish,banknifty
+798,r1-tc,tc-pp,sell,bullish,banknifty
+799,pdh-tc,tc-pp,sell,bullish,banknifty
+800,tc-pp,tc-pp,sell,bullish,banknifty
+801,pp-bc,tc-pp,sell,bullish,banknifty
+802,bc-pdl,tc-pp,sell,bullish,banknifty
+803,bc-s1,tc-pp,sell,bullish,banknifty
+804,pdl-s1,tc-pp,sell,bullish,banknifty
+805,s1-pdl,tc-pp,sell,bullish,banknifty
+806,pdl-s2,tc-pp,sell,bullish,banknifty
+807,s1-s2,tc-pp,sell,bullish,banknifty
+808,s2-s3,tc-pp,sell,bullish,banknifty
+809,< s3,tc-pp,sell,bullish,banknifty
+810,> r3,pp-bc,buy,bullish,banknifty
+811,r3-r2,pp-bc,buy,bullish,banknifty
+812,r2-pdh,pp-bc,buy,bullish,banknifty
+813,r2-r1,pp-bc,buy,bullish,banknifty
+814,pdh-r1,pp-bc,buy,bullish,banknifty
+815,r1-pdh,pp-bc,buy,bullish,banknifty
+816,r1-tc,pp-bc,buy,bullish,banknifty
+817,pdh-tc,pp-bc,buy,bullish,banknifty
+818,tc-pp,pp-bc,buy,bullish,banknifty
+819,pp-bc,pp-bc,buy,bullish,banknifty
+820,bc-pdl,pp-bc,buy,bullish,banknifty
+821,bc-s1,pp-bc,buy,bullish,banknifty
+822,pdl-s1,pp-bc,buy,bullish,banknifty
+823,s1-pdl,pp-bc,buy,bullish,banknifty
+824,pdl-s2,pp-bc,buy,bullish,banknifty
+825,s1-s2,pp-bc,buy,bullish,banknifty
+826,s2-s3,pp-bc,buy,bullish,banknifty
+827,< s3,pp-bc,buy,bullish,banknifty
+828,> r3,bc-pdl,buy,bullish,banknifty
+829,r3-r2,bc-pdl,buy,bullish,banknifty
+830,r2-pdh,bc-pdl,buy,bullish,banknifty
+831,r2-r1,bc-pdl,sell,bullish,banknifty
+832,pdh-r1,bc-pdl,buy,bullish,banknifty
+833,r1-pdh,bc-pdl,buy,bullish,banknifty
+834,r1-tc,bc-pdl,buy,bullish,banknifty
+835,pdh-tc,bc-pdl,buy,bullish,banknifty
+836,tc-pp,bc-pdl,buy,bullish,banknifty
+837,pp-bc,bc-pdl,buy,bullish,banknifty
+838,bc-pdl,bc-pdl,buy,bullish,banknifty
+839,bc-s1,bc-pdl,buy,bullish,banknifty
+840,pdl-s1,bc-pdl,buy,bullish,banknifty
+841,s1-pdl,bc-pdl,buy,bullish,banknifty
+842,pdl-s2,bc-pdl,buy,bullish,banknifty
+843,s1-s2,bc-pdl,buy,bullish,banknifty
+844,s2-s3,bc-pdl,buy,bullish,banknifty
+845,< s3,bc-pdl,buy,bullish,banknifty
+846,> r3,bc-s1,buy,bullish,banknifty
+847,r3-r2,bc-s1,buy,bullish,banknifty
+848,r2-pdh,bc-s1,buy,bullish,banknifty
+849,r2-r1,bc-s1,buy,bullish,banknifty
+850,pdh-r1,bc-s1,buy,bullish,banknifty
+851,r1-pdh,bc-s1,buy,bullish,banknifty
+852,r1-tc,bc-s1,buy,bullish,banknifty
+853,pdh-tc,bc-s1,buy,bullish,banknifty
+854,tc-pp,bc-s1,buy,bullish,banknifty
+855,pp-bc,bc-s1,buy,bullish,banknifty
+856,bc-pdl,bc-s1,buy,bullish,banknifty
+857,bc-s1,bc-s1,buy,bullish,banknifty
+858,pdl-s1,bc-s1,buy,bullish,banknifty
+859,s1-pdl,bc-s1,buy,bullish,banknifty
+860,pdl-s2,bc-s1,buy,bullish,banknifty
+861,s1-s2,bc-s1,buy,bullish,banknifty
+862,s2-s3,bc-s1,buy,bullish,banknifty
+863,< s3,bc-s1,buy,bullish,banknifty
+864,> r3,pdl-s1,buy,bullish,banknifty
+865,r3-r2,pdl-s1,buy,bullish,banknifty
+866,r2-pdh,pdl-s1,buy,bullish,banknifty
+867,r2-r1,pdl-s1,buy,bullish,banknifty
+868,pdh-r1,pdl-s1,buy,bullish,banknifty
+869,r1-pdh,pdl-s1,buy,bullish,banknifty
+870,r1-tc,pdl-s1,buy,bullish,banknifty
+871,pdh-tc,pdl-s1,buy,bullish,banknifty
+872,tc-pp,pdl-s1,buy,bullish,banknifty
+873,pp-bc,pdl-s1,buy,bullish,banknifty
+874,bc-pdl,pdl-s1,buy,bullish,banknifty
+875,bc-s1,pdl-s1,buy,bullish,banknifty
+876,pdl-s1,pdl-s1,buy,bullish,banknifty
+877,s1-pdl,pdl-s1,buy,bullish,banknifty
+878,pdl-s2,pdl-s1,buy,bullish,banknifty
+879,s1-s2,pdl-s1,buy,bullish,banknifty
+880,s2-s3,pdl-s1,buy,bullish,banknifty
+881,< s3,pdl-s1,buy,bullish,banknifty
+882,> r3,s1-pdl,buy,bullish,banknifty
+883,r3-r2,s1-pdl,buy,bullish,banknifty
+884,r2-pdh,s1-pdl,buy,bullish,banknifty
+885,r2-r1,s1-pdl,buy,bullish,banknifty
+886,pdh-r1,s1-pdl,buy,bullish,banknifty
+887,r1-pdh,s1-pdl,buy,bullish,banknifty
+888,r1-tc,s1-pdl,buy,bullish,banknifty
+889,pdh-tc,s1-pdl,buy,bullish,banknifty
+890,tc-pp,s1-pdl,buy,bullish,banknifty
+891,pp-bc,s1-pdl,buy,bullish,banknifty
+892,bc-pdl,s1-pdl,buy,bullish,banknifty
+893,bc-s1,s1-pdl,buy,bullish,banknifty
+894,pdl-s1,s1-pdl,buy,bullish,banknifty
+895,s1-pdl,s1-pdl,buy,bullish,banknifty
+896,pdl-s2,s1-pdl,buy,bullish,banknifty
+897,s1-s2,s1-pdl,buy,bullish,banknifty
+898,s2-s3,s1-pdl,buy,bullish,banknifty
+899,< s3,s1-pdl,buy,bullish,banknifty
+900,> r3,pdl-s2,buy,bullish,banknifty
+901,r3-r2,pdl-s2,buy,bullish,banknifty
+902,r2-pdh,pdl-s2,buy,bullish,banknifty
+903,r2-r1,pdl-s2,buy,bullish,banknifty
+904,pdh-r1,pdl-s2,buy,bullish,banknifty
+905,r1-pdh,pdl-s2,buy,bullish,banknifty
+906,r1-tc,pdl-s2,buy,bullish,banknifty
+907,pdh-tc,pdl-s2,buy,bullish,banknifty
+908,tc-pp,pdl-s2,buy,bullish,banknifty
+909,pp-bc,pdl-s2,buy,bullish,banknifty
+910,bc-pdl,pdl-s2,buy,bullish,banknifty
+911,bc-s1,pdl-s2,buy,bullish,banknifty
+912,pdl-s1,pdl-s2,buy,bullish,banknifty
+913,s1-pdl,pdl-s2,buy,bullish,banknifty
+914,pdl-s2,pdl-s2,buy,bullish,banknifty
+915,s1-s2,pdl-s2,buy,bullish,banknifty
+916,s2-s3,pdl-s2,buy,bullish,banknifty
+917,< s3,pdl-s2,buy,bullish,banknifty
+918,> r3,s1-s2,buy,bullish,banknifty
+919,r3-r2,s1-s2,buy,bullish,banknifty
+920,r2-pdh,s1-s2,buy,bullish,banknifty
+921,r2-r1,s1-s2,buy,bullish,banknifty
+922,pdh-r1,s1-s2,buy,bullish,banknifty
+923,r1-pdh,s1-s2,buy,bullish,banknifty
+924,r1-tc,s1-s2,buy,bullish,banknifty
+925,pdh-tc,s1-s2,buy,bullish,banknifty
+926,tc-pp,s1-s2,buy,bullish,banknifty
+927,pp-bc,s1-s2,buy,bullish,banknifty
+928,bc-pdl,s1-s2,buy,bullish,banknifty
+929,bc-s1,s1-s2,buy,bullish,banknifty
+930,pdl-s1,s1-s2,buy,bullish,banknifty
+931,s1-pdl,s1-s2,buy,bullish,banknifty
+932,pdl-s2,s1-s2,buy,bullish,banknifty
+933,s1-s2,s1-s2,buy,bullish,banknifty
+934,s2-s3,s1-s2,buy,bullish,banknifty
+935,< s3,s1-s2,buy,bullish,banknifty
+936,> r3,s2-s3,buy,bullish,banknifty
+937,r3-r2,s2-s3,buy,bullish,banknifty
+938,r2-pdh,s2-s3,buy,bullish,banknifty
+939,r2-r1,s2-s3,buy,bullish,banknifty
+940,pdh-r1,s2-s3,buy,bullish,banknifty
+941,r1-pdh,s2-s3,buy,bullish,banknifty
+942,r1-tc,s2-s3,buy,bullish,banknifty
+943,pdh-tc,s2-s3,buy,bullish,banknifty
+944,tc-pp,s2-s3,buy,bullish,banknifty
+945,pp-bc,s2-s3,buy,bullish,banknifty
+946,bc-pdl,s2-s3,buy,bullish,banknifty
+947,bc-s1,s2-s3,buy,bullish,banknifty
+948,pdl-s1,s2-s3,buy,bullish,banknifty
+949,s1-pdl,s2-s3,buy,bullish,banknifty
+950,pdl-s2,s2-s3,buy,bullish,banknifty
+951,s1-s2,s2-s3,buy,bullish,banknifty
+952,s2-s3,s2-s3,buy,bullish,banknifty
+953,< s3,s2-s3,buy,bullish,banknifty
+954,> r3,< s3,no_trade,bullish,banknifty
+955,r3-r2,< s3,no_trade,bullish,banknifty
+956,r2-pdh,< s3,no_trade,bullish,banknifty
+957,r2-r1,< s3,no_trade,bullish,banknifty
+958,pdh-r1,< s3,no_trade,bullish,banknifty
+959,r1-pdh,< s3,no_trade,bullish,banknifty
+960,r1-tc,< s3,no_trade,bullish,banknifty
+961,pdh-tc,< s3,no_trade,bullish,banknifty
+962,tc-pp,< s3,no_trade,bullish,banknifty
+963,pp-bc,< s3,no_trade,bullish,banknifty
+964,bc-pdl,< s3,no_trade,bullish,banknifty
+965,bc-s1,< s3,no_trade,bullish,banknifty
+966,pdl-s1,< s3,no_trade,bullish,banknifty
+967,s1-pdl,< s3,no_trade,bullish,banknifty
+968,pdl-s2,< s3,no_trade,bullish,banknifty
+969,s1-s2,< s3,no_trade,bullish,banknifty
+970,s2-s3,< s3,no_trade,bullish,banknifty
+971,< s3,< s3,no_trade,bullish,banknifty
+972,> r3,> r3,no_trade,bearish,banknifty
+973,r3-r2,> r3,no_trade,bearish,banknifty
+974,r2-pdh,> r3,no_trade,bearish,banknifty
+975,r2-r1,> r3,no_trade,bearish,banknifty
+976,pdh-r1,> r3,no_trade,bearish,banknifty
+977,r1-pdh,> r3,no_trade,bearish,banknifty
+978,r1-tc,> r3,no_trade,bearish,banknifty
+979,pdh-tc,> r3,no_trade,bearish,banknifty
+980,tc-pp,> r3,no_trade,bearish,banknifty
+981,pp-bc,> r3,no_trade,bearish,banknifty
+982,bc-pdl,> r3,no_trade,bearish,banknifty
+983,bc-s1,> r3,no_trade,bearish,banknifty
+984,pdl-s1,> r3,no_trade,bearish,banknifty
+985,s1-pdl,> r3,no_trade,bearish,banknifty
+986,pdl-s2,> r3,no_trade,bearish,banknifty
+987,s1-s2,> r3,no_trade,bearish,banknifty
+988,s2-s3,> r3,no_trade,bearish,banknifty
+989,< s3,> r3,no_trade,bearish,banknifty
+990,> r3,r3-r2,sell,bearish,banknifty
+991,r3-r2,r3-r2,sell,bearish,banknifty
+992,r2-pdh,r3-r2,sell,bearish,banknifty
+993,r2-r1,r3-r2,sell,bearish,banknifty
+994,pdh-r1,r3-r2,sell,bearish,banknifty
+995,r1-pdh,r3-r2,sell,bearish,banknifty
+996,r1-tc,r3-r2,sell,bearish,banknifty
+997,pdh-tc,r3-r2,sell,bearish,banknifty
+998,tc-pp,r3-r2,sell,bearish,banknifty
+999,pp-bc,r3-r2,sell,bearish,banknifty
+1000,bc-pdl,r3-r2,sell,bearish,banknifty
+1001,bc-s1,r3-r2,sell,bearish,banknifty
+1002,pdl-s1,r3-r2,sell,bearish,banknifty
+1003,s1-pdl,r3-r2,sell,bearish,banknifty
+1004,pdl-s2,r3-r2,sell,bearish,banknifty
+1005,s1-s2,r3-r2,sell,bearish,banknifty
+1006,s2-s3,r3-r2,sell,bearish,banknifty
+1007,< s3,r3-r2,sell,bearish,banknifty
+1008,> r3,r2-pdh,sell,bearish,banknifty
+1009,r3-r2,r2-pdh,sell,bearish,banknifty
+1010,r2-pdh,r2-pdh,sell,bearish,banknifty
+1011,r2-r1,r2-pdh,sell,bearish,banknifty
+1012,pdh-r1,r2-pdh,sell,bearish,banknifty
+1013,r1-pdh,r2-pdh,sell,bearish,banknifty
+1014,r1-tc,r2-pdh,sell,bearish,banknifty
+1015,pdh-tc,r2-pdh,sell,bearish,banknifty
+1016,tc-pp,r2-pdh,sell,bearish,banknifty
+1017,pp-bc,r2-pdh,sell,bearish,banknifty
+1018,bc-pdl,r2-pdh,sell,bearish,banknifty
+1019,bc-s1,r2-pdh,sell,bearish,banknifty
+1020,pdl-s1,r2-pdh,sell,bearish,banknifty
+1021,s1-pdl,r2-pdh,sell,bearish,banknifty
+1022,pdl-s2,r2-pdh,sell,bearish,banknifty
+1023,s1-s2,r2-pdh,sell,bearish,banknifty
+1024,s2-s3,r2-pdh,sell,bearish,banknifty
+1025,< s3,r2-pdh,sell,bearish,banknifty
+1026,> r3,r2-r1,sell,bearish,banknifty
+1027,r3-r2,r2-r1,buy,bearish,banknifty
+1028,r2-pdh,r2-r1,sell,bearish,banknifty
+1029,r2-r1,r2-r1,sell,bearish,banknifty
+1030,pdh-r1,r2-r1,sell,bearish,banknifty
+1031,r1-pdh,r2-r1,sell,bearish,banknifty
+1032,r1-tc,r2-r1,sell,bearish,banknifty
+1033,pdh-tc,r2-r1,sell,bearish,banknifty
+1034,tc-pp,r2-r1,sell,bearish,banknifty
+1035,pp-bc,r2-r1,sell,bearish,banknifty
+1036,bc-pdl,r2-r1,sell,bearish,banknifty
+1037,bc-s1,r2-r1,sell,bearish,banknifty
+1038,pdl-s1,r2-r1,sell,bearish,banknifty
+1039,s1-pdl,r2-r1,sell,bearish,banknifty
+1040,pdl-s2,r2-r1,sell,bearish,banknifty
+1041,s1-s2,r2-r1,sell,bearish,banknifty
+1042,s2-s3,r2-r1,sell,bearish,banknifty
+1043,< s3,r2-r1,sell,bearish,banknifty
+1044,> r3,pdh-r1,sell,bearish,banknifty
+1045,r3-r2,pdh-r1,sell,bearish,banknifty
+1046,r2-pdh,pdh-r1,sell,bearish,banknifty
+1047,r2-r1,pdh-r1,sell,bearish,banknifty
+1048,pdh-r1,pdh-r1,sell,bearish,banknifty
+1049,r1-pdh,pdh-r1,sell,bearish,banknifty
+1050,r1-tc,pdh-r1,sell,bearish,banknifty
+1051,pdh-tc,pdh-r1,sell,bearish,banknifty
+1052,tc-pp,pdh-r1,sell,bearish,banknifty
+1053,pp-bc,pdh-r1,sell,bearish,banknifty
+1054,bc-pdl,pdh-r1,sell,bearish,banknifty
+1055,bc-s1,pdh-r1,sell,bearish,banknifty
+1056,pdl-s1,pdh-r1,sell,bearish,banknifty
+1057,s1-pdl,pdh-r1,sell,bearish,banknifty
+1058,pdl-s2,pdh-r1,sell,bearish,banknifty
+1059,s1-s2,pdh-r1,sell,bearish,banknifty
+1060,s2-s3,pdh-r1,sell,bearish,banknifty
+1061,< s3,pdh-r1,sell,bearish,banknifty
+1062,> r3,r1-pdh,sell,bearish,banknifty
+1063,r3-r2,r1-pdh,sell,bearish,banknifty
+1064,r2-pdh,r1-pdh,sell,bearish,banknifty
+1065,r2-r1,r1-pdh,sell,bearish,banknifty
+1066,pdh-r1,r1-pdh,sell,bearish,banknifty
+1067,r1-pdh,r1-pdh,sell,bearish,banknifty
+1068,r1-tc,r1-pdh,sell,bearish,banknifty
+1069,pdh-tc,r1-pdh,sell,bearish,banknifty
+1070,tc-pp,r1-pdh,buy,bearish,banknifty
+1071,pp-bc,r1-pdh,sell,bearish,banknifty
+1072,bc-pdl,r1-pdh,sell,bearish,banknifty
+1073,bc-s1,r1-pdh,sell,bearish,banknifty
+1074,pdl-s1,r1-pdh,sell,bearish,banknifty
+1075,s1-pdl,r1-pdh,sell,bearish,banknifty
+1076,pdl-s2,r1-pdh,sell,bearish,banknifty
+1077,s1-s2,r1-pdh,sell,bearish,banknifty
+1078,s2-s3,r1-pdh,sell,bearish,banknifty
+1079,< s3,r1-pdh,sell,bearish,banknifty
+1080,> r3,r1-tc,sell,bearish,banknifty
+1081,r3-r2,r1-tc,sell,bearish,banknifty
+1082,r2-pdh,r1-tc,sell,bearish,banknifty
+1083,r2-r1,r1-tc,sell,bearish,banknifty
+1084,pdh-r1,r1-tc,sell,bearish,banknifty
+1085,r1-pdh,r1-tc,sell,bearish,banknifty
+1086,r1-tc,r1-tc,sell,bearish,banknifty
+1087,pdh-tc,r1-tc,sell,bearish,banknifty
+1088,tc-pp,r1-tc,buy,bearish,banknifty
+1089,pp-bc,r1-tc,sell,bearish,banknifty
+1090,bc-pdl,r1-tc,sell,bearish,banknifty
+1091,bc-s1,r1-tc,sell,bearish,banknifty
+1092,pdl-s1,r1-tc,sell,bearish,banknifty
+1093,s1-pdl,r1-tc,sell,bearish,banknifty
+1094,pdl-s2,r1-tc,sell,bearish,banknifty
+1095,s1-s2,r1-tc,sell,bearish,banknifty
+1096,s2-s3,r1-tc,sell,bearish,banknifty
+1097,< s3,r1-tc,sell,bearish,banknifty
+1098,> r3,pdh-tc,sell,bearish,banknifty
+1099,r3-r2,pdh-tc,sell,bearish,banknifty
+1100,r2-pdh,pdh-tc,sell,bearish,banknifty
+1101,r2-r1,pdh-tc,sell,bearish,banknifty
+1102,pdh-r1,pdh-tc,sell,bearish,banknifty
+1103,r1-pdh,pdh-tc,buy,bearish,banknifty
+1104,r1-tc,pdh-tc,sell,bearish,banknifty
+1105,pdh-tc,pdh-tc,buy,bearish,banknifty
+1106,tc-pp,pdh-tc,sell,bearish,banknifty
+1107,pp-bc,pdh-tc,sell,bearish,banknifty
+1108,bc-pdl,pdh-tc,sell,bearish,banknifty
+1109,bc-s1,pdh-tc,sell,bearish,banknifty
+1110,pdl-s1,pdh-tc,sell,bearish,banknifty
+1111,s1-pdl,pdh-tc,sell,bearish,banknifty
+1112,pdl-s2,pdh-tc,sell,bearish,banknifty
+1113,s1-s2,pdh-tc,sell,bearish,banknifty
+1114,s2-s3,pdh-tc,sell,bearish,banknifty
+1115,< s3,pdh-tc,sell,bearish,banknifty
+1116,> r3,tc-pp,sell,bearish,banknifty
+1117,r3-r2,tc-pp,sell,bearish,banknifty
+1118,r2-pdh,tc-pp,sell,bearish,banknifty
+1119,r2-r1,tc-pp,sell,bearish,banknifty
+1120,pdh-r1,tc-pp,sell,bearish,banknifty
+1121,r1-pdh,tc-pp,sell,bearish,banknifty
+1122,r1-tc,tc-pp,sell,bearish,banknifty
+1123,pdh-tc,tc-pp,sell,bearish,banknifty
+1124,tc-pp,tc-pp,sell,bearish,banknifty
+1125,pp-bc,tc-pp,sell,bearish,banknifty
+1126,bc-pdl,tc-pp,sell,bearish,banknifty
+1127,bc-s1,tc-pp,sell,bearish,banknifty
+1128,pdl-s1,tc-pp,sell,bearish,banknifty
+1129,s1-pdl,tc-pp,sell,bearish,banknifty
+1130,pdl-s2,tc-pp,sell,bearish,banknifty
+1131,s1-s2,tc-pp,sell,bearish,banknifty
+1132,s2-s3,tc-pp,sell,bearish,banknifty
+1133,< s3,tc-pp,sell,bearish,banknifty
+1134,> r3,pp-bc,buy,bearish,banknifty
+1135,r3-r2,pp-bc,buy,bearish,banknifty
+1136,r2-pdh,pp-bc,buy,bearish,banknifty
+1137,r2-r1,pp-bc,buy,bearish,banknifty
+1138,pdh-r1,pp-bc,buy,bearish,banknifty
+1139,r1-pdh,pp-bc,sell,bearish,banknifty
+1140,r1-tc,pp-bc,buy,bearish,banknifty
+1141,pdh-tc,pp-bc,sell,bearish,banknifty
+1142,tc-pp,pp-bc,buy,bearish,banknifty
+1143,pp-bc,pp-bc,buy,bearish,banknifty
+1144,bc-pdl,pp-bc,buy,bearish,banknifty
+1145,bc-s1,pp-bc,buy,bearish,banknifty
+1146,pdl-s1,pp-bc,buy,bearish,banknifty
+1147,s1-pdl,pp-bc,buy,bearish,banknifty
+1148,pdl-s2,pp-bc,buy,bearish,banknifty
+1149,s1-s2,pp-bc,buy,bearish,banknifty
+1150,s2-s3,pp-bc,buy,bearish,banknifty
+1151,< s3,pp-bc,buy,bearish,banknifty
+1152,> r3,bc-pdl,buy,bearish,banknifty
+1153,r3-r2,bc-pdl,buy,bearish,banknifty
+1154,r2-pdh,bc-pdl,buy,bearish,banknifty
+1155,r2-r1,bc-pdl,buy,bearish,banknifty
+1156,pdh-r1,bc-pdl,buy,bearish,banknifty
+1157,r1-pdh,bc-pdl,buy,bearish,banknifty
+1158,r1-tc,bc-pdl,buy,bearish,banknifty
+1159,pdh-tc,bc-pdl,sell,bearish,banknifty
+1160,tc-pp,bc-pdl,buy,bearish,banknifty
+1161,pp-bc,bc-pdl,buy,bearish,banknifty
+1162,bc-pdl,bc-pdl,buy,bearish,banknifty
+1163,bc-s1,bc-pdl,buy,bearish,banknifty
+1164,pdl-s1,bc-pdl,buy,bearish,banknifty
+1165,s1-pdl,bc-pdl,buy,bearish,banknifty
+1166,pdl-s2,bc-pdl,buy,bearish,banknifty
+1167,s1-s2,bc-pdl,buy,bearish,banknifty
+1168,s2-s3,bc-pdl,buy,bearish,banknifty
+1169,< s3,bc-pdl,buy,bearish,banknifty
+1170,> r3,bc-s1,buy,bearish,banknifty
+1171,r3-r2,bc-s1,buy,bearish,banknifty
+1172,r2-pdh,bc-s1,buy,bearish,banknifty
+1173,r2-r1,bc-s1,sell,bearish,banknifty
+1174,pdh-r1,bc-s1,buy,bearish,banknifty
+1175,r1-pdh,bc-s1,buy,bearish,banknifty
+1176,r1-tc,bc-s1,buy,bearish,banknifty
+1177,pdh-tc,bc-s1,buy,bearish,banknifty
+1178,tc-pp,bc-s1,buy,bearish,banknifty
+1179,pp-bc,bc-s1,buy,bearish,banknifty
+1180,bc-pdl,bc-s1,buy,bearish,banknifty
+1181,bc-s1,bc-s1,buy,bearish,banknifty
+1182,pdl-s1,bc-s1,buy,bearish,banknifty
+1183,s1-pdl,bc-s1,buy,bearish,banknifty
+1184,pdl-s2,bc-s1,buy,bearish,banknifty
+1185,s1-s2,bc-s1,buy,bearish,banknifty
+1186,s2-s3,bc-s1,buy,bearish,banknifty
+1187,< s3,bc-s1,buy,bearish,banknifty
+1188,> r3,pdl-s1,buy,bearish,banknifty
+1189,r3-r2,pdl-s1,buy,bearish,banknifty
+1190,r2-pdh,pdl-s1,buy,bearish,banknifty
+1191,r2-r1,pdl-s1,buy,bearish,banknifty
+1192,pdh-r1,pdl-s1,buy,bearish,banknifty
+1193,r1-pdh,pdl-s1,buy,bearish,banknifty
+1194,r1-tc,pdl-s1,buy,bearish,banknifty
+1195,pdh-tc,pdl-s1,buy,bearish,banknifty
+1196,tc-pp,pdl-s1,buy,bearish,banknifty
+1197,pp-bc,pdl-s1,buy,bearish,banknifty
+1198,bc-pdl,pdl-s1,buy,bearish,banknifty
+1199,bc-s1,pdl-s1,sell,bearish,banknifty
+1200,pdl-s1,pdl-s1,buy,bearish,banknifty
+1201,s1-pdl,pdl-s1,buy,bearish,banknifty
+1202,pdl-s2,pdl-s1,buy,bearish,banknifty
+1203,s1-s2,pdl-s1,buy,bearish,banknifty
+1204,s2-s3,pdl-s1,buy,bearish,banknifty
+1205,< s3,pdl-s1,buy,bearish,banknifty
+1206,> r3,s1-pdl,buy,bearish,banknifty
+1207,r3-r2,s1-pdl,buy,bearish,banknifty
+1208,r2-pdh,s1-pdl,sell,bearish,banknifty
+1209,r2-r1,s1-pdl,buy,bearish,banknifty
+1210,pdh-r1,s1-pdl,buy,bearish,banknifty
+1211,r1-pdh,s1-pdl,buy,bearish,banknifty
+1212,r1-tc,s1-pdl,buy,bearish,banknifty
+1213,pdh-tc,s1-pdl,buy,bearish,banknifty
+1214,tc-pp,s1-pdl,buy,bearish,banknifty
+1215,pp-bc,s1-pdl,buy,bearish,banknifty
+1216,bc-pdl,s1-pdl,buy,bearish,banknifty
+1217,bc-s1,s1-pdl,buy,bearish,banknifty
+1218,pdl-s1,s1-pdl,buy,bearish,banknifty
+1219,s1-pdl,s1-pdl,buy,bearish,banknifty
+1220,pdl-s2,s1-pdl,buy,bearish,banknifty
+1221,s1-s2,s1-pdl,buy,bearish,banknifty
+1222,s2-s3,s1-pdl,buy,bearish,banknifty
+1223,< s3,s1-pdl,buy,bearish,banknifty
+1224,> r3,pdl-s2,buy,bearish,banknifty
+1225,r3-r2,pdl-s2,buy,bearish,banknifty
+1226,r2-pdh,pdl-s2,buy,bearish,banknifty
+1227,r2-r1,pdl-s2,buy,bearish,banknifty
+1228,pdh-r1,pdl-s2,buy,bearish,banknifty
+1229,r1-pdh,pdl-s2,buy,bearish,banknifty
+1230,r1-tc,pdl-s2,buy,bearish,banknifty
+1231,pdh-tc,pdl-s2,buy,bearish,banknifty
+1232,tc-pp,pdl-s2,buy,bearish,banknifty
+1233,pp-bc,pdl-s2,buy,bearish,banknifty
+1234,bc-pdl,pdl-s2,buy,bearish,banknifty
+1235,bc-s1,pdl-s2,buy,bearish,banknifty
+1236,pdl-s1,pdl-s2,buy,bearish,banknifty
+1237,s1-pdl,pdl-s2,buy,bearish,banknifty
+1238,pdl-s2,pdl-s2,buy,bearish,banknifty
+1239,s1-s2,pdl-s2,buy,bearish,banknifty
+1240,s2-s3,pdl-s2,buy,bearish,banknifty
+1241,< s3,pdl-s2,buy,bearish,banknifty
+1242,> r3,s1-s2,buy,bearish,banknifty
+1243,r3-r2,s1-s2,buy,bearish,banknifty
+1244,r2-pdh,s1-s2,buy,bearish,banknifty
+1245,r2-r1,s1-s2,buy,bearish,banknifty
+1246,pdh-r1,s1-s2,buy,bearish,banknifty
+1247,r1-pdh,s1-s2,buy,bearish,banknifty
+1248,r1-tc,s1-s2,buy,bearish,banknifty
+1249,pdh-tc,s1-s2,sell,bearish,banknifty
+1250,tc-pp,s1-s2,buy,bearish,banknifty
+1251,pp-bc,s1-s2,buy,bearish,banknifty
+1252,bc-pdl,s1-s2,buy,bearish,banknifty
+1253,bc-s1,s1-s2,buy,bearish,banknifty
+1254,pdl-s1,s1-s2,buy,bearish,banknifty
+1255,s1-pdl,s1-s2,buy,bearish,banknifty
+1256,pdl-s2,s1-s2,buy,bearish,banknifty
+1257,s1-s2,s1-s2,buy,bearish,banknifty
+1258,s2-s3,s1-s2,buy,bearish,banknifty
+1259,< s3,s1-s2,buy,bearish,banknifty
+1260,> r3,s2-s3,buy,bearish,banknifty
+1261,r3-r2,s2-s3,buy,bearish,banknifty
+1262,r2-pdh,s2-s3,buy,bearish,banknifty
+1263,r2-r1,s2-s3,buy,bearish,banknifty
+1264,pdh-r1,s2-s3,buy,bearish,banknifty
+1265,r1-pdh,s2-s3,buy,bearish,banknifty
+1266,r1-tc,s2-s3,buy,bearish,banknifty
+1267,pdh-tc,s2-s3,buy,bearish,banknifty
+1268,tc-pp,s2-s3,buy,bearish,banknifty
+1269,pp-bc,s2-s3,buy,bearish,banknifty
+1270,bc-pdl,s2-s3,buy,bearish,banknifty
+1271,bc-s1,s2-s3,sell,bearish,banknifty
+1272,pdl-s1,s2-s3,buy,bearish,banknifty
+1273,s1-pdl,s2-s3,buy,bearish,banknifty
+1274,pdl-s2,s2-s3,buy,bearish,banknifty
+1275,s1-s2,s2-s3,buy,bearish,banknifty
+1276,s2-s3,s2-s3,buy,bearish,banknifty
+1277,< s3,s2-s3,buy,bearish,banknifty
+1278,> r3,< s3,no_trade,bearish,banknifty
+1279,r3-r2,< s3,no_trade,bearish,banknifty
+1280,r2-pdh,< s3,no_trade,bearish,banknifty
+1281,r2-r1,< s3,no_trade,bearish,banknifty
+1282,pdh-r1,< s3,no_trade,bearish,banknifty
+1283,r1-pdh,< s3,no_trade,bearish,banknifty
+1284,r1-tc,< s3,no_trade,bearish,banknifty
+1285,pdh-tc,< s3,no_trade,bearish,banknifty
+1286,tc-pp,< s3,no_trade,bearish,banknifty
+1287,pp-bc,< s3,no_trade,bearish,banknifty
+1288,bc-pdl,< s3,no_trade,bearish,banknifty
+1289,bc-s1,< s3,no_trade,bearish,banknifty
+1290,pdl-s1,< s3,no_trade,bearish,banknifty
+1291,s1-pdl,< s3,no_trade,bearish,banknifty
+1292,pdl-s2,< s3,no_trade,bearish,banknifty
+1293,s1-s2,< s3,no_trade,bearish,banknifty
+1294,s2-s3,< s3,no_trade,bearish,banknifty
+1295,< s3,< s3,no_trade,bearish,banknifty

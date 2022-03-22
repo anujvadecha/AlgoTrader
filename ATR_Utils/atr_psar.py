@@ -1,10 +1,10 @@
 import datetime
 import pandas as pd
-from Utils.execution_logic import ExecutionLogic
-from Utils.indicator_manager import IndicatorManager
-from Utils.position_manager import PositionManager
-from Utils.positions import Position
-import Utils.indicators as indicators
+from ATR_Utils.execution_logic import ExecutionLogic
+from ATR_Utils.indicator_manager import IndicatorManager
+from ATR_Utils.position_manager import PositionManager
+from ATR_Utils.positions import Position
+import ATR_Utils.indicators as indicators
 
 # classes
 # position setup
@@ -247,7 +247,7 @@ def system_setup(inputs):  # add proper use of inputs
 
     param_list = ["param1", "param1 alt", "param2", "param2 alt",
                   "param3", "param3 alt", "param4", "param4 alt"]
-    trade_dir = pd.read_excel("Utils/trade_dis.xlsx", header=[0, 1], sheet_name=param_list)
+    trade_dir = pd.read_excel("resources/trade_dis.xlsx", header=[0, 1], sheet_name=param_list)
     for sheet_name in trade_dir:
         trade_dir[sheet_name].set_index((sheet_name, 'pivots'), inplace=True)
 

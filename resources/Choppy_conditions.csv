@@ -1,0 +1,1297 @@
+yesterdays_candle,todays_candle,decision,candle_type,script
+> r3,> r3,no_trade,bearish,NIFTY 50
+r3-r2,> r3,no_trade,bearish,NIFTY 50
+r2-pdh,> r3,no_trade,bearish,NIFTY 50
+r2-r1,> r3,no_trade,bearish,NIFTY 50
+pdh-r1,> r3,no_trade,bearish,NIFTY 50
+r1-pdh,> r3,no_trade,bearish,NIFTY 50
+r1-tc,> r3,no_trade,bearish,NIFTY 50
+pdh-tc,> r3,no_trade,bearish,NIFTY 50
+tc-pp,> r3,no_trade,bearish,NIFTY 50
+pp-bc,> r3,no_trade,bearish,NIFTY 50
+bc-pdl,> r3,no_trade,bearish,NIFTY 50
+bc-s1,> r3,no_trade,bearish,NIFTY 50
+pdl-s1,> r3,no_trade,bearish,NIFTY 50
+s1-pdl,> r3,no_trade,bearish,NIFTY 50
+pdl-s2,> r3,no_trade,bearish,NIFTY 50
+s1-s2,> r3,no_trade,bearish,NIFTY 50
+s2-s3,> r3,no_trade,bearish,NIFTY 50
+< s3,> r3,no_trade,bearish,NIFTY 50
+> r3,r3-r2,sell,bearish,NIFTY 50
+r3-r2,r3-r2,sell,bearish,NIFTY 50
+r2-pdh,r3-r2,buy,bearish,NIFTY 50
+r2-r1,r3-r2,buy,bearish,NIFTY 50
+pdh-r1,r3-r2,sell,bearish,NIFTY 50
+r1-pdh,r3-r2,sell,bearish,NIFTY 50
+r1-tc,r3-r2,sell,bearish,NIFTY 50
+pdh-tc,r3-r2,sell,bearish,NIFTY 50
+tc-pp,r3-r2,sell,bearish,NIFTY 50
+pp-bc,r3-r2,sell,bearish,NIFTY 50
+bc-pdl,r3-r2,sell,bearish,NIFTY 50
+bc-s1,r3-r2,sell,bearish,NIFTY 50
+pdl-s1,r3-r2,sell,bearish,NIFTY 50
+s1-pdl,r3-r2,sell,bearish,NIFTY 50
+pdl-s2,r3-r2,sell,bearish,NIFTY 50
+s1-s2,r3-r2,sell,bearish,NIFTY 50
+s2-s3,r3-r2,sell,bearish,NIFTY 50
+< s3,r3-r2,sell,bearish,NIFTY 50
+> r3,r2-pdh,sell,bearish,NIFTY 50
+r3-r2,r2-pdh,sell,bearish,NIFTY 50
+r2-pdh,r2-pdh,sell,bearish,NIFTY 50
+r2-r1,r2-pdh,sell,bearish,NIFTY 50
+pdh-r1,r2-pdh,sell,bearish,NIFTY 50
+r1-pdh,r2-pdh,sell,bearish,NIFTY 50
+r1-tc,r2-pdh,buy,bearish,NIFTY 50
+pdh-tc,r2-pdh,sell,bearish,NIFTY 50
+tc-pp,r2-pdh,sell,bearish,NIFTY 50
+pp-bc,r2-pdh,sell,bearish,NIFTY 50
+bc-pdl,r2-pdh,sell,bearish,NIFTY 50
+bc-s1,r2-pdh,sell,bearish,NIFTY 50
+pdl-s1,r2-pdh,sell,bearish,NIFTY 50
+s1-pdl,r2-pdh,sell,bearish,NIFTY 50
+pdl-s2,r2-pdh,sell,bearish,NIFTY 50
+s1-s2,r2-pdh,sell,bearish,NIFTY 50
+s2-s3,r2-pdh,sell,bearish,NIFTY 50
+< s3,r2-pdh,sell,bearish,NIFTY 50
+> r3,r2-r1,sell,bearish,NIFTY 50
+r3-r2,r2-r1,buy,bearish,NIFTY 50
+r2-pdh,r2-r1,buy,bearish,NIFTY 50
+r2-r1,r2-r1,sell,bearish,NIFTY 50
+pdh-r1,r2-r1,sell,bearish,NIFTY 50
+r1-pdh,r2-r1,sell,bearish,NIFTY 50
+r1-tc,r2-r1,sell,bearish,NIFTY 50
+pdh-tc,r2-r1,buy,bearish,NIFTY 50
+tc-pp,r2-r1,sell,bearish,NIFTY 50
+pp-bc,r2-r1,sell,bearish,NIFTY 50
+bc-pdl,r2-r1,sell,bearish,NIFTY 50
+bc-s1,r2-r1,sell,bearish,NIFTY 50
+pdl-s1,r2-r1,sell,bearish,NIFTY 50
+s1-pdl,r2-r1,sell,bearish,NIFTY 50
+pdl-s2,r2-r1,sell,bearish,NIFTY 50
+s1-s2,r2-r1,sell,bearish,NIFTY 50
+s2-s3,r2-r1,sell,bearish,NIFTY 50
+< s3,r2-r1,sell,bearish,NIFTY 50
+> r3,pdh-r1,sell,bearish,NIFTY 50
+r3-r2,pdh-r1,sell,bearish,NIFTY 50
+r2-pdh,pdh-r1,sell,bearish,NIFTY 50
+r2-r1,pdh-r1,sell,bearish,NIFTY 50
+pdh-r1,pdh-r1,sell,bearish,NIFTY 50
+r1-pdh,pdh-r1,sell,bearish,NIFTY 50
+r1-tc,pdh-r1,sell,bearish,NIFTY 50
+pdh-tc,pdh-r1,buy,bearish,NIFTY 50
+tc-pp,pdh-r1,sell,bearish,NIFTY 50
+pp-bc,pdh-r1,sell,bearish,NIFTY 50
+bc-pdl,pdh-r1,sell,bearish,NIFTY 50
+bc-s1,pdh-r1,sell,bearish,NIFTY 50
+pdl-s1,pdh-r1,sell,bearish,NIFTY 50
+s1-pdl,pdh-r1,sell,bearish,NIFTY 50
+pdl-s2,pdh-r1,sell,bearish,NIFTY 50
+s1-s2,pdh-r1,sell,bearish,NIFTY 50
+s2-s3,pdh-r1,sell,bearish,NIFTY 50
+< s3,pdh-r1,sell,bearish,NIFTY 50
+> r3,r1-pdh,sell,bearish,NIFTY 50
+r3-r2,r1-pdh,sell,bearish,NIFTY 50
+r2-pdh,r1-pdh,sell,bearish,NIFTY 50
+r2-r1,r1-pdh,sell,bearish,NIFTY 50
+pdh-r1,r1-pdh,buy,bearish,NIFTY 50
+r1-pdh,r1-pdh,sell,bearish,NIFTY 50
+r1-tc,r1-pdh,sell,bearish,NIFTY 50
+pdh-tc,r1-pdh,sell,bearish,NIFTY 50
+tc-pp,r1-pdh,sell,bearish,NIFTY 50
+pp-bc,r1-pdh,sell,bearish,NIFTY 50
+bc-pdl,r1-pdh,sell,bearish,NIFTY 50
+bc-s1,r1-pdh,sell,bearish,NIFTY 50
+pdl-s1,r1-pdh,sell,bearish,NIFTY 50
+s1-pdl,r1-pdh,sell,bearish,NIFTY 50
+pdl-s2,r1-pdh,sell,bearish,NIFTY 50
+s1-s2,r1-pdh,sell,bearish,NIFTY 50
+s2-s3,r1-pdh,sell,bearish,NIFTY 50
+< s3,r1-pdh,sell,bearish,NIFTY 50
+> r3,r1-tc,sell,bearish,NIFTY 50
+r3-r2,r1-tc,sell,bearish,NIFTY 50
+r2-pdh,r1-tc,sell,bearish,NIFTY 50
+r2-r1,r1-tc,sell,bearish,NIFTY 50
+pdh-r1,r1-tc,sell,bearish,NIFTY 50
+r1-pdh,r1-tc,sell,bearish,NIFTY 50
+r1-tc,r1-tc,sell,bearish,NIFTY 50
+pdh-tc,r1-tc,sell,bearish,NIFTY 50
+tc-pp,r1-tc,buy,bearish,NIFTY 50
+pp-bc,r1-tc,sell,bearish,NIFTY 50
+bc-pdl,r1-tc,sell,bearish,NIFTY 50
+bc-s1,r1-tc,sell,bearish,NIFTY 50
+pdl-s1,r1-tc,sell,bearish,NIFTY 50
+s1-pdl,r1-tc,sell,bearish,NIFTY 50
+pdl-s2,r1-tc,sell,bearish,NIFTY 50
+s1-s2,r1-tc,sell,bearish,NIFTY 50
+s2-s3,r1-tc,sell,bearish,NIFTY 50
+< s3,r1-tc,sell,bearish,NIFTY 50
+> r3,pdh-tc,sell,bearish,NIFTY 50
+r3-r2,pdh-tc,sell,bearish,NIFTY 50
+r2-pdh,pdh-tc,sell,bearish,NIFTY 50
+r2-r1,pdh-tc,sell,bearish,NIFTY 50
+pdh-r1,pdh-tc,buy,bearish,NIFTY 50
+r1-pdh,pdh-tc,sell,bearish,NIFTY 50
+r1-tc,pdh-tc,sell,bearish,NIFTY 50
+pdh-tc,pdh-tc,sell,bearish,NIFTY 50
+tc-pp,pdh-tc,sell,bearish,NIFTY 50
+pp-bc,pdh-tc,sell,bearish,NIFTY 50
+bc-pdl,pdh-tc,buy,bearish,NIFTY 50
+bc-s1,pdh-tc,sell,bearish,NIFTY 50
+pdl-s1,pdh-tc,sell,bearish,NIFTY 50
+s1-pdl,pdh-tc,sell,bearish,NIFTY 50
+pdl-s2,pdh-tc,sell,bearish,NIFTY 50
+s1-s2,pdh-tc,sell,bearish,NIFTY 50
+s2-s3,pdh-tc,sell,bearish,NIFTY 50
+< s3,pdh-tc,sell,bearish,NIFTY 50
+> r3,tc-pp,sell,bearish,NIFTY 50
+r3-r2,tc-pp,sell,bearish,NIFTY 50
+r2-pdh,tc-pp,sell,bearish,NIFTY 50
+r2-r1,tc-pp,sell,bearish,NIFTY 50
+pdh-r1,tc-pp,sell,bearish,NIFTY 50
+r1-pdh,tc-pp,sell,bearish,NIFTY 50
+r1-tc,tc-pp,buy,bearish,NIFTY 50
+pdh-tc,tc-pp,sell,bearish,NIFTY 50
+tc-pp,tc-pp,sell,bearish,NIFTY 50
+pp-bc,tc-pp,sell,bearish,NIFTY 50
+bc-pdl,tc-pp,sell,bearish,NIFTY 50
+bc-s1,tc-pp,sell,bearish,NIFTY 50
+pdl-s1,tc-pp,sell,bearish,NIFTY 50
+s1-pdl,tc-pp,sell,bearish,NIFTY 50
+pdl-s2,tc-pp,buy,bearish,NIFTY 50
+s1-s2,tc-pp,sell,bearish,NIFTY 50
+s2-s3,tc-pp,sell,bearish,NIFTY 50
+< s3,tc-pp,sell,bearish,NIFTY 50
+> r3,pp-bc,buy,bearish,NIFTY 50
+r3-r2,pp-bc,buy,bearish,NIFTY 50
+r2-pdh,pp-bc,buy,bearish,NIFTY 50
+r2-r1,pp-bc,buy,bearish,NIFTY 50
+pdh-r1,pp-bc,buy,bearish,NIFTY 50
+r1-pdh,pp-bc,sell,bearish,NIFTY 50
+r1-tc,pp-bc,buy,bearish,NIFTY 50
+pdh-tc,pp-bc,buy,bearish,NIFTY 50
+tc-pp,pp-bc,buy,bearish,NIFTY 50
+pp-bc,pp-bc,buy,bearish,NIFTY 50
+bc-pdl,pp-bc,buy,bearish,NIFTY 50
+bc-s1,pp-bc,buy,bearish,NIFTY 50
+pdl-s1,pp-bc,buy,bearish,NIFTY 50
+s1-pdl,pp-bc,buy,bearish,NIFTY 50
+pdl-s2,pp-bc,buy,bearish,NIFTY 50
+s1-s2,pp-bc,sell,bearish,NIFTY 50
+s2-s3,pp-bc,sell,bearish,NIFTY 50
+< s3,pp-bc,buy,bearish,NIFTY 50
+> r3,bc-pdl,buy,bearish,NIFTY 50
+r3-r2,bc-pdl,buy,bearish,NIFTY 50
+r2-pdh,bc-pdl,buy,bearish,NIFTY 50
+r2-r1,bc-pdl,buy,bearish,NIFTY 50
+pdh-r1,bc-pdl,buy,bearish,NIFTY 50
+r1-pdh,bc-pdl,buy,bearish,NIFTY 50
+r1-tc,bc-pdl,buy,bearish,NIFTY 50
+pdh-tc,bc-pdl,sell,bearish,NIFTY 50
+tc-pp,bc-pdl,buy,bearish,NIFTY 50
+pp-bc,bc-pdl,sell,bearish,NIFTY 50
+bc-pdl,bc-pdl,buy,bearish,NIFTY 50
+bc-s1,bc-pdl,buy,bearish,NIFTY 50
+pdl-s1,bc-pdl,sell,bearish,NIFTY 50
+s1-pdl,bc-pdl,buy,bearish,NIFTY 50
+pdl-s2,bc-pdl,sell,bearish,NIFTY 50
+s1-s2,bc-pdl,sell,bearish,NIFTY 50
+s2-s3,bc-pdl,sell,bearish,NIFTY 50
+< s3,bc-pdl,sell,bearish,NIFTY 50
+> r3,bc-s1,buy,bearish,NIFTY 50
+r3-r2,bc-s1,buy,bearish,NIFTY 50
+r2-pdh,bc-s1,sell,bearish,NIFTY 50
+r2-r1,bc-s1,buy,bearish,NIFTY 50
+pdh-r1,bc-s1,buy,bearish,NIFTY 50
+r1-pdh,bc-s1,buy,bearish,NIFTY 50
+r1-tc,bc-s1,buy,bearish,NIFTY 50
+pdh-tc,bc-s1,buy,bearish,NIFTY 50
+tc-pp,bc-s1,buy,bearish,NIFTY 50
+pp-bc,bc-s1,buy,bearish,NIFTY 50
+bc-pdl,bc-s1,sell,bearish,NIFTY 50
+bc-s1,bc-s1,buy,bearish,NIFTY 50
+pdl-s1,bc-s1,sell,bearish,NIFTY 50
+s1-pdl,bc-s1,buy,bearish,NIFTY 50
+pdl-s2,bc-s1,buy,bearish,NIFTY 50
+s1-s2,bc-s1,buy,bearish,NIFTY 50
+s2-s3,bc-s1,buy,bearish,NIFTY 50
+< s3,bc-s1,buy,bearish,NIFTY 50
+> r3,pdl-s1,buy,bearish,NIFTY 50
+r3-r2,pdl-s1,buy,bearish,NIFTY 50
+r2-pdh,pdl-s1,buy,bearish,NIFTY 50
+r2-r1,pdl-s1,buy,bearish,NIFTY 50
+pdh-r1,pdl-s1,buy,bearish,NIFTY 50
+r1-pdh,pdl-s1,buy,bearish,NIFTY 50
+r1-tc,pdl-s1,buy,bearish,NIFTY 50
+pdh-tc,pdl-s1,buy,bearish,NIFTY 50
+tc-pp,pdl-s1,buy,bearish,NIFTY 50
+pp-bc,pdl-s1,buy,bearish,NIFTY 50
+bc-pdl,pdl-s1,buy,bearish,NIFTY 50
+bc-s1,pdl-s1,buy,bearish,NIFTY 50
+pdl-s1,pdl-s1,buy,bearish,NIFTY 50
+s1-pdl,pdl-s1,sell,bearish,NIFTY 50
+pdl-s2,pdl-s1,sell,bearish,NIFTY 50
+s1-s2,pdl-s1,buy,bearish,NIFTY 50
+s2-s3,pdl-s1,sell,bearish,NIFTY 50
+< s3,pdl-s1,buy,bearish,NIFTY 50
+> r3,s1-pdl,buy,bearish,NIFTY 50
+r3-r2,s1-pdl,buy,bearish,NIFTY 50
+r2-pdh,s1-pdl,buy,bearish,NIFTY 50
+r2-r1,s1-pdl,buy,bearish,NIFTY 50
+pdh-r1,s1-pdl,buy,bearish,NIFTY 50
+r1-pdh,s1-pdl,buy,bearish,NIFTY 50
+r1-tc,s1-pdl,buy,bearish,NIFTY 50
+pdh-tc,s1-pdl,sell,bearish,NIFTY 50
+tc-pp,s1-pdl,buy,bearish,NIFTY 50
+pp-bc,s1-pdl,buy,bearish,NIFTY 50
+bc-pdl,s1-pdl,buy,bearish,NIFTY 50
+bc-s1,s1-pdl,buy,bearish,NIFTY 50
+pdl-s1,s1-pdl,buy,bearish,NIFTY 50
+s1-pdl,s1-pdl,buy,bearish,NIFTY 50
+pdl-s2,s1-pdl,buy,bearish,NIFTY 50
+s1-s2,s1-pdl,buy,bearish,NIFTY 50
+s2-s3,s1-pdl,sell,bearish,NIFTY 50
+< s3,s1-pdl,buy,bearish,NIFTY 50
+> r3,pdl-s2,buy,bearish,NIFTY 50
+r3-r2,pdl-s2,buy,bearish,NIFTY 50
+r2-pdh,pdl-s2,buy,bearish,NIFTY 50
+r2-r1,pdl-s2,buy,bearish,NIFTY 50
+pdh-r1,pdl-s2,buy,bearish,NIFTY 50
+r1-pdh,pdl-s2,buy,bearish,NIFTY 50
+r1-tc,pdl-s2,buy,bearish,NIFTY 50
+pdh-tc,pdl-s2,buy,bearish,NIFTY 50
+tc-pp,pdl-s2,buy,bearish,NIFTY 50
+pp-bc,pdl-s2,buy,bearish,NIFTY 50
+bc-pdl,pdl-s2,buy,bearish,NIFTY 50
+bc-s1,pdl-s2,buy,bearish,NIFTY 50
+pdl-s1,pdl-s2,buy,bearish,NIFTY 50
+s1-pdl,pdl-s2,buy,bearish,NIFTY 50
+pdl-s2,pdl-s2,buy,bearish,NIFTY 50
+s1-s2,pdl-s2,buy,bearish,NIFTY 50
+s2-s3,pdl-s2,buy,bearish,NIFTY 50
+< s3,pdl-s2,buy,bearish,NIFTY 50
+> r3,s1-s2,buy,bearish,NIFTY 50
+r3-r2,s1-s2,buy,bearish,NIFTY 50
+r2-pdh,s1-s2,buy,bearish,NIFTY 50
+r2-r1,s1-s2,buy,bearish,NIFTY 50
+pdh-r1,s1-s2,buy,bearish,NIFTY 50
+r1-pdh,s1-s2,buy,bearish,NIFTY 50
+r1-tc,s1-s2,buy,bearish,NIFTY 50
+pdh-tc,s1-s2,buy,bearish,NIFTY 50
+tc-pp,s1-s2,buy,bearish,NIFTY 50
+pp-bc,s1-s2,buy,bearish,NIFTY 50
+bc-pdl,s1-s2,buy,bearish,NIFTY 50
+bc-s1,s1-s2,sell,bearish,NIFTY 50
+pdl-s1,s1-s2,buy,bearish,NIFTY 50
+s1-pdl,s1-s2,sell,bearish,NIFTY 50
+pdl-s2,s1-s2,buy,bearish,NIFTY 50
+s1-s2,s1-s2,buy,bearish,NIFTY 50
+s2-s3,s1-s2,buy,bearish,NIFTY 50
+< s3,s1-s2,buy,bearish,NIFTY 50
+> r3,s2-s3,buy,bearish,NIFTY 50
+r3-r2,s2-s3,buy,bearish,NIFTY 50
+r2-pdh,s2-s3,buy,bearish,NIFTY 50
+r2-r1,s2-s3,buy,bearish,NIFTY 50
+pdh-r1,s2-s3,buy,bearish,NIFTY 50
+r1-pdh,s2-s3,buy,bearish,NIFTY 50
+r1-tc,s2-s3,buy,bearish,NIFTY 50
+pdh-tc,s2-s3,buy,bearish,NIFTY 50
+tc-pp,s2-s3,buy,bearish,NIFTY 50
+pp-bc,s2-s3,buy,bearish,NIFTY 50
+bc-pdl,s2-s3,buy,bearish,NIFTY 50
+bc-s1,s2-s3,buy,bearish,NIFTY 50
+pdl-s1,s2-s3,buy,bearish,NIFTY 50
+s1-pdl,s2-s3,buy,bearish,NIFTY 50
+pdl-s2,s2-s3,buy,bearish,NIFTY 50
+s1-s2,s2-s3,buy,bearish,NIFTY 50
+s2-s3,s2-s3,sell,bearish,NIFTY 50
+< s3,s2-s3,buy,bearish,NIFTY 50
+> r3,< s3,no_trade,bearish,NIFTY 50
+r3-r2,< s3,no_trade,bearish,NIFTY 50
+r2-pdh,< s3,no_trade,bearish,NIFTY 50
+r2-r1,< s3,no_trade,bearish,NIFTY 50
+pdh-r1,< s3,no_trade,bearish,NIFTY 50
+r1-pdh,< s3,no_trade,bearish,NIFTY 50
+r1-tc,< s3,no_trade,bearish,NIFTY 50
+pdh-tc,< s3,no_trade,bearish,NIFTY 50
+tc-pp,< s3,no_trade,bearish,NIFTY 50
+pp-bc,< s3,no_trade,bearish,NIFTY 50
+bc-pdl,< s3,no_trade,bearish,NIFTY 50
+bc-s1,< s3,no_trade,bearish,NIFTY 50
+pdl-s1,< s3,no_trade,bearish,NIFTY 50
+s1-pdl,< s3,no_trade,bearish,NIFTY 50
+pdl-s2,< s3,no_trade,bearish,NIFTY 50
+s1-s2,< s3,no_trade,bearish,NIFTY 50
+s2-s3,< s3,no_trade,bearish,NIFTY 50
+< s3,< s3,no_trade,bearish,NIFTY 50
+> r3,> r3,no_trade,bullish,NIFTY 50
+r3-r2,> r3,no_trade,bullish,NIFTY 50
+r2-pdh,> r3,no_trade,bullish,NIFTY 50
+r2-r1,> r3,no_trade,bullish,NIFTY 50
+pdh-r1,> r3,no_trade,bullish,NIFTY 50
+r1-pdh,> r3,no_trade,bullish,NIFTY 50
+r1-tc,> r3,no_trade,bullish,NIFTY 50
+pdh-tc,> r3,no_trade,bullish,NIFTY 50
+tc-pp,> r3,no_trade,bullish,NIFTY 50
+pp-bc,> r3,no_trade,bullish,NIFTY 50
+bc-pdl,> r3,no_trade,bullish,NIFTY 50
+bc-s1,> r3,no_trade,bullish,NIFTY 50
+pdl-s1,> r3,no_trade,bullish,NIFTY 50
+s1-pdl,> r3,no_trade,bullish,NIFTY 50
+pdl-s2,> r3,no_trade,bullish,NIFTY 50
+s1-s2,> r3,no_trade,bullish,NIFTY 50
+s2-s3,> r3,no_trade,bullish,NIFTY 50
+< s3,> r3,no_trade,bullish,NIFTY 50
+> r3,r3-r2,sell,bullish,NIFTY 50
+r3-r2,r3-r2,sell,bullish,NIFTY 50
+r2-pdh,r3-r2,sell,bullish,NIFTY 50
+r2-r1,r3-r2,buy,bullish,NIFTY 50
+pdh-r1,r3-r2,buy,bullish,NIFTY 50
+r1-pdh,r3-r2,sell,bullish,NIFTY 50
+r1-tc,r3-r2,sell,bullish,NIFTY 50
+pdh-tc,r3-r2,sell,bullish,NIFTY 50
+tc-pp,r3-r2,sell,bullish,NIFTY 50
+pp-bc,r3-r2,sell,bullish,NIFTY 50
+bc-pdl,r3-r2,sell,bullish,NIFTY 50
+bc-s1,r3-r2,sell,bullish,NIFTY 50
+pdl-s1,r3-r2,sell,bullish,NIFTY 50
+s1-pdl,r3-r2,sell,bullish,NIFTY 50
+pdl-s2,r3-r2,sell,bullish,NIFTY 50
+s1-s2,r3-r2,buy,bullish,NIFTY 50
+s2-s3,r3-r2,sell,bullish,NIFTY 50
+< s3,r3-r2,sell,bullish,NIFTY 50
+> r3,r2-pdh,sell,bullish,NIFTY 50
+r3-r2,r2-pdh,sell,bullish,NIFTY 50
+r2-pdh,r2-pdh,sell,bullish,NIFTY 50
+r2-r1,r2-pdh,buy,bullish,NIFTY 50
+pdh-r1,r2-pdh,sell,bullish,NIFTY 50
+r1-pdh,r2-pdh,sell,bullish,NIFTY 50
+r1-tc,r2-pdh,sell,bullish,NIFTY 50
+pdh-tc,r2-pdh,sell,bullish,NIFTY 50
+tc-pp,r2-pdh,buy,bullish,NIFTY 50
+pp-bc,r2-pdh,sell,bullish,NIFTY 50
+bc-pdl,r2-pdh,sell,bullish,NIFTY 50
+bc-s1,r2-pdh,sell,bullish,NIFTY 50
+pdl-s1,r2-pdh,sell,bullish,NIFTY 50
+s1-pdl,r2-pdh,sell,bullish,NIFTY 50
+pdl-s2,r2-pdh,sell,bullish,NIFTY 50
+s1-s2,r2-pdh,sell,bullish,NIFTY 50
+s2-s3,r2-pdh,buy,bullish,NIFTY 50
+< s3,r2-pdh,sell,bullish,NIFTY 50
+> r3,r2-r1,sell,bullish,NIFTY 50
+r3-r2,r2-r1,sell,bullish,NIFTY 50
+r2-pdh,r2-r1,sell,bullish,NIFTY 50
+r2-r1,r2-r1,sell,bullish,NIFTY 50
+pdh-r1,r2-r1,sell,bullish,NIFTY 50
+r1-pdh,r2-r1,sell,bullish,NIFTY 50
+r1-tc,r2-r1,sell,bullish,NIFTY 50
+pdh-tc,r2-r1,sell,bullish,NIFTY 50
+tc-pp,r2-r1,sell,bullish,NIFTY 50
+pp-bc,r2-r1,sell,bullish,NIFTY 50
+bc-pdl,r2-r1,sell,bullish,NIFTY 50
+bc-s1,r2-r1,sell,bullish,NIFTY 50
+pdl-s1,r2-r1,sell,bullish,NIFTY 50
+s1-pdl,r2-r1,sell,bullish,NIFTY 50
+pdl-s2,r2-r1,sell,bullish,NIFTY 50
+s1-s2,r2-r1,sell,bullish,NIFTY 50
+s2-s3,r2-r1,sell,bullish,NIFTY 50
+< s3,r2-r1,sell,bullish,NIFTY 50
+> r3,pdh-r1,sell,bullish,NIFTY 50
+r3-r2,pdh-r1,sell,bullish,NIFTY 50
+r2-pdh,pdh-r1,sell,bullish,NIFTY 50
+r2-r1,pdh-r1,sell,bullish,NIFTY 50
+pdh-r1,pdh-r1,buy,bullish,NIFTY 50
+r1-pdh,pdh-r1,sell,bullish,NIFTY 50
+r1-tc,pdh-r1,sell,bullish,NIFTY 50
+pdh-tc,pdh-r1,sell,bullish,NIFTY 50
+tc-pp,pdh-r1,sell,bullish,NIFTY 50
+pp-bc,pdh-r1,sell,bullish,NIFTY 50
+bc-pdl,pdh-r1,sell,bullish,NIFTY 50
+bc-s1,pdh-r1,sell,bullish,NIFTY 50
+pdl-s1,pdh-r1,sell,bullish,NIFTY 50
+s1-pdl,pdh-r1,sell,bullish,NIFTY 50
+pdl-s2,pdh-r1,sell,bullish,NIFTY 50
+s1-s2,pdh-r1,sell,bullish,NIFTY 50
+s2-s3,pdh-r1,sell,bullish,NIFTY 50
+< s3,pdh-r1,sell,bullish,NIFTY 50
+> r3,r1-pdh,sell,bullish,NIFTY 50
+r3-r2,r1-pdh,sell,bullish,NIFTY 50
+r2-pdh,r1-pdh,sell,bullish,NIFTY 50
+r2-r1,r1-pdh,sell,bullish,NIFTY 50
+pdh-r1,r1-pdh,sell,bullish,NIFTY 50
+r1-pdh,r1-pdh,sell,bullish,NIFTY 50
+r1-tc,r1-pdh,sell,bullish,NIFTY 50
+pdh-tc,r1-pdh,sell,bullish,NIFTY 50
+tc-pp,r1-pdh,sell,bullish,NIFTY 50
+pp-bc,r1-pdh,sell,bullish,NIFTY 50
+bc-pdl,r1-pdh,buy,bullish,NIFTY 50
+bc-s1,r1-pdh,sell,bullish,NIFTY 50
+pdl-s1,r1-pdh,sell,bullish,NIFTY 50
+s1-pdl,r1-pdh,sell,bullish,NIFTY 50
+pdl-s2,r1-pdh,sell,bullish,NIFTY 50
+s1-s2,r1-pdh,sell,bullish,NIFTY 50
+s2-s3,r1-pdh,sell,bullish,NIFTY 50
+< s3,r1-pdh,sell,bullish,NIFTY 50
+> r3,r1-tc,sell,bullish,NIFTY 50
+r3-r2,r1-tc,sell,bullish,NIFTY 50
+r2-pdh,r1-tc,buy,bullish,NIFTY 50
+r2-r1,r1-tc,sell,bullish,NIFTY 50
+pdh-r1,r1-tc,sell,bullish,NIFTY 50
+r1-pdh,r1-tc,buy,bullish,NIFTY 50
+r1-tc,r1-tc,sell,bullish,NIFTY 50
+pdh-tc,r1-tc,sell,bullish,NIFTY 50
+tc-pp,r1-tc,sell,bullish,NIFTY 50
+pp-bc,r1-tc,sell,bullish,NIFTY 50
+bc-pdl,r1-tc,sell,bullish,NIFTY 50
+bc-s1,r1-tc,sell,bullish,NIFTY 50
+pdl-s1,r1-tc,sell,bullish,NIFTY 50
+s1-pdl,r1-tc,sell,bullish,NIFTY 50
+pdl-s2,r1-tc,sell,bullish,NIFTY 50
+s1-s2,r1-tc,buy,bullish,NIFTY 50
+s2-s3,r1-tc,sell,bullish,NIFTY 50
+< s3,r1-tc,sell,bullish,NIFTY 50
+> r3,pdh-tc,sell,bullish,NIFTY 50
+r3-r2,pdh-tc,sell,bullish,NIFTY 50
+r2-pdh,pdh-tc,sell,bullish,NIFTY 50
+r2-r1,pdh-tc,sell,bullish,NIFTY 50
+pdh-r1,pdh-tc,sell,bullish,NIFTY 50
+r1-pdh,pdh-tc,sell,bullish,NIFTY 50
+r1-tc,pdh-tc,sell,bullish,NIFTY 50
+pdh-tc,pdh-tc,sell,bullish,NIFTY 50
+tc-pp,pdh-tc,sell,bullish,NIFTY 50
+pp-bc,pdh-tc,buy,bullish,NIFTY 50
+bc-pdl,pdh-tc,sell,bullish,NIFTY 50
+bc-s1,pdh-tc,sell,bullish,NIFTY 50
+pdl-s1,pdh-tc,sell,bullish,NIFTY 50
+s1-pdl,pdh-tc,sell,bullish,NIFTY 50
+pdl-s2,pdh-tc,sell,bullish,NIFTY 50
+s1-s2,pdh-tc,sell,bullish,NIFTY 50
+s2-s3,pdh-tc,sell,bullish,NIFTY 50
+< s3,pdh-tc,sell,bullish,NIFTY 50
+> r3,tc-pp,buy,bullish,NIFTY 50
+r3-r2,tc-pp,sell,bullish,NIFTY 50
+r2-pdh,tc-pp,sell,bullish,NIFTY 50
+r2-r1,tc-pp,sell,bullish,NIFTY 50
+pdh-r1,tc-pp,sell,bullish,NIFTY 50
+r1-pdh,tc-pp,sell,bullish,NIFTY 50
+r1-tc,tc-pp,buy,bullish,NIFTY 50
+pdh-tc,tc-pp,buy,bullish,NIFTY 50
+tc-pp,tc-pp,sell,bullish,NIFTY 50
+pp-bc,tc-pp,buy,bullish,NIFTY 50
+bc-pdl,tc-pp,sell,bullish,NIFTY 50
+bc-s1,tc-pp,sell,bullish,NIFTY 50
+pdl-s1,tc-pp,sell,bullish,NIFTY 50
+s1-pdl,tc-pp,sell,bullish,NIFTY 50
+pdl-s2,tc-pp,sell,bullish,NIFTY 50
+s1-s2,tc-pp,buy,bullish,NIFTY 50
+s2-s3,tc-pp,sell,bullish,NIFTY 50
+< s3,tc-pp,sell,bullish,NIFTY 50
+> r3,pp-bc,buy,bullish,NIFTY 50
+r3-r2,pp-bc,buy,bullish,NIFTY 50
+r2-pdh,pp-bc,buy,bullish,NIFTY 50
+r2-r1,pp-bc,buy,bullish,NIFTY 50
+pdh-r1,pp-bc,buy,bullish,NIFTY 50
+r1-pdh,pp-bc,buy,bullish,NIFTY 50
+r1-tc,pp-bc,buy,bullish,NIFTY 50
+pdh-tc,pp-bc,sell,bullish,NIFTY 50
+tc-pp,pp-bc,buy,bullish,NIFTY 50
+pp-bc,pp-bc,buy,bullish,NIFTY 50
+bc-pdl,pp-bc,buy,bullish,NIFTY 50
+bc-s1,pp-bc,buy,bullish,NIFTY 50
+pdl-s1,pp-bc,buy,bullish,NIFTY 50
+s1-pdl,pp-bc,buy,bullish,NIFTY 50
+pdl-s2,pp-bc,buy,bullish,NIFTY 50
+s1-s2,pp-bc,sell,bullish,NIFTY 50
+s2-s3,pp-bc,buy,bullish,NIFTY 50
+< s3,pp-bc,buy,bullish,NIFTY 50
+> r3,bc-pdl,buy,bullish,NIFTY 50
+r3-r2,bc-pdl,buy,bullish,NIFTY 50
+r2-pdh,bc-pdl,buy,bullish,NIFTY 50
+r2-r1,bc-pdl,buy,bullish,NIFTY 50
+pdh-r1,bc-pdl,buy,bullish,NIFTY 50
+r1-pdh,bc-pdl,buy,bullish,NIFTY 50
+r1-tc,bc-pdl,buy,bullish,NIFTY 50
+pdh-tc,bc-pdl,buy,bullish,NIFTY 50
+tc-pp,bc-pdl,buy,bullish,NIFTY 50
+pp-bc,bc-pdl,buy,bullish,NIFTY 50
+bc-pdl,bc-pdl,buy,bullish,NIFTY 50
+bc-s1,bc-pdl,buy,bullish,NIFTY 50
+pdl-s1,bc-pdl,sell,bullish,NIFTY 50
+s1-pdl,bc-pdl,buy,bullish,NIFTY 50
+pdl-s2,bc-pdl,buy,bullish,NIFTY 50
+s1-s2,bc-pdl,buy,bullish,NIFTY 50
+s2-s3,bc-pdl,buy,bullish,NIFTY 50
+< s3,bc-pdl,sell,bullish,NIFTY 50
+> r3,bc-s1,sell,bullish,NIFTY 50
+r3-r2,bc-s1,buy,bullish,NIFTY 50
+r2-pdh,bc-s1,buy,bullish,NIFTY 50
+r2-r1,bc-s1,buy,bullish,NIFTY 50
+pdh-r1,bc-s1,buy,bullish,NIFTY 50
+r1-pdh,bc-s1,buy,bullish,NIFTY 50
+r1-tc,bc-s1,buy,bullish,NIFTY 50
+pdh-tc,bc-s1,buy,bullish,NIFTY 50
+tc-pp,bc-s1,buy,bullish,NIFTY 50
+pp-bc,bc-s1,buy,bullish,NIFTY 50
+bc-pdl,bc-s1,buy,bullish,NIFTY 50
+bc-s1,bc-s1,buy,bullish,NIFTY 50
+pdl-s1,bc-s1,buy,bullish,NIFTY 50
+s1-pdl,bc-s1,buy,bullish,NIFTY 50
+pdl-s2,bc-s1,buy,bullish,NIFTY 50
+s1-s2,bc-s1,buy,bullish,NIFTY 50
+s2-s3,bc-s1,buy,bullish,NIFTY 50
+< s3,bc-s1,buy,bullish,NIFTY 50
+> r3,pdl-s1,buy,bullish,NIFTY 50
+r3-r2,pdl-s1,buy,bullish,NIFTY 50
+r2-pdh,pdl-s1,buy,bullish,NIFTY 50
+r2-r1,pdl-s1,buy,bullish,NIFTY 50
+pdh-r1,pdl-s1,buy,bullish,NIFTY 50
+r1-pdh,pdl-s1,buy,bullish,NIFTY 50
+r1-tc,pdl-s1,buy,bullish,NIFTY 50
+pdh-tc,pdl-s1,buy,bullish,NIFTY 50
+tc-pp,pdl-s1,buy,bullish,NIFTY 50
+pp-bc,pdl-s1,buy,bullish,NIFTY 50
+bc-pdl,pdl-s1,buy,bullish,NIFTY 50
+bc-s1,pdl-s1,buy,bullish,NIFTY 50
+pdl-s1,pdl-s1,buy,bullish,NIFTY 50
+s1-pdl,pdl-s1,buy,bullish,NIFTY 50
+pdl-s2,pdl-s1,sell,bullish,NIFTY 50
+s1-s2,pdl-s1,buy,bullish,NIFTY 50
+s2-s3,pdl-s1,buy,bullish,NIFTY 50
+< s3,pdl-s1,buy,bullish,NIFTY 50
+> r3,s1-pdl,buy,bullish,NIFTY 50
+r3-r2,s1-pdl,buy,bullish,NIFTY 50
+r2-pdh,s1-pdl,buy,bullish,NIFTY 50
+r2-r1,s1-pdl,buy,bullish,NIFTY 50
+pdh-r1,s1-pdl,buy,bullish,NIFTY 50
+r1-pdh,s1-pdl,buy,bullish,NIFTY 50
+r1-tc,s1-pdl,buy,bullish,NIFTY 50
+pdh-tc,s1-pdl,buy,bullish,NIFTY 50
+tc-pp,s1-pdl,buy,bullish,NIFTY 50
+pp-bc,s1-pdl,buy,bullish,NIFTY 50
+bc-pdl,s1-pdl,buy,bullish,NIFTY 50
+bc-s1,s1-pdl,buy,bullish,NIFTY 50
+pdl-s1,s1-pdl,buy,bullish,NIFTY 50
+s1-pdl,s1-pdl,buy,bullish,NIFTY 50
+pdl-s2,s1-pdl,buy,bullish,NIFTY 50
+s1-s2,s1-pdl,buy,bullish,NIFTY 50
+s2-s3,s1-pdl,buy,bullish,NIFTY 50
+< s3,s1-pdl,buy,bullish,NIFTY 50
+> r3,pdl-s2,buy,bullish,NIFTY 50
+r3-r2,pdl-s2,buy,bullish,NIFTY 50
+r2-pdh,pdl-s2,buy,bullish,NIFTY 50
+r2-r1,pdl-s2,buy,bullish,NIFTY 50
+pdh-r1,pdl-s2,buy,bullish,NIFTY 50
+r1-pdh,pdl-s2,buy,bullish,NIFTY 50
+r1-tc,pdl-s2,buy,bullish,NIFTY 50
+pdh-tc,pdl-s2,buy,bullish,NIFTY 50
+tc-pp,pdl-s2,buy,bullish,NIFTY 50
+pp-bc,pdl-s2,buy,bullish,NIFTY 50
+bc-pdl,pdl-s2,buy,bullish,NIFTY 50
+bc-s1,pdl-s2,buy,bullish,NIFTY 50
+pdl-s1,pdl-s2,buy,bullish,NIFTY 50
+s1-pdl,pdl-s2,buy,bullish,NIFTY 50
+pdl-s2,pdl-s2,buy,bullish,NIFTY 50
+s1-s2,pdl-s2,buy,bullish,NIFTY 50
+s2-s3,pdl-s2,buy,bullish,NIFTY 50
+< s3,pdl-s2,buy,bullish,NIFTY 50
+> r3,s1-s2,buy,bullish,NIFTY 50
+r3-r2,s1-s2,buy,bullish,NIFTY 50
+r2-pdh,s1-s2,buy,bullish,NIFTY 50
+r2-r1,s1-s2,buy,bullish,NIFTY 50
+pdh-r1,s1-s2,buy,bullish,NIFTY 50
+r1-pdh,s1-s2,buy,bullish,NIFTY 50
+r1-tc,s1-s2,buy,bullish,NIFTY 50
+pdh-tc,s1-s2,buy,bullish,NIFTY 50
+tc-pp,s1-s2,buy,bullish,NIFTY 50
+pp-bc,s1-s2,buy,bullish,NIFTY 50
+bc-pdl,s1-s2,buy,bullish,NIFTY 50
+bc-s1,s1-s2,buy,bullish,NIFTY 50
+pdl-s1,s1-s2,buy,bullish,NIFTY 50
+s1-pdl,s1-s2,buy,bullish,NIFTY 50
+pdl-s2,s1-s2,buy,bullish,NIFTY 50
+s1-s2,s1-s2,buy,bullish,NIFTY 50
+s2-s3,s1-s2,buy,bullish,NIFTY 50
+< s3,s1-s2,buy,bullish,NIFTY 50
+> r3,s2-s3,buy,bullish,NIFTY 50
+r3-r2,s2-s3,buy,bullish,NIFTY 50
+r2-pdh,s2-s3,buy,bullish,NIFTY 50
+r2-r1,s2-s3,buy,bullish,NIFTY 50
+pdh-r1,s2-s3,buy,bullish,NIFTY 50
+r1-pdh,s2-s3,buy,bullish,NIFTY 50
+r1-tc,s2-s3,buy,bullish,NIFTY 50
+pdh-tc,s2-s3,sell,bullish,NIFTY 50
+tc-pp,s2-s3,buy,bullish,NIFTY 50
+pp-bc,s2-s3,buy,bullish,NIFTY 50
+bc-pdl,s2-s3,buy,bullish,NIFTY 50
+bc-s1,s2-s3,buy,bullish,NIFTY 50
+pdl-s1,s2-s3,buy,bullish,NIFTY 50
+s1-pdl,s2-s3,buy,bullish,NIFTY 50
+pdl-s2,s2-s3,buy,bullish,NIFTY 50
+s1-s2,s2-s3,buy,bullish,NIFTY 50
+s2-s3,s2-s3,buy,bullish,NIFTY 50
+< s3,s2-s3,buy,bullish,NIFTY 50
+> r3,< s3,no_trade,bullish,NIFTY 50
+r3-r2,< s3,no_trade,bullish,NIFTY 50
+r2-pdh,< s3,no_trade,bullish,NIFTY 50
+r2-r1,< s3,no_trade,bullish,NIFTY 50
+pdh-r1,< s3,no_trade,bullish,NIFTY 50
+r1-pdh,< s3,no_trade,bullish,NIFTY 50
+r1-tc,< s3,no_trade,bullish,NIFTY 50
+pdh-tc,< s3,no_trade,bullish,NIFTY 50
+tc-pp,< s3,no_trade,bullish,NIFTY 50
+pp-bc,< s3,no_trade,bullish,NIFTY 50
+bc-pdl,< s3,no_trade,bullish,NIFTY 50
+bc-s1,< s3,no_trade,bullish,NIFTY 50
+pdl-s1,< s3,no_trade,bullish,NIFTY 50
+s1-pdl,< s3,no_trade,bullish,NIFTY 50
+pdl-s2,< s3,no_trade,bullish,NIFTY 50
+s1-s2,< s3,no_trade,bullish,NIFTY 50
+s2-s3,< s3,no_trade,bullish,NIFTY 50
+< s3,< s3,no_trade,bullish,NIFTY 50
+> r3,> r3,no_trade,bullish,banknifty
+r3-r2,> r3,no_trade,bullish,banknifty
+r2-pdh,> r3,no_trade,bullish,banknifty
+r2-r1,> r3,no_trade,bullish,banknifty
+pdh-r1,> r3,no_trade,bullish,banknifty
+r1-pdh,> r3,no_trade,bullish,banknifty
+r1-tc,> r3,no_trade,bullish,banknifty
+pdh-tc,> r3,no_trade,bullish,banknifty
+tc-pp,> r3,no_trade,bullish,banknifty
+pp-bc,> r3,no_trade,bullish,banknifty
+bc-pdl,> r3,no_trade,bullish,banknifty
+bc-s1,> r3,no_trade,bullish,banknifty
+pdl-s1,> r3,no_trade,bullish,banknifty
+s1-pdl,> r3,no_trade,bullish,banknifty
+pdl-s2,> r3,no_trade,bullish,banknifty
+s1-s2,> r3,no_trade,bullish,banknifty
+s2-s3,> r3,no_trade,bullish,banknifty
+< s3,> r3,no_trade,bullish,banknifty
+> r3,r3-r2,sell,bullish,banknifty
+r3-r2,r3-r2,sell,bullish,banknifty
+r2-pdh,r3-r2,sell,bullish,banknifty
+r2-r1,r3-r2,sell,bullish,banknifty
+pdh-r1,r3-r2,sell,bullish,banknifty
+r1-pdh,r3-r2,sell,bullish,banknifty
+r1-tc,r3-r2,buy,bullish,banknifty
+pdh-tc,r3-r2,sell,bullish,banknifty
+tc-pp,r3-r2,sell,bullish,banknifty
+pp-bc,r3-r2,sell,bullish,banknifty
+bc-pdl,r3-r2,sell,bullish,banknifty
+bc-s1,r3-r2,sell,bullish,banknifty
+pdl-s1,r3-r2,sell,bullish,banknifty
+s1-pdl,r3-r2,sell,bullish,banknifty
+pdl-s2,r3-r2,sell,bullish,banknifty
+s1-s2,r3-r2,sell,bullish,banknifty
+s2-s3,r3-r2,sell,bullish,banknifty
+< s3,r3-r2,sell,bullish,banknifty
+> r3,r2-pdh,sell,bullish,banknifty
+r3-r2,r2-pdh,sell,bullish,banknifty
+r2-pdh,r2-pdh,sell,bullish,banknifty
+r2-r1,r2-pdh,sell,bullish,banknifty
+pdh-r1,r2-pdh,sell,bullish,banknifty
+r1-pdh,r2-pdh,sell,bullish,banknifty
+r1-tc,r2-pdh,sell,bullish,banknifty
+pdh-tc,r2-pdh,sell,bullish,banknifty
+tc-pp,r2-pdh,sell,bullish,banknifty
+pp-bc,r2-pdh,sell,bullish,banknifty
+bc-pdl,r2-pdh,sell,bullish,banknifty
+bc-s1,r2-pdh,sell,bullish,banknifty
+pdl-s1,r2-pdh,sell,bullish,banknifty
+s1-pdl,r2-pdh,sell,bullish,banknifty
+pdl-s2,r2-pdh,sell,bullish,banknifty
+s1-s2,r2-pdh,sell,bullish,banknifty
+s2-s3,r2-pdh,sell,bullish,banknifty
+< s3,r2-pdh,sell,bullish,banknifty
+> r3,r2-r1,sell,bullish,banknifty
+r3-r2,r2-r1,sell,bullish,banknifty
+r2-pdh,r2-r1,buy,bullish,banknifty
+r2-r1,r2-r1,sell,bullish,banknifty
+pdh-r1,r2-r1,sell,bullish,banknifty
+r1-pdh,r2-r1,sell,bullish,banknifty
+r1-tc,r2-r1,sell,bullish,banknifty
+pdh-tc,r2-r1,buy,bullish,banknifty
+tc-pp,r2-r1,sell,bullish,banknifty
+pp-bc,r2-r1,sell,bullish,banknifty
+bc-pdl,r2-r1,sell,bullish,banknifty
+bc-s1,r2-r1,sell,bullish,banknifty
+pdl-s1,r2-r1,sell,bullish,banknifty
+s1-pdl,r2-r1,sell,bullish,banknifty
+pdl-s2,r2-r1,sell,bullish,banknifty
+s1-s2,r2-r1,sell,bullish,banknifty
+s2-s3,r2-r1,sell,bullish,banknifty
+< s3,r2-r1,sell,bullish,banknifty
+> r3,pdh-r1,sell,bullish,banknifty
+r3-r2,pdh-r1,sell,bullish,banknifty
+r2-pdh,pdh-r1,sell,bullish,banknifty
+r2-r1,pdh-r1,sell,bullish,banknifty
+pdh-r1,pdh-r1,sell,bullish,banknifty
+r1-pdh,pdh-r1,sell,bullish,banknifty
+r1-tc,pdh-r1,sell,bullish,banknifty
+pdh-tc,pdh-r1,sell,bullish,banknifty
+tc-pp,pdh-r1,sell,bullish,banknifty
+pp-bc,pdh-r1,sell,bullish,banknifty
+bc-pdl,pdh-r1,sell,bullish,banknifty
+bc-s1,pdh-r1,sell,bullish,banknifty
+pdl-s1,pdh-r1,sell,bullish,banknifty
+s1-pdl,pdh-r1,sell,bullish,banknifty
+pdl-s2,pdh-r1,sell,bullish,banknifty
+s1-s2,pdh-r1,buy,bullish,banknifty
+s2-s3,pdh-r1,sell,bullish,banknifty
+< s3,pdh-r1,sell,bullish,banknifty
+> r3,r1-pdh,sell,bullish,banknifty
+r3-r2,r1-pdh,buy,bullish,banknifty
+r2-pdh,r1-pdh,sell,bullish,banknifty
+r2-r1,r1-pdh,sell,bullish,banknifty
+pdh-r1,r1-pdh,sell,bullish,banknifty
+r1-pdh,r1-pdh,sell,bullish,banknifty
+r1-tc,r1-pdh,sell,bullish,banknifty
+pdh-tc,r1-pdh,sell,bullish,banknifty
+tc-pp,r1-pdh,sell,bullish,banknifty
+pp-bc,r1-pdh,sell,bullish,banknifty
+bc-pdl,r1-pdh,sell,bullish,banknifty
+bc-s1,r1-pdh,sell,bullish,banknifty
+pdl-s1,r1-pdh,sell,bullish,banknifty
+s1-pdl,r1-pdh,sell,bullish,banknifty
+pdl-s2,r1-pdh,sell,bullish,banknifty
+s1-s2,r1-pdh,sell,bullish,banknifty
+s2-s3,r1-pdh,sell,bullish,banknifty
+< s3,r1-pdh,sell,bullish,banknifty
+> r3,r1-tc,sell,bullish,banknifty
+r3-r2,r1-tc,sell,bullish,banknifty
+r2-pdh,r1-tc,sell,bullish,banknifty
+r2-r1,r1-tc,sell,bullish,banknifty
+pdh-r1,r1-tc,sell,bullish,banknifty
+r1-pdh,r1-tc,sell,bullish,banknifty
+r1-tc,r1-tc,buy,bullish,banknifty
+pdh-tc,r1-tc,sell,bullish,banknifty
+tc-pp,r1-tc,sell,bullish,banknifty
+pp-bc,r1-tc,sell,bullish,banknifty
+bc-pdl,r1-tc,sell,bullish,banknifty
+bc-s1,r1-tc,sell,bullish,banknifty
+pdl-s1,r1-tc,sell,bullish,banknifty
+s1-pdl,r1-tc,sell,bullish,banknifty
+pdl-s2,r1-tc,sell,bullish,banknifty
+s1-s2,r1-tc,sell,bullish,banknifty
+s2-s3,r1-tc,sell,bullish,banknifty
+< s3,r1-tc,sell,bullish,banknifty
+> r3,pdh-tc,sell,bullish,banknifty
+r3-r2,pdh-tc,sell,bullish,banknifty
+r2-pdh,pdh-tc,sell,bullish,banknifty
+r2-r1,pdh-tc,sell,bullish,banknifty
+pdh-r1,pdh-tc,sell,bullish,banknifty
+r1-pdh,pdh-tc,sell,bullish,banknifty
+r1-tc,pdh-tc,buy,bullish,banknifty
+pdh-tc,pdh-tc,sell,bullish,banknifty
+tc-pp,pdh-tc,sell,bullish,banknifty
+pp-bc,pdh-tc,sell,bullish,banknifty
+bc-pdl,pdh-tc,sell,bullish,banknifty
+bc-s1,pdh-tc,sell,bullish,banknifty
+pdl-s1,pdh-tc,buy,bullish,banknifty
+s1-pdl,pdh-tc,sell,bullish,banknifty
+pdl-s2,pdh-tc,sell,bullish,banknifty
+s1-s2,pdh-tc,sell,bullish,banknifty
+s2-s3,pdh-tc,sell,bullish,banknifty
+< s3,pdh-tc,sell,bullish,banknifty
+> r3,tc-pp,sell,bullish,banknifty
+r3-r2,tc-pp,sell,bullish,banknifty
+r2-pdh,tc-pp,sell,bullish,banknifty
+r2-r1,tc-pp,sell,bullish,banknifty
+pdh-r1,tc-pp,buy,bullish,banknifty
+r1-pdh,tc-pp,sell,bullish,banknifty
+r1-tc,tc-pp,sell,bullish,banknifty
+pdh-tc,tc-pp,sell,bullish,banknifty
+tc-pp,tc-pp,sell,bullish,banknifty
+pp-bc,tc-pp,sell,bullish,banknifty
+bc-pdl,tc-pp,sell,bullish,banknifty
+bc-s1,tc-pp,sell,bullish,banknifty
+pdl-s1,tc-pp,sell,bullish,banknifty
+s1-pdl,tc-pp,sell,bullish,banknifty
+pdl-s2,tc-pp,sell,bullish,banknifty
+s1-s2,tc-pp,sell,bullish,banknifty
+s2-s3,tc-pp,sell,bullish,banknifty
+< s3,tc-pp,sell,bullish,banknifty
+> r3,pp-bc,buy,bullish,banknifty
+r3-r2,pp-bc,buy,bullish,banknifty
+r2-pdh,pp-bc,buy,bullish,banknifty
+r2-r1,pp-bc,buy,bullish,banknifty
+pdh-r1,pp-bc,buy,bullish,banknifty
+r1-pdh,pp-bc,buy,bullish,banknifty
+r1-tc,pp-bc,buy,bullish,banknifty
+pdh-tc,pp-bc,buy,bullish,banknifty
+tc-pp,pp-bc,buy,bullish,banknifty
+pp-bc,pp-bc,buy,bullish,banknifty
+bc-pdl,pp-bc,buy,bullish,banknifty
+bc-s1,pp-bc,buy,bullish,banknifty
+pdl-s1,pp-bc,buy,bullish,banknifty
+s1-pdl,pp-bc,buy,bullish,banknifty
+pdl-s2,pp-bc,buy,bullish,banknifty
+s1-s2,pp-bc,buy,bullish,banknifty
+s2-s3,pp-bc,buy,bullish,banknifty
+< s3,pp-bc,buy,bullish,banknifty
+> r3,bc-pdl,buy,bullish,banknifty
+r3-r2,bc-pdl,buy,bullish,banknifty
+r2-pdh,bc-pdl,buy,bullish,banknifty
+r2-r1,bc-pdl,sell,bullish,banknifty
+pdh-r1,bc-pdl,buy,bullish,banknifty
+r1-pdh,bc-pdl,buy,bullish,banknifty
+r1-tc,bc-pdl,buy,bullish,banknifty
+pdh-tc,bc-pdl,buy,bullish,banknifty
+tc-pp,bc-pdl,buy,bullish,banknifty
+pp-bc,bc-pdl,buy,bullish,banknifty
+bc-pdl,bc-pdl,buy,bullish,banknifty
+bc-s1,bc-pdl,buy,bullish,banknifty
+pdl-s1,bc-pdl,buy,bullish,banknifty
+s1-pdl,bc-pdl,buy,bullish,banknifty
+pdl-s2,bc-pdl,buy,bullish,banknifty
+s1-s2,bc-pdl,buy,bullish,banknifty
+s2-s3,bc-pdl,buy,bullish,banknifty
+< s3,bc-pdl,buy,bullish,banknifty
+> r3,bc-s1,buy,bullish,banknifty
+r3-r2,bc-s1,buy,bullish,banknifty
+r2-pdh,bc-s1,buy,bullish,banknifty
+r2-r1,bc-s1,buy,bullish,banknifty
+pdh-r1,bc-s1,buy,bullish,banknifty
+r1-pdh,bc-s1,buy,bullish,banknifty
+r1-tc,bc-s1,buy,bullish,banknifty
+pdh-tc,bc-s1,buy,bullish,banknifty
+tc-pp,bc-s1,buy,bullish,banknifty
+pp-bc,bc-s1,buy,bullish,banknifty
+bc-pdl,bc-s1,buy,bullish,banknifty
+bc-s1,bc-s1,buy,bullish,banknifty
+pdl-s1,bc-s1,buy,bullish,banknifty
+s1-pdl,bc-s1,buy,bullish,banknifty
+pdl-s2,bc-s1,buy,bullish,banknifty
+s1-s2,bc-s1,buy,bullish,banknifty
+s2-s3,bc-s1,buy,bullish,banknifty
+< s3,bc-s1,buy,bullish,banknifty
+> r3,pdl-s1,buy,bullish,banknifty
+r3-r2,pdl-s1,buy,bullish,banknifty
+r2-pdh,pdl-s1,buy,bullish,banknifty
+r2-r1,pdl-s1,buy,bullish,banknifty
+pdh-r1,pdl-s1,buy,bullish,banknifty
+r1-pdh,pdl-s1,buy,bullish,banknifty
+r1-tc,pdl-s1,buy,bullish,banknifty
+pdh-tc,pdl-s1,buy,bullish,banknifty
+tc-pp,pdl-s1,buy,bullish,banknifty
+pp-bc,pdl-s1,buy,bullish,banknifty
+bc-pdl,pdl-s1,buy,bullish,banknifty
+bc-s1,pdl-s1,buy,bullish,banknifty
+pdl-s1,pdl-s1,buy,bullish,banknifty
+s1-pdl,pdl-s1,buy,bullish,banknifty
+pdl-s2,pdl-s1,buy,bullish,banknifty
+s1-s2,pdl-s1,buy,bullish,banknifty
+s2-s3,pdl-s1,buy,bullish,banknifty
+< s3,pdl-s1,buy,bullish,banknifty
+> r3,s1-pdl,buy,bullish,banknifty
+r3-r2,s1-pdl,buy,bullish,banknifty
+r2-pdh,s1-pdl,buy,bullish,banknifty
+r2-r1,s1-pdl,buy,bullish,banknifty
+pdh-r1,s1-pdl,buy,bullish,banknifty
+r1-pdh,s1-pdl,buy,bullish,banknifty
+r1-tc,s1-pdl,buy,bullish,banknifty
+pdh-tc,s1-pdl,buy,bullish,banknifty
+tc-pp,s1-pdl,buy,bullish,banknifty
+pp-bc,s1-pdl,buy,bullish,banknifty
+bc-pdl,s1-pdl,buy,bullish,banknifty
+bc-s1,s1-pdl,buy,bullish,banknifty
+pdl-s1,s1-pdl,buy,bullish,banknifty
+s1-pdl,s1-pdl,buy,bullish,banknifty
+pdl-s2,s1-pdl,buy,bullish,banknifty
+s1-s2,s1-pdl,buy,bullish,banknifty
+s2-s3,s1-pdl,buy,bullish,banknifty
+< s3,s1-pdl,buy,bullish,banknifty
+> r3,pdl-s2,buy,bullish,banknifty
+r3-r2,pdl-s2,buy,bullish,banknifty
+r2-pdh,pdl-s2,buy,bullish,banknifty
+r2-r1,pdl-s2,buy,bullish,banknifty
+pdh-r1,pdl-s2,buy,bullish,banknifty
+r1-pdh,pdl-s2,buy,bullish,banknifty
+r1-tc,pdl-s2,buy,bullish,banknifty
+pdh-tc,pdl-s2,buy,bullish,banknifty
+tc-pp,pdl-s2,buy,bullish,banknifty
+pp-bc,pdl-s2,buy,bullish,banknifty
+bc-pdl,pdl-s2,buy,bullish,banknifty
+bc-s1,pdl-s2,buy,bullish,banknifty
+pdl-s1,pdl-s2,buy,bullish,banknifty
+s1-pdl,pdl-s2,buy,bullish,banknifty
+pdl-s2,pdl-s2,buy,bullish,banknifty
+s1-s2,pdl-s2,buy,bullish,banknifty
+s2-s3,pdl-s2,buy,bullish,banknifty
+< s3,pdl-s2,buy,bullish,banknifty
+> r3,s1-s2,buy,bullish,banknifty
+r3-r2,s1-s2,buy,bullish,banknifty
+r2-pdh,s1-s2,buy,bullish,banknifty
+r2-r1,s1-s2,buy,bullish,banknifty
+pdh-r1,s1-s2,buy,bullish,banknifty
+r1-pdh,s1-s2,buy,bullish,banknifty
+r1-tc,s1-s2,buy,bullish,banknifty
+pdh-tc,s1-s2,buy,bullish,banknifty
+tc-pp,s1-s2,buy,bullish,banknifty
+pp-bc,s1-s2,buy,bullish,banknifty
+bc-pdl,s1-s2,buy,bullish,banknifty
+bc-s1,s1-s2,buy,bullish,banknifty
+pdl-s1,s1-s2,buy,bullish,banknifty
+s1-pdl,s1-s2,buy,bullish,banknifty
+pdl-s2,s1-s2,buy,bullish,banknifty
+s1-s2,s1-s2,buy,bullish,banknifty
+s2-s3,s1-s2,buy,bullish,banknifty
+< s3,s1-s2,buy,bullish,banknifty
+> r3,s2-s3,buy,bullish,banknifty
+r3-r2,s2-s3,buy,bullish,banknifty
+r2-pdh,s2-s3,buy,bullish,banknifty
+r2-r1,s2-s3,buy,bullish,banknifty
+pdh-r1,s2-s3,buy,bullish,banknifty
+r1-pdh,s2-s3,buy,bullish,banknifty
+r1-tc,s2-s3,buy,bullish,banknifty
+pdh-tc,s2-s3,buy,bullish,banknifty
+tc-pp,s2-s3,buy,bullish,banknifty
+pp-bc,s2-s3,buy,bullish,banknifty
+bc-pdl,s2-s3,buy,bullish,banknifty
+bc-s1,s2-s3,buy,bullish,banknifty
+pdl-s1,s2-s3,buy,bullish,banknifty
+s1-pdl,s2-s3,buy,bullish,banknifty
+pdl-s2,s2-s3,buy,bullish,banknifty
+s1-s2,s2-s3,buy,bullish,banknifty
+s2-s3,s2-s3,buy,bullish,banknifty
+< s3,s2-s3,buy,bullish,banknifty
+> r3,< s3,no_trade,bullish,banknifty
+r3-r2,< s3,no_trade,bullish,banknifty
+r2-pdh,< s3,no_trade,bullish,banknifty
+r2-r1,< s3,no_trade,bullish,banknifty
+pdh-r1,< s3,no_trade,bullish,banknifty
+r1-pdh,< s3,no_trade,bullish,banknifty
+r1-tc,< s3,no_trade,bullish,banknifty
+pdh-tc,< s3,no_trade,bullish,banknifty
+tc-pp,< s3,no_trade,bullish,banknifty
+pp-bc,< s3,no_trade,bullish,banknifty
+bc-pdl,< s3,no_trade,bullish,banknifty
+bc-s1,< s3,no_trade,bullish,banknifty
+pdl-s1,< s3,no_trade,bullish,banknifty
+s1-pdl,< s3,no_trade,bullish,banknifty
+pdl-s2,< s3,no_trade,bullish,banknifty
+s1-s2,< s3,no_trade,bullish,banknifty
+s2-s3,< s3,no_trade,bullish,banknifty
+< s3,< s3,no_trade,bullish,banknifty
+> r3,> r3,no_trade,bearish,banknifty
+r3-r2,> r3,no_trade,bearish,banknifty
+r2-pdh,> r3,no_trade,bearish,banknifty
+r2-r1,> r3,no_trade,bearish,banknifty
+pdh-r1,> r3,no_trade,bearish,banknifty
+r1-pdh,> r3,no_trade,bearish,banknifty
+r1-tc,> r3,no_trade,bearish,banknifty
+pdh-tc,> r3,no_trade,bearish,banknifty
+tc-pp,> r3,no_trade,bearish,banknifty
+pp-bc,> r3,no_trade,bearish,banknifty
+bc-pdl,> r3,no_trade,bearish,banknifty
+bc-s1,> r3,no_trade,bearish,banknifty
+pdl-s1,> r3,no_trade,bearish,banknifty
+s1-pdl,> r3,no_trade,bearish,banknifty
+pdl-s2,> r3,no_trade,bearish,banknifty
+s1-s2,> r3,no_trade,bearish,banknifty
+s2-s3,> r3,no_trade,bearish,banknifty
+< s3,> r3,no_trade,bearish,banknifty
+> r3,r3-r2,sell,bearish,banknifty
+r3-r2,r3-r2,sell,bearish,banknifty
+r2-pdh,r3-r2,sell,bearish,banknifty
+r2-r1,r3-r2,sell,bearish,banknifty
+pdh-r1,r3-r2,sell,bearish,banknifty
+r1-pdh,r3-r2,sell,bearish,banknifty
+r1-tc,r3-r2,sell,bearish,banknifty
+pdh-tc,r3-r2,sell,bearish,banknifty
+tc-pp,r3-r2,sell,bearish,banknifty
+pp-bc,r3-r2,sell,bearish,banknifty
+bc-pdl,r3-r2,sell,bearish,banknifty
+bc-s1,r3-r2,sell,bearish,banknifty
+pdl-s1,r3-r2,sell,bearish,banknifty
+s1-pdl,r3-r2,sell,bearish,banknifty
+pdl-s2,r3-r2,sell,bearish,banknifty
+s1-s2,r3-r2,sell,bearish,banknifty
+s2-s3,r3-r2,sell,bearish,banknifty
+< s3,r3-r2,sell,bearish,banknifty
+> r3,r2-pdh,sell,bearish,banknifty
+r3-r2,r2-pdh,sell,bearish,banknifty
+r2-pdh,r2-pdh,sell,bearish,banknifty
+r2-r1,r2-pdh,sell,bearish,banknifty
+pdh-r1,r2-pdh,sell,bearish,banknifty
+r1-pdh,r2-pdh,sell,bearish,banknifty
+r1-tc,r2-pdh,sell,bearish,banknifty
+pdh-tc,r2-pdh,sell,bearish,banknifty
+tc-pp,r2-pdh,sell,bearish,banknifty
+pp-bc,r2-pdh,sell,bearish,banknifty
+bc-pdl,r2-pdh,sell,bearish,banknifty
+bc-s1,r2-pdh,sell,bearish,banknifty
+pdl-s1,r2-pdh,sell,bearish,banknifty
+s1-pdl,r2-pdh,sell,bearish,banknifty
+pdl-s2,r2-pdh,sell,bearish,banknifty
+s1-s2,r2-pdh,sell,bearish,banknifty
+s2-s3,r2-pdh,sell,bearish,banknifty
+< s3,r2-pdh,sell,bearish,banknifty
+> r3,r2-r1,sell,bearish,banknifty
+r3-r2,r2-r1,buy,bearish,banknifty
+r2-pdh,r2-r1,sell,bearish,banknifty
+r2-r1,r2-r1,sell,bearish,banknifty
+pdh-r1,r2-r1,sell,bearish,banknifty
+r1-pdh,r2-r1,sell,bearish,banknifty
+r1-tc,r2-r1,sell,bearish,banknifty
+pdh-tc,r2-r1,sell,bearish,banknifty
+tc-pp,r2-r1,sell,bearish,banknifty
+pp-bc,r2-r1,sell,bearish,banknifty
+bc-pdl,r2-r1,sell,bearish,banknifty
+bc-s1,r2-r1,sell,bearish,banknifty
+pdl-s1,r2-r1,sell,bearish,banknifty
+s1-pdl,r2-r1,sell,bearish,banknifty
+pdl-s2,r2-r1,sell,bearish,banknifty
+s1-s2,r2-r1,sell,bearish,banknifty
+s2-s3,r2-r1,sell,bearish,banknifty
+< s3,r2-r1,sell,bearish,banknifty
+> r3,pdh-r1,sell,bearish,banknifty
+r3-r2,pdh-r1,sell,bearish,banknifty
+r2-pdh,pdh-r1,sell,bearish,banknifty
+r2-r1,pdh-r1,sell,bearish,banknifty
+pdh-r1,pdh-r1,sell,bearish,banknifty
+r1-pdh,pdh-r1,sell,bearish,banknifty
+r1-tc,pdh-r1,sell,bearish,banknifty
+pdh-tc,pdh-r1,sell,bearish,banknifty
+tc-pp,pdh-r1,sell,bearish,banknifty
+pp-bc,pdh-r1,sell,bearish,banknifty
+bc-pdl,pdh-r1,sell,bearish,banknifty
+bc-s1,pdh-r1,sell,bearish,banknifty
+pdl-s1,pdh-r1,sell,bearish,banknifty
+s1-pdl,pdh-r1,sell,bearish,banknifty
+pdl-s2,pdh-r1,sell,bearish,banknifty
+s1-s2,pdh-r1,sell,bearish,banknifty
+s2-s3,pdh-r1,sell,bearish,banknifty
+< s3,pdh-r1,sell,bearish,banknifty
+> r3,r1-pdh,sell,bearish,banknifty
+r3-r2,r1-pdh,sell,bearish,banknifty
+r2-pdh,r1-pdh,sell,bearish,banknifty
+r2-r1,r1-pdh,sell,bearish,banknifty
+pdh-r1,r1-pdh,sell,bearish,banknifty
+r1-pdh,r1-pdh,sell,bearish,banknifty
+r1-tc,r1-pdh,sell,bearish,banknifty
+pdh-tc,r1-pdh,sell,bearish,banknifty
+tc-pp,r1-pdh,buy,bearish,banknifty
+pp-bc,r1-pdh,sell,bearish,banknifty
+bc-pdl,r1-pdh,sell,bearish,banknifty
+bc-s1,r1-pdh,sell,bearish,banknifty
+pdl-s1,r1-pdh,sell,bearish,banknifty
+s1-pdl,r1-pdh,sell,bearish,banknifty
+pdl-s2,r1-pdh,sell,bearish,banknifty
+s1-s2,r1-pdh,sell,bearish,banknifty
+s2-s3,r1-pdh,sell,bearish,banknifty
+< s3,r1-pdh,sell,bearish,banknifty
+> r3,r1-tc,sell,bearish,banknifty
+r3-r2,r1-tc,sell,bearish,banknifty
+r2-pdh,r1-tc,sell,bearish,banknifty
+r2-r1,r1-tc,sell,bearish,banknifty
+pdh-r1,r1-tc,sell,bearish,banknifty
+r1-pdh,r1-tc,sell,bearish,banknifty
+r1-tc,r1-tc,sell,bearish,banknifty
+pdh-tc,r1-tc,sell,bearish,banknifty
+tc-pp,r1-tc,buy,bearish,banknifty
+pp-bc,r1-tc,sell,bearish,banknifty
+bc-pdl,r1-tc,sell,bearish,banknifty
+bc-s1,r1-tc,sell,bearish,banknifty
+pdl-s1,r1-tc,sell,bearish,banknifty
+s1-pdl,r1-tc,sell,bearish,banknifty
+pdl-s2,r1-tc,sell,bearish,banknifty
+s1-s2,r1-tc,sell,bearish,banknifty
+s2-s3,r1-tc,sell,bearish,banknifty
+< s3,r1-tc,sell,bearish,banknifty
+> r3,pdh-tc,sell,bearish,banknifty
+r3-r2,pdh-tc,sell,bearish,banknifty
+r2-pdh,pdh-tc,sell,bearish,banknifty
+r2-r1,pdh-tc,sell,bearish,banknifty
+pdh-r1,pdh-tc,sell,bearish,banknifty
+r1-pdh,pdh-tc,buy,bearish,banknifty
+r1-tc,pdh-tc,sell,bearish,banknifty
+pdh-tc,pdh-tc,buy,bearish,banknifty
+tc-pp,pdh-tc,sell,bearish,banknifty
+pp-bc,pdh-tc,sell,bearish,banknifty
+bc-pdl,pdh-tc,sell,bearish,banknifty
+bc-s1,pdh-tc,sell,bearish,banknifty
+pdl-s1,pdh-tc,sell,bearish,banknifty
+s1-pdl,pdh-tc,sell,bearish,banknifty
+pdl-s2,pdh-tc,sell,bearish,banknifty
+s1-s2,pdh-tc,sell,bearish,banknifty
+s2-s3,pdh-tc,sell,bearish,banknifty
+< s3,pdh-tc,sell,bearish,banknifty
+> r3,tc-pp,sell,bearish,banknifty
+r3-r2,tc-pp,sell,bearish,banknifty
+r2-pdh,tc-pp,sell,bearish,banknifty
+r2-r1,tc-pp,sell,bearish,banknifty
+pdh-r1,tc-pp,sell,bearish,banknifty
+r1-pdh,tc-pp,sell,bearish,banknifty
+r1-tc,tc-pp,sell,bearish,banknifty
+pdh-tc,tc-pp,sell,bearish,banknifty
+tc-pp,tc-pp,sell,bearish,banknifty
+pp-bc,tc-pp,sell,bearish,banknifty
+bc-pdl,tc-pp,sell,bearish,banknifty
+bc-s1,tc-pp,sell,bearish,banknifty
+pdl-s1,tc-pp,sell,bearish,banknifty
+s1-pdl,tc-pp,sell,bearish,banknifty
+pdl-s2,tc-pp,sell,bearish,banknifty
+s1-s2,tc-pp,sell,bearish,banknifty
+s2-s3,tc-pp,sell,bearish,banknifty
+< s3,tc-pp,sell,bearish,banknifty
+> r3,pp-bc,buy,bearish,banknifty
+r3-r2,pp-bc,buy,bearish,banknifty
+r2-pdh,pp-bc,buy,bearish,banknifty
+r2-r1,pp-bc,buy,bearish,banknifty
+pdh-r1,pp-bc,buy,bearish,banknifty
+r1-pdh,pp-bc,sell,bearish,banknifty
+r1-tc,pp-bc,buy,bearish,banknifty
+pdh-tc,pp-bc,sell,bearish,banknifty
+tc-pp,pp-bc,buy,bearish,banknifty
+pp-bc,pp-bc,buy,bearish,banknifty
+bc-pdl,pp-bc,buy,bearish,banknifty
+bc-s1,pp-bc,buy,bearish,banknifty
+pdl-s1,pp-bc,buy,bearish,banknifty
+s1-pdl,pp-bc,buy,bearish,banknifty
+pdl-s2,pp-bc,buy,bearish,banknifty
+s1-s2,pp-bc,buy,bearish,banknifty
+s2-s3,pp-bc,buy,bearish,banknifty
+< s3,pp-bc,buy,bearish,banknifty
+> r3,bc-pdl,buy,bearish,banknifty
+r3-r2,bc-pdl,buy,bearish,banknifty
+r2-pdh,bc-pdl,buy,bearish,banknifty
+r2-r1,bc-pdl,buy,bearish,banknifty
+pdh-r1,bc-pdl,buy,bearish,banknifty
+r1-pdh,bc-pdl,buy,bearish,banknifty
+r1-tc,bc-pdl,buy,bearish,banknifty
+pdh-tc,bc-pdl,sell,bearish,banknifty
+tc-pp,bc-pdl,buy,bearish,banknifty
+pp-bc,bc-pdl,buy,bearish,banknifty
+bc-pdl,bc-pdl,buy,bearish,banknifty
+bc-s1,bc-pdl,buy,bearish,banknifty
+pdl-s1,bc-pdl,buy,bearish,banknifty
+s1-pdl,bc-pdl,buy,bearish,banknifty
+pdl-s2,bc-pdl,buy,bearish,banknifty
+s1-s2,bc-pdl,buy,bearish,banknifty
+s2-s3,bc-pdl,buy,bearish,banknifty
+< s3,bc-pdl,buy,bearish,banknifty
+> r3,bc-s1,buy,bearish,banknifty
+r3-r2,bc-s1,buy,bearish,banknifty
+r2-pdh,bc-s1,buy,bearish,banknifty
+r2-r1,bc-s1,sell,bearish,banknifty
+pdh-r1,bc-s1,buy,bearish,banknifty
+r1-pdh,bc-s1,buy,bearish,banknifty
+r1-tc,bc-s1,buy,bearish,banknifty
+pdh-tc,bc-s1,buy,bearish,banknifty
+tc-pp,bc-s1,buy,bearish,banknifty
+pp-bc,bc-s1,buy,bearish,banknifty
+bc-pdl,bc-s1,buy,bearish,banknifty
+bc-s1,bc-s1,buy,bearish,banknifty
+pdl-s1,bc-s1,buy,bearish,banknifty
+s1-pdl,bc-s1,buy,bearish,banknifty
+pdl-s2,bc-s1,buy,bearish,banknifty
+s1-s2,bc-s1,buy,bearish,banknifty
+s2-s3,bc-s1,buy,bearish,banknifty
+< s3,bc-s1,buy,bearish,banknifty
+> r3,pdl-s1,buy,bearish,banknifty
+r3-r2,pdl-s1,buy,bearish,banknifty
+r2-pdh,pdl-s1,buy,bearish,banknifty
+r2-r1,pdl-s1,buy,bearish,banknifty
+pdh-r1,pdl-s1,buy,bearish,banknifty
+r1-pdh,pdl-s1,buy,bearish,banknifty
+r1-tc,pdl-s1,buy,bearish,banknifty
+pdh-tc,pdl-s1,buy,bearish,banknifty
+tc-pp,pdl-s1,buy,bearish,banknifty
+pp-bc,pdl-s1,buy,bearish,banknifty
+bc-pdl,pdl-s1,buy,bearish,banknifty
+bc-s1,pdl-s1,sell,bearish,banknifty
+pdl-s1,pdl-s1,buy,bearish,banknifty
+s1-pdl,pdl-s1,buy,bearish,banknifty
+pdl-s2,pdl-s1,buy,bearish,banknifty
+s1-s2,pdl-s1,buy,bearish,banknifty
+s2-s3,pdl-s1,buy,bearish,banknifty
+< s3,pdl-s1,buy,bearish,banknifty
+> r3,s1-pdl,buy,bearish,banknifty
+r3-r2,s1-pdl,buy,bearish,banknifty
+r2-pdh,s1-pdl,sell,bearish,banknifty
+r2-r1,s1-pdl,buy,bearish,banknifty
+pdh-r1,s1-pdl,buy,bearish,banknifty
+r1-pdh,s1-pdl,buy,bearish,banknifty
+r1-tc,s1-pdl,buy,bearish,banknifty
+pdh-tc,s1-pdl,buy,bearish,banknifty
+tc-pp,s1-pdl,buy,bearish,banknifty
+pp-bc,s1-pdl,buy,bearish,banknifty
+bc-pdl,s1-pdl,buy,bearish,banknifty
+bc-s1,s1-pdl,buy,bearish,banknifty
+pdl-s1,s1-pdl,buy,bearish,banknifty
+s1-pdl,s1-pdl,buy,bearish,banknifty
+pdl-s2,s1-pdl,buy,bearish,banknifty
+s1-s2,s1-pdl,buy,bearish,banknifty
+s2-s3,s1-pdl,buy,bearish,banknifty
+< s3,s1-pdl,buy,bearish,banknifty
+> r3,pdl-s2,buy,bearish,banknifty
+r3-r2,pdl-s2,buy,bearish,banknifty
+r2-pdh,pdl-s2,buy,bearish,banknifty
+r2-r1,pdl-s2,buy,bearish,banknifty
+pdh-r1,pdl-s2,buy,bearish,banknifty
+r1-pdh,pdl-s2,buy,bearish,banknifty
+r1-tc,pdl-s2,buy,bearish,banknifty
+pdh-tc,pdl-s2,buy,bearish,banknifty
+tc-pp,pdl-s2,buy,bearish,banknifty
+pp-bc,pdl-s2,buy,bearish,banknifty
+bc-pdl,pdl-s2,buy,bearish,banknifty
+bc-s1,pdl-s2,buy,bearish,banknifty
+pdl-s1,pdl-s2,buy,bearish,banknifty
+s1-pdl,pdl-s2,buy,bearish,banknifty
+pdl-s2,pdl-s2,buy,bearish,banknifty
+s1-s2,pdl-s2,buy,bearish,banknifty
+s2-s3,pdl-s2,buy,bearish,banknifty
+< s3,pdl-s2,buy,bearish,banknifty
+> r3,s1-s2,buy,bearish,banknifty
+r3-r2,s1-s2,buy,bearish,banknifty
+r2-pdh,s1-s2,buy,bearish,banknifty
+r2-r1,s1-s2,buy,bearish,banknifty
+pdh-r1,s1-s2,buy,bearish,banknifty
+r1-pdh,s1-s2,buy,bearish,banknifty
+r1-tc,s1-s2,buy,bearish,banknifty
+pdh-tc,s1-s2,sell,bearish,banknifty
+tc-pp,s1-s2,buy,bearish,banknifty
+pp-bc,s1-s2,buy,bearish,banknifty
+bc-pdl,s1-s2,buy,bearish,banknifty
+bc-s1,s1-s2,buy,bearish,banknifty
+pdl-s1,s1-s2,buy,bearish,banknifty
+s1-pdl,s1-s2,buy,bearish,banknifty
+pdl-s2,s1-s2,buy,bearish,banknifty
+s1-s2,s1-s2,buy,bearish,banknifty
+s2-s3,s1-s2,buy,bearish,banknifty
+< s3,s1-s2,buy,bearish,banknifty
+> r3,s2-s3,buy,bearish,banknifty
+r3-r2,s2-s3,buy,bearish,banknifty
+r2-pdh,s2-s3,buy,bearish,banknifty
+r2-r1,s2-s3,buy,bearish,banknifty
+pdh-r1,s2-s3,buy,bearish,banknifty
+r1-pdh,s2-s3,buy,bearish,banknifty
+r1-tc,s2-s3,buy,bearish,banknifty
+pdh-tc,s2-s3,buy,bearish,banknifty
+tc-pp,s2-s3,buy,bearish,banknifty
+pp-bc,s2-s3,buy,bearish,banknifty
+bc-pdl,s2-s3,buy,bearish,banknifty
+bc-s1,s2-s3,sell,bearish,banknifty
+pdl-s1,s2-s3,buy,bearish,banknifty
+s1-pdl,s2-s3,buy,bearish,banknifty
+pdl-s2,s2-s3,buy,bearish,banknifty
+s1-s2,s2-s3,buy,bearish,banknifty
+s2-s3,s2-s3,buy,bearish,banknifty
+< s3,s2-s3,buy,bearish,banknifty
+> r3,< s3,no_trade,bearish,banknifty
+r3-r2,< s3,no_trade,bearish,banknifty
+r2-pdh,< s3,no_trade,bearish,banknifty
+r2-r1,< s3,no_trade,bearish,banknifty
+pdh-r1,< s3,no_trade,bearish,banknifty
+r1-pdh,< s3,no_trade,bearish,banknifty
+r1-tc,< s3,no_trade,bearish,banknifty
+pdh-tc,< s3,no_trade,bearish,banknifty
+tc-pp,< s3,no_trade,bearish,banknifty
+pp-bc,< s3,no_trade,bearish,banknifty
+bc-pdl,< s3,no_trade,bearish,banknifty
+bc-s1,< s3,no_trade,bearish,banknifty
+pdl-s1,< s3,no_trade,bearish,banknifty
+s1-pdl,< s3,no_trade,bearish,banknifty
+pdl-s2,< s3,no_trade,bearish,banknifty
+s1-s2,< s3,no_trade,bearish,banknifty
+s2-s3,< s3,no_trade,bearish,banknifty
+< s3,< s3,no_trade,bearish,banknifty

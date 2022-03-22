@@ -47,5 +47,11 @@ class Broker():
     def get_connection_object(self):
         raise NotImplementedError
 
+    def place_market_order(self, instrument, side, quantity, type):
+        raise NotImplementedError
+
+    def place_limit_order(self, instrument, side, quantity, type, price):
+        raise NotImplementedError
+
 if __name__=="main":
     Broker()

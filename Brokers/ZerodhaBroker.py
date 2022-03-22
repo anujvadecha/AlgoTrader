@@ -12,32 +12,47 @@ from Managers.MarketDataManager import MarketDataManager
 from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
-
+from config import live
 class ZerodhaBroker(Broker):
 
     subscribe_cache={}
 
-    def placeMarketOrder(self, instrument, side, quantity, type):
-        order = self.kite.place_order(tradingsymbol=instrument.tradingsymbol,
-                                      exchange=instrument.exchange,
-                                      transaction_type=self.kite.TRANSACTION_TYPE_SELL,
-                                      quantity=quantity,
-                                      order_type=self.kite.ORDER_TYPE_MARKET,
-                                      product=type,
-                                      variety="regular")
-        order = self.kite.order_history(order["data"]["order_id"])
+    def place_market_order(self, instrument, side, quantity, type):
+        Messages.getInstance().brokermessages.info(f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
+        if not live:
+            return
+        try:
+            order = self.kite.place_order(tradingsymbol=instrument.tradingsymbol,
+                                          exchange=instrument.exchange,
+                                          transaction_type=side,
+                                          quantity=quantity,
+                                          order_type=self.kite.ORDER_TYPE_MARKET,
+                                          product=type,
+                                          variety="regular")
+            order = self.kite.order_history(order["data"]["order_id"])
+        except Exception as e:
+            Messages.getInstance().brokermessages.info(
+                f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
 
-    def placeLimitOrder(self, instrument, side, quantity, price):
-        order = self.kite.place_order(
-            tradingsymbol=instrument.tradingsymbol,
-            exchange=instrument.exchange,
-            transaction_type=self.kite.TRANSACTION_TYPE_SELL,
-            quantity=quantity,
-            order_type=self.kite.ORDER_TYPE_LIMIT,
-            product=type,
-            variety="regular",
-            price=price
-        )
+    def place_limit_order(self, instrument, side, quantity, type, price):
+        try:
+            Messages.getInstance().brokermessages.info(
+                f"Placing limit order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type} price {price}")
+            if not live:
+                return
+            order = self.kite.place_order(
+                tradingsymbol=instrument.tradingsymbol,
+                exchange=instrument.exchange,
+                transaction_type=self.kite.TRANSACTION_TYPE_SELL,
+                quantity=quantity,
+                order_type=self.kite.ORDER_TYPE_LIMIT,
+                product=type,
+                variety="regular",
+                price=price
+            )
+        except Exception as e:
+            Messages.getInstance().brokermessages.info(
+                f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
 
     def subscribe(self, instrument:Instrument):
         self.subscribe_cache[instrument.instrument_token] = instrument.tradingsymbol

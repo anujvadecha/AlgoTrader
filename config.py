@@ -1,5 +1,8 @@
+from Strategies.Choppy import Choppy
 from Strategies.DemoStrategy import DemoStrategy
 from Strategies.ViralATR import ViralATR
+
+live = False
 
 brokers = [
     {
@@ -20,7 +23,8 @@ brokers = [
 
 strategies = {
     "DemoStrategy": DemoStrategy,
-    "ViralATR": ViralATR
+    "ViralATR": ViralATR,
+    "Choppy": Choppy
 }
 #
 # zerodhaconfigurations = {

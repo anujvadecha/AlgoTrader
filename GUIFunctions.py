@@ -49,7 +49,7 @@ class GUIFunctions():
             item.setText(j, str(message[list(message.keys())[j]]))
 
     def add_broker_message(self,message):
-        item = QtWidgets.QTreeWidgetItem(self.GUI.brokerMessageDisplay)
+        item = QtWidgets.QTreeWidgetItem(self.GUI.brokerMessagesDisplay)
         for j in range(0, len(list(message.keys()))):
             item.setText(j, str(message[list(message.keys())[j]]))
 

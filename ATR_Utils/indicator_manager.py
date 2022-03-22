@@ -1,4 +1,4 @@
-from Utils.chart_manager import ChartManager
+from ATR_Utils.chart_manager import ChartManager
 
 
 class IndicatorManager:

@@ -12,7 +12,7 @@ from Models.Models import Instrument, Order
 from Core.Strategy import Strategy
 import functools
 import time
-from Utils.atr_psar import ATR_trigger_start, ATR_trigger_stop
+from ATR_Utils.atr_psar import ATR_trigger_start, ATR_trigger_stop
 
 
 def timer(func):

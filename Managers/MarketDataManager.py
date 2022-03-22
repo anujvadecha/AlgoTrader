@@ -9,8 +9,8 @@ class MarketDataManager():
     market_data_map={}
     subscribed_callbacks={}
 
-    def get_historical_data(self):
-        pass
+    def get_historical_data(self,instrument,from_date, to_date, interval):
+        return self.data_broker.get_historical_data(instrument=instrument, from_date=from_date, to_date=to_date, interval=interval)
 
     def subscribe(self,instrument:Instrument,tick_callback=None):
         self.market_data_map[instrument.tradingsymbol] = Queue(maxsize=200)
@@ -22,7 +22,7 @@ class MarketDataManager():
                 self.subscribed_callbacks[instrument.tradingsymbol]=[]
                 self.subscribed_callbacks[instrument.tradingsymbol].append(tick_callback)
 
-    def push_level1_data(self,tick:Tick):
+    def push_level1_data(self,tick):
         if not tick.symbol in self.market_data_map.keys():
             self.market_data_map[tick.symbol] = Queue(maxsize=200)
         self.market_data_map[tick.symbol].put(tick)

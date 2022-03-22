@@ -1,4 +1,4 @@
-from Utils.chart_builder import ChartBuilder
+from ATR_Utils.chart_builder import ChartBuilder
 
 
 class ChartManager:

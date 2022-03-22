@@ -12,7 +12,7 @@ from GUIFunctions import GUIFunctions
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("AlgoTrader")
         MainWindow.resize(1021, 766)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -229,7 +229,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "AlgoTrader"))
         self.startButton.setText(_translate("MainWindow", "START"))
         self.editButton.setText(_translate("MainWindow", "EDIT"))
         self.createButton.setText(_translate("MainWindow", "CREATE"))

@@ -9,6 +9,7 @@ from UIElements.UIFirst import Ui_MainWindow
 from PyQt5 import QtWidgets
 from MessageClasses import Messages
 import sys
+from qt_material import apply_stylesheet
 
 class Main():
 
@@ -18,6 +19,7 @@ class Main():
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
+        apply_stylesheet(app, theme='light_blue.xml')
         MainWindow.show()
         sys.exit(app.exec_())
 

@@ -31,6 +31,7 @@ class Strategy():
     def stop(self):
         self.state = StrategyState.STOPPED
         self.messages.running_strategies.update_running_strategy(strategy=self)
+        self.messages.usermessages.info(f"Stopped Strategy with Portfolio id {self.portfolio_id} ")
 
     def stop_with_squareoff(self):
         pass
@@ -63,7 +64,6 @@ class Strategy():
         from MessageClasses import Messages
         self.messages = Messages.getInstance()
         self.schedule=schedule
-        self.schedule_tasks()
         from Managers.BrokerManager import BrokerManager
         self.broker_alias = inputs['broker_alias']
         self.broker = BrokerManager.get_instance().get_broker(broker_alias=inputs['broker_alias'])
@@ -72,7 +72,11 @@ class Strategy():
         self.define_attributes()
         self.state = StrategyState.RUNNING
         self.messages.running_strategies.update_running_strategy(strategy=self)
-        self.on_create(inputs)
+        try:
+            self.on_create(inputs)
+            self.schedule_tasks()
+        except Exception as e:
+            self.messages.usermessages.info(f"Strategy creation failed due to exception {e}")
         while True:
              schedule.run_pending()
 
