@@ -20,17 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95ed565a-16e3-4078-a0b5-8142ff4e74ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATR_Utils/indicators.py" beforeDir="false" afterPath="$PROJECT_DIR$/ATR_Utils/indicators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/accesstoken.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrokerCache/instruments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/BrokerCache/instruments.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brokers/PaperTrading.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Brokers/ZerodhaBroker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brokers/ZerodhaBroker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Broker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIFunctions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Managers/BrokerManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Managers/BrokerManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MessageClasses.py" beforeDir="false" afterPath="$PROJECT_DIR$/MessageClasses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Strategies/Choppy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Strategies/Choppy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

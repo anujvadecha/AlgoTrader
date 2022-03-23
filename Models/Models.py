@@ -192,7 +192,7 @@ class Tick():
     low:Any
     close:Any
 
-Tick=namedtuple("Tick",[
+Tick = namedtuple("Tick",[
     "symbol","bid","ask","bid_qty","ask_qty","ltp","last_qty","ltt","average_price","volume",
     "buy_quantity","sell_quantity","open","high","low","close"
 ])

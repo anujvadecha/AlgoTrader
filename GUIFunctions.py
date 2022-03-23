@@ -1,3 +1,5 @@
+import logging
+
 from PyQt5 import QtCore, QtWidgets
 
 from Managers.BrokerManager import BrokerManager
@@ -6,6 +8,8 @@ from MessageClasses import Messages
 from UIElements.StrategyInputs import StrategyInputBox
 import os
 from config import strategies
+
+LOGGER = logging.getLogger(__name__)
 
 class GUIFunctions():
 
@@ -117,7 +121,7 @@ class GUIFunctions():
         self.GUI.strategyBox.clear()
         self.GUI.strategyBox.setHeaderLabels(["Strategy"])
         keys = strategies.keys()
-        print(keys)
+        LOGGER.info(keys)
         for i in range (0,len(keys)):
             item = QtWidgets.QTreeWidgetItem(self.GUI.strategyBox)
             item.setText(0,list(keys)[i])
@@ -125,7 +129,7 @@ class GUIFunctions():
     def populateRunningStrategies(self):
         root = self.GUI.strategyBox.invisibleRootItem()
         child_count = root.childCount()
-        print("populateRunningStrategies")
+        LOGGER.info("populateRunningStrategies")
         none_checked=True
         for i in range(child_count):
             item = root.child(i)
@@ -134,14 +138,14 @@ class GUIFunctions():
             strategy_to_execute = strategies[strategy]
             if checked:
                 none_checked = False
-                print(strategy_to_execute.attributes)
+                LOGGER.info(strategy_to_execute.attributes)
                 self.GUI.runningStrategyBox.setHeaderLabels(strategy_to_execute.attributes)
         if none_checked:
-            print(list(strategies.values())[0].attributes)
+            LOGGER.info(list(strategies.values())[0].attributes)
             self.GUI.runningStrategyBox.setHeaderLabels(list(strategies.values())[0].attributes)
 
     def startButtonClicked(self):
-        print("start button clicked")
+        LOGGER.info("start button clicked")
         root = self.GUI.strategyBox.invisibleRootItem()
         child_count = root.childCount()
         for i in range(child_count):
@@ -149,7 +153,7 @@ class GUIFunctions():
             checked = item.isSelected()
             strategy = item.text(0)
             strategy_to_execute = strategies[strategy]
-            print(strategy_to_execute)
+            LOGGER.info(strategy_to_execute)
             if checked:
                 Dialog = QtWidgets.QDialog()
                 ui = StrategyInputBox()
@@ -165,10 +169,10 @@ class GUIFunctions():
         error_dialog.exec()
 
     def createButtonClicked(self):
-        print("CREATE CLICKED")
+        LOGGER.info("CREATE CLICKED")
 
     def editButtonClicked(self):
-        print("EDIT BUTTON CLICKED")
+        LOGGER.info("EDIT BUTTON CLICKED")
 
     def stopButtonClicked(self):
         root = self.GUI.runningStrategyBox.invisibleRootItem()
@@ -179,13 +183,13 @@ class GUIFunctions():
             portfolio_id = item.text(0)
             StrategyManager.get_instance().stop_strategy(portfolio_id=portfolio_id)
 
-        print("STOP BUTTON CLICKED")
+        LOGGER.info("STOP BUTTON CLICKED")
 
     def pauseButtonClicked(self):
-        print("PAUSE BUTTON CLICKED")
+        LOGGER.info("PAUSE BUTTON CLICKED")
 
     def stopAllButtonClicked(self):
-        print("STOP ALL BUTTON CLICKED")
+        LOGGER.info("STOP ALL BUTTON CLICKED")
 
     def refreshRunningStrategies(self):
         self.populateRunningStrategies()
@@ -193,17 +197,17 @@ class GUIFunctions():
     def refreshOrders(self):
         self.orders = Messages.getInstance().orders.reset(BrokerManager.get_instance().get_data_broker().get_orders())
         self.populateOrders()
-        print("refresh orders is called")
+        LOGGER.info("refresh orders is called")
 
     def refreshTrades(self):
         self.trades = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_trades())
         self.populateTrades()
-        print("refresh trades is called")
+        LOGGER.info("refresh trades is called")
 
     def refreshPositions(self):
         self.positions = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_positions())
         self.populatePositions()
-        print("refresh positions is called")
+        LOGGER.info("refresh positions is called")
 
     def connect_components(self):
         self.GUI.startButton.clicked.connect(self.startButtonClicked)

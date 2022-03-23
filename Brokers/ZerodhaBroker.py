@@ -13,11 +13,13 @@ from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
 from config import live
+
 class ZerodhaBroker(Broker):
 
     subscribe_cache={}
 
     def place_market_order(self, instrument, side, quantity, type):
+        from GUIFunctions import GUIFunctions
         Messages.getInstance().brokermessages.info(f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
         if not live:
             return
@@ -33,8 +35,12 @@ class ZerodhaBroker(Broker):
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
+        GUIFunctions.get_instance().refreshOrders()
+        GUIFunctions.get_instance().refreshTrades()
+        GUIFunctions.get_instance().refreshPositions()
 
     def place_limit_order(self, instrument, side, quantity, type, price):
+        from GUIFunctions import GUIFunctions
         try:
             Messages.getInstance().brokermessages.info(
                 f"Placing limit order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type} price {price}")
@@ -53,6 +59,9 @@ class ZerodhaBroker(Broker):
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
+        GUIFunctions.get_instance().refreshOrders()
+        GUIFunctions.get_instance().refreshTrades()
+        GUIFunctions.get_instance().refreshPositions()
 
     def subscribe(self, instrument:Instrument):
         self.subscribe_cache[instrument.instrument_token] = instrument.tradingsymbol
@@ -180,7 +189,6 @@ class ZerodhaBroker(Broker):
 
     def __tickerOnTicks(self, ws, ticks):
         for tick in ticks:
-            print(ticks)
             tick_to_push = Tick(
                 symbol=self.subscribe_cache[tick["instrument_token"]],
                 volume=None,
@@ -222,5 +230,3 @@ class ZerodhaBroker(Broker):
     def __init__(self,config):
         self.initialize(config)
 
-if __name__=="main":
-    ZerodhaBroker(None)

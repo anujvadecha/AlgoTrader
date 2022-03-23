@@ -17,9 +17,6 @@ class Broker():
     def subscribe(self,instrument):
         raise NotImplementedError
 
-    def on_connect(self):
-        raise NotImplementedError
-
     def connect(self):
         raise NotImplementedError
 

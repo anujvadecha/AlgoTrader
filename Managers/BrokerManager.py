@@ -1,4 +1,3 @@
-from Brokers.PaperTrading import PaperTradingBroker
 from Brokers.ZerodhaBroker import ZerodhaBroker
 from config import  brokers
 
@@ -19,8 +18,6 @@ class BrokerManager():
             if(broker["broker"]=="ZERODHA"):
                 self.alias_brokers[broker["broker_alias"]] = ZerodhaBroker(broker["config"])
                 self.alias_brokers[broker["broker_alias"]].connect()
-            elif(broker["broker"]=="PAPER"):
-                self.alias_brokers[broker["broker_alias"]] = PaperTradingBroker(broker["config"])
             if broker["dataSource"]:
                 self.__datasource = self.alias_brokers[broker["broker_alias"]]
     __instance = None

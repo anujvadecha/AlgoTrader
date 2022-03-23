@@ -10,12 +10,18 @@ from PyQt5 import QtWidgets
 from MessageClasses import Messages
 import sys
 from qt_material import apply_stylesheet
+import logging
+import logging.config
+import os
+from config import logging_config
+
+logging.config.dictConfig(logging_config)
+logger = logging.getLogger(__name__)
 
 class Main():
 
     def startMainWindow(self):
         app = QtWidgets.QApplication(sys.argv)
-        # app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
@@ -25,17 +31,11 @@ class Main():
 
     def __init__(self):
         self.messages = Messages.getInstance()
-        # self.messages.trades.addAll(self.broker.get_trades())
-        # self.messages.positions.addAll(self.broker.get_positions())
-        # self.messages.brokermessages.info("FIRST MESSAGE")
-        # strat = DemoStrategy()
-        # threading.Thread(target=strat.main).start()
         self.startMainWindow()
 
 
 InstrumentManager.get_instance()
 BrokerManager.get_instance()
-time.sleep(2)
 MarketDataManager.get_instance()
 OrderManager.get_instance()
 main= Main()
