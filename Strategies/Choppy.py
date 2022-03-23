@@ -238,7 +238,7 @@ class Choppy(Strategy):
                 if tick.ltp >= self.target_points:
                     self.place_exit_order("SELL")
             if self.entry_side == "SELL":
-                if tick.ltp <= self.sl:
+                if tick.ltp <= self.target_points:
                     self.place_exit_order("BUY")
 
     def calculate_triggers(self):
