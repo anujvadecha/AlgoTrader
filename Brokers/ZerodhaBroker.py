@@ -132,7 +132,6 @@ class ZerodhaBroker(Broker):
         self.totp_access_key = config['totp_access_key']
 
     def get_orders(self):
-        print("get orders called")
         return self.kite.orders()
 
     def get_trades(self):
@@ -181,13 +180,14 @@ class ZerodhaBroker(Broker):
 
     def __tickerOnTicks(self, ws, ticks):
         for tick in ticks:
+            print(ticks)
             tick_to_push = Tick(
                 symbol=self.subscribe_cache[tick["instrument_token"]],
-                volume=tick["volume"],
+                volume=None,
                 ltp=tick["last_price"],
-                buy_quantity=tick["buy_quantity"],
-                sell_quantity=tick["sell_quantity"],
-                average_price=tick["average_price"],
+                buy_quantity=None,
+                sell_quantity=None,
+                average_price=None,
                 bid=None,
                 ask=None,
                 bid_qty=None,

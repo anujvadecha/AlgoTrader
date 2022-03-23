@@ -14,6 +14,9 @@ class messagemodel:
     def addAll(self, list):
         self.messagefactory.extend(list)
 
+    def reset(self, list):
+        self.messagefactory = list
+
     def getMessages(self):
         if (len(self.messagefactory) == 0):
             return []
@@ -37,6 +40,7 @@ class Messages():
             self.messagefactory.append(asdict(message))
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_update_order(asdict(message))
+
 
     class Trades(messagemodel):
         def addTrade(self, trade):

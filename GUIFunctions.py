@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtWidgets
 
+from Managers.BrokerManager import BrokerManager
 from Managers.StrategyManager import StrategyManager
 from MessageClasses import Messages
 from UIElements.StrategyInputs import StrategyInputBox
@@ -190,7 +191,19 @@ class GUIFunctions():
         self.populateRunningStrategies()
 
     def refreshOrders(self):
-        pass
+        self.orders = Messages.getInstance().orders.reset(BrokerManager.get_instance().get_data_broker().get_orders())
+        self.populateOrders()
+        print("refresh orders is called")
+
+    def refreshTrades(self):
+        self.trades = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_trades())
+        self.populateTrades()
+        print("refresh trades is called")
+
+    def refreshPositions(self):
+        self.positions = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_positions())
+        self.populatePositions()
+        print("refresh positions is called")
 
     def connect_components(self):
         self.GUI.startButton.clicked.connect(self.startButtonClicked)
@@ -201,6 +214,8 @@ class GUIFunctions():
         self.GUI.pauseButton.clicked.connect(self.pauseButtonClicked)
         self.GUI.strategyBox.clicked.connect(self.refreshRunningStrategies)
         self.GUI.ordersDisplay.clicked.connect(self.refreshOrders)
+        self.GUI.tradesDisplay.clicked.connect(self.refreshTrades)
+        self.GUI.positionsDisplay.clicked.connect(self.refreshPositions)
 
     def executeInitialFunctions(self,GUI=None):
         self.GUI=GUI

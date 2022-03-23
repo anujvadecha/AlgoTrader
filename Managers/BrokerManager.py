@@ -17,12 +17,12 @@ class BrokerManager():
     def __load_brokers_from_config(self):
         for broker in brokers:
             if(broker["broker"]=="ZERODHA"):
-                self.alias_brokers[broker["broker_alias"]]=ZerodhaBroker(broker["config"])
+                self.alias_brokers[broker["broker_alias"]] = ZerodhaBroker(broker["config"])
                 self.alias_brokers[broker["broker_alias"]].connect()
             elif(broker["broker"]=="PAPER"):
-                self.alias_brokers[broker["broker_alias"]]=PaperTradingBroker(broker["config"])
+                self.alias_brokers[broker["broker_alias"]] = PaperTradingBroker(broker["config"])
             if broker["dataSource"]:
-                self.__datasource=self.alias_brokers[broker["broker_alias"]]
+                self.__datasource = self.alias_brokers[broker["broker_alias"]]
     __instance = None
 
     @staticmethod

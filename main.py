@@ -33,11 +33,9 @@ class Main():
         self.startMainWindow()
 
 
-
 InstrumentManager.get_instance()
 BrokerManager.get_instance()
 time.sleep(2)
 MarketDataManager.get_instance()
 OrderManager.get_instance()
 main= Main()
-

@@ -5,10 +5,7 @@ from Core.Enums import StrategyState
 import time
 
 
-
-
 class Strategy():
-
     portfolio_id = 0
     state = StrategyState.CREATED
     attributes = ['portfolio_id', 'state', 'broker_alias']
@@ -22,9 +19,9 @@ class Strategy():
     def get_attributes(self):
         attr = {}
         for attribute in self.attributes:
-             try:
+            try:
                 attr[attribute] = getattr(self, attribute)
-             except Exception as e:
+            except Exception as e:
                 attr[attribute] = ""
         return attr
 
@@ -51,19 +48,19 @@ class Strategy():
     def get_realized_pnl(self):
         pass
 
-    def on_create(self,inputs):
+    def on_create(self, inputs):
         pass
 
-    def subscribe(self,instrument,callback):
-        MarketDataManager.get_instance().subscribe(instrument,callback)
+    def subscribe(self, instrument, callback):
+        MarketDataManager.get_instance().subscribe(instrument, callback)
 
     def schedule_tasks(self):
         pass
 
-    def main(self,inputs):
+    def main(self, inputs):
         from MessageClasses import Messages
         self.messages = Messages.getInstance()
-        self.schedule=schedule
+        self.schedule = schedule
         from Managers.BrokerManager import BrokerManager
         self.broker_alias = inputs['broker_alias']
         self.broker = BrokerManager.get_instance().get_broker(broker_alias=inputs['broker_alias'])
@@ -77,6 +74,9 @@ class Strategy():
             self.schedule_tasks()
         except Exception as e:
             self.messages.usermessages.info(f"Strategy creation failed due to exception {e}")
+            self.stop()
+            raise e
         while True:
-             schedule.run_pending()
-
+            if self.state == StrategyState.RUNNING:
+                schedule.run_pending()
+                time.sleep(0.5)
