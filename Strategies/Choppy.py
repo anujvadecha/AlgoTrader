@@ -187,7 +187,6 @@ class Choppy(Strategy):
         self.entry = False
 
     def on_create(self, inputs):
-
         logging.info("Adding test log")
         input_file = inputs['input_file']
         input_df = None
