@@ -448,7 +448,7 @@ def on_ticks(ws, ticks):
     # Callback to receive ticks.
     IM.new_ticks(ticks)
     exc_log.execute()
-    fill_orders(ticks)
+    fill_orders2(ticks)
     if chart.new_candle:
         print("--------------------")
 
