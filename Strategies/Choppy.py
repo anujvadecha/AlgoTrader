@@ -252,8 +252,9 @@ class Choppy(Strategy):
     def calculate_triggers(self):
         now = datetime.now()
         if now.minute % 15 == 0:
-            # TODO to uncomment
-            if not self.entry:  # and now.hour == 9 and now.minute == 30:
+        # if now.minute % 1 == 0:
+        #     TODO to uncomment
+            if not self.entry  and now.hour == 9 and now.minute == 30:
                 LOGGER.info(f"{datetime.now()} calculate triggers called")
                 # TODO to change hours to 1
                 from_date = datetime.now() - timedelta(hours=6)
@@ -268,9 +269,11 @@ class Choppy(Strategy):
                         self.messages.usermessages.info(
                             f"9:15 candle identified {bullish_bearish} with candle range {candle_range.value}")
                         for condition in self.valid_conditions:
-                            if condition['todays_candle'] == candle_range.value and condition[
-                                'candle_type'] == bullish_bearish:
+                            if condition['todays_candle'] == candle_range.value \
+                                    and condition['candle_type'] == bullish_bearish:
                                 if condition['decision'] != 'no_trade':
+                                    self.entry_price = data['close']
+                                    self.entry_side = condition['decision'].upper()
                                     if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
                                         self.target_points = 40
                                     if self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
@@ -283,15 +286,12 @@ class Choppy(Strategy):
                                         f"Condition {condition} satisfied, triggering order")
                                     self.entry = True
                                     self.place_entry_order(side=condition['decision'].upper())
-                                    self.entry_price = data['close']
-                                    self.entry_side = condition['decision'].upper()
                                     self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
                                     ranges = candle_range.value.split("-")
                                     upper_range = max(self.pivot_points[range_identifer] for range_identifer in ranges)
                                     lower_range = min(self.pivot_points[range_identifer] for range_identifer in ranges)
                                     self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                    self.messages.usermessages.info(
-                                        f"Target points{self.target_points} price {self.target_price} side {self.entry_side}")
+                                    self.messages.usermessages.info(f"Target points{self.target_points} price {self.target_price} side {self.entry_side}")
 
             if self.entry:
                 # Calculating SL exit on 15 minute
