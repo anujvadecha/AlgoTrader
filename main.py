@@ -25,7 +25,7 @@ class Main():
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
-        apply_stylesheet(app, theme='light_blue.xml')
+        apply_stylesheet(app, theme='dark_blue.xml')
         MainWindow.show()
         sys.exit(app.exec_())
 
@@ -39,3 +39,4 @@ BrokerManager.get_instance()
 MarketDataManager.get_instance()
 OrderManager.get_instance()
 main= Main()
+
