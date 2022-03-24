@@ -173,21 +173,22 @@ class Choppy(Strategy):
         elif candle_close <= pivot_points["s3"]:
             return ChoppyRanges.less_s3
 
-    def place_entry_order(self, side):
-
-        self.messages.usermessages.info(f"Placing entry order for {self.order_instrument} {side} {self.order_quantity}")
+    def place_entry_order(self, side, identifier=None):
+        self.messages.usermessages.info(f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
         self.entry = True
 
-    def place_exit_order(self, side):
-        self.messages.usermessages.info(f"Placing exit order for {self.order_instrument} {side} {self.order_quantity}")
+    def place_exit_order(self, side, identifier=None):
+        self.messages.usermessages.info(f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         self.broker.place_market_order(instrument=self.order_instrument,
                                        side=side, quantity=self.order_quantity,
                                        type="CNC")
         self.entry = False
 
     def on_create(self, inputs):
+
+        logging.info("Adding test log")
         input_file = inputs['input_file']
         input_df = None
         if input_file.endswith('.csv'):
@@ -244,69 +245,73 @@ class Choppy(Strategy):
         if tick.symbol == self.instrument.tradingsymbol and self.entry:
             if self.entry_side == "BUY":
                 if tick.ltp >= self.target_points:
-                    self.place_exit_order("SELL")
+                    self.place_exit_order("SELL", "TARGET_ACHIEVED")
             if self.entry_side == "SELL":
                 if tick.ltp <= self.target_points:
-                    self.place_exit_order("BUY")
+                    self.place_exit_order("BUY", "TARGET_ACHIEVED")
 
     def calculate_triggers(self):
-        now = datetime.now()
-        if now.minute % 15 == 0:
-        # if now.minute % 1 == 0:
-        #     TODO to uncomment
-            if not self.entry  and now.hour == 9 and now.minute == 30:
-                LOGGER.info(f"{datetime.now()} calculate triggers called")
-                # TODO to change hours to 1
-                from_date = datetime.now() - timedelta(hours=6)
-                to_date = datetime.now()
-                recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                   from_date=from_date, to_date=to_date,
-                                                                                   interval="15minute")
-                for data in recent_data:
-                    if data['date'].hour == 9 and data['date'].minute == 15:
-                        bullish_bearish = 'bullish' if data['close'] > data['open'] else 'bearish'
-                        candle_range = self._check_pivot(data, pivot=self.pivot_points)
-                        self.messages.usermessages.info(
-                            f"9:15 candle identified {bullish_bearish} with candle range {candle_range.value}")
-                        for condition in self.valid_conditions:
-                            if condition['todays_candle'] == candle_range.value \
-                                    and condition['candle_type'] == bullish_bearish:
-                                if condition['decision'] != 'no_trade':
-                                    self.entry_price = data['close']
-                                    self.entry_side = condition['decision'].upper()
-                                    if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
-                                        self.target_points = 40
-                                    if self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
-                                        self.target_points = 60
-                                    if self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
-                                        self.target_points = 60
-                                    if self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
-                                        self.target_points = 40
-                                    self.messages.usermessages.info(
-                                        f"Condition {condition} satisfied, triggering order")
-                                    self.entry = True
-                                    self.place_entry_order(side=condition['decision'].upper())
-                                    self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
-                                    ranges = candle_range.value.split("-")
-                                    upper_range = max(self.pivot_points[range_identifer] for range_identifer in ranges)
-                                    lower_range = min(self.pivot_points[range_identifer] for range_identifer in ranges)
-                                    self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                    self.messages.usermessages.info(f"Target points{self.target_points} price {self.target_price} side {self.entry_side}")
+        try:
+            now = datetime.now()
+            if now.minute % 15 == 0:
+            # if now.minute % 1 == 0:
+            #     TODO to uncomment
+                if not self.entry and now.hour == 9 and now.minute == 30:
+                    LOGGER.info(f"{datetime.now()} calculate triggers called")
+                    # TODO to change hours to 1
+                    from_date = datetime.now() - timedelta(hours=6)
+                    to_date = datetime.now()
+                    recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                                       from_date=from_date, to_date=to_date,
+                                                                                       interval="15minute")
+                    for data in recent_data:
+                        if data['date'].hour == 9 and data['date'].minute == 15:
+                            bullish_bearish = 'bullish' if data['close'] > data['open'] else 'bearish'
+                            candle_range = self._check_pivot(data, pivot=self.pivot_points)
+                            self.messages.usermessages.info(
+                                f"9:15 candle identified {bullish_bearish} with candle range {candle_range.value}")
+                            for condition in self.valid_conditions:
+                                if condition['todays_candle'] == candle_range.value \
+                                        and condition['candle_type'] == bullish_bearish:
+                                    if condition['decision'] != 'no_trade':
+                                        self.entry_price = data['close']
+                                        self.entry_side = condition['decision'].upper()
+                                        if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
+                                            self.target_points = 40
+                                        if self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
+                                            self.target_points = 60
+                                        if self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
+                                            self.target_points = 60
+                                        if self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
+                                            self.target_points = 40
+                                        self.messages.usermessages.info(
+                                            f"Condition {condition} satisfied, triggering order")
+                                        self.entry = True
+                                        self.place_entry_order(side=condition['decision'].upper())
+                                        self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
+                                        ranges = candle_range.value.split("-")
+                                        upper_range = max(self.pivot_points[range_identifer] for range_identifer in ranges)
+                                        lower_range = min(self.pivot_points[range_identifer] for range_identifer in ranges)
+                                        self.sl = upper_range if self.entry_side == "SELL" else lower_range
+                                        self.messages.usermessages.info(f"Target points{self.target_points} price {self.target_price} side {self.entry_side} SL {self.sl}")
 
-            if self.entry:
-                # Calculating SL exit on 15 minute
-                from_date = datetime.now() - timedelta(minutes=30)
-                to_date = datetime.now()
-                recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                   from_date=from_date, to_date=to_date,
-                                                                                   interval="15minute")
-                last_candle = recent_data[-1]
-                if self.entry_side == "BUY":
-                    if last_candle["close"] <= self.sl:
-                        self.place_exit_order("SELL")
-                if self.entry_side == "SELL":
-                    if last_candle["close"] >= self.sl:
-                        self.place_exit_order("BUY")
+                if self.entry:
+                    # Calculating SL exit on 15 minute
+                    from_date = datetime.now() - timedelta(minutes=30)
+                    to_date = datetime.now()
+                    recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                                       from_date=from_date, to_date=to_date,
+                                                                                       interval="15minute")
+                    last_candle = recent_data[-1]
+                    if self.entry_side == "BUY":
+                        if last_candle["close"] <= self.sl:
+                            self.place_exit_order("SELL", "SL_TRIGGERED")
+                    if self.entry_side == "SELL":
+                        if last_candle["close"] >= self.sl:
+                            self.place_exit_order("BUY", "SL_TRIGGERED")
+        except Exception as e:
+            self.messages.usermessages.info(f"Failure occured while calculating triggers {e} stopping strategy")
+            self.stop()
 
     def schedule_tasks(self):
         # TODO To change scheduling to something like 10 seconds
