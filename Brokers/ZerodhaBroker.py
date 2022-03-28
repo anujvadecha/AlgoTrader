@@ -153,6 +153,7 @@ class ZerodhaBroker(Broker):
         return self.kite.holdings()
 
     def get_historical_data(self, instrument: Instrument, from_date, to_date, interval):
+        print(f"interval {interval}")
         return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
                                          False, False)
 
