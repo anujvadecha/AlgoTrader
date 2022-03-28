@@ -32,7 +32,7 @@ class ViralATR(Strategy):
 
     def define_inputs(self):
         inputs = {
-            "input_file": "trade_dis.xlsx"
+            "input_file": "resources/trade_dis.xlsx"
         }
         return inputs
 
@@ -66,4 +66,3 @@ class ViralATR(Strategy):
     def stop(self):
         super().stop()
         ATR_trigger_stop()
-        print("stop called")

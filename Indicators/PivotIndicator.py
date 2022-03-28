@@ -21,12 +21,11 @@ class PivotIndicator:
         s3 = s1 - (day_high - day_low)
         tc = max(lb, ub)
         bc = min(lb, ub)
-        return {"pdl": day_low, "pdh": day_high, "bc": bc, "tc": tc, "pp": pp, "r1": r1, "r2": r2, "r3": r3, "s1": s1, "s2": s2, "s3": s3, "lb": lb, "ub": ub}
+        return {"date": candle["date"], "pdl": day_low, "pdh": day_high, "bc": bc, "tc": tc, "pp": pp, "r1": r1, "r2": r2, "r3": r3, "s1": s1, "s2": s2, "s3": s3, "lb": lb, "ub": ub}
 
     def calculate(self, instrument ,from_date, to_date, interval=None):
         historical_data = MarketDataManager.get_instance().get_historical_data(instrument=instrument, from_date=from_date, to_date=to_date, interval=interval)
-        pivot_data = {}
+        pivot_data = []
         for data in historical_data:
-            day_of_calculation = data['date']+timedelta(days=1)
-            pivot_data[day_of_calculation] =  self._calculate_pivot_points(data)
+            pivot_data.append(self._calculate_pivot_points(data))
         return pivot_data
