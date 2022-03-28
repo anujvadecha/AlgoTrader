@@ -6,6 +6,7 @@ from ATR_Utils.position_manager import PositionManager
 from ATR_Utils.positions import Position
 import ATR_Utils.indicators as indicators
 
+
 # classes
 # position setup
 class LongPosition(Position):
@@ -44,20 +45,28 @@ class ShortPosition(Position):
         print("long position in", strike_data["tradingsymbol"])
 
 
-class ExecutionData:  # reduce
+class ExecutionData:
     def __init__(self):
         self.running_pos = None
         self.running_pos_type = None
         self.prev_close = 0.00
         self.trading = True
-        self.can_trade = {"param1": True,
-                          "param2": True,
-                          "param3": True,
-                          "param4": True}
-        self.parameter_met = {"param1": False,
-                              "param2": False,
-                              "param3": False,
-                              "param4": False}
+        self.can_trade = {"param1": {'bullish': True,
+                                     'bearish': True},
+                          "param2": {'bullish': True,
+                                     'bearish': True},
+                          "param3": {'bullish': True,
+                                     'bearish': True},
+                          "param4": {'bullish': True,
+                                     'bearish': True},
+                          "param1 alt": {'bullish': True,
+                                         'bearish': True},
+                          "param2 alt": {'bullish': True,
+                                         'bearish': True},
+                          "param3 alt": {'bullish': True,
+                                         'bearish': True},
+                          "param4 alt": {'bullish': True,
+                                         'bearish': True}}
         self.cdl_size = 0.00
         self.trade_temp = {"trade param": None,
                            "trade action": None,
@@ -93,19 +102,24 @@ class ExecutionData:  # reduce
         self.trade_entry_copy = False
 
     def reset(self):
-        self.can_trade = {"param1": True,
-                          "param2": True,
-                          "param3": True,
-                          "param4": True}
+        self.can_trade = {"param1": {'bullish': True, 'bearish': True},
+                          "param2": {'bullish': True, 'bearish': True},
+                          "param3": {'bullish': True, 'bearish': True},
+                          "param4": {'bullish': True, 'bearish': True},
+                          "param1 alt": {'bullish': True, 'bearish': True},
+                          "param2 alt": {'bullish': True, 'bearish': True},
+                          "param3 alt": {'bullish': True, 'bearish': True},
+                          "param4 alt": {'bullish': True, 'bearish': True}}
 
 
 data_obj = None
 con_obj = None
 msg_obj = None
 sys_inputs = None
-instrument_list = None
+instrument_list = []
 expiry = None
 spot_data = None
+sub_token = None
 
 pm = None
 IM = None
@@ -122,17 +136,8 @@ exc_log = None
 exc_data = ExecutionData()
 
 
-
-
-
-
-def ATR_trigger_stop():
-    global msg_obj
-    msg_obj.usermessages.info("Stopping things")
-
-
 # helper functions
-def coming_expiry():    # missing expiry switching
+def coming_expiry():  # missing expiry switching
     dt_now = datetime.datetime.now()
     if dt_now.weekday() > 3:
         delta = 10 - dt_now.weekday()
@@ -197,8 +202,48 @@ def fill_orders(tick):  # redo
                 pm.enter_position(new_pos_id)
                 exc_data.running_pos = new_pos_id
                 exc_data.running_pos_type = "SHORT"
-        print(
-            f"trade entered at {exc_data.trade['entry_time']}, @  {exc_data.trade['entry_price']}")
+        msg_obj.usermessages.info(
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
+
+
+def fill_orders2(ticks):  # redo
+    global pm, spot_data
+    tick_data = None
+    for tick in ticks:
+        if tick["instrument_token"] == spot_data["instrument_token"]:
+            tick_data = tick
+    if exc_data.trade_entry:
+        exc_data.trade_entry = False
+        exc_data.trade["entry_time"] = tick_data["timestamp"]
+        exc_data.trade["entry_price"] = tick_data["last_price"]
+        if "alt" in exc_data.trade["trade param"]:
+            if exc_data.trade["trade action"] == "buy":
+                exc_data.trade["stoploss"] = round(
+                    tick_data["last_price"] - (exc_data.trade["entry_atr"] * 1.5), 2)
+                exc_data.trade["target"] = round(
+                    tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
+                exc_data.running_pos_type = "LONG"
+            elif exc_data.trade["trade action"] == "sell":
+                exc_data.trade["stoploss"] = round(
+                    tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
+                exc_data.trade["target"] = round(
+                    tick_data["last_price"] - (exc_data.trade["entry_atr"] * 1.5), 2)
+                exc_data.running_pos_type = "SHORT"
+        else:
+            if exc_data.trade["trade action"] == "buy":
+                exc_data.trade["stoploss"] = round(
+                    tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
+                exc_data.trade["target"] = round(
+                    tick_data["last_price"] + (exc_data.trade["entry_atr"]), 2)
+                exc_data.running_pos_type = "LONG"
+            elif exc_data.trade["trade action"] == "sell":
+                exc_data.trade["stoploss"] = round(
+                    tick_data["last_price"] + (exc_data.trade["entry_atr"]), 2)
+                exc_data.trade["target"] = round(
+                    tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
+                exc_data.running_pos_type = "SHORT"
+        msg_obj.usermessages.info(
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
 
 
 def system_setup(inputs):  # add proper use of inputs
@@ -206,7 +251,7 @@ def system_setup(inputs):  # add proper use of inputs
     populates the global variables
     """
     global instrument_list, expiry, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
-        data_obj, exc_log, trade_dir
+        data_obj, exc_log, trade_dir, sub_token
 
     instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
     expiry = coming_expiry()
@@ -233,7 +278,7 @@ def system_setup(inputs):  # add proper use of inputs
     st = indicators.Supertrend(timeframe=timeframe)
     atr = indicators.AverageTrueRange(timeframe=timeframe)
     stoch = indicators.Stochastic(k_length=5, k_smooth=3, d_smooth=3, timeframe=timeframe)
-    pp = indicators.PivotPoints()
+    pp = indicators.PivotPoints(timeframe=timeframe)
 
     indicators_used.append(chart)
     indicators_used.append(psar)
@@ -252,6 +297,7 @@ def system_setup(inputs):  # add proper use of inputs
         trade_dir[sheet_name].set_index((sheet_name, 'pivots'), inplace=True)
 
     exc_log.execution_logic = exc_seq
+    sub_token = spot_data["instrument_token"]
 
 
 def entries():
@@ -259,10 +305,6 @@ def entries():
 
     t_stp = chart.closed_time
     if exc_data.in_trade:
-        exc_data.parameter_met = {"param1": False,
-                                  "param2": False,
-                                  "param3": False,
-                                  "param4": False}
         exc_data.trade_entry_copy = False
         return
 
@@ -273,10 +315,7 @@ def entries():
     if tick_time >= 1515:
         return
     exc_data.trade = exc_data.trade_temp.copy()
-    exc_data.parameter_met = {"param1": False,
-                              "param2": False,
-                              "param3": False,
-                              "param4": False}
+
     closed = chart.closed_cdl
     candle_size = abs(closed["open"] - closed["close"])
 
@@ -284,19 +323,19 @@ def entries():
 
     param = ""
     # parameter determinations
-    if psar.trend > 0 and st.trend > 0 and exc_data.can_trade["param1"]:
+    if psar.trend > 0 and st.trend > 0:
         # PSAR buy ST buy
         if atr.ATR < candle_size:
             param = "param1"
-    elif psar.trend < 0 and st.trend > 0 and exc_data.can_trade["param2"]:
+    elif psar.trend < 0 and st.trend > 0:
         # PSAR sell ST buy
         if atr.ATR < candle_size:
             param = "param2"
-    elif psar.trend > 0 and st.trend < 0 and exc_data.can_trade["param3"]:
+    elif psar.trend > 0 and st.trend < 0:
         # PSAR buy ST sell
         if atr.ATR < candle_size:
             param = "param3"
-    elif psar.trend < 0 and st.trend < 0 and exc_data.can_trade["param4"]:
+    elif psar.trend < 0 and st.trend < 0:
         # PSAR sell ST sell
         if atr.ATR < candle_size:
             param = "param4"
@@ -318,8 +357,12 @@ def entries():
 
     # pivot condition
     pivot_range = pp.check_pivot(chart.running_cdl.copy())
+    pivot_range_copy = pivot_range
     # trade parameter filtering
     final_param = param + alt
+
+    if not exc_data.can_trade[final_param][candle_type]:
+        return
     trade_type = trade_dir[final_param].loc[pivot_range][(candle_type, stoch_sig)]
 
     if trade_type == "no_trade":
@@ -329,14 +372,16 @@ def entries():
     exc_data.trade["trade action"] = trade_type
     exc_data.trade["entry_atr"] = atr.ATR
     exc_data.trade["candle"] = candle_type
-    exc_data.trade["pivot"] = pivot_range
+    exc_data.trade["pivot"] = pivot_range_copy
     exc_data.trade["stoch"] = stoch.signal
     exc_data.trade_entry = True
     exc_data.in_trade = True
-    exc_data.can_trade[param] = False
+
+    exc_data.can_trade[final_param][candle_type] = False
 
 
 def exits():
+    global msg_obj
     if exc_data.in_trade:
         if exc_data.trade["trade action"] == "buy":
             if chart.running_cdl["close"] >= exc_data.trade["target"]:
@@ -345,6 +390,7 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
+                msg_obj.usermessages.info("target reached")
         else:
             if chart.running_cdl["close"] <= exc_data.trade["target"]:
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
@@ -352,16 +398,19 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
+                msg_obj.usermessages.info("target reached")
     return
 
 
 def stops():
+    global msg_obj
     if exc_data.in_trade:
         if exc_data.trade["trade action"] == "buy":
             if chart.running_cdl["close"] <= exc_data.trade["stoploss"]:
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
+                msg_obj.usermessages.info("stoploss")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -370,6 +419,7 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
+                msg_obj.usermessages.info("stoploss")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -397,18 +447,18 @@ def exc_seq():
 def on_ticks(ws, ticks):
     # Callback to receive ticks.
     IM.new_ticks(ticks)
-    exc_log._execute()
-    fill_orders(ticks)
+    exc_log.execute()
+    fill_orders2(ticks)
     if chart.new_candle:
         print("--------------------")
 
 
 def on_connect(ws, response):
-    print("connection successfull")
+    global sub_token
+    print("connection successfully")
     # Callback on successful connect.
-    # TODO Uncomment the below @Rishabh
-    # ws.subscribe(sub_token)
-    # ws.set_mode(ws.MODE_FULL, sub_token)
+    ws.subscribe([sub_token])
+    ws.set_mode(ws.MODE_FULL, [sub_token])
 
 
 def on_close(ws, code, reason):
@@ -428,9 +478,11 @@ def on_order_update(ws, data):
 # You have to use the pre-defined callbacks to manage subscriptions.
 # kws1.connect(threaded=True)
 
+kws1 = None
+
 
 def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging):
-    global data_obj, con_obj, msg_obj, sys_inputs
+    global data_obj, con_obj, msg_obj, sys_inputs, kws1
     data_obj = data_connection_object
     con_obj = connection_object
     sys_inputs = inputs
@@ -444,3 +496,11 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
     kws1.on_close = on_close
     kws1.on_order_update = on_order_update
     kws1.connect(threaded=True)
+
+
+def ATR_trigger_stop():
+    global msg_obj, kws1
+    msg_obj.usermessages.info("Stopping things")
+    # TODO add square-off funtions
+    msg_obj.usermessages.info("perform square-off")
+    kws1.stop()

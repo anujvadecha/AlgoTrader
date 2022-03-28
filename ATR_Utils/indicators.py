@@ -548,8 +548,7 @@ class PivotPoints(Indicator):
     """
     """
 
-    def __init__(self):
-        timeframe = 1
+    def __init__(self,timeframe):
         exc_trigger = "candle"
         super().__init__(exc_trigger, timeframe)
         self.pivots = {'pivot_point': None,

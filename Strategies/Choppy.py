@@ -37,6 +37,9 @@ LOGGER = logging.getLogger(__name__)
 
 class Choppy(Strategy):
 
+    trade_limit = 1
+    number_of_trades = 0
+
     def _check_pivot(self, candle, pivot):
         print(f"Candle is {candle} pivot {pivot}")
         pivot["upper_band"] = pivot["tc"]
@@ -167,6 +170,7 @@ class Choppy(Strategy):
         self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
         self.entry = True
+        self.number_of_trades = self.number_of_trades+1
 
     def place_exit_order(self, side, identifier=None):
         self.messages.usermessages.info(f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
@@ -245,10 +249,10 @@ class Choppy(Strategy):
     def calculate_triggers(self):
         try:
             now = datetime.now()
-            # if now.minute % 15 == 0:
-            if now.minute % 1 == 0:
+            if now.minute % 15 == 0:
+            # if now.minute % 1 == 0:
             #     TODO to uncomment
-                if not self.entry :#and now.hour == 9 and now.minute == 30:
+                if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
                     from_date = datetime.now() - timedelta(hours=6)
                     to_date = datetime.now()
@@ -284,7 +288,7 @@ class Choppy(Strategy):
                                         upper_range = max(self.pivot_points[range_identifer] for range_identifer in ranges)
                                         lower_range = min(self.pivot_points[range_identifer] for range_identifer in ranges)
                                         self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                        self.messages.usermessages.info(f"Target points{self.target_points} price {self.target_price} side {self.entry_side} SL {self.sl}")
+                                        self.messages.usermessages.info(f"Target points{self.target_points} target {self.target_price} side {self.entry_side} SL {self.sl}")
 
                 if self.entry:
                     # Calculating SL exit on 15 minute

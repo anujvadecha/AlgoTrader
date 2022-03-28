@@ -31,9 +31,9 @@ class ChartBuilder:
         self.new_candle = False
         # process time
         tick_data = None
-        for tick_data in ticks:
-            if tick_data["instrument_token"] == self.sym_data["instrument_token"]:
-                tick_data = tick_data
+        for tick in ticks:
+            if tick["instrument_token"] == self.sym_data["instrument_token"]:
+                tick_data = tick
         if tick_data is None:
             print("didn't find symbol tick")
             return
