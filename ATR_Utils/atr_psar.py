@@ -259,7 +259,7 @@ def system_setup(inputs):  # add proper use of inputs
     month = expiry.strftime("%b").upper()
     year = expiry.strftime("%y")
 
-    spot_sym = 'NIFTY' + year + month + 'FUT'
+    spot_sym = 'BANKNIFTY' + year + month + 'FUT'
 
     for instru in instrument_list:
         if instru['tradingsymbol'] == spot_sym:
@@ -271,7 +271,7 @@ def system_setup(inputs):  # add proper use of inputs
     # indicator and chart setup
     IM = IndicatorManager(spot_data, data_obj)
     indicators_used = []
-    timeframe = 60
+    timeframe = 15
 
     chart = indicators.CandleSticksChart(timeframe=timeframe)
     psar = indicators.ParabolicSAR(timeframe=timeframe)
@@ -290,11 +290,8 @@ def system_setup(inputs):  # add proper use of inputs
 
     exc_log = ExecutionLogic(timeframe=timeframe)
 
-    param_list = ["param1", "param1 alt", "param2", "param2 alt",
-                  "param3", "param3 alt", "param4", "param4 alt"]
-    trade_dir = pd.read_excel("resources/trade_dis.xlsx", header=[0, 1], sheet_name=param_list)
-    for sheet_name in trade_dir:
-        trade_dir[sheet_name].set_index((sheet_name, 'pivots'), inplace=True)
+    trade_df = pd.read_csv("resources/ATR_BNF_disc.csv")
+    trade_dir = trade_df.to_dict('records')
 
     exc_log.execution_logic = exc_seq
     sub_token = spot_data["instrument_token"]
@@ -363,7 +360,14 @@ def entries():
 
     if not exc_data.can_trade[final_param][candle_type]:
         return
-    trade_type = trade_dir[final_param].loc[pivot_range][(candle_type, stoch_sig)]
+
+    trade_type = None
+    for dec in trade_dir:
+        if dec['param'] == final_param:
+            if dec['candle'] == candle_type:
+                if dec['stoch'] == stoch_sig:
+                    if dec['pivot'] == pivot_range:
+                        trade_type = (dec['decision'])
 
     if trade_type == "no_trade":
         return
