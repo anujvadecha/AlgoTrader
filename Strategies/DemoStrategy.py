@@ -34,6 +34,7 @@ class DemoStrategy(Strategy):
         inputs = {
             "x": 5,
             "y": 14,
+            "hell": [ "sad" , "sadasd"]
         }
         return inputs
 
@@ -46,7 +47,7 @@ class DemoStrategy(Strategy):
         self.y = inputs["y"]
         print(f"on create for strategy demo called")
         self.broker.get_connection_object()
-        self.data_broker = BrokerManager.get_instance().get_broker()
+        print(f"Inputs received {inputs}")
 
     def every_second(self):
         print("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))
@@ -66,4 +67,3 @@ class DemoStrategy(Strategy):
 
     def stop(self):
         super().stop()
-        print("stop called")

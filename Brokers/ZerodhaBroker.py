@@ -114,7 +114,7 @@ class ZerodhaBroker(Broker):
             data = self.kite.generate_session(query_def["request_token"][0], api_secret=self.apisecret)
             self.kite.set_access_token(data["access_token"])
             self.__write_accesstocken(data["access_token"])
-        self.kws = KiteTicker(self.apikey, self.__read_accesstocken())
+        self.kws = KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=10000)
         self.kws.on_ticks = self.__tickerOnTicks
         self.kws.on_connect = self.on_connect
         self.kws.on_close = self.on_close

@@ -89,11 +89,13 @@ class StrategyInputBox(object):
 
 
     def startStrategyClicked(self,Dialog):
-        print(self.brokerSelector.currentText())
         broker_for_strategy = self.brokerSelector.currentText()
-        inputs={}
+        inputs = {}
         for input, value in self.strategyInputTracker.items():
-            inputs[input] = value.text()
+            if  isinstance(value, QComboBox):
+                inputs[input] = value.currentText()
+            else:
+                inputs[input] = value.text()
         inputs['broker_alias'] = broker_for_strategy
         StrategyManager.get_instance().add_strategy(strategy=self.strategy)
         StrategyManager.get_instance().start_strategy(strategy=self.strategy, inputs=inputs)
@@ -103,10 +105,16 @@ class StrategyInputBox(object):
         # self.accepted()
 
     def addAttr(self,label,input):
-        inputextend=QtWidgets.QLineEdit()
+        inputextend = QtWidgets.QLineEdit()
         inputextend.setText(str(input))
         self.strategyInputTracker[label]=inputextend
         self.strategyInputs.addRow(label,inputextend)
+
+    def addAttrList(self, label, input):
+        inputExtend = QComboBox(self.formLayoutWidget)
+        inputExtend.addItems(input)
+        self.strategyInputTracker[label] = inputExtend
+        self.strategyInputs.addRow(label, inputExtend)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate

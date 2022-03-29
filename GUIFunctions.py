@@ -161,7 +161,10 @@ class GUIFunctions():
                 ui.setupUi(Dialog,strategy_to_execute)
                 inputs = strategy_to_execute.define_inputs()
                 for input, value in inputs.items():
-                    ui.addAttr(input, value)
+                    if type(value) == list:
+                        ui.addAttrList(input,value)
+                    else:
+                        ui.addAttr(input, value)
                 Dialog.exec()
                 return
         error_dialog = QtWidgets.QErrorMessage()
