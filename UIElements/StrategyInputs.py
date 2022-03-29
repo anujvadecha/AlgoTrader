@@ -101,10 +101,7 @@ class StrategyInputBox(object):
         StrategyManager.get_instance().start_strategy(strategy=self.strategy, inputs=inputs)
         self.Dialog.close()
 
-        # self.close()
-        # self.accepted()
-
-    def addAttr(self,label,input):
+    def addAttr(self, label, input):
         inputextend = QtWidgets.QLineEdit()
         inputextend.setText(str(input))
         self.strategyInputTracker[label]=inputextend

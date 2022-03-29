@@ -200,7 +200,6 @@ class GUIFunctions():
     def refreshOrders(self):
         self.orders = Messages.getInstance().orders.reset(BrokerManager.get_instance().get_data_broker().get_orders())
         self.populateOrders()
-        LOGGER.info("refresh orders is called")
 
     def refreshTrades(self):
         self.trades = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_trades())

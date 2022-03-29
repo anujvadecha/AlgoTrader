@@ -72,7 +72,6 @@ class ZerodhaBroker(Broker):
         pass
 
     def on_close(broker, ws, code, reason):
-        print(f"connection closed by broker class {reason}")
         ws.stop()
 
     def __readInstrumentsfromCsv(self):
@@ -153,7 +152,6 @@ class ZerodhaBroker(Broker):
         return self.kite.holdings()
 
     def get_historical_data(self, instrument: Instrument, from_date, to_date, interval):
-        print(f"interval {interval}")
         return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
                                          False, False)
 
@@ -168,16 +166,14 @@ class ZerodhaBroker(Broker):
         f.close()
 
     def __tickerOnOrderUpdate(self, ws, data):
-        print(data)
-        pass
+        from GUIFunctions import GUIFunctions
+        GUIFunctions.get_instance().refreshOrders()
 
     def __tickerOnError(self, ws, code, reason):
         print(str(code) + str(reason))
-        pass
 
     def __tickerOnNoReconnect(self):
         print("CANT RECONNECT")
-        pass
 
     def __writeDictToCSV(self,filename, dictofinst):
         with open(filename, 'w', encoding='utf8', newline='') as output_file:
