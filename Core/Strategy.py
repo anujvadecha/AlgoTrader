@@ -1,3 +1,5 @@
+from enum import Enum
+
 import schedule
 import datetime
 from Managers.MarketDataManager import MarketDataManager
@@ -8,7 +10,7 @@ import time
 class Strategy():
     portfolio_id = 0
     state = StrategyState.CREATED
-    attributes = ['portfolio_id', 'state', 'broker_alias']
+    attributes = ['portfolio_id', 'strategy_name' ,'state', 'broker_alias']
 
     def define_inputs(self):
         return {}
@@ -21,6 +23,8 @@ class Strategy():
         for attribute in self.attributes:
             try:
                 attr[attribute] = getattr(self, attribute)
+                if isinstance(attr[attribute], Enum):
+                    attr[attribute] =  getattr(self, attribute).value
             except Exception as e:
                 attr[attribute] = ""
         return attr

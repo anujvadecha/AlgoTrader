@@ -30,6 +30,8 @@ def timer(func):
 
 class DemoStrategy(Strategy):
 
+    strategy_name = "Demo Strategy"
+
     def define_inputs(self):
         inputs = {
             "x": 5,

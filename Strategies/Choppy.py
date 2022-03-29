@@ -36,7 +36,7 @@ LOGGER = logging.getLogger(__name__)
 #     less_s3 = "<s3"
 
 class Choppy(Strategy):
-
+    strategy_name = "Choppy"
     trade_limit = 1
     number_of_trades = 0
 
@@ -170,7 +170,7 @@ class Choppy(Strategy):
         self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
         self.entry = True
-        self.number_of_trades = self.number_of_trades+1
+        self.number_of_trades = self.number_of_trades + 1
 
     def place_exit_order(self, side, identifier=None):
         self.messages.usermessages.info(f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")

@@ -29,6 +29,7 @@ def timer(func):
 
 
 class ViralATR(Strategy):
+    strategy_name = "Viral ATR"
 
     def define_inputs(self):
         inputs = {
