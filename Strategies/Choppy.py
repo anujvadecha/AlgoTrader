@@ -166,14 +166,16 @@ class Choppy(Strategy):
     #         return ChoppyRanges.less_s3
 
     def place_entry_order(self, side, identifier=None):
-        self.messages.usermessages.info(f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
+        self.messages.usermessages.info(
+            f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
 
     def place_exit_order(self, side, identifier=None):
-        self.messages.usermessages.info(f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
+        self.messages.usermessages.info(
+            f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         self.broker.place_market_order(instrument=self.order_instrument,
                                        side=side, quantity=self.order_quantity,
                                        type="CNC")
@@ -196,11 +198,6 @@ class Choppy(Strategy):
         interval = CandleInterval.day
         indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
                                                       interval=interval)
-
-        # self.yesterdays_pivot_points = indicator_values[
-        #     datetime.now().replace(minute=0, hour=0, second=0, microsecond=0, tzinfo=tzoffset(None, 19800)) - timedelta(
-        #         days=1)]
-
         self.yesterdays_pivot_points = indicator_values[-2]
         self.yesterdays_date = indicator_values[-1]["date"]
         self.messages.usermessages.info(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
@@ -250,14 +247,15 @@ class Choppy(Strategy):
         try:
             now = datetime.now()
             if now.minute % 15 == 0:
-            # if now.minute % 1 == 0:
-            #     TODO to uncomment
+                # if now.minute % 1 == 0:
+                #     TODO to uncomment
                 if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
                     from_date = datetime.now() - timedelta(hours=6)
                     to_date = datetime.now()
                     recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                       from_date=from_date, to_date=to_date,
+                                                                                       from_date=from_date,
+                                                                                       to_date=to_date,
                                                                                        interval=CandleInterval.fifteen_min)
                     for data in recent_data:
                         if data['date'].hour == 9 and data['date'].minute == 15:
@@ -285,17 +283,21 @@ class Choppy(Strategy):
                                         self.place_entry_order(side=condition['decision'].upper())
                                         self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
                                         ranges = candle_range.split("-")
-                                        upper_range = max(self.pivot_points[range_identifer] for range_identifer in ranges)
-                                        lower_range = min(self.pivot_points[range_identifer] for range_identifer in ranges)
+                                        upper_range = max(
+                                            self.pivot_points[range_identifer] for range_identifer in ranges)
+                                        lower_range = min(
+                                            self.pivot_points[range_identifer] for range_identifer in ranges)
                                         self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                        self.messages.usermessages.info(f"Target points{self.target_points} target {self.target_price} side {self.entry_side} SL {self.sl}")
+                                        self.messages.usermessages.info(
+                                            f"Target points{self.target_points} target {self.target_price} side {self.entry_side} SL {self.sl}")
 
                 if self.entry:
                     # Calculating SL exit on 15 minute
                     from_date = datetime.now() - timedelta(minutes=30)
                     to_date = datetime.now()
                     recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                       from_date=from_date, to_date=to_date,
+                                                                                       from_date=from_date,
+                                                                                       to_date=to_date,
                                                                                        interval=CandleInterval.fifteen_min)
                     last_candle = recent_data[-1]
                     if self.entry_side == "BUY":
