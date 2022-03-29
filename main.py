@@ -25,7 +25,7 @@ class Main():
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow)
-        apply_stylesheet(app, theme='dark_blue.xml')
+        apply_stylesheet(app, theme='light_blue.xml', invert_secondary=True)
         MainWindow.show()
         sys.exit(app.exec_())
 
