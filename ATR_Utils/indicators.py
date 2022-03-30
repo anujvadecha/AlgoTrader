@@ -574,7 +574,7 @@ class PivotPoints(Indicator):
         yest_data = hist_df.iloc[-1]
         self.pivots = pivotpoints_calculation(yest_data)
 
-    def check_pivot(self, candle, pivot_points):
+    def check_pivot(self, candle):
         pivot_range = ""
         pivot = self.pivots
 

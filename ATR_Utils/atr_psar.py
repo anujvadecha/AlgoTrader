@@ -51,22 +51,14 @@ class ExecutionData:
         self.running_pos_type = None
         self.prev_close = 0.00
         self.trading = True
-        self.can_trade = {"param1": {'bullish': True,
-                                     'bearish': True},
-                          "param2": {'bullish': True,
-                                     'bearish': True},
-                          "param3": {'bullish': True,
-                                     'bearish': True},
-                          "param4": {'bullish': True,
-                                     'bearish': True},
-                          "param1 alt": {'bullish': True,
-                                         'bearish': True},
-                          "param2 alt": {'bullish': True,
-                                         'bearish': True},
-                          "param3 alt": {'bullish': True,
-                                         'bearish': True},
-                          "param4 alt": {'bullish': True,
-                                         'bearish': True}}
+        self.can_trade = {"param1": {'bullish': True, 'bearish': True},
+                          "param2": {'bullish': True, 'bearish': True},
+                          "param3": {'bullish': True, 'bearish': True},
+                          "param4": {'bullish': True, 'bearish': True},
+                          "param1 alt": {'bullish': True, 'bearish': True},
+                          "param2 alt": {'bullish': True, 'bearish': True},
+                          "param3 alt": {'bullish': True, 'bearish': True},
+                          "param4 alt": {'bullish': True, 'bearish': True}}
         self.cdl_size = 0.00
         self.trade_temp = {"trade param": None,
                            "trade action": None,
@@ -101,38 +93,28 @@ class ExecutionData:
         self.last_trade = self.trade_temp.copy()
         self.trade_entry_copy = False
 
-    def reset(self):
-        self.can_trade = {"param1": {'bullish': True, 'bearish': True},
-                          "param2": {'bullish': True, 'bearish': True},
-                          "param3": {'bullish': True, 'bearish': True},
-                          "param4": {'bullish': True, 'bearish': True},
-                          "param1 alt": {'bullish': True, 'bearish': True},
-                          "param2 alt": {'bullish': True, 'bearish': True},
-                          "param3 alt": {'bullish': True, 'bearish': True},
-                          "param4 alt": {'bullish': True, 'bearish': True}}
-
 
 data_obj = None
 con_obj = None
 msg_obj = None
 sys_inputs = None
 instrument_list = []
-expiry = None
-spot_data = None
-sub_token = None
+expiry = None  # type: datetime.datetime
+spot_data = {}
+sub_token = []
 
-pm = None
-IM = None
+pm = None  # type: PositionManager
+IM = None  # type: IndicatorManager
 
-chart = None
-psar = None
-st = None
-atr = None
-stoch = None
-pp = None
-trade_dir = None
+chart = None  # type: indicators.CandleSticksChart
+psar = None  # type: indicators.ParabolicSAR
+st = None  # type: indicators.Supertrend
+atr = None  # type: indicators.AverageTrueRange
+stoch = None  # type: indicators.Stochastic
+pp = None  # type: indicators.PivotPoints
+trade_dir = None  # type: pd.DataFrame
 
-exc_log = None
+exc_log = None  # type: ExecutionLogic
 exc_data = ExecutionData()
 
 
@@ -288,6 +270,12 @@ def system_setup(inputs):  # add proper use of inputs
     indicators_used.append(pp)
     IM.add_indicators(indicators_used)
 
+    msg_obj.usermessages.info(f'psar : {psar.PSAR} trend({psar.trend})')
+    msg_obj.usermessages.info(f'atr : {atr.ATR}')
+    msg_obj.usermessages.info(f'supertrend : {st.supertrend} trend({st.trend})')
+    msg_obj.usermessages.info(f'stoch : k({stoch.k_value}) d({stoch.d_value})')
+    msg_obj.usermessages.info(f'pivots : {pp.pivots}')
+
     exc_log = ExecutionLogic(timeframe=timeframe)
 
     trade_df = pd.read_csv("resources/ATR_BNF_disc.csv")
@@ -300,6 +288,7 @@ def system_setup(inputs):  # add proper use of inputs
 def entries():
     global chart, psar, atr, stoch, pp, trade_dir, exc_data
 
+    msg_obj.usermessages.info(f'candle :{chart.closed_cdl}')
     t_stp = chart.closed_time
     if exc_data.in_trade:
         exc_data.trade_entry_copy = False
@@ -319,6 +308,7 @@ def entries():
     exc_data.trade_entry_copy = False
 
     param = ""
+    msg_obj.usermessages.info(f'psar {psar.trend} st {st.trend}')
     # parameter determinations
     if psar.trend > 0 and st.trend > 0:
         # PSAR buy ST buy
@@ -505,6 +495,6 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
 def ATR_trigger_stop():
     global msg_obj, kws1
     msg_obj.usermessages.info("Stopping things")
-    # TODO add square-off funtions
+    # TODO add square-off functions
     msg_obj.usermessages.info("perform square-off")
     kws1.stop()
