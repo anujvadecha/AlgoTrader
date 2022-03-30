@@ -1,10 +1,15 @@
 import datetime
+import logging
+
 import pandas as pd
 from ATR_Utils.execution_logic import ExecutionLogic
 from ATR_Utils.indicator_manager import IndicatorManager
 from ATR_Utils.position_manager import PositionManager
 from ATR_Utils.positions import Position
 import ATR_Utils.indicators as indicators
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 # classes
@@ -186,6 +191,7 @@ def fill_orders(tick):  # redo
                 exc_data.running_pos_type = "SHORT"
         msg_obj.usermessages.info(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
+        msg_obj.usermessages.info(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
 
 
 def fill_orders2(ticks):  # redo
@@ -225,7 +231,7 @@ def fill_orders2(ticks):  # redo
                     tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "SHORT"
         msg_obj.usermessages.info(
-            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['timestamp']}")
 
 
 def system_setup(inputs):  # add proper use of inputs
@@ -326,7 +332,7 @@ def entries():
         # PSAR sell ST sell
         if atr.ATR < candle_size:
             param = "param4"
-
+    LOGGER.debug('found param')
     if param == "":
         return
     # alternate condition check
@@ -358,7 +364,7 @@ def entries():
                 if dec['stoch'] == stoch_sig:
                     if dec['pivot'] == pivot_range:
                         trade_type = (dec['decision'])
-
+    LOGGER.debug('found trade type')
     if trade_type == "no_trade":
         return
 
@@ -372,6 +378,7 @@ def entries():
     exc_data.in_trade = True
 
     exc_data.can_trade[final_param][candle_type] = False
+    LOGGER.debug('exit entries')
 
 
 def exits():
@@ -384,7 +391,7 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
-                msg_obj.usermessages.info("target reached")
+                msg_obj.usermessages.info(f"target reached @ {chart.running_cdl['close']}")
         else:
             if chart.running_cdl["close"] <= exc_data.trade["target"]:
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
@@ -392,7 +399,7 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
-                msg_obj.usermessages.info("target reached")
+                msg_obj.usermessages.info(f"target reached @ {chart.running_cdl['close']}")
     return
 
 
@@ -404,7 +411,7 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.usermessages.info("stoploss")
+                msg_obj.usermessages.info(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -413,7 +420,7 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.usermessages.info("stoploss")
+                msg_obj.usermessages.info(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -427,9 +434,12 @@ def eod_exit():
 def exc_seq():
     exc_data.trade_exit = False
     eod_exit()
+    LOGGER.debug('calculate exits')
     exits()
+    LOGGER.debug('calculate stops')
     stops()
     if chart.new_candle:
+        LOGGER.debug('calculate entries')
         entries()
 
 
@@ -440,11 +450,12 @@ def exc_seq():
 
 def on_ticks(ws, ticks):
     # Callback to receive ticks.
+    LOGGER.debug('enter im')
     IM.new_ticks(ticks)
+    LOGGER.debug('enter exc')
     exc_log.execute()
+    LOGGER.debug('enter fo')
     fill_orders2(ticks)
-    if chart.new_candle:
-        print("--------------------")
 
 
 def on_connect(ws, response):
@@ -465,6 +476,9 @@ def on_close(ws, code, reason):
 def on_order_update(ws, data):
     print(data)
 
+
+def on_message(ws,data,isbinary):
+    print(data)
 
 # Assign the callbacks.
 
@@ -489,7 +503,11 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
     kws1.on_connect = on_connect
     kws1.on_close = on_close
     kws1.on_order_update = on_order_update
+    kws1.on_message = on_message
+
     kws1.connect(threaded=True)
+
+    # backtest()
 
 
 def ATR_trigger_stop():
@@ -498,3 +516,47 @@ def ATR_trigger_stop():
     # TODO add square-off functions
     msg_obj.usermessages.info("perform square-off")
     kws1.stop()
+
+
+def backtest():
+    global data_obj, spot_data
+    from_date = datetime.datetime.now()
+    to_date = datetime.datetime.now()
+    hist = data_obj.historical_data(spot_data["instrument_token"], from_date.strftime("%Y-%m-%d"), to_date.strftime("%Y-%m-%d"), 'minute')
+    hist_df = pd.DataFrame(hist)
+    hist_df["cum_vol"] = hist_df["volume"].cumsum()
+    print(hist_df.head())
+    print(hist_df.tail())
+    # build price ticks
+    ticks = []
+    for index, row in hist_df.iterrows():
+        temp = {"instrument_token": spot_data["instrument_token"], "timestamp": None, "last_price": None,
+                "volume": None}
+        time = row["date"]
+        temp["timestamp"] = time
+        temp["last_price"] = row["open"]
+        temp["volume"] = row["cum_vol"] - 300
+        if index == 0:
+            temp["volume"] = 0
+        temp = [temp]
+        ticks.append(temp.copy())
+        del temp
+        temp = {"instrument_token": spot_data["instrument_token"], "timestamp": time + datetime.timedelta(seconds=12),
+                "last_price": row["high"], "volume": row["cum_vol"] - 200}
+        temp = [temp]
+        ticks.append(temp.copy())
+        del temp
+        temp = {"instrument_token": spot_data["instrument_token"], "timestamp": time + datetime.timedelta(seconds=12),
+                "last_price": row["low"], "volume": row["cum_vol"] - 100}
+        temp = [temp]
+        ticks.append(temp.copy())
+        del temp
+        temp = {"instrument_token": spot_data["instrument_token"], "timestamp": time + datetime.timedelta(seconds=12),
+                "last_price": row["close"], "volume": row["cum_vol"]}
+        temp = [temp]
+        ticks.append(temp.copy())
+        del temp
+    ticks[-1][0]["timestamp"] = ticks[-1][0]["timestamp"] + datetime.timedelta(minutes=2)
+
+    for tick in ticks:
+        on_ticks(0, tick)
