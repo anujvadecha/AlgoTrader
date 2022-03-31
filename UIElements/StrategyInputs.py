@@ -2,6 +2,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog, QComboBox
 from Managers.StrategyManager import StrategyManager
+from UIElements.ExtendedComboBox import ExtendedComboBox
 
 
 class StrategyInputBox(object):
@@ -108,7 +109,7 @@ class StrategyInputBox(object):
         self.strategyInputs.addRow(label,inputextend)
 
     def addAttrList(self, label, input):
-        inputExtend = QComboBox(self.formLayoutWidget)
+        inputExtend = ExtendedComboBox(self.formLayoutWidget)
         inputExtend.addItems(input)
         self.strategyInputTracker[label] = inputExtend
         self.strategyInputs.addRow(label, inputExtend)
