@@ -469,8 +469,8 @@ def on_connect(ws, response):
 def on_close(ws, code, reason):
     # On connection close stop the event loop.
     # Reconnection will not happen after executing `ws.stop()`
-    print(f"connection closed {reason}")
-    ws.stop()
+    LOGGER.info(f"connection closed {reason}")
+    # ws.stop()
 
 
 def on_order_update(ws, data):
