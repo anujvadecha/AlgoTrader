@@ -236,7 +236,7 @@ class Choppy(Strategy):
             "instrument": [ "NIFTY 50",  "BANKNIFTY" ],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
-            "option_quantity" : "50",
+            "option_quantity": "50",
             "option_type": ["WEEKLY", "MONTHLY"],
             "option_side": ["CE", "PE"]
         }
@@ -320,7 +320,7 @@ class Choppy(Strategy):
     def schedule_tasks(self):
         # TODO To change scheduling to something like 10 seconds
         # schedule.every(1).minutes.do(self.calculate_triggers)
-        schedule.every(2).seconds.do(self.calculate_triggers)
+        schedule.every(0.5).seconds.do(self.calculate_triggers)
 
     def stop(self):
         super().stop()
