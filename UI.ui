@@ -67,7 +67,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -220,13 +220,6 @@
                    <widget class="QLabel" name="label_7">
                     <property name="text">
                      <string>Total PNL : 1414</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_8">
-                    <property name="text">
-                     <string>Mode : LIVE</string>
                     </property>
                    </widget>
                   </item>
@@ -413,7 +406,7 @@
            </property>
            <widget class="QTabWidget" name="brokerInformation">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="Orders">
              <attribute name="title">
@@ -765,6 +758,11 @@
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="scannerPage">
+       <attribute name="title">
+        <string>Scanners</string>
+       </attribute>
       </widget>
      </widget>
     </item>

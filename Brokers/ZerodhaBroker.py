@@ -72,7 +72,8 @@ class ZerodhaBroker(Broker):
         pass
 
     def on_close(broker, ws, code, reason):
-        ws.stop()
+        pass
+        # ws.stop()
 
     def __readInstrumentsfromCsv(self):
         with open(os.getcwd()+"/BrokerCache/instruments.csv", "r") as f:
