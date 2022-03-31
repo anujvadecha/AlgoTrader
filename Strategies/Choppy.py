@@ -16,26 +16,6 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 
-# class ChoppyRanges(enum.Enum):
-#     greater_r3 = ">r3"
-#     r3_r2 = "r3-r2"
-#     r2_pdh = "r2-pdh"
-#     r2_r1 = "r2-r1"
-#     pdh_r1 = "pdh-r1"
-#     r1_pdh = "r1-pdh"
-#     r1_tc = "r1-tc"
-#     pdh_tc = "pdh-tc"
-#     tc_pp = "tc-pp"
-#     pp_bc = "pp-bc"
-#     bc_pdl = "bc-pdl"
-#     bc_s1 = "bc-s1"
-#     pdl_s1 = "pdl-s1"
-#     s1_pdl = "s1-pdl"
-#     pdl_s2 = "pdl-s2"
-#     s1_s2 = "sl-s2"
-#     s2_s3 = "s2-s3"
-#     less_s3 = "<s3"
-
 class Choppy(Strategy):
     strategy_name = "Choppy"
     trade_limit = 1
@@ -126,45 +106,6 @@ class Choppy(Strategy):
         final_band = upper_bound + "-" + lower_bound
         pivot_range = final_band
         return pivot_range
-
-    # def _calculate_choppy_range(self, candle, pivot_points):
-    #     candle_close = candle["close"]
-    #     if candle_close >= pivot_points["r3"]:
-    #         return ChoppyRanges.greater_r3
-    #     elif candle_close <= pivot_points["r3"] and candle_close >= pivot_points["r2"]:
-    #         return ChoppyRanges.r3_r2
-    #     elif candle_close <= pivot_points["r2"] and candle_close >= pivot_points["pdh"]:
-    #         return ChoppyRanges.r2_pdh
-    #     elif candle_close <= pivot_points["r2"] and candle_close >= pivot_points["r1"]:
-    #         return ChoppyRanges.r2_r1
-    #     elif candle_close <= pivot_points["r1"] and candle_close >= pivot_points["tc"]:
-    #         return ChoppyRanges.r1_tc
-    #     elif candle_close <= pivot_points["r1"] and candle_close >= pivot_points["pdh"]:
-    #         return ChoppyRanges.r1_pdh
-    #     elif candle_close <= pivot_points["pdh"] and candle_close >= pivot_points["r1"]:
-    #         return ChoppyRanges.pdh_r1
-    #     elif candle_close <= pivot_points["pdh"] and candle_close >= pivot_points["tc"]:
-    #         return ChoppyRanges.pdh_tc
-    #     elif candle_close <= pivot_points["tc"] and candle_close >= pivot_points["pp"]:
-    #         return ChoppyRanges.tc_pp
-    #     elif candle_close <= pivot_points["pp"] and candle_close >= pivot_points["bc"]:
-    #         return ChoppyRanges.pp_bc
-    #     elif candle_close <= pivot_points["bc"] and candle_close >= pivot_points["pdl"]:
-    #         return ChoppyRanges.bc_pdl
-    #     elif candle_close <= pivot_points["bc"] and candle_close >= pivot_points["s1"]:
-    #         return ChoppyRanges.bc_s1
-    #     elif candle_close <= pivot_points["pdl"] and candle_close >= pivot_points["s1"]:
-    #         return ChoppyRanges.pdl_s1
-    #     elif candle_close <= pivot_points["s1"] and candle_close >= pivot_points["pdl"]:
-    #         return ChoppyRanges.s1_pdl
-    #     elif candle_close <= pivot_points["pdl"] and candle_close >= pivot_points["s2"]:
-    #         return ChoppyRanges.pdl_s2
-    #     elif candle_close <= pivot_points["s1"] and candle_close >= pivot_points["s2"]:
-    #         return ChoppyRanges.s1_s2
-    #     elif candle_close <= pivot_points["s2"] and candle_close >= pivot_points["s3"]:
-    #         return ChoppyRanges.s2_s3
-    #     elif candle_close <= pivot_points["s3"]:
-    #         return ChoppyRanges.less_s3
 
     def place_entry_order(self, side, identifier=None):
         self.messages.usermessages.info(
@@ -318,8 +259,6 @@ class Choppy(Strategy):
             self.stop()
 
     def schedule_tasks(self):
-        # TODO To change scheduling to something like 10 seconds
-        # schedule.every(1).minutes.do(self.calculate_triggers)
         schedule.every(0.5).seconds.do(self.calculate_triggers)
 
     def stop(self):
