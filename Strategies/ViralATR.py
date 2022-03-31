@@ -38,13 +38,13 @@ class ViralATR(Strategy):
         return inputs
 
     def define_attributes(self):
-        print("demo strategy define inputs called")
+        print("ATR strategy define inputs called")
         self.attributes = self.attributes + ['input_file']
 
     def on_create(self, inputs):
         # self.x = inputs["x"]
         # self.y = inputs["y"]
-        print(f"on create for strategy demo called")
+        print(f"on create for strategy ATR called")
         ATR_trigger_start(connection_object=self.broker.get_connection_object(
         ), data_connection_object=self.data_broker.get_connection_object(), ticker_connection_object=self.data_broker.get_ticker_connection(), inputs=inputs, messaging=self.messages)
 
