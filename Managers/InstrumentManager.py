@@ -2,7 +2,7 @@ from Models.Models import Instrument
 
 
 class InstrumentManager():
-    
+
     instrument_list=[]
 
     def get_instrument_from_symbol(self,symbol):
@@ -10,6 +10,21 @@ class InstrumentManager():
             if(instrument.trading_symbol==symbol):
                 return instrument
         return None
+
+    def get_futures_for_instrument(self, symbol=None, expiry=None):
+        instrument_list = []
+        if symbol != None:
+            for instrument in self.instrument_list:
+                if instrument.name == symbol and instrument.instrument_type== "FUT":
+                    if expiry:
+                        if instrument.expiry == expiry:
+                            instrument_list.append(instrument)
+                            return instrument
+                    else:
+                        instrument_list.append(instrument)
+            return instrument_list
+        raise Exception("FINSTRUMENT NOT FOUND "+str(symbol))
+
 
     def find_instrument(self,symbol=None,token=None):
         if(symbol!=None):

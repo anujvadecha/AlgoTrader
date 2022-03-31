@@ -8,6 +8,7 @@ from dateutil.tz import tzoffset
 from Core.Enums import CandleInterval
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
+from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Models.Models import Instrument
 import logging
@@ -227,11 +228,17 @@ class Choppy(Strategy):
         self.subscribe(self.instrument, self.on_ticks)
 
     def define_inputs(self):
+        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
+        order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
+        order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
         return {
             "input_file": "resources/Choppy_conditions.csv",
-            "instrument": "NIFTY 50",
-            "order_instrument": "NIFTY 50",
-            "order_quantity": "50"
+            "instrument": [ "NIFTY 50",  "BANKNIFTY" ],
+            "order_instrument": order_instrument_names,
+            "order_quantity": "50",
+            "option_quantity" : "50",
+            "option_type": ["WEEKLY", "MONTHLY"],
+            "option_side": ["CE", "PE"]
         }
 
     def on_ticks(self, tick):
