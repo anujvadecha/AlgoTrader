@@ -175,11 +175,12 @@ class Choppy(Strategy):
         return {
             "input_file": "resources/Choppy_conditions.csv",
             "instrument": [ "NIFTY 50",  "BANKNIFTY" ],
+            "orders_type": [ "FUTURES_ONLY", "OPTIONS_ONLY", "FUTURE_AND_OPTIONS"],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
             "option_quantity": "50",
             "option_type": ["WEEKLY", "MONTHLY"],
-            "option_side": ["CE", "PE"]
+            "option_side": ["CE", "PE"],
         }
 
     def on_ticks(self, tick):
