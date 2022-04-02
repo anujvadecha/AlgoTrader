@@ -51,7 +51,7 @@ logging_config = {
                 'formatter': 'verbose'
             },
             'algo_trader_log_file': {
-                'level': 'INFO',
+                'level': 'DEBUG',
                 'class': 'logging.handlers.RotatingFileHandler',
                 'filename': os.path.join('', 'algotrader.log'),
                 'maxBytes': 16777216,  # 16megabytes
