@@ -49,11 +49,13 @@ class GUIFunctions():
             item.setText(j, str(running_strategy[list(running_strategy.keys())[j]]))
 
     def add_user_message(self,message):
+        LOGGER.info(f"Adding user message {message}")
         item = QtWidgets.QTreeWidgetItem(self.GUI.userMessageDisplay)
         for j in range(0, len(list(message.keys()))):
             item.setText(j, str(message[list(message.keys())[j]]))
 
     def add_broker_message(self,message):
+        LOGGER.info(f"Adding broker message {message}")
         item = QtWidgets.QTreeWidgetItem(self.GUI.brokerMessagesDisplay)
         for j in range(0, len(list(message.keys()))):
             item.setText(j, str(message[list(message.keys())[j]]))

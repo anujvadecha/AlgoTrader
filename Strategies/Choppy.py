@@ -180,7 +180,7 @@ class Choppy(Strategy):
             "order_quantity": "50",
             "option_quantity": "50",
             "option_type": ["WEEKLY", "MONTHLY"],
-            "option_side": ["CE", "PE"],
+            "option_side": ["BUY", "SELL"],
         }
 
     def on_ticks(self, tick):
