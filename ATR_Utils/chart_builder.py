@@ -37,7 +37,7 @@ class ChartBuilder:
         if tick_data is None:
             print("didn't find symbol tick")
             return
-        tick_time = (tick_data["timestamp"].hour * 100) + tick_data["timestamp"].minute
+        tick_time = (tick_data["exchange_timestamp"].hour * 100) + tick_data["exchange_timestamp"].minute
         if tick_time < 915:
             return
 
@@ -52,27 +52,27 @@ class ChartBuilder:
                 # print(self.running_cdl)
                 self.new_candle = True
                 self.running_cdl = ChartBuilder.CANDLE.copy()
-                self.running_cdl["timestamp"] = tick_data["timestamp"]
+                self.running_cdl["timestamp"] = tick_data["exchange_timestamp"]
                 self.running_cdl["open"] = tick_data["last_price"]
                 self.running_cdl["high"] = tick_data["last_price"]
                 self.running_cdl["low"] = tick_data["last_price"]
                 self.running_cdl["close"] = tick_data["last_price"]
-                self.running_cdl["vol"] += tick_data["volume"] - self.last_tick["volume"]
+                self.running_cdl["vol"] += tick_data["volume_traded"] - self.last_tick["volume_traded"]
             else:
                 self.running_cdl["close"] = tick_data["last_price"]
                 if tick_data["last_price"] > self.running_cdl["high"]:
                     self.running_cdl["high"] = tick_data["last_price"]
                 if tick_data["last_price"] < self.running_cdl["low"]:
                     self.running_cdl["low"] = tick_data["last_price"]
-                self.running_cdl["vol"] += tick_data["volume"] - self.last_tick["volume"]
+                self.running_cdl["vol"] += tick_data["volume_traded"] - self.last_tick["volume_traded"]
         else:
-            tick_time = self._sync_chart(tick_data["timestamp"])
+            tick_time = self._sync_chart(tick_data["exchange_timestamp"])
             self.running_cdl["timestamp"] = tick_time
             self.running_cdl["open"] = tick_data["last_price"]
             self.running_cdl["high"] = tick_data["last_price"]
             self.running_cdl["low"] = tick_data["last_price"]
             self.running_cdl["close"] = tick_data["last_price"]
-            print(f'first tick {tick_data["timestamp"]}')
+            print(f'first tick {tick_data["exchange_timestamp"]}')
         # process volume
         self.last_tick = tick_data
         return self.new_candle

@@ -449,14 +449,17 @@ def exc_seq():
 
 
 def on_ticks(ws, ticks):
-    # Callback to receive ticks.
-    LOGGER.debug(f'ticks_rec : {ticks}')
-    LOGGER.debug('enter im')
-    IM.new_ticks(ticks)
-    LOGGER.debug('enter exc')
-    exc_log.execute()
-    LOGGER.debug('enter fo')
-    fill_orders2(ticks)
+    try:
+        # Callback to receive ticks.
+        LOGGER.debug(f'ticks_rec : {ticks}')
+        LOGGER.debug('enter im')
+        IM.new_ticks(ticks)
+        LOGGER.debug('enter exc')
+        exc_log.execute()
+        LOGGER.debug('enter fo')
+        fill_orders2(ticks)
+    except Exception as e:
+        LOGGER.debug(e)
 
 
 def on_connect(ws, response):
