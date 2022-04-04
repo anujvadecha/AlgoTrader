@@ -123,6 +123,15 @@ class Choppy(Strategy):
                                        type="CNC")
         self.entry = False
 
+    def _initiate_inputs(self, inputs):
+        self.instrument = Instrument(symbol=inputs["instrument"])
+        self.order_instrument = Instrument(symbol=inputs["order_instrument"])
+        self.option_side = inputs["option_side"]
+        self.option_quantity = inputs["option_quantity"]
+        self.option_type = inputs["option_type"]
+        self.order_quantity = int(inputs["order_quantity"])
+
+
     def on_create(self, inputs):
         logging.info("Adding test log")
         input_file = inputs['input_file']
@@ -134,10 +143,8 @@ class Choppy(Strategy):
         conditions = input_df.to_dict('records')
         from_date = datetime.now() - timedelta(days=7)
         to_date = datetime.now() - timedelta(hours=6)
-        self.instrument = Instrument(symbol=inputs["instrument"])
-        self.order_instrument = Instrument(symbol=inputs["order_instrument"])
-        self.order_quantity = int(inputs["order_quantity"])
         interval = CandleInterval.day
+        self._initiate_inputs(inputs)
         indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
                                                       interval=interval)
         self.yesterdays_pivot_points = indicator_values[-2]
@@ -151,7 +158,7 @@ class Choppy(Strategy):
                                                                                interval=CandleInterval.fifteen_min)
         last_candle = None
         for data in yesterdays_data:
-            if data['date'].date() == (self.yesterdays_date).date():
+            if data['date'].date() == self.yesterdays_date.date():
                 last_candle = data
         print(f"yesterdays close {last_candle}")
         self.yesterdays_candle = last_candle
@@ -260,7 +267,7 @@ class Choppy(Strategy):
             self.stop()
 
     def schedule_tasks(self):
-        schedule.every(0.5).seconds.do(self.calculate_triggers)
+        schedule.every(1).seconds.do(self.calculate_triggers)
 
     def stop(self):
         super().stop()
