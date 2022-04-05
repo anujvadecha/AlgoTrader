@@ -202,7 +202,7 @@ def fill_orders2(ticks):  # redo
             tick_data = tick
     if exc_data.trade_entry:
         exc_data.trade_entry = False
-        exc_data.trade["entry_time"] = tick_data["timestamp"]
+        exc_data.trade["entry_time"] = tick_data["exchange_timestamp"]
         exc_data.trade["entry_price"] = tick_data["last_price"]
         if "alt" in exc_data.trade["trade param"]:
             if exc_data.trade["trade action"] == "buy":
@@ -231,7 +231,7 @@ def fill_orders2(ticks):  # redo
                     tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "SHORT"
         msg_obj.usermessages.info(
-            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['timestamp']}")
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
 
 
 def system_setup(inputs):  # add proper use of inputs
