@@ -202,7 +202,7 @@ def fill_orders2(ticks):  # redo
             tick_data = tick
     if exc_data.trade_entry:
         exc_data.trade_entry = False
-        exc_data.trade["entry_time"] = tick_data["timestamp"]
+        exc_data.trade["entry_time"] = tick_data["exchange_timestamp"]
         exc_data.trade["entry_price"] = tick_data["last_price"]
         if "alt" in exc_data.trade["trade param"]:
             if exc_data.trade["trade action"] == "buy":
@@ -231,7 +231,7 @@ def fill_orders2(ticks):  # redo
                     tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "SHORT"
         msg_obj.usermessages.info(
-            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['timestamp']}")
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
 
 
 def system_setup(inputs):  # add proper use of inputs
@@ -239,7 +239,7 @@ def system_setup(inputs):  # add proper use of inputs
     populates the global variables
     """
     global instrument_list, expiry, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
-        data_obj, exc_log, trade_dir, sub_token
+        data_obj, exc_log, trade_dir, sub_token, msg_obj
 
     instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
     expiry = coming_expiry()
@@ -253,7 +253,7 @@ def system_setup(inputs):  # add proper use of inputs
         if instru['tradingsymbol'] == spot_sym:
             spot_data = instru
             break
-
+    LOGGER.debug(f'instrument : {spot_data}')
     pm = PositionManager(data_obj)
 
     # indicator and chart setup
@@ -292,7 +292,7 @@ def system_setup(inputs):  # add proper use of inputs
 
 
 def entries():
-    global chart, psar, atr, stoch, pp, trade_dir, exc_data
+    global chart, psar, atr, stoch, pp, trade_dir, exc_data, msg_obj
 
     msg_obj.usermessages.info(f'candle :{chart.closed_cdl}')
     t_stp = chart.closed_time
@@ -449,13 +449,17 @@ def exc_seq():
 
 
 def on_ticks(ws, ticks):
-    # Callback to receive ticks.
-    LOGGER.debug('enter im')
-    IM.new_ticks(ticks)
-    LOGGER.debug('enter exc')
-    exc_log.execute()
-    LOGGER.debug('enter fo')
-    fill_orders2(ticks)
+    try:
+        # Callback to receive ticks.
+        LOGGER.debug(f'ticks_rec : {ticks}')
+        LOGGER.debug('enter im')
+        IM.new_ticks(ticks)
+        LOGGER.debug('enter exc')
+        exc_log.execute()
+        LOGGER.debug('enter fo')
+        fill_orders2(ticks)
+    except Exception as e:
+        LOGGER.debug(e)
 
 
 def on_connect(ws, response):
@@ -477,8 +481,8 @@ def on_order_update(ws, data):
     print(data)
 
 
-def on_message(ws,data,isbinary):
-    print(data)
+# def on_message(ws,data,isbinary):
+#     print(data)
 
 # Assign the callbacks.
 
@@ -503,7 +507,7 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
     kws1.on_connect = on_connect
     kws1.on_close = on_close
     kws1.on_order_update = on_order_update
-    kws1.on_message = on_message
+    # kws1.on_message = on_message
 
     kws1.connect(threaded=True)
 
@@ -515,7 +519,7 @@ def ATR_trigger_stop():
     msg_obj.usermessages.info("Stopping things")
     # TODO add square-off functions
     msg_obj.usermessages.info("perform square-off")
-    kws1.stop()
+    # kws1.stop()
 
 
 def backtest():
