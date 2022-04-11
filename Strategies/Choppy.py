@@ -180,7 +180,7 @@ class Choppy(Strategy):
         order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
         instruments = ["NIFTY 50"]
-        instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
+        instruments.extend(instrument.tradingsymbol for instrument in InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
         return {
             "input_file": "resources/Choppy_conditions.csv",
             "instrument": instruments,
