@@ -364,3 +364,67 @@
 [2022-04-12T23:23:30+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:30.205845 calculate triggers called
 [2022-04-12T23:23:30+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
 [2022-04-12T23:23:30+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A30&to=2022-04-12+23%3A23%3A30&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:31+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:30, next run: 2022-04-12 23:23:31)
+[2022-04-12T23:23:31+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:31.559964 calculate triggers called
+[2022-04-12T23:23:31+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:31+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A31&to=2022-04-12+23%3A23%3A31&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:33+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:31, next run: 2022-04-12 23:23:32)
+[2022-04-12T23:23:33+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:33.116001 calculate triggers called
+[2022-04-12T23:23:33+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:33+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A33&to=2022-04-12+23%3A23%3A33&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:34+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:33, next run: 2022-04-12 23:23:34)
+[2022-04-12T23:23:34+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:34.471294 calculate triggers called
+[2022-04-12T23:23:34+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:34+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A34&to=2022-04-12+23%3A23%3A34&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:35+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:34, next run: 2022-04-12 23:23:35)
+[2022-04-12T23:23:35+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:35.810165 calculate triggers called
+[2022-04-12T23:23:35+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:36+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A35&to=2022-04-12+23%3A23%3A35&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:37+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:36, next run: 2022-04-12 23:23:37)
+[2022-04-12T23:23:37+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:37.164940 calculate triggers called
+[2022-04-12T23:23:37+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:37+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A37&to=2022-04-12+23%3A23%3A37&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:38+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:37, next run: 2022-04-12 23:23:38)
+[2022-04-12T23:23:38+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:38.561894 calculate triggers called
+[2022-04-12T23:23:38+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:38+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A38&to=2022-04-12+23%3A23%3A38&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:40+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:38, next run: 2022-04-12 23:23:39)
+[2022-04-12T23:23:40+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:40.268837 calculate triggers called
+[2022-04-12T23:23:40+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:40+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A40&to=2022-04-12+23%3A23%3A40&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:41+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:40, next run: 2022-04-12 23:23:41)
+[2022-04-12T23:23:41+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:41.713009 calculate triggers called
+[2022-04-12T23:23:41+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:42+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A41&to=2022-04-12+23%3A23%3A41&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:44+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:42, next run: 2022-04-12 23:23:43)
+[2022-04-12T23:23:44+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:44.553925 calculate triggers called
+[2022-04-12T23:23:44+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:44+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A44&to=2022-04-12+23%3A23%3A44&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:46+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:44, next run: 2022-04-12 23:23:45)
+[2022-04-12T23:23:46+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:46.504012 calculate triggers called
+[2022-04-12T23:23:46+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:46+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A46&to=2022-04-12+23%3A23%3A46&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:49+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:46, next run: 2022-04-12 23:23:47)
+[2022-04-12T23:23:49+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:49.708600 calculate triggers called
+[2022-04-12T23:23:49+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:50+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A49&to=2022-04-12+23%3A23%3A49&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:51+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:50, next run: 2022-04-12 23:23:51)
+[2022-04-12T23:23:51+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:51.134893 calculate triggers called
+[2022-04-12T23:23:51+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:51+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A51&to=2022-04-12+23%3A23%3A51&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:52+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:51, next run: 2022-04-12 23:23:52)
+[2022-04-12T23:23:52+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:52.550729 calculate triggers called
+[2022-04-12T23:23:52+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:52+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A52&to=2022-04-12+23%3A23%3A52&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:54+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:52, next run: 2022-04-12 23:23:53)
+[2022-04-12T23:23:54+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:54.201323 calculate triggers called
+[2022-04-12T23:23:54+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:54+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A54&to=2022-04-12+23%3A23%3A54&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:55+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:54, next run: 2022-04-12 23:23:55)
+[2022-04-12T23:23:55+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:55.654406 calculate triggers called
+[2022-04-12T23:23:55+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:56+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A55&to=2022-04-12+23%3A23%3A55&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
+[2022-04-12T23:23:57+0530] INFO [schedule: run: 465] Running job Every 1 second do calculate_triggers() (last run: 2022-04-12 23:23:56, next run: 2022-04-12 23:23:57)
+[2022-04-12T23:23:57+0530] INFO [Strategies.Choppy: calculate_triggers: 246] 2022-04-12 23:23:57.320899 calculate triggers called
+[2022-04-12T23:23:57+0530] DEBUG [urllib3.connectionpool: _new_conn: 959] Starting new HTTPS connection (1): api.kite.trade:443
+[2022-04-12T23:23:57+0530] DEBUG [urllib3.connectionpool: _make_request: 437] https://api.kite.trade:443 "GET /instruments/historical/256265/15minute?instrument_token=256265&from=2022-04-12+17%3A23%3A57&to=2022-04-12+23%3A23%3A57&interval=15minute&continuous=0&oi=0 HTTP/1.1" 200 None
