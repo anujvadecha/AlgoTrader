@@ -185,9 +185,9 @@ class GUIFunctions():
         for i in range(child_count):
             item = root.child(i)
             checked = item.isSelected()
-            portfolio_id = item.text(0)
-            StrategyManager.get_instance().stop_strategy(portfolio_id=portfolio_id)
-
+            if checked:
+                portfolio_id = item.text(0)
+                StrategyManager.get_instance().stop_strategy(portfolio_id=portfolio_id)
         LOGGER.info("STOP BUTTON CLICKED")
 
     def pauseButtonClicked(self):
