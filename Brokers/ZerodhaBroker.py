@@ -127,7 +127,7 @@ class ZerodhaBroker(Broker):
         messages.orders.addAll(self.get_orders())
 
     def get_ticker_connection(self):
-        return self.kws
+        return KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=10000)
 
     def load_instruments(self):
         self.__instrument_store()
@@ -223,7 +223,9 @@ class ZerodhaBroker(Broker):
         return instruments
 
     def get_connection_object(self):
-        return self.kite
+        kite = KiteConnect(api_key=self.apikey)
+        kite.set_access_token(self.__read_accesstocken())
+        return kite
 
     def __init__(self,config):
         self.initialize(config)

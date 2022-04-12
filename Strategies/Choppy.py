@@ -128,11 +128,15 @@ class Choppy(Strategy):
                     "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else self.instrument.name,
                     strike=targeted_strike_price)
             for optioninstr in option_intruments:
-                if optioninstr.expiry == self.option_expiry:
+                print(optioninstr.tradingsymbol)
+                if str(optioninstr.expiry) == self.option_expiry:
                     self.option_entry_instrument = optioninstr
                     break
+            self.messages.usermessages.info(
+                f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
+
             self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                           quantity=self.order_quantity, type="CNC")
+                                           quantity=self.option_quantity, type="CNC")
 
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
@@ -145,7 +149,7 @@ class Choppy(Strategy):
                                        type="CNC")
         if self.option_entry_instrument:
             self.broker.place_market_order(instrument=self.option_entry_instrument,
-                                           side="SELL", quantity=self.order_quantity,
+                                           side="SELL", quantity=self.option_quantity,
                                            type="CNC")
         self.entry = False
 
@@ -154,7 +158,6 @@ class Choppy(Strategy):
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.option_side = inputs["option_side"]
         self.option_quantity = inputs["option_quantity"]
-        self.option_type = inputs["option_type"]
         self.order_quantity = int(inputs["order_quantity"])
         self.option_expiry = inputs["option_expiry"]
 
@@ -208,7 +211,7 @@ class Choppy(Strategy):
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
         option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
             "BANKNIFTY" )
-        expiries = set(str(instrument.expiry) for instrument in option_intruments)
+        expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
         instruments = ["NIFTY 50",  "NIFTY BANK" ]
         return {
             "input_file": "resources/Choppy_conditions.csv",
