@@ -1,7 +1,9 @@
+from Strategies.ViralATR_nifty import ViralATRNifty
 from Strategies.Choppy import Choppy
 from Strategies.DemoStrategy import DemoStrategy
 from Strategies.ViralATR import ViralATR
 import os
+
 
 live = False
 
@@ -25,6 +27,7 @@ brokers = [
 strategies = {
     "DemoStrategy": DemoStrategy,
     "ViralATR": ViralATR,
+    "ViralATR_NIFTY": ViralATRNifty,
     "Choppy": Choppy
 }
 
@@ -55,6 +58,7 @@ logging_config = {
                 'class': 'logging.handlers.RotatingFileHandler',
                 'filename': os.path.join('', 'algotrader.log'),
                 'maxBytes': 16777216,  # 16megabytes
+                'backupCount': 5,
                 'formatter': 'verbose'
             },
         },
