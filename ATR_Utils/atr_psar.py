@@ -253,7 +253,7 @@ def system_setup(inputs):  # add proper use of inputs
         if instru['tradingsymbol'] == spot_sym:
             spot_data = instru
             break
-    LOGGER.debug(f'instrument : {spot_data}')
+    # LOGGER.debug(f'instrument : {spot_data}')
     pm = PositionManager(data_obj)
 
     # indicator and chart setup
@@ -332,7 +332,7 @@ def entries():
         # PSAR sell ST sell
         if atr.ATR < candle_size:
             param = "param4"
-    LOGGER.debug('found param')
+    # LOGGER.debug('found param')
     if param == "":
         return
     # alternate condition check
@@ -364,7 +364,7 @@ def entries():
                 if dec['stoch'] == stoch_sig:
                     if dec['pivot'] == pivot_range:
                         trade_type = (dec['decision'])
-    LOGGER.debug('found trade type')
+    # LOGGER.debug('found trade type')
     if trade_type == "no_trade":
         return
 
@@ -378,7 +378,7 @@ def entries():
     exc_data.in_trade = True
 
     exc_data.can_trade[final_param][candle_type] = False
-    LOGGER.debug('exit entries')
+    # LOGGER.debug('exit entries')
 
 
 def exits():
@@ -434,12 +434,12 @@ def eod_exit():
 def exc_seq():
     exc_data.trade_exit = False
     eod_exit()
-    LOGGER.debug('calculate exits')
+    # LOGGER.debug('calculate exits')
     exits()
-    LOGGER.debug('calculate stops')
+    # LOGGER.debug('calculate stops')
     stops()
     if chart.new_candle:
-        LOGGER.debug('calculate entries')
+        # LOGGER.debug('calculate entries')
         entries()
 
 
@@ -451,15 +451,15 @@ def exc_seq():
 def on_ticks(ws, ticks):
     try:
         # Callback to receive ticks.
-        LOGGER.debug(f'ticks_rec : {ticks}')
-        LOGGER.debug('enter im')
+        # LOGGER.debug(f'ticks_rec : {ticks}')
+        # LOGGER.debug('enter im')
         IM.new_ticks(ticks)
-        LOGGER.debug('enter exc')
+        # LOGGER.debug('enter exc')
         exc_log.execute()
-        LOGGER.debug('enter fo')
+        # LOGGER.debug('enter fo')
         fill_orders2(ticks)
     except Exception as e:
-        LOGGER.debug(e)
+        LOGGER.info(f"exception : {e}")
 
 
 def on_connect(ws, response):
