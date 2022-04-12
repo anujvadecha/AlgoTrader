@@ -108,10 +108,32 @@ class Choppy(Strategy):
         return pivot_range
 
     def place_entry_order(self, side, identifier=None):
+        self.option_entry_instrument = None
         self.messages.usermessages.info(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
-        self.broker.place_market_order(instrument=self.order_instrument, side=side,
+        # Futures order
+        if self.order_type != "OPTIONS_ONLY":
+            self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
+        # Options order
+        if self.order_type != "FUTURES_ONLY":
+            if self.entry_price % 100 < 50:
+                targeted_strike_price = self.entry_price - self.entry_price%100
+            else:
+                targeted_strike_price = self.entry_price + (100 - self.entry_price % 100)
+            if side=="BUY":
+                option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument("BANKNIFTY" if self.instrument.tradingsymbol=="NIFTY BANK" else self.instrument.name, strike=targeted_strike_price)
+            else:
+                option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
+                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else self.instrument.name,
+                    strike=targeted_strike_price)
+            for optioninstr in option_intruments:
+                if optioninstr.expiry == self.option_expiry:
+                    self.option_entry_instrument = optioninstr
+                    break
+            self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
+                                           quantity=self.order_quantity, type="CNC")
+
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
 
@@ -121,6 +143,10 @@ class Choppy(Strategy):
         self.broker.place_market_order(instrument=self.order_instrument,
                                        side=side, quantity=self.order_quantity,
                                        type="CNC")
+        if self.option_entry_instrument:
+            self.broker.place_market_order(instrument=self.option_entry_instrument,
+                                           side="SELL", quantity=self.order_quantity,
+                                           type="CNC")
         self.entry = False
 
     def _initiate_inputs(self, inputs):
@@ -130,7 +156,7 @@ class Choppy(Strategy):
         self.option_quantity = inputs["option_quantity"]
         self.option_type = inputs["option_type"]
         self.order_quantity = int(inputs["order_quantity"])
-
+        self.option_expiry = inputs["option_expiry"]
 
     def on_create(self, inputs):
         logging.info("Adding test log")
@@ -147,6 +173,7 @@ class Choppy(Strategy):
         self._initiate_inputs(inputs)
         indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
                                                       interval=interval)
+        self.order_type = inputs["orders_type"]
         self.yesterdays_pivot_points = indicator_values[-2]
         self.yesterdays_date = indicator_values[-1]["date"]
         self.messages.usermessages.info(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
@@ -179,17 +206,19 @@ class Choppy(Strategy):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
         order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
-        instruments = ["NIFTY 50"]
-        instruments.extend(instrument.tradingsymbol for instrument in InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
+        option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
+            "BANKNIFTY" )
+        expiries = set(str(instrument.expiry) for instrument in option_intruments)
+        instruments = ["NIFTY 50",  "NIFTY BANK" ]
         return {
             "input_file": "resources/Choppy_conditions.csv",
             "instrument": instruments,
-            "orders_type": [ "FUTURES_ONLY", "OPTIONS_ONLY", "FUTURE_AND_OPTIONS"],
+            "orders_type": [ "FUTURE_AND_OPTIONS","FUTURES_ONLY", "OPTIONS_ONLY"],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
             "option_quantity": "50",
-            "option_type": ["WEEKLY", "MONTHLY"],
-            "option_side": ["BUY", "SELL"],
+            "option_side": ["BUY"],
+            "option_expiry": list(expiries)
         }
 
     def on_ticks(self, tick):
@@ -206,10 +235,11 @@ class Choppy(Strategy):
             now = datetime.now()
             if now.hour == 3 and now.minute==15 and self.entry:
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
-            if now.minute % 15 == 0:
-                # if now.minute % 1 == 0:
+            # if now.minute % 15 == 0:
+            if now.minute % 1 == 0:
                 #     TODO to uncomment
-                if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
+                if not self.entry and self.number_of_trades < self.trade_limit:
+                        # and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
                     from_date = datetime.now() - timedelta(hours=6)
                     to_date = datetime.now()
@@ -230,13 +260,13 @@ class Choppy(Strategy):
                                         self.entry_price = data['close']
                                         self.entry_side = condition['decision'].upper()
                                         if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
-                                            self.target_points = 40
+                                            self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
                                         if self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
-                                            self.target_points = 60
+                                            self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
                                         if self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
-                                            self.target_points = 60
+                                            self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
                                         if self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
-                                            self.target_points = 40
+                                            self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
                                         self.messages.usermessages.info(
                                             f"Condition {condition} satisfied, triggering order")
                                         self.entry = True
@@ -269,6 +299,7 @@ class Choppy(Strategy):
         except Exception as e:
             self.messages.usermessages.info(f"Failure occured while calculating triggers {e} stopping strategy")
             self.stop()
+            raise e
 
     def schedule_tasks(self):
         schedule.every(1).seconds.do(self.calculate_triggers)

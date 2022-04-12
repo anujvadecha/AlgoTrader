@@ -1,5 +1,7 @@
 from Models.Models import Instrument
+import logging
 
+LOGGER = logging.getLogger(__name__)
 
 class InstrumentManager():
 
@@ -7,7 +9,7 @@ class InstrumentManager():
 
     def get_instrument_from_symbol(self,symbol):
         for instrument in self.instrument_list:
-            if(instrument.trading_symbol==symbol):
+            if instrument.trading_symbol==symbol:
                 return instrument
         return None
 
@@ -25,6 +27,46 @@ class InstrumentManager():
             return instrument_list
         raise Exception("FINSTRUMENT NOT FOUND "+str(symbol))
 
+    def get_call_options_for_instrument(self, symbol=None, expiry=None, strike=None):
+        LOGGER.info("get_call_options_for_instrument called")
+        instrument_list = []
+        if symbol != None:
+            for instrument in self.instrument_list:
+                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type=="CE" :
+                    if expiry:
+                        if instrument.expiry == expiry:
+                            if strike and instrument.strike == strike:
+                                instrument_list.append(instrument)
+                            elif not strike:
+                                instrument_list.append(instrument)
+                            return instrument
+                    else:
+                        if strike and instrument.strike == strike:
+                            instrument_list.append(instrument)
+                        elif not strike:
+                            instrument_list.append(instrument)
+            return instrument_list
+        raise Exception("INSTRUMENT NOT FOUND " + str(symbol))
+    def get_put_options_for_instrument(self, symbol=None, expiry=None, strike=None):
+        LOGGER.info("get_call_options_for_instrument called")
+        instrument_list = []
+        if symbol != None:
+            for instrument in self.instrument_list:
+                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type=="CE" :
+                    if expiry:
+                        if instrument.expiry == expiry:
+                            if strike and instrument.strike == strike:
+                                instrument_list.append(instrument)
+                            elif not strike:
+                                instrument_list.append(instrument)
+                            return instrument
+                    else:
+                        if strike and instrument.strike == strike:
+                            instrument_list.append(instrument)
+                        elif not strike:
+                            instrument_list.append(instrument)
+            return instrument_list
+        raise Exception("INSTRUMENT NOT FOUND " + str(symbol))
 
     def find_instrument(self,symbol=None,token=None):
         if(symbol!=None):

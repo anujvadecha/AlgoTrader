@@ -1,4 +1,6 @@
 from collections import namedtuple
+from datetime import datetime
+
 from dataclasses import dataclass
 # Instrument = namedtuple("Instrument",
 #                         ["instrument_token",
@@ -27,7 +29,7 @@ class Instrument():
             self.name = name
             self.last_price = last_price
             self.expiry = expiry
-            self.strike = strike
+            self.strike = float(strike)
             self.tick_size = tick_size
             self.lot_size = lot_size
             self.instrument_type = instrument_type
@@ -41,8 +43,8 @@ class Instrument():
             self.tradingsymbol = symbolfound.tradingsymbol
             self.name = symbolfound.name
             self.last_price = symbolfound.last_price
-            self.expiry = symbolfound.expiry
-            self.strike = symbolfound.strike
+            self.expiry  = symbolfound.expiry
+            self.strike = float(symbolfound.strike)
             self.tick_size = symbolfound.tick_size
             self.lot_size = symbolfound.lot_size
             self.instrument_type = symbolfound.instrument_type
