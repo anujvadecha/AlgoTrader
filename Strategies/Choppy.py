@@ -149,6 +149,8 @@ class Choppy(Strategy):
                                        side=side, quantity=self.order_quantity,
                                        type="CNC")
         if self.option_entry_instrument:
+            self.add_info_user_message(
+                f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
             self.broker.place_market_order(instrument=self.option_entry_instrument,
                                            side="SELL", quantity=self.option_quantity,
                                            type="CNC")
