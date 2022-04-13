@@ -217,14 +217,14 @@ class Choppy(Strategy):
         expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
         instruments = ["NIFTY 50",  "NIFTY BANK" ]
         return {
-            "input_file": "resources/Choppy_conditions.csv",
             "instrument": instruments,
             "orders_type": [ "FUTURE_AND_OPTIONS","FUTURES_ONLY", "OPTIONS_ONLY"],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
             "option_quantity": "50",
             "option_side": ["BUY"],
-            "option_expiry": list(expiries)
+            "option_expiry": list(expiries),
+            "input_file": "resources/Choppy_conditions.csv",
         }
 
     def on_ticks(self, tick):
