@@ -34,9 +34,10 @@ class Main():
         self.startMainWindow()
 
 
-InstrumentManager.get_instance()
-BrokerManager.get_instance()
-MarketDataManager.get_instance()
-OrderManager.get_instance()
-main= Main()
+
+main = Main()
+# InstrumentManager.get_instance()
+# MarketDataManager.get_instance()
+# OrderManager.get_instance()
+# BrokerManager.get_instance()
 
