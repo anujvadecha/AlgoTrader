@@ -131,12 +131,14 @@ class Choppy(Strategy):
                 if str(optioninstr.expiry) == self.option_expiry:
                     self.option_entry_instrument = optioninstr
                     break
-            self.messages.usermessages.info(
-                f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
+            if  self.option_entry_instrument:
+                self.messages.usermessages.info(
+                    f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
-            self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                           quantity=self.option_quantity, type="CNC")
-
+                self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
+                                               quantity=self.option_quantity, type="CNC")
+            else:
+                self.messages.usermessages.info(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
 
@@ -237,11 +239,11 @@ class Choppy(Strategy):
             now = datetime.now()
             if now.hour == 3 and now.minute==15 and self.entry:
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
-            if now.minute % 15 == 0:
-            # if now.minute % 1 == 0:
+            # if now.minute % 15 == 0:
+            if now.minute % 1 == 0:
                 #     TODO to uncomment
-                if not self.entry and self.number_of_trades < self.trade_limit\
-                        and now.hour == 9 and now.minute == 30:
+                if not self.entry and self.number_of_trades < self.trade_limit:
+                        # and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
                     from_date = datetime.now() - timedelta(hours=6)
                     to_date = datetime.now()
