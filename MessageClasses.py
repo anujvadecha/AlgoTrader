@@ -48,20 +48,20 @@ class Messages():
 
     class UserMessages(messagemodel):
 
-        def info(self, message):
-            message = UserMessage(datetime.now().strftime('%H:%M:%S'), "INFO", message)
+        def info(self, message, portfolio_id=''):
+            message = UserMessage(datetime.now().strftime('%H:%M:%S'), "INFO", portfolio_id,message)
             self.messagefactory.append(asdict(message))
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_user_message(asdict(message))
 
-        def error(self, message):
-            message = UserMessage(str(datetime.now().strftime('%H:%M:%S')), "ERROR", message)
+        def error(self, message, portfolio_id=''):
+            message = UserMessage(str(datetime.now().strftime('%H:%M:%S')),"ERROR",portfolio_id , message)
             self.messagefactory.append(asdict(message))
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_user_message(asdict(message))
 
-        def warning(self, message):
-            message = UserMessage(datetime.now().strftime('%H:%M:%S'), "WARNING", message)
+        def warning(self, message, portfolio_id=''):
+            message = UserMessage(datetime.now().strftime('%H:%M:%S'),"WARNING",portfolio_id, message)
             self.messagefactory.append(asdict(message))
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_user_message(asdict(message))

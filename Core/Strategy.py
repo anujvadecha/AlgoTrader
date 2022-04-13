@@ -61,6 +61,9 @@ class Strategy():
     def schedule_tasks(self):
         pass
 
+    def add_info_user_message(self, message):
+        self.messages.usermessages.info(message ,self.portfolio_id)
+
     def main(self, inputs):
         from MessageClasses import Messages
         self.messages = Messages.getInstance()

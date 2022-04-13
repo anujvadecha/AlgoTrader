@@ -109,7 +109,7 @@ class Choppy(Strategy):
 
     def place_entry_order(self, side, identifier=None):
         self.option_entry_instrument = None
-        self.messages.usermessages.info(
+        self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         # Futures order
         if self.order_type != "OPTIONS_ONLY":
@@ -131,19 +131,19 @@ class Choppy(Strategy):
                 if str(optioninstr.expiry) == self.option_expiry:
                     self.option_entry_instrument = optioninstr
                     break
-            if  self.option_entry_instrument:
-                self.messages.usermessages.info(
+            if self.option_entry_instrument:
+                self.add_info_user_message(
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
                                                quantity=self.option_quantity, type="CNC")
             else:
-                self.messages.usermessages.info(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
+                self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
 
     def place_exit_order(self, side, identifier=None):
-        self.messages.usermessages.info(
+        self.add_info_user_message(
             f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         self.broker.place_market_order(instrument=self.order_instrument,
                                        side=side, quantity=self.order_quantity,
@@ -180,7 +180,7 @@ class Choppy(Strategy):
         self.order_type = inputs["orders_type"]
         self.yesterdays_pivot_points = indicator_values[-2]
         self.yesterdays_date = indicator_values[-1]["date"]
-        self.messages.usermessages.info(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
+        self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
         self.pivot_points = indicator_values[-1]
         from_date = datetime.now() - timedelta(days=5)
         to_date = datetime.now()
@@ -201,8 +201,8 @@ class Choppy(Strategy):
                 "instrument"]:
                 valid_conditions.append(condition)
         self.valid_conditions = valid_conditions
-        self.messages.usermessages.info(f"Pivot points {self.pivot_points}")
-        self.messages.usermessages.info(f"Yesterdays choppy range is {self.yesterdays_choppy_range}")
+        self.add_info_user_message(f"Pivot points {self.pivot_points}")
+        self.add_info_user_message(f"Yesterdays choppy range is {self.yesterdays_choppy_range}")
         self.entry = False
         self.subscribe(self.instrument, self.on_ticks)
 
@@ -255,7 +255,7 @@ class Choppy(Strategy):
                         if data['date'].hour == 9 and data['date'].minute == 15:
                             bullish_bearish = 'bullish' if data['close'] > data['open'] else 'bearish'
                             candle_range = self._check_pivot(data, pivot=self.pivot_points)
-                            self.messages.usermessages.info(
+                            self.add_info_user_message(
                                 f"9:15 candle identified {bullish_bearish} with candle range {candle_range}")
                             for condition in self.valid_conditions:
                                 if condition['todays_candle'] == candle_range \
@@ -271,7 +271,7 @@ class Choppy(Strategy):
                                             self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
                                         if self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
                                             self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
-                                        self.messages.usermessages.info(
+                                        self.add_info_user_message(
                                             f"Condition {condition} satisfied, triggering order")
                                         self.entry = True
                                         self.place_entry_order(side=condition['decision'].upper())
@@ -282,7 +282,7 @@ class Choppy(Strategy):
                                         lower_range = min(
                                             self.pivot_points[range_identifer] for range_identifer in ranges)
                                         self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                        self.messages.usermessages.info(
+                                        self.add_info_user_message(
                                             f"Target points{self.target_points} target {self.target_price} side {self.entry_side} SL {self.sl}")
 
                 if self.entry:
@@ -301,7 +301,7 @@ class Choppy(Strategy):
                         if last_candle["close"] >= self.sl:
                             self.place_exit_order("BUY", "SL_TRIGGERED")
         except Exception as e:
-            self.messages.usermessages.info(f"Failure occured while calculating triggers {e} stopping strategy")
+            self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")
             self.stop()
             raise e
 
