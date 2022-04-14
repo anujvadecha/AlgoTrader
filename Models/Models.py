@@ -165,9 +165,10 @@ class Trade():
 
 @dataclass(init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
 class UserMessage():
-    Time:Any
     Type:Any
+    Time:Any
     Message:Any
+    PortfolioId: Any
 
 @dataclass(init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
 class BrokerMessage():

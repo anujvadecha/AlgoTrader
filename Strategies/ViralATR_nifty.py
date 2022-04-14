@@ -46,7 +46,7 @@ class ViralATRNifty(Strategy):
         # self.y = inputs["y"]
         print(f"on create for strategy ATR called")
         ATR_trigger_start(connection_object=self.broker.get_connection_object(
-        ), data_connection_object=self.data_broker.get_connection_object(), ticker_connection_object=self.data_broker.get_ticker_connection(), inputs=inputs, messaging=self.messages)
+        ), data_connection_object=self.data_broker.get_connection_object(), ticker_connection_object=self.data_broker.get_ticker_connection(), inputs=inputs, messaging=self.messages, strategy_obj=self)
 
     def every_second(self):
         print("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))

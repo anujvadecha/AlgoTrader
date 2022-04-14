@@ -10,7 +10,7 @@ import time
 class Strategy():
     portfolio_id = 0
     state = StrategyState.CREATED
-    attributes = ['portfolio_id', 'strategy_name' ,'state', 'broker_alias']
+    attributes = ['portfolio_id', 'strategy_name' ,'state', 'broker_alias', 'inputs']
 
     def define_inputs(self):
         return {}
@@ -25,6 +25,8 @@ class Strategy():
                 attr[attribute] = getattr(self, attribute)
                 if isinstance(attr[attribute], Enum):
                     attr[attribute] =  getattr(self, attribute).value
+                if isinstance(attr[attribute], dict):
+                    attr[attribute] = ','.join(getattr(self, attribute).values())
             except Exception as e:
                 attr[attribute] = ""
         return attr
@@ -61,8 +63,12 @@ class Strategy():
     def schedule_tasks(self):
         pass
 
+    def add_info_user_message(self, message):
+        self.messages.usermessages.info(message ,self.portfolio_id)
+
     def main(self, inputs):
         from MessageClasses import Messages
+        self.inputs = inputs
         self.messages = Messages.getInstance()
         self.schedule = schedule
         from Managers.BrokerManager import BrokerManager

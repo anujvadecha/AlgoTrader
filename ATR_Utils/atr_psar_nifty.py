@@ -189,9 +189,9 @@ def fill_orders(tick):  # redo
                 pm.enter_position(new_pos_id)
                 exc_data.running_pos = new_pos_id
                 exc_data.running_pos_type = "SHORT"
-        msg_obj.usermessages.info(
+        msg_obj.add_info_user_message(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
-        msg_obj.usermessages.info(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
+        msg_obj.add_info_user_message(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
 
 
 def fill_orders2(ticks):  # redo
@@ -230,7 +230,7 @@ def fill_orders2(ticks):  # redo
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "SHORT"
-        msg_obj.usermessages.info(
+        msg_obj.add_info_user_message(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
 
 
@@ -276,11 +276,11 @@ def system_setup(inputs):  # add proper use of inputs
     indicators_used.append(pp)
     IM.add_indicators(indicators_used)
 
-    msg_obj.usermessages.info(f'psar : {psar.PSAR} trend({psar.trend})')
-    msg_obj.usermessages.info(f'atr : {atr.ATR}')
-    msg_obj.usermessages.info(f'supertrend : {st.supertrend} trend({st.trend})')
-    msg_obj.usermessages.info(f'stoch : k({stoch.k_value}) d({stoch.d_value})')
-    msg_obj.usermessages.info(f'pivots : {pp.pivots}')
+    msg_obj.add_info_user_message(f'psar : {psar.PSAR} trend({psar.trend})')
+    msg_obj.add_info_user_message(f'atr : {atr.ATR}')
+    msg_obj.add_info_user_message(f'supertrend : {st.supertrend} trend({st.trend})')
+    msg_obj.add_info_user_message(f'stoch : k({stoch.k_value}) d({stoch.d_value})')
+    msg_obj.add_info_user_message(f'pivots : {pp.pivots}')
 
     exc_log = ExecutionLogic(timeframe=timeframe)
 
@@ -294,7 +294,7 @@ def system_setup(inputs):  # add proper use of inputs
 def entries():
     global chart, psar, atr, stoch, pp, trade_dir, exc_data, msg_obj
 
-    msg_obj.usermessages.info(f'candle :{chart.closed_cdl}')
+    msg_obj.add_info_user_message(f'candle :{chart.closed_cdl}')
     t_stp = chart.closed_time
     if exc_data.in_trade:
         exc_data.trade_entry_copy = False
@@ -314,7 +314,7 @@ def entries():
     exc_data.trade_entry_copy = False
 
     param = ""
-    msg_obj.usermessages.info(f'psar {psar.trend} st {st.trend}')
+    msg_obj.add_info_user_message(f'psar {psar.trend} st {st.trend}')
     # parameter determinations
     if psar.trend > 0 and st.trend > 0:
         # PSAR buy ST buy
@@ -391,7 +391,7 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
-                msg_obj.usermessages.info(f"target reached @ {chart.running_cdl['close']}")
+                msg_obj.add_info_user_message(f"target reached @ {chart.running_cdl['close']}")
         else:
             if chart.running_cdl["close"] <= exc_data.trade["target"]:
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
@@ -399,7 +399,7 @@ def exits():
                 exc_data.trade["exit_type"] = "target"
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
-                msg_obj.usermessages.info(f"target reached @ {chart.running_cdl['close']}")
+                msg_obj.add_info_user_message(f"target reached @ {chart.running_cdl['close']}")
     return
 
 
@@ -411,7 +411,7 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.usermessages.info(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -420,7 +420,7 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.usermessages.info(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -493,14 +493,14 @@ def on_order_update(ws, data):
 kws1 = None
 
 
-def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging):
+def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging, strategy_obj):
     global data_obj, con_obj, msg_obj, sys_inputs, kws1
     data_obj = data_connection_object
     con_obj = connection_object
     sys_inputs = inputs
-    msg_obj = messaging
+    msg_obj = strategy_obj
     system_setup(sys_inputs)
-    msg_obj.usermessages.info("Hey ATR NIFTY is started")
+    msg_obj.add_info_user_message("Hey ATR NIFTY is started")
     kws1 = ticker_connection_object
     # ticker_connection_object.close()
     kws1.on_ticks = on_ticks
@@ -516,9 +516,9 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
 
 def ATR_trigger_stop():
     global msg_obj, kws1
-    msg_obj.usermessages.info("Stopping things")
+    msg_obj.add_info_user_message("Stopping things")
     # TODO add square-off functions
-    msg_obj.usermessages.info("perform square-off")
+    msg_obj.add_info_user_message("perform square-off")
     # kws1.stop()
 
 
