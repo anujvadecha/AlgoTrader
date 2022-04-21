@@ -304,6 +304,7 @@ class Choppy(Strategy):
         except Exception as e:
             self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")
             self.stop()
+            LOGGER.exception(f"Exception occured for calculate_triggers for {self.inputs}", e)
             raise e
 
     def schedule_tasks(self):
