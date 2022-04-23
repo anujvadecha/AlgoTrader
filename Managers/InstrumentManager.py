@@ -3,13 +3,13 @@ import logging
 
 LOGGER = logging.getLogger(__name__)
 
+
 class InstrumentManager():
+    instrument_list = []
 
-    instrument_list=[]
-
-    def get_instrument_from_symbol(self,symbol):
+    def get_instrument_from_symbol(self, symbol):
         for instrument in self.instrument_list:
-            if instrument.trading_symbol==symbol:
+            if instrument.trading_symbol == symbol:
                 return instrument
         return None
 
@@ -17,7 +17,7 @@ class InstrumentManager():
         instrument_list = []
         if symbol != None:
             for instrument in self.instrument_list:
-                if instrument.name == symbol and instrument.instrument_type== "FUT":
+                if instrument.name == symbol and instrument.instrument_type == "FUT":
                     if expiry:
                         if instrument.expiry == expiry:
                             instrument_list.append(instrument)
@@ -25,14 +25,14 @@ class InstrumentManager():
                     else:
                         instrument_list.append(instrument)
             return instrument_list
-        raise Exception("FINSTRUMENT NOT FOUND "+str(symbol))
+        raise Exception("FINSTRUMENT NOT FOUND " + str(symbol))
 
     def get_call_options_for_instrument(self, symbol=None, expiry=None, strike=None):
         LOGGER.info("get_call_options_for_instrument called")
         instrument_list = []
         if symbol != None:
             for instrument in self.instrument_list:
-                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type=="CE" :
+                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type == "CE":
                     if expiry:
                         if instrument.expiry == expiry:
                             if strike and instrument.strike == strike:
@@ -47,12 +47,13 @@ class InstrumentManager():
                             instrument_list.append(instrument)
             return instrument_list
         raise Exception("INSTRUMENT NOT FOUND " + str(symbol))
+
     def get_put_options_for_instrument(self, symbol=None, expiry=None, strike=None):
         LOGGER.info("get_call_options_for_instrument called")
         instrument_list = []
         if symbol != None:
             for instrument in self.instrument_list:
-                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type=="CE" :
+                if instrument.name == symbol and instrument.segment == "NFO-OPT" and instrument.instrument_type == "PE":
                     if expiry:
                         if instrument.expiry == expiry:
                             if strike and instrument.strike == strike:
@@ -68,22 +69,22 @@ class InstrumentManager():
             return instrument_list
         raise Exception("INSTRUMENT NOT FOUND " + str(symbol))
 
-    def find_instrument(self,symbol=None,token=None):
-        if(symbol!=None):
+    def find_instrument(self, symbol=None, token=None):
+        if (symbol != None):
             for instrument in self.instrument_list:
                 if instrument.tradingsymbol == symbol:
                     return instrument
-        elif(token!=None):
+        elif (token != None):
             for instrument in self.instrument_list:
                 if str(instrument.instrument_token) == str(token):
                     return instrument
-        raise Exception("INSTRUMENT NOT FOUND "+str(symbol)+str(token))
+        raise Exception("INSTRUMENT NOT FOUND " + str(symbol) + str(token))
 
-    def add_instrument(self,instrument):
-        if isinstance(instrument,Instrument):
+    def add_instrument(self, instrument):
+        if isinstance(instrument, Instrument):
             self.instrument_list.append(instrument)
         else:
-            raise Exception( " Required Type Instrument" )
+            raise Exception(" Required Type Instrument")
         pass
 
     __instance = None
@@ -100,5 +101,6 @@ class InstrumentManager():
         else:
             InstrumentManager.__instance = self
 
-if __name__=="main":
+
+if __name__ == "main":
     InstrumentManager.get_instance()
