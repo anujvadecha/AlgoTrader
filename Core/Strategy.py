@@ -81,12 +81,11 @@ class Strategy():
         self.messages.running_strategies.update_running_strategy(strategy=self)
         try:
             self.on_create(inputs)
-            self.schedule_tasks()
         except Exception as e:
             self.messages.usermessages.info(f"Strategy creation failed due to exception {e}")
             self.stop()
             raise e
         while True:
             if self.state == StrategyState.RUNNING:
-                schedule.run_pending()
+                self.schedule_tasks()
                 time.sleep(0.5)
