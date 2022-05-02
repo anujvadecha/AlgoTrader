@@ -308,8 +308,7 @@ class Choppy(Strategy):
             raise e
 
     def schedule_tasks(self):
-        # schedule.every(1).seconds.do(self.calculate_triggers)
-        self.calculate_triggers()
+        schedule.every(1).seconds.do(self.calculate_triggers)
 
     def stop(self):
         super().stop()
