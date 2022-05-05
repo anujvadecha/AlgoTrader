@@ -242,10 +242,11 @@ class Choppy(Strategy):
             now = datetime.now()
             if now.hour == 3 and now.minute==15 and self.entry:
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
-            if now.minute % 15 == 0:
-            # if now.minute % 1 == 0:
+            # if now.minute % 15 == 0:
+            if now.minute % 1 == 0:
                 #     TODO to uncomment
-                if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
+                if not self.entry and self.number_of_trades < self.trade_limit :
+                        # and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
                     from_date = datetime.now() - timedelta(hours=6)
                     to_date = datetime.now()
@@ -265,14 +266,19 @@ class Choppy(Strategy):
                                     if condition['decision'] != 'no_trade':
                                         self.entry_price = data['close']
                                         self.entry_side = condition['decision'].upper()
+                                        print(f"tc is {self.pivot_points['tc']}")
+                                        print(f"bc is {self.pivot_points['bc']}")
+                                        print(f"entry price is  is {self.entry_price}")
                                         if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
                                             self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
-                                        if self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
+                                        elif self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
                                             self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
-                                        if self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
+                                        elif self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
                                             self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
-                                        if self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
+                                        elif self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
                                             self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
+                                        else:
+                                            self.target_points = 120 if self.instrument.tradingsymbol == "NIFTY BANK" else 40
                                         self.add_info_user_message(
                                             f"Condition {condition} satisfied, triggering order")
                                         self.entry = True
