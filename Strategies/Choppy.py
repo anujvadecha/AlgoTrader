@@ -1,3 +1,4 @@
+import traceback
 from datetime import datetime, timedelta
 import enum
 import pytz
@@ -302,6 +303,7 @@ class Choppy(Strategy):
                         if last_candle["close"] >= self.sl:
                             self.place_exit_order("BUY", "SL_TRIGGERED")
         except Exception as e:
+            LOGGER.info(traceback.format_exc())
             self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")
             self.stop()
             LOGGER.exception(f"Exception occured for calculate_triggers for {self.inputs}", e)
