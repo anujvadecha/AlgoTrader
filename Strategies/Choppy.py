@@ -266,9 +266,9 @@ class Choppy(Strategy):
                                     if condition['decision'] != 'no_trade':
                                         self.entry_price = data['close']
                                         self.entry_side = condition['decision'].upper()
-                                        print(f"tc is {self.pivot_points['tc']}")
-                                        print(f"bc is {self.pivot_points['bc']}")
-                                        print(f"entry price is  is {self.entry_price}")
+                                        LOGGER.info(f"tc is {self.pivot_points['tc']}")
+                                        LOGGER.info(f"bc is {self.pivot_points['bc']}")
+                                        LOGGER.info(f"entry price is  is {self.entry_price}")
                                         if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
                                             self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
                                         elif self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":

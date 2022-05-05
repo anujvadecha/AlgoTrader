@@ -86,7 +86,3 @@ class Strategy():
             self.messages.usermessages.info(f"Strategy creation failed due to exception {e}")
             self.stop()
             raise e
-        while True:
-            if self.state == StrategyState.RUNNING:
-                schedule.run_pending()
-                time.sleep(0.5)

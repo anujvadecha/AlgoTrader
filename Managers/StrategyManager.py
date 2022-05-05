@@ -1,4 +1,7 @@
 import threading
+import time
+
+import schedule
 
 from MessageClasses import Messages
 
@@ -12,6 +15,14 @@ class StrategyManager():
        self.latest_portfolio_id += 1
        strategy.portfolio_id=self.latest_portfolio_id
        self.strategy_map[self.latest_portfolio_id] = strategy
+
+    def schedule_thread(self):
+        while True:
+            schedule.run_pending()
+            time.sleep(0.5)
+
+    def start_schedule_thread(self):
+        threading.Thread(target=self.schedule_thread).start()
 
     def start_strategy(self,strategy,inputs):
         threading.Thread(target=strategy.main,args=[inputs]).start()
@@ -33,3 +44,4 @@ class StrategyManager():
             raise Exception("This class is a singleton!")
         else:
             StrategyManager.__instance = self
+            self.start_schedule_thread()
