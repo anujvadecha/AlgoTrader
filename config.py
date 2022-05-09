@@ -27,7 +27,7 @@ brokers = [
 strategies = {
     "DemoStrategy": DemoStrategy,
     "ViralATR": ViralATR,
-    "ViralATR_NIFTY": ViralATRNifty,
+    # "ViralATR_NIFTY": ViralATRNifty,
     "Choppy": Choppy
 }
 

@@ -64,7 +64,7 @@ class Strategy():
         pass
 
     def add_info_user_message(self, message):
-        self.messages.usermessages.info(message ,self.portfolio_id)
+        self.messages.usermessages.info(message,self.portfolio_id)
 
     def main(self, inputs):
         from MessageClasses import Messages
