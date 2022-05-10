@@ -5,7 +5,7 @@ from Strategies.ViralATR import ViralATR
 import os
 
 
-live = False
+live = True
 
 brokers = [
     {
@@ -25,7 +25,6 @@ brokers = [
 
 
 strategies = {
-    "DemoStrategy": DemoStrategy,
     "ViralATR": ViralATR,
     # "ViralATR_NIFTY": ViralATRNifty,
     "Choppy": Choppy
