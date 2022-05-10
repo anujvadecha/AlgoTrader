@@ -110,10 +110,10 @@ class Choppy(Strategy):
 
     def place_entry_order(self, side, identifier=None):
         self.option_entry_instrument = None
-        self.add_info_user_message(
+        if self.order_type != "OPTIONS_ONLY":
+            self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         # Futures order
-        if self.order_type != "OPTIONS_ONLY":
             self.broker.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="CNC")
         # Options order
