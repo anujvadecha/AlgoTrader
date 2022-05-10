@@ -197,3 +197,5 @@ class Position:
                 tick_data = tick
                 break
         self.__update_pnl(tick_data)
+
+

@@ -33,7 +33,9 @@ class ViralATR(Strategy):
 
     def define_inputs(self):
         inputs = {
-            "input_file": "resources/trade_dis.xlsx"
+            # "input_file": "resources/trade_dis.xlsx",
+            "symbol": ["NIFTY", "BANKNIFTY"],
+            "timeframe": ["15", "60"]
         }
         return inputs
 
@@ -45,8 +47,12 @@ class ViralATR(Strategy):
         # self.x = inputs["x"]
         # self.y = inputs["y"]
         print(f"on create for strategy ATR called")
-        ATR_trigger_start(connection_object=self.broker.get_connection_object(
-        ), data_connection_object=self.data_broker.get_connection_object(), ticker_connection_object=self.data_broker.get_ticker_connection(), inputs=inputs, messaging=self.messages, strategy_obj=self)
+        ATR_trigger_start(connection_object=self.broker.get_connection_object(),
+                          data_connection_object=self.data_broker.get_connection_object(),
+                          ticker_connection_object=self.data_broker.get_ticker_connection(),
+                          inputs=inputs,
+                          messaging=self.messages,
+                          strategy_obj=self)
 
     def every_second(self):
         print("every second called portfolio "+str(self.portfolio_id)+"  "+str(datetime.datetime.now()))

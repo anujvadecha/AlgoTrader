@@ -284,7 +284,7 @@ def system_setup(inputs):  # add proper use of inputs
 
     exc_log = ExecutionLogic(timeframe=timeframe)
 
-    trade_df = pd.read_csv("resources/ATR_NF_dics.csv")
+    trade_df = pd.read_csv("resources/ATR_NF_disc.csv")
     trade_dir = trade_df.to_dict('records')
 
     exc_log.execution_logic = exc_seq

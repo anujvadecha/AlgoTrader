@@ -192,10 +192,13 @@ def fill_orders(tick):  # redo
         msg_obj.add_info_user_message(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
         msg_obj.add_info_user_message(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
+        LOGGER.info(
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
+        LOGGER.info(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
 
 
 def fill_orders2(ticks):  # redo
-    global pm, spot_data
+    global pm, spot_data, msg_obj, LOGGER
     tick_data = None
     for tick in ticks:
         if tick["instrument_token"] == spot_data["instrument_token"]:
@@ -211,6 +214,7 @@ def fill_orders2(ticks):  # redo
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
                 exc_data.running_pos_type = "LONG"
+                pos = LongPosition(tick_data["last_price"])
             elif exc_data.trade["trade action"] == "sell":
                 exc_data.trade["stoploss"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
@@ -232,6 +236,8 @@ def fill_orders2(ticks):  # redo
                 exc_data.running_pos_type = "SHORT"
         msg_obj.add_info_user_message(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
+        LOGGER.info(
+            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
 
 
 def system_setup(inputs):  # add proper use of inputs
@@ -242,12 +248,14 @@ def system_setup(inputs):  # add proper use of inputs
         data_obj, exc_log, trade_dir, sub_token, msg_obj
 
     instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
+
     expiry = coming_expiry()
 
     month = expiry.strftime("%b").upper()
     year = expiry.strftime("%y")
 
-    spot_sym = 'BANKNIFTY' + year + month + 'FUT'
+    symbol = inputs['symbol']
+    spot_sym = symbol + year + month + 'FUT'
 
     for instru in instrument_list:
         if instru['tradingsymbol'] == spot_sym:
@@ -259,7 +267,7 @@ def system_setup(inputs):  # add proper use of inputs
     # indicator and chart setup
     IM = IndicatorManager(spot_data, data_obj)
     indicators_used = []
-    timeframe = 15
+    timeframe = int(inputs['timeframe'])
 
     chart = indicators.CandleSticksChart(timeframe=timeframe)
     psar = indicators.ParabolicSAR(timeframe=timeframe)
@@ -284,7 +292,13 @@ def system_setup(inputs):  # add proper use of inputs
 
     exc_log = ExecutionLogic(timeframe=timeframe)
 
-    trade_df = pd.read_csv("resources/ATR_BNF_disc.csv")
+    disc_loc = ""
+    if symbol == "NIFTY":
+        disc_loc = "resources/ATR_NF_disc.csv"
+    else:
+        disc_loc = "resources/ATR_BNF_disc.csv"
+
+    trade_df = pd.read_csv(disc_loc)
     trade_dir = trade_df.to_dict('records')
 
     exc_log.execution_logic = exc_seq
@@ -295,6 +309,7 @@ def entries():
     global chart, psar, atr, stoch, pp, trade_dir, exc_data, msg_obj
 
     msg_obj.add_info_user_message(f'candle :{chart.closed_cdl}')
+    LOGGER.info(f'candle :{chart.closed_cdl}')
     t_stp = chart.closed_time
     if exc_data.in_trade:
         exc_data.trade_entry_copy = False
@@ -500,7 +515,7 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
     sys_inputs = inputs
     msg_obj = strategy_obj
     system_setup(sys_inputs)
-    msg_obj.add_info_user_message("Hey ATR is started")
+    msg_obj.add_info_user_message(f"ATR started with inputs {inputs}")
     kws1 = ticker_connection_object
     # ticker_connection_object.close()
     kws1.on_ticks = on_ticks
