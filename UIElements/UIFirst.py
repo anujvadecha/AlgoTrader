@@ -215,10 +215,10 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.actionSettings = QtWidgets.QAction(MainWindow)
         self.actionSettings.setObjectName("actionSettings")
-        self.actionBroker_Configuration = QtWidgets.QAction(MainWindow)
-        self.actionBroker_Configuration.setObjectName("actionBroker_Configuration")
+        self.action_bulk_start = QtWidgets.QAction(MainWindow)
+        self.action_bulk_start.setObjectName("action_bulk_start")
         self.menuFile.addAction(self.actionSettings)
-        self.menuFile.addAction(self.actionBroker_Configuration)
+        self.menuFile.addAction(self.action_bulk_start)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuView.menuAction())
         self.retranslateUi(MainWindow)
@@ -289,7 +289,8 @@ class Ui_MainWindow(object):
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuView.setTitle(_translate("MainWindow", "View"))
         self.actionSettings.setText(_translate("MainWindow", "Settings"))
-        self.actionBroker_Configuration.setText(_translate("MainWindow", "Broker Configuration"))
+        self.action_bulk_start.setText(_translate("MainWindow", "Bulk Start"))
+
 
 if __name__ == "__main__":
     import sys
