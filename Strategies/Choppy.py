@@ -144,12 +144,13 @@ class Choppy(Strategy):
         self.number_of_trades = self.number_of_trades + 1
 
     def place_exit_order(self, side, identifier=None):
-        self.add_info_user_message(
-            f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
-        self.broker.place_market_order(instrument=self.order_instrument,
-                                       side=side, quantity=self.order_quantity,
-                                       type="NRML")
-        if self.option_entry_instrument:
+        if self.order_type != "OPTIONS_ONLY":
+            self.add_info_user_message(
+                f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
+            self.broker.place_market_order(instrument=self.order_instrument,
+                                           side=side, quantity=self.order_quantity,
+                                           type="NRML")
+        if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
             self.add_info_user_message(
                 f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
             self.broker.place_market_order(instrument=self.option_entry_instrument,
