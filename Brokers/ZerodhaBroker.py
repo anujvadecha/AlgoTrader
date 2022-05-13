@@ -31,7 +31,6 @@ class ZerodhaBroker(Broker):
                                           order_type=self.kite.ORDER_TYPE_MARKET,
                                           product=type,
                                           variety="regular")
-            order = self.kite.order_history(order["data"]["order_id"])
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
