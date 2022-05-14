@@ -18,6 +18,7 @@ from config import logging_config
 
 logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
+import sqlite3 as sl
 
 class Main():
 
@@ -41,6 +42,7 @@ class Main():
 
     def __init__(self):
         # self.start_instance_thread()
+        con = sl.connect('algo_trader.db')
         self.messages = Messages.getInstance()
         self.startMainWindow()
 

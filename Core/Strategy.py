@@ -70,6 +70,10 @@ class Strategy():
     def add_info_user_message(self, message):
         self.messages.usermessages.info(message,self.portfolio_id)
 
+    def place_market_order(self, instrument, side, quantity, type="NRML"):
+        # TODO ADD orders to db with strategy identifier
+        self.broker.place_market_order(instrument=instrument, side=side, quantity=quantity, type=type)
+
     def main(self, inputs):
         from MessageClasses import Messages
         self.inputs = inputs

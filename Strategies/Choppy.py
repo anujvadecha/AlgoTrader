@@ -116,7 +116,7 @@ class Choppy(Strategy):
             self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         # Futures order
-            self.broker.place_market_order(instrument=self.order_instrument, side=side,
+            self.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="NRML")
         # Options order
         if self.order_type != "FUTURES_ONLY":
@@ -138,7 +138,7 @@ class Choppy(Strategy):
                 self.add_info_user_message(
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
-                self.broker.place_market_order(instrument=self.option_entry_instrument, side="BUY",
+                self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
                                                quantity=self.option_quantity, type="NRML")
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
@@ -148,13 +148,13 @@ class Choppy(Strategy):
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
                 f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
-            self.broker.place_market_order(instrument=self.order_instrument,
+            self.place_market_order(instrument=self.order_instrument,
                                            side=side, quantity=self.order_quantity,
                                            type="NRML")
         if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
             self.add_info_user_message(
                 f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
-            self.broker.place_market_order(instrument=self.option_entry_instrument,
+            self.place_market_order(instrument=self.option_entry_instrument,
                                            side="SELL", quantity=self.option_quantity,
                                            type="NRML")
 
