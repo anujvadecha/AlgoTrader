@@ -12,7 +12,7 @@ from Managers.MarketDataManager import MarketDataManager
 from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
-from config import live
+
 
 class ZerodhaBroker(Broker):
 
