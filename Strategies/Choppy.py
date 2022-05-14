@@ -109,6 +109,8 @@ class Choppy(Strategy):
         return pivot_range
 
     def place_entry_order(self, side, identifier=None):
+        self.entry = True
+        self.number_of_trades = self.number_of_trades + 1
         self.option_entry_instrument = None
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
@@ -140,10 +142,9 @@ class Choppy(Strategy):
                                                quantity=self.option_quantity, type="NRML")
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
-        self.entry = True
-        self.number_of_trades = self.number_of_trades + 1
 
     def place_exit_order(self, side, identifier=None):
+        self.entry = False
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
                 f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
@@ -156,7 +157,6 @@ class Choppy(Strategy):
             self.broker.place_market_order(instrument=self.option_entry_instrument,
                                            side="SELL", quantity=self.option_quantity,
                                            type="NRML")
-        self.entry = False
 
     def _initiate_inputs(self, inputs):
         self.instrument = Instrument(symbol=inputs["instrument"])
@@ -230,13 +230,16 @@ class Choppy(Strategy):
         }
 
     def on_ticks(self, tick):
-        if tick.symbol == self.instrument.tradingsymbol and self.entry:
-            if self.entry_side == "BUY":
-                if tick.ltp >= self.target_price:
-                    self.place_exit_order("SELL", "TARGET_ACHIEVED")
-            if self.entry_side == "SELL":
-                if tick.ltp <= self.target_price:
-                    self.place_exit_order("BUY", "TARGET_ACHIEVED")
+        try:
+            if tick.symbol == self.instrument.tradingsymbol and self.entry:
+                if self.entry_side == "BUY":
+                    if tick.ltp >= self.target_price:
+                        self.place_exit_order("SELL", "TARGET_ACHIEVED")
+                if self.entry_side == "SELL":
+                    if tick.ltp <= self.target_price:
+                        self.place_exit_order("BUY", "TARGET_ACHIEVED")
+        except Exception as e:
+            LOGGER.exception(e)
 
     def calculate_triggers(self):
         try:
@@ -245,6 +248,8 @@ class Choppy(Strategy):
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
             if now.minute % 15 == 0:
             # if now.minute % 1 == 0:
+                LOGGER.info("Calculating triggers")
+                LOGGER.info(f"Entry variable is {self.entry} {self.number_of_trades}")
                 #     TODO to uncomment
                 if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
                     LOGGER.info(f"{datetime.now()} calculate triggers called")
@@ -282,8 +287,8 @@ class Choppy(Strategy):
                                         self.add_info_user_message(
                                             f"Condition {condition} satisfied, triggering order")
                                         self.entry = True
-                                        self.place_entry_order(side=condition['decision'].upper())
                                         self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
+                                        self.place_entry_order(side=condition['decision'].upper())
                                         ranges = candle_range.split("-")
                                         upper_range = max(
                                             self.pivot_points[range_identifer] for range_identifer in ranges)

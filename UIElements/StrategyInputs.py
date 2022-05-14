@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog, QComboBox
+from PyQt5.QtWidgets import QDialog, QComboBox, QFileDialog, QWidget
 from Managers.StrategyManager import StrategyManager
 from UIElements.ExtendedComboBox import ExtendedComboBox
 
 
-class StrategyInputBox(object):
+class StrategyInputBox(QWidget):
 
     def setupUi(self, Dialog,strategy_to_execute):
         self.strategyInputTracker = {}
@@ -52,6 +52,7 @@ class StrategyInputBox(object):
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
+
         # sizePolicy.setHeightForWidth(self.maxProfitSpinner.sizePolicy().hasHeightForWidth())
         # self.maxProfitSpinner.setSizePolicy(sizePolicy)
         # self.maxProfitSpinner.setMaximum(9999999)
@@ -78,16 +79,36 @@ class StrategyInputBox(object):
         self.gridLayout_2.addItem(spacerItem1, 0, 0, 1, 1)
         self.strategyStartButton = QtWidgets.QPushButton(Dialog)
         self.strategyStartButton.setObjectName("strategyStartButton")
-        self.gridLayout_2.addWidget(self.strategyStartButton, 0, 1, 1, 1)
+        self.bulkStart = QtWidgets.QPushButton(Dialog)
+        self.bulkStart.setObjectName("bulkStart")
+        self.gridLayout_2.addWidget(self.strategyStartButton, 0, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.bulkStart, 0, 1, 1, 1)
         self.cancelButton = QtWidgets.QPushButton(Dialog)
         self.cancelButton.setObjectName("cancelButton")
-        self.gridLayout_2.addWidget(self.cancelButton, 0, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.cancelButton, 0, 3, 1, 1)
         self.gridLayout.addLayout(self.gridLayout_2, 2, 0, 1, 1)
         self.retranslateUi(Dialog)
         self.strategyStartButton.clicked.connect(self.startStrategyClicked)
+        self.bulkStart.clicked.connect(self.bulkStartClicked)
         self.cancelButton.clicked.connect(self.Dialog.close)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+    def bulkStartClicked(self, Dialog):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "",
+                                                  "All Files (*);;Python Files (*.py)", options=options)
+        if fileName:
+            import pandas as pd
+            df = pd.read_csv(fileName, dtype=str)
+            records = df.to_dict('records')
+            for record in records:
+                self.startStrategyForInputs(inputs=record)
+            self.Dialog.close()
+
+    def startStrategyForInputs(self, inputs):
+        StrategyManager.get_instance().add_strategy(strategy=self.strategy)
+        StrategyManager.get_instance().start_strategy(strategy=self.strategy, inputs=inputs)
 
     def startStrategyClicked(self,Dialog):
         broker_for_strategy = self.brokerSelector.currentText()
@@ -117,13 +138,10 @@ class StrategyInputBox(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        # self.startTimeLabel.setText(_translate("Dialog", "Start time "))
-        # self.endTimeLabel.setText(_translate("Dialog", "End time"))
-        # self.maxProfitLabel.setText(_translate("Dialog", "Max Profit"))
-        # self.maxLossLabel.setText(_translate("Dialog", "Max Loss"))
         self.strategyStartButton.setText(_translate("Dialog", "Start"))
         self.cancelButton.setText(_translate("Dialog", "Cancel"))
         self.brokerSelectorLabel.setText(_translate("Dialog", "Broker "))
+        self.bulkStart.setText(_translate("Dialog", "Bulk Start"))
 
 
 if __name__ == "__main__":

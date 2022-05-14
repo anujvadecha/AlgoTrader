@@ -95,6 +95,7 @@ class Messages():
 
         def update_running_strategy(self, strategy: Strategy):
             message = strategy.get_attributes()
+            print(message)
             self.messagefactory.append(message)
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_update_running_strategy(message)
