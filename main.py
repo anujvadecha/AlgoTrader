@@ -40,7 +40,7 @@ class Main():
         threading.Thread(target=self.initialize_instances).start()
 
     def __init__(self):
-        self.start_instance_thread()
+        # self.start_instance_thread()
         self.messages = Messages.getInstance()
         self.startMainWindow()
 
