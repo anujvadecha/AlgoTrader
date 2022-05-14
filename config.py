@@ -5,8 +5,6 @@ from Strategies.ViralATR import ViralATR
 import os
 
 
-live = True
-
 brokers = [
     {
         "broker_alias": "viral",
@@ -19,7 +17,8 @@ brokers = [
             "pin": "123456",
             "totp_access_key": "UXD562SLG66TEGX7OTQ7YLFJILH5V5FG"
         },
-        "dataSource": True
+        "dataSource": True,
+        "live": True
     },{
         "broker_alias": "viral_test",
         "broker": "ZERODHA",
@@ -31,7 +30,8 @@ brokers = [
             "pin": "123456",
             "totp_access_key": "UXD562SLG66TEGX7OTQ7YLFJILH5V5FG"
         },
-        "dataSource": False
+        "dataSource": False,
+        "live": False
     }
 
 ]

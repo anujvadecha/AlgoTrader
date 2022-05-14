@@ -21,7 +21,7 @@ class ZerodhaBroker(Broker):
     def place_market_order(self, instrument, side, quantity, type):
         from GUIFunctions import GUIFunctions
         Messages.getInstance().brokermessages.info(f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
-        if not live:
+        if not self.live:
             return
         try:
             order = self.kite.place_order(tradingsymbol=instrument.tradingsymbol,
@@ -43,7 +43,7 @@ class ZerodhaBroker(Broker):
         try:
             Messages.getInstance().brokermessages.info(
                 f"Placing limit order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type} price {price}")
-            if not live:
+            if not self.live:
                 return
             order = self.kite.place_order(
                 tradingsymbol=instrument.tradingsymbol,
@@ -138,6 +138,7 @@ class ZerodhaBroker(Broker):
         self.password = config["password"]
         # self.pin = config["pin"]
         self.totp_access_key = config['totp_access_key']
+        self.live = config["live"]
 
     def get_orders(self):
         return self.kite.orders()
