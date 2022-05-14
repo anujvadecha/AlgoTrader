@@ -21,11 +21,8 @@ class Strategy():
     def get_attributes(self):
         attr = {}
         for attribute in self.attributes:
-            print(f"getting attribute {attribute}")
             try:
-                print(f"inputs in get_attributes are {self.inputs}")
                 attr[attribute] = getattr(self, attribute)
-                print(f"after getting attribute is {attr[attribute]}")
                 if isinstance(attr[attribute], Enum):
                     attr[attribute] =  getattr(self, attribute).value
                 if isinstance(attr[attribute], dict):
@@ -81,8 +78,6 @@ class Strategy():
         self.schedule = schedule
         from Managers.BrokerManager import BrokerManager
         self.broker_alias = inputs['broker_alias']
-        print(f"Strategy inputs are {inputs}")
-        print(self.get_attributes())
         self.broker = BrokerManager.get_instance().get_broker(broker_alias=inputs['broker_alias'])
         self.data_broker = BrokerManager.get_instance().get_data_broker()
         self.messages.running_strategies.update_running_strategy(strategy=self)
