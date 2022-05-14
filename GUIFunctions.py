@@ -147,14 +147,17 @@ class GUIFunctions():
             self.GUI.runningStrategyBox.setHeaderLabels(list(strategies.values())[0].attributes)
 
     def generateSampleFile(self, inputs, strategy):
-        import pandas as pd
-        file_inputs = inputs.copy()
-        for key,value in file_inputs.items():
-            if isinstance(value, list):
-                file_inputs[key] = value[0]
-        file_inputs['broker_alias'] = list(BrokerManager.get_instance().alias_brokers.keys())[0]
-        df = pd.DataFrame([file_inputs])
-        df.to_csv(f'resources/{strategy}_sample.csv', index=False)
+        try:
+            import pandas as pd
+            file_inputs = inputs.copy()
+            for key,value in file_inputs.items():
+                if isinstance(value, list):
+                    file_inputs[key] = value[0]
+            file_inputs['broker_alias'] = list(BrokerManager.get_instance().alias_brokers.keys())[0]
+            df = pd.DataFrame([file_inputs])
+            df.to_csv(f'resources/{strategy}_sample.csv', index=False)
+        except Exception as e:
+            LOGGER.exception(f"generate sample file failed with exception {e}")
 
     def startButtonClicked(self):
         LOGGER.info("start button clicked")
@@ -169,9 +172,9 @@ class GUIFunctions():
             if checked:
                 Dialog = QtWidgets.QDialog()
                 ui = StrategyInputBox()
-                strategy_to_execute = strategy_to_execute()
-                ui.setupUi(Dialog,strategy_to_execute)
-                inputs = strategy_to_execute.define_inputs()
+                # strategy_to_execute = strategy_to_execute()
+                ui.setupUi(Dialog, strategy_to_execute)
+                inputs = strategy_to_execute().define_inputs()
                 self.generateSampleFile(inputs, strategy)
                 for input, value in inputs.items():
                     if type(value) == list:

@@ -7,12 +7,12 @@ from UIElements.ExtendedComboBox import ExtendedComboBox
 
 class StrategyInputBox(QWidget):
 
-    def setupUi(self, Dialog,strategy_to_execute):
+    def setupUi(self, Dialog, strategy_to_execute):
         self.strategyInputTracker = {}
         Dialog.setObjectName("Dialog")
         Dialog.resize(578, 441)
         self.Dialog=Dialog
-        self.strategy=strategy_to_execute
+        self.strategy = strategy_to_execute
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
         self.gridLayout.setObjectName("gridLayout")
         self.splitter = QtWidgets.QSplitter(Dialog)
@@ -52,19 +52,6 @@ class StrategyInputBox(QWidget):
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-
-        # sizePolicy.setHeightForWidth(self.maxProfitSpinner.sizePolicy().hasHeightForWidth())
-        # self.maxProfitSpinner.setSizePolicy(sizePolicy)
-        # self.maxProfitSpinner.setMaximum(9999999)
-        # self.maxProfitSpinner.setObjectName("maxProfitSpinner")
-        # self.mandatoryInputs.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.maxProfitSpinner)
-        # self.maxLossLabel = QtWidgets.QLabel(self.formLayoutWidget)
-        # self.maxLossLabel.setObjectName("maxLossLabel")
-        # self.mandatoryInputs.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.maxLossLabel)
-        # self.maxLossSpinner = QtWidgets.QSpinBox(self.formLayoutWidget)
-        # self.maxLossSpinner.setMaximum(9999999)
-        # self.maxLossSpinner.setObjectName("maxLossSpinner")
-        # self.mandatoryInputs.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.maxLossSpinner)
         self.formLayoutWidget_2 = QtWidgets.QWidget(self.splitter)
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
         self.strategyInputs = QtWidgets.QFormLayout(self.formLayoutWidget_2)
@@ -107,8 +94,9 @@ class StrategyInputBox(QWidget):
             self.Dialog.close()
 
     def startStrategyForInputs(self, inputs):
-        StrategyManager.get_instance().add_strategy(strategy=self.strategy)
-        StrategyManager.get_instance().start_strategy(strategy=self.strategy, inputs=inputs)
+        strategy_to_start = self.strategy()
+        StrategyManager.get_instance().add_strategy(strategy=strategy_to_start)
+        StrategyManager.get_instance().start_strategy(strategy=strategy_to_start, inputs=inputs)
 
     def startStrategyClicked(self,Dialog):
         broker_for_strategy = self.brokerSelector.currentText()
@@ -119,8 +107,7 @@ class StrategyInputBox(QWidget):
             else:
                 inputs[input] = value.text()
         inputs['broker_alias'] = broker_for_strategy
-        StrategyManager.get_instance().add_strategy(strategy=self.strategy)
-        StrategyManager.get_instance().start_strategy(strategy=self.strategy, inputs=inputs)
+        self.startStrategyForInputs(inputs)
         self.Dialog.close()
 
     def addAttr(self, label, input):
