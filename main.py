@@ -4,6 +4,7 @@ from Managers.BrokerManager import BrokerManager
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Managers.OrderManager import OrderManager
+from Managers.StrategyManager import StrategyManager
 from Strategies.DemoStrategy import DemoStrategy
 from UIElements.UIFirst import Ui_MainWindow
 from PyQt5 import QtWidgets
@@ -29,7 +30,17 @@ class Main():
         MainWindow.show()
         sys.exit(app.exec_())
 
+    def initialize_instances(self):
+        BrokerManager.get_instance()
+        InstrumentManager.get_instance()
+        StrategyManager.get_instance()
+        MarketDataManager.get_instance()
+
+    def start_instance_thread(self):
+        threading.Thread(target=self.initialize_instances).start()
+
     def __init__(self):
+        self.start_instance_thread()
         self.messages = Messages.getInstance()
         self.startMainWindow()
 
