@@ -32,16 +32,27 @@ class ViralATR(Strategy):
     strategy_name = "Viral ATR"
 
     def define_inputs(self):
+        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
+        order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
+        order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
+        option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
+            "BANKNIFTY" )
+        expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
         inputs = {
-            # "input_file": "resources/trade_dis.xlsx",
+            "input_file": "resources/trade_dis.xlsx",
             "symbol": ["NIFTY", "BANKNIFTY"],
-            "timeframe": ["15", "60"]
+            "timeframe": ["15", "60"],
+            "orders_type": ["FUTURE_AND_OPTIONS", "FUTURES_ONLY", "OPTIONS_ONLY"],
+            "order_instrument": order_instrument_names,
+            "option_expiry": list(expiries),
+            "order_quantity": "50",
+            "option_quantity": "50"
         }
         return inputs
 
     def define_attributes(self):
         print("ATR strategy define inputs called")
-        self.attributes = self.attributes + ['input_file']
+        self.attributes = self.attributes
 
     def on_create(self, inputs):
         # self.x = inputs["x"]
