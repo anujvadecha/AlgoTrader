@@ -69,7 +69,7 @@ logging_config = {
             'algo_trader_log_file': {
                 'level': 'DEBUG',
                 'class': 'logging.handlers.RotatingFileHandler',
-                'filename': os.path.join('', 'logs/algotrader.log'),
+                'filename': os.path.join('', 'algotrader.log'),
                 'maxBytes': 16777216,  # 16megabytes
                 'backupCount': 5,
                 'formatter': 'verbose'

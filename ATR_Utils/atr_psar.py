@@ -7,7 +7,7 @@ from ATR_Utils.indicator_manager import IndicatorManager
 from ATR_Utils.position_manager import PositionManager
 from ATR_Utils.positions import Position
 import ATR_Utils.indicators as indicators
-
+from Managers.InstrumentManager import InstrumentManager
 
 LOGGER = logging.getLogger(__name__)
 
@@ -103,7 +103,14 @@ data_obj = None
 con_obj = None
 msg_obj = None
 sys_inputs = None
+orders_type = ""
+order_instrument = ""
+option_expiry = ""
+order_quantity = ""
+option_quantity = ""
 instrument_list = []
+symbol = ""
+option_entry_instrument = None
 expiry = None  # type: datetime.datetime
 spot_data = {}
 sub_token = []
@@ -214,13 +221,14 @@ def fill_orders2(ticks):  # redo
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
                 exc_data.running_pos_type = "LONG"
-                pos = LongPosition(tick_data["last_price"])
+                place_entry_order("BUY")
             elif exc_data.trade["trade action"] == "sell":
                 exc_data.trade["stoploss"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] - (exc_data.trade["entry_atr"] * 1.5), 2)
                 exc_data.running_pos_type = "SHORT"
+                place_entry_order("SELL")
         else:
             if exc_data.trade["trade action"] == "buy":
                 exc_data.trade["stoploss"] = round(
@@ -228,12 +236,14 @@ def fill_orders2(ticks):  # redo
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "LONG"
+                place_entry_order("BUY")
             elif exc_data.trade["trade action"] == "sell":
                 exc_data.trade["stoploss"] = round(
                     tick_data["last_price"] + (exc_data.trade["entry_atr"]), 2)
                 exc_data.trade["target"] = round(
                     tick_data["last_price"] - (exc_data.trade["entry_atr"]), 2)
                 exc_data.running_pos_type = "SHORT"
+                place_entry_order("SELL")
         msg_obj.add_info_user_message(
             f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}, time: {tick_data['exchange_timestamp']}")
         LOGGER.info(
@@ -245,11 +255,18 @@ def system_setup(inputs):  # add proper use of inputs
     populates the global variables
     """
     global instrument_list, expiry, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
-        data_obj, exc_log, trade_dir, sub_token, msg_obj
+        data_obj, exc_log, trade_dir, sub_token, msg_obj, orders_type, order_instrument, option_expiry, order_quantity,\
+        option_quantity, symbol
 
-    instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
+    orders_type = inputs["orders_type"]
+    order_instrument = inputs["order_instrument"]
+    option_expiry = inputs["option_expiry"]
+    order_quantity = int(inputs["order_quantity"])
+    option_quantity = int(inputs["option_quantity"])
 
     expiry = coming_expiry()
+
+    instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
 
     month = expiry.strftime("%b").upper()
     year = expiry.strftime("%y")
@@ -303,6 +320,60 @@ def system_setup(inputs):  # add proper use of inputs
 
     exc_log.execution_logic = exc_seq
     sub_token = spot_data["instrument_token"]
+
+
+def place_entry_order(side, identifier=None):
+    global option_entry_instrument
+    entry_price = chart.running_cdl["close"]
+    option_entry_instrument = None
+    if orders_type != "OPTIONS_ONLY":
+        msg_obj.add_info_user_message(
+            f"Placing entry order for {order_instrument} {side} {order_quantity} {identifier}")
+    # Futures order
+    # TODO: enable
+    # place_market_order(instrument=order_instrument, side=side,
+    #                            quantity=order_quantity, type="NRML")
+    # Options order
+    if orders_type != "FUTURES_ONLY":
+        if entry_price % 100 < 50:
+            targeted_strike_price = entry_price - entry_price % 100
+        else:
+            targeted_strike_price = entry_price + (100 - entry_price % 100)
+        if side == "BUY":
+            option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(symbol,
+                                                                                                 strike=targeted_strike_price)
+        else:
+            option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
+                symbol,
+                strike=targeted_strike_price)
+        for optioninstr in option_intruments:
+            if str(optioninstr.expiry) == option_expiry:
+                option_entry_instrument = optioninstr
+                break
+        if option_entry_instrument:
+            msg_obj.add_info_user_message(
+                f"Placing entry order for {option_entry_instrument} BUY {option_quantity} {identifier}")
+            # TODO: enable
+            # self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
+            #                                quantity=self.option_quantity, type="NRML")
+        else:
+            msg_obj.add_info_user_message(f"Option entry not found for {targeted_strike_price} {symbol}")
+
+
+def place_exit_order(side, identifier=None):
+    global option_entry_instrument
+    if orders_type != "OPTIONS_ONLY":
+        msg_obj.add_info_user_message(
+            f"Placing exit order for {order_instrument} {side} {order_quantity} {identifier}")
+        # self.place_market_order(instrument=self.order_instrument,
+        #                                side=side, quantity=self.order_quantity,
+        #                                type="NRML")
+    if orders_type != "FUTURES_ONLY" and option_entry_instrument:
+        msg_obj.add_info_user_message(
+            f"Placing exit order for {option_entry_instrument} SELL {option_quantity} {identifier}")
+        # self.place_market_order(instrument=self.option_entry_instrument,
+        #                                side="SELL", quantity=self.option_quantity,
+        #                                type="NRML")
 
 
 def entries():
@@ -407,6 +478,7 @@ def exits():
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 msg_obj.add_info_user_message(f"target reached @ {chart.running_cdl['close']}")
+                place_exit_order("SELL")
         else:
             if chart.running_cdl["close"] <= exc_data.trade["target"]:
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
@@ -415,6 +487,7 @@ def exits():
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 msg_obj.add_info_user_message(f"target reached @ {chart.running_cdl['close']}")
+                place_exit_order("BUY")
     return
 
 
@@ -426,7 +499,9 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(
+                    f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                place_exit_order("SELL")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -435,7 +510,9 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(
+                    f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                place_exit_order("BUY")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -508,7 +585,8 @@ def on_order_update(ws, data):
 kws1 = None
 
 
-def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging, strategy_obj):
+def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging,
+                      strategy_obj):
     global data_obj, con_obj, msg_obj, sys_inputs, kws1
     data_obj = data_connection_object
     con_obj = connection_object
@@ -538,9 +616,10 @@ def ATR_trigger_stop():
 
 def backtest():
     global data_obj, spot_data
-    from_date = datetime.datetime.now()
-    to_date = datetime.datetime.now()
-    hist = data_obj.historical_data(spot_data["instrument_token"], from_date.strftime("%Y-%m-%d"), to_date.strftime("%Y-%m-%d"), 'minute')
+    from_date = datetime.datetime.now() - datetime.timedelta(days=1)
+    to_date = datetime.datetime.now() - datetime.timedelta(days=1)
+    hist = data_obj.historical_data(spot_data["instrument_token"], from_date.strftime("%Y-%m-%d"),
+                                    to_date.strftime("%Y-%m-%d"), 'minute')
     hist_df = pd.DataFrame(hist)
     hist_df["cum_vol"] = hist_df["volume"].cumsum()
     print(hist_df.head())

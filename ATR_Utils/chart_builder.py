@@ -37,7 +37,18 @@ class ChartBuilder:
         if tick_data is None:
             print("didn't find symbol tick")
             return
-        tick_time = (tick_data["exchange_timestamp"].hour * 100) + tick_data["exchange_timestamp"].minute
+
+        try:
+            tick_time = (tick_data["exchange_timestamp"].hour * 100) + tick_data["exchange_timestamp"].minute
+        except:
+            tick_data["exchange_timestamp"] = tick_data["timestamp"]
+            tick_time = (tick_data["exchange_timestamp"].hour * 100) + tick_data["exchange_timestamp"].minute
+
+        try:
+            x = tick_data["volume_traded"]
+        except:
+            tick_data["volume_traded"] = tick_data["volume"]
+
         if tick_time < 915:
             return
 
