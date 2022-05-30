@@ -1,12 +1,8 @@
 import traceback
 from datetime import datetime, timedelta
-import enum
-import pytz
 import schedule
 import pandas as pd
-from dateutil.tz import tzoffset
-
-from Core.Enums import CandleInterval
+from Core.Enums import CandleInterval, StrategyState
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
 from Managers.InstrumentManager import InstrumentManager
@@ -109,6 +105,8 @@ class Choppy(Strategy):
         return pivot_range
 
     def place_entry_order(self, side, identifier=None):
+        if self.state == StrategyState.STOPPED:
+            return
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
         self.option_entry_instrument = None
@@ -144,6 +142,8 @@ class Choppy(Strategy):
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
 
     def place_exit_order(self, side, identifier=None):
+        if self.state == StrategyState.STOPPED:
+            return
         self.entry = False
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
@@ -324,4 +324,8 @@ class Choppy(Strategy):
         schedule.every(1).seconds.do(self.calculate_triggers)
 
     def stop(self):
+        if self.entry and self.entry_side == "BUY":
+            self.place_exit_order("SELL", "STOP_SQUARE_OFF")
+        if self.entry and self.entry_side == "SELL":
+            self.place_exit_order("BUY", "STOP_SQUARE_OFF")
         super().stop()
