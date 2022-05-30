@@ -105,8 +105,7 @@ class Choppy(Strategy):
         return pivot_range
 
     def place_entry_order(self, side, identifier=None):
-        if self.state == StrategyState.STOPPED:
-            return
+
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
         self.option_entry_instrument = None
@@ -243,6 +242,8 @@ class Choppy(Strategy):
 
     def calculate_triggers(self):
         try:
+            if self.state == StrategyState.STOPPED:
+                return
             now = datetime.now()
             if now.hour == 3 and now.minute==15 and self.entry:
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
