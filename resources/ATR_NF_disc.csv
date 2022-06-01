@@ -1,4 +1,4 @@
-,param,candel,stoch,pivot,decision
+,param,candle,stoch,pivot,decision
 0,param1,bullish,ob,> r3,buy
 1,param1,bullish,ob,r3-r2,buy
 2,param1,bullish,ob,r2-pdh,buy

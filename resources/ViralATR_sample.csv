@@ -1,2 +1,2 @@
 input_file,symbol,timeframe,orders_type,order_instrument,option_expiry,order_quantity,option_quantity,broker_alias
-resources/trade_dis.xlsx,NIFTY,15,FUTURE_AND_OPTIONS,NIFTY22JULFUT,2022-05-19,50,50,viral
+resources/trade_dis.xlsx,NIFTY22AUGFUT,15,FUTURE_AND_OPTIONS,NIFTY22AUGFUT,2022-06-02,50,50,viral

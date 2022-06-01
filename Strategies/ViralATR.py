@@ -35,12 +35,12 @@ class ViralATR(Strategy):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
         order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
-        option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
+        option_instruments = InstrumentManager.get_instance().get_call_options_for_instrument(
             "BANKNIFTY" )
-        expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
+        expiries = sorted(set(str(instrument.expiry) for instrument in option_instruments))
         inputs = {
             "input_file": "resources/trade_dis.xlsx",
-            "symbol": ["NIFTY", "BANKNIFTY"],
+            "symbol": order_instrument_names,
             "timeframe": ["15", "60"],
             "orders_type": ["FUTURE_AND_OPTIONS", "FUTURES_ONLY", "OPTIONS_ONLY"],
             "order_instrument": order_instrument_names,

@@ -1,55 +1,19 @@
 import datetime
+import json
 import logging
 
 import pandas as pd
 from ATR_Utils.execution_logic import ExecutionLogic
 from ATR_Utils.indicator_manager import IndicatorManager
 from ATR_Utils.position_manager import PositionManager
-from ATR_Utils.positions import Position
 import ATR_Utils.indicators as indicators
 from Managers.InstrumentManager import InstrumentManager
+import Core.Strategy
 
 LOGGER = logging.getLogger(__name__)
 
 
 # classes
-# position setup
-class LongPosition(Position):
-    def __init__(self, spot_price):
-        global instrument_list
-        strike = (spot_price // 50) * 50
-        if spot_price - strike > 40:
-            strike += 50
-        strike_type = "CE"
-        strike_data = None
-        for i in range(len(instrument_list)):
-            if instrument_list[i]['strike'] == strike:
-                if instrument_list[i]['instrument_type'] == strike_type:
-                    if instrument_list[i]['expiry'] == expiry.date():
-                        strike_data = instrument_list[i]
-                        break
-        super().__init__(strike_data, Position.TYPE_LONG, 50)
-        print("long position in", strike_data["tradingsymbol"])
-
-
-class ShortPosition(Position):
-    def __init__(self, spot_price):
-        global instrument_list
-        strike = (spot_price // 50) * 50
-        if spot_price - strike > 10:
-            strike += 50
-        strike_type = "PE"
-        strike_data = None
-        for i in range(len(instrument_list)):
-            if instrument_list[i]['strike'] == strike:
-                if instrument_list[i]['instrument_type'] == strike_type:
-                    if instrument_list[i]['expiry'] == expiry.date():
-                        strike_data = instrument_list[i]
-                        break
-        super().__init__(strike_data, Position.TYPE_LONG, 50)
-        print("long position in", strike_data["tradingsymbol"])
-
-
 class ExecutionData:
     def __init__(self):
         self.running_pos = None
@@ -79,19 +43,7 @@ class ExecutionData:
                            "stoch": None,
                            "pivot": None}
 
-        self.trade = {"trade param": None,
-                      "trade action": None,
-                      "entry_time": None,
-                      "entry_price": None,
-                      "entry_atr": None,
-                      "stoploss": None,
-                      "target": None,
-                      "exit_time": None,
-                      "exit_price": None,
-                      "exit_type": None,
-                      "candle": None,
-                      "stoch": None,
-                      "pivot": None}
+        self.trade = self.trade_temp.copy()
         self.trade_entry = False
         self.trade_exit = False
         self.in_trade = False
@@ -101,7 +53,7 @@ class ExecutionData:
 
 data_obj = None
 con_obj = None
-msg_obj = None
+msg_obj = None  # type: Core.Strategy.Strategy
 sys_inputs = None
 orders_type = ""
 order_instrument = ""
@@ -129,82 +81,11 @@ trade_dir = None  # type: pd.DataFrame
 exc_log = None  # type: ExecutionLogic
 exc_data = ExecutionData()
 
+file_name = ""
+
 
 # helper functions
-def coming_expiry():  # missing expiry switching
-    dt_now = datetime.datetime.now()
-    if dt_now.weekday() > 3:
-        delta = 10 - dt_now.weekday()
-    else:
-        delta = 3 - dt_now.weekday()
-    return dt_now + datetime.timedelta(days=delta)
-
-
-def fill_orders(tick):  # redo
-    global pm
-    if exc_data.trade_entry:
-        exc_data.trade_entry = False
-        exc_data.trade["entry_time"] = tick["timestamp"]
-        exc_data.trade["entry_price"] = tick["last_price"]
-        if "alt" in exc_data.trade["trade param"]:
-            if exc_data.trade["trade action"] == "buy":
-                exc_data.trade["stoploss"] = round(
-                    tick["last_price"] - (exc_data.trade["entry_atr"] * 1.5), 2)
-                exc_data.trade["target"] = round(
-                    tick["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
-                new_pos = LongPosition(tick["last_price"])
-                if exc_data.running_pos is not None:
-                    pm.close_position(exc_data.running_pos)
-                new_pos_id = pm.new_position(new_pos)
-                pm.enter_position(new_pos_id)
-                exc_data.running_pos = new_pos_id
-                exc_data.running_pos_type = "LONG"
-            elif exc_data.trade["trade action"] == "sell":
-                exc_data.trade["stoploss"] = round(
-                    tick["last_price"] + (exc_data.trade["entry_atr"] * 1.5), 2)
-                exc_data.trade["target"] = round(
-                    tick["last_price"] - (exc_data.trade["entry_atr"] * 1.5), 2)
-                new_pos = ShortPosition(tick["last_price"])
-                if exc_data.running_pos is not None:
-                    pm.close_position(exc_data.running_pos)
-                new_pos_id = pm.new_position(new_pos)
-                pm.enter_position(new_pos_id)
-                exc_data.running_pos = new_pos_id
-                exc_data.running_pos_type = "SHORT"
-        else:
-            if exc_data.trade["trade action"] == "buy":
-                exc_data.trade["stoploss"] = round(
-                    tick["last_price"] - (exc_data.trade["entry_atr"]), 2)
-                exc_data.trade["target"] = round(
-                    tick["last_price"] + (exc_data.trade["entry_atr"]), 2)
-                new_pos = LongPosition(tick["last_price"])
-                if exc_data.running_pos is not None:
-                    pm.close_position(exc_data.running_pos)
-                new_pos_id = pm.new_position(new_pos)
-                pm.enter_position(new_pos_id)
-                exc_data.running_pos = new_pos_id
-                exc_data.running_pos_type = "LONG"
-            elif exc_data.trade["trade action"] == "sell":
-                exc_data.trade["stoploss"] = round(
-                    tick["last_price"] + (exc_data.trade["entry_atr"]), 2)
-                exc_data.trade["target"] = round(
-                    tick["last_price"] - (exc_data.trade["entry_atr"]), 2)
-                new_pos = ShortPosition(tick["last_price"])
-                if exc_data.running_pos is not None:
-                    pm.close_position(exc_data.running_pos)
-                new_pos_id = pm.new_position(new_pos)
-                pm.enter_position(new_pos_id)
-                exc_data.running_pos = new_pos_id
-                exc_data.running_pos_type = "SHORT"
-        msg_obj.add_info_user_message(
-            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
-        msg_obj.add_info_user_message(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
-        LOGGER.info(
-            f"trade type {exc_data.running_pos_type}, @  {exc_data.trade['entry_price']}, parameter: {exc_data.trade['trade param']}")
-        LOGGER.info(f'pivots: {exc_data.trade["pivot"]} candle: {exc_data.trade["candle"]}')
-
-
-def fill_orders2(ticks):  # redo
+def fill_orders2(ticks):
     global pm, spot_data, msg_obj, LOGGER
     tick_data = None
     for tick in ticks:
@@ -254,9 +135,9 @@ def system_setup(inputs):  # add proper use of inputs
     """
     populates the global variables
     """
-    global instrument_list, expiry, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
+    global instrument_list, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
         data_obj, exc_log, trade_dir, sub_token, msg_obj, orders_type, order_instrument, option_expiry, order_quantity,\
-        option_quantity, symbol
+        option_quantity, symbol, exc_data, file_name, option_entry_instrument
 
     orders_type = inputs["orders_type"]
     order_instrument = inputs["order_instrument"]
@@ -264,22 +145,22 @@ def system_setup(inputs):  # add proper use of inputs
     order_quantity = int(inputs["order_quantity"])
     option_quantity = int(inputs["option_quantity"])
 
-    expiry = coming_expiry()
-
     instrument_list = data_obj.instruments(exchange=data_obj.EXCHANGE_NFO)
 
-    month = expiry.strftime("%b").upper()
-    year = expiry.strftime("%y")
-
-    symbol = inputs['symbol']
-    spot_sym = symbol + year + month + 'FUT'
+    spot_symbol = inputs['symbol']
+    if "BANKNIFTY" in spot_symbol:
+        symbol = "BANKNIFTY"
+    else:
+        symbol = "NIFTY"
 
     for instru in instrument_list:
-        if instru['tradingsymbol'] == spot_sym:
+        if instru['tradingsymbol'] == spot_symbol:
             spot_data = instru
             break
+
     # LOGGER.debug(f'instrument : {spot_data}')
     pm = PositionManager(data_obj)
+    print(spot_data)
 
     # indicator and chart setup
     IM = IndicatorManager(spot_data, data_obj)
@@ -317,9 +198,32 @@ def system_setup(inputs):  # add proper use of inputs
 
     trade_df = pd.read_csv(disc_loc)
     trade_dir = trade_df.to_dict('records')
+    print(trade_dir)
 
     exc_log.execution_logic = exc_seq
     sub_token = spot_data["instrument_token"]
+
+    if symbol == "NIFTY":
+        file_name = "resources/atr_nf_trade.txt"
+    else:
+        file_name = "resources/atr_bnf_trade.txt"
+
+    with open(file_name, 'r') as file:
+        data = file.read()
+
+    prev_trade = json.loads(data)
+
+    if prev_trade['overnight']:
+        print('loading data')
+        exc_data.in_trade = True
+        exc_data.trade["trade action"] = prev_trade["trade action"]
+        exc_data.trade["entry_price"] = prev_trade["entry_price"]
+        exc_data.trade["stoploss"] = prev_trade["stoploss"]
+        exc_data.trade["target"] = prev_trade["target"]
+        option_entry_instrument = prev_trade["option_entry_instrument"]
+        order_instrument = prev_trade["order_instrument"]
+    else:
+        print("no overnight trade")
 
 
 def place_entry_order(side, identifier=None):
@@ -520,6 +424,31 @@ def stops():
 
 
 def eod_exit():
+    now = datetime.datetime.now()
+    if now.hour == 15 and now.minute >= 30 and now.second >= 15:
+        saved_dict = {}
+        if exc_data.in_trade:
+            saved_dict["overnight"] = True
+            saved_dict["trade action"] = exc_data.trade["trade action"]
+            saved_dict["entry_price"] = exc_data.trade["entry_price"]
+            saved_dict["stoploss"] = exc_data.trade["stoploss"]
+            saved_dict["target"] = exc_data.trade["target"]
+            saved_dict["option_entry_instrument"] = option_entry_instrument.tradingsymbol
+            saved_dict["order_instrument"] = order_instrument
+
+        else:
+            saved_dict["overnight"] = False
+            saved_dict["trade action"] = None
+            saved_dict["entry_price"] = None
+            saved_dict["stoploss"] = None
+            saved_dict["target"] = None
+            saved_dict["option_entry_instrument"] = None
+            saved_dict["order_instrument"] = None
+
+        with open(file_name, 'w') as file:
+            file.write(json.dumps(saved_dict))
+
+        # kws1.close()
     return
 
 
@@ -558,7 +487,8 @@ def on_connect(ws, response):
     global sub_token
     print("connection successfully")
     # Callback on successful connect.
-    ws.subscribe([sub_token])
+    if ws.subscribe([sub_token]):
+        print("connected")
     ws.set_mode(ws.MODE_FULL, [sub_token])
 
 
@@ -575,13 +505,6 @@ def on_order_update(ws, data):
 
 # def on_message(ws,data,isbinary):
 #     print(data)
-
-# Assign the callbacks.
-
-# Infinite loop on the main thread. Nothing after this will run.
-# You have to use the pre-defined callbacks to manage subscriptions.
-# kws1.connect(threaded=True)
-
 kws1 = None
 
 
@@ -602,7 +525,7 @@ def ATR_trigger_start(connection_object, data_connection_object, ticker_connecti
     kws1.on_order_update = on_order_update
     # kws1.on_message = on_message
     kws1.connect(threaded=True)
-
+    #
     # backtest()
 
 
@@ -657,3 +580,5 @@ def backtest():
 
     for tick in ticks:
         on_ticks(0, tick)
+
+    eod_exit()
