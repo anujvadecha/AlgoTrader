@@ -2,6 +2,8 @@ import os
 import pyotp
 from kiteconnect import KiteConnect
 import time
+
+from kiteconnect.exceptions import NetworkException
 from selenium import webdriver
 from urllib import parse
 from kiteconnect import KiteTicker
@@ -12,7 +14,7 @@ from Managers.MarketDataManager import MarketDataManager
 from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
-
+LOGGER = logging.getLogger(__name__)
 
 class ZerodhaBroker(Broker):
 
@@ -152,9 +154,15 @@ class ZerodhaBroker(Broker):
     def get_holdings(self):
         return self.kite.holdings()
 
-    def get_historical_data(self, instrument: Instrument, from_date, to_date, interval):
-        return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
-                                         False, False)
+    def get_historical_data(self, instrument: Instrument, from_date, to_date, interval, continuous=False):
+        try:
+            return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
+                                             continuous, False)
+        except NetworkException as e:
+            LOGGER.error(f"Too many requests error {e}", e)
+            time.sleep(0.5)
+            return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
+                                             continuous, False)
 
     def __read_accesstocken(self):
         file = open(os.getcwd()+"/BrokerCache/accesstoken.txt", "r")

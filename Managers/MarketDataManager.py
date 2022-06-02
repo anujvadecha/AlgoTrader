@@ -11,7 +11,7 @@ class MarketDataManager():
     _subscribed_callbacks = {}
     _subscribed_candle = {}
 
-    def get_historical_data(self, instrument, from_date, to_date, interval: CandleInterval):
+    def get_historical_data(self, instrument, from_date, to_date, interval: CandleInterval, continuous=False):
         # TODO Write logic to cache data and only call for what is required
         # TODO Write logic for live candle maker (Priority low)
         return self.data_broker.get_historical_data(instrument=instrument, from_date=from_date, to_date=to_date,
