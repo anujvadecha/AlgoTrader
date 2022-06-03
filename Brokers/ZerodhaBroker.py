@@ -58,9 +58,6 @@ class ZerodhaBroker(Broker):
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
-        GUIFunctions.get_instance().refreshOrders()
-        GUIFunctions.get_instance().refreshTrades()
-        GUIFunctions.get_instance().refreshPositions()
 
     def subscribe(self, instrument:Instrument):
         self.subscribe_cache[instrument.instrument_token] = instrument.tradingsymbol
