@@ -36,9 +36,7 @@ class ZerodhaBroker(Broker):
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
-        GUIFunctions.get_instance().refreshOrders()
-        GUIFunctions.get_instance().refreshTrades()
-        GUIFunctions.get_instance().refreshPositions()
+
 
     def place_limit_order(self, instrument, side, quantity, type, price):
         from GUIFunctions import GUIFunctions
