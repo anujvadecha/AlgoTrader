@@ -1,18 +1,11 @@
-from datetime import datetime
-
-import pandas as pd
-
 from Indicators.indicator_base import Indicator
 
 
-class AverageTrueRange(Indicator):
-    def __init__(self, instrument, interval, start=0.02, increment_step=0.02, inc_max=0.2):
-        self.instrument = instrument
-        self.interval = interval
+class ParabolicSAR(Indicator):
+    def __init__(self, instrument, timeframe, start=0.02, increment_step=0.02, inc_max=0.2):
         self.start = start
         self.increment_step = increment_step
         self.inc_max = inc_max
-        self.init_time = datetime.now().replace(hour=9,minute=15)
 
         # indicator calculated values
         self.ep = None
@@ -22,14 +15,9 @@ class AverageTrueRange(Indicator):
         self.prev_candle = None
         self.prev_PSAR = 0.00
 
-        super().__init__()
+        super().__init__(instrument=instrument, timeframe=timeframe)
 
-    def calculate(self):
-        hist_data = self.datamanager.get_historical_data(instrument=self.instrument,
-                                                         from_date=self.init_time,
-                                                         interval=self.interval)
-        hist_df = pd.DataFrame(hist_data)
-        candle = hist_df.iloc[-1]
+    def calculate(self, candle=None):
         # starting the psar
         if self.trend == 0:
             self.trend = 1

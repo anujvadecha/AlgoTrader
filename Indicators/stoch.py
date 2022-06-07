@@ -1,18 +1,11 @@
-from datetime import datetime
-
-import pandas as pd
-
 from Indicators.indicator_base import Indicator
 
 
-class AverageTrueRange(Indicator):
-    def __init__(self,instrument, interval, k_length=14, k_smooth=1, d_smooth=3):
-        self.instrument = instrument
-        self.interval = interval
+class Stochastic(Indicator):
+    def __init__(self,instrument, timeframe, k_length=14, k_smooth=1, d_smooth=3):
         self.k_length = k_length
         self.k_smooth = k_smooth
         self.d_smooth = d_smooth
-        self.init_time = datetime.now().replace(hour=9, minute=15)
 
         # indicator calculated values
         self.high_list = []
@@ -23,14 +16,9 @@ class AverageTrueRange(Indicator):
         self.d_value = float('nan')
         self.signal = None
 
-        super().__init__()
+        super().__init__(instrument=instrument, timeframe=timeframe)
 
-    def calculate(self):
-        hist_data = self.datamanager.get_historical_data(instrument=self.instrument,
-                                                         from_date=self.init_time,
-                                                         interval=self.interval)
-        hist_df = pd.DataFrame(hist_data)
-        candle = hist_df.iloc[-1]
+    def calculate(self, candle=None):
         if len(self.high_list) > self.k_length:
             self.high_list = self.high_list[1:]
         self.high_list.append(candle["high"])

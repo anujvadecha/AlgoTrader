@@ -90,3 +90,4 @@ class MarketDataManager():
 
 if __name__ == "__main__":
     MarketDataManager.get_instance()
+
