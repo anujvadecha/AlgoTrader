@@ -1,3 +1,4 @@
+import json
 import traceback
 from datetime import datetime, timedelta
 import schedule
@@ -165,6 +166,19 @@ class Viral_ATR(Strategy):
                 self.add_info_user_message(
                     f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
 
+            saved_dict = {"overnight": True,
+                          "entry_side": self.entry_side,
+                          "entry_price": self.entry_price,
+                          "stoploss": self.stoploss_price,
+                          "target": self.target_price,
+                          "option_entry_instrument": self.option_entry_instrument.tradingsymbol,
+                          "order_instrument": self.order_instrument.tradingsymbol,
+                          "option_quantity": self.option_quantity,
+                          "order_quantity": self.order_quantity}
+
+            with open(self.trade_file_name, 'w') as file:
+                file.write(json.dumps(saved_dict))
+
     def place_exit_order(self, side, identifier=None):
         if self.state == StrategyState.STOPPED:
             return
@@ -181,6 +195,12 @@ class Viral_ATR(Strategy):
             self.place_market_order(instrument=self.option_entry_instrument,
                                     side="SELL", quantity=self.option_quantity,
                                     type="NRML")
+        with open(self.trade_file_name, 'r') as file:
+            data = file.read()
+        saved_dict = json.loads(data)
+        saved_dict["overnight"] = False
+        with open(self.trade_file_name, 'w') as file:
+            file.write(json.dumps(saved_dict))
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
@@ -203,7 +223,11 @@ class Viral_ATR(Strategy):
         }
 
     def _initiate_inputs(self, inputs):
-        self.instrument = Instrument(symbol=inputs["instrument"])
+        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
+        expiries = list(sorted(set(str(instrument.expiry) for instrument in order_instruments)))
+        self.instrument = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY",
+                                                                                      expiry=expiries[0])
+        self.spot_instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.order_type = inputs["orders_type"]
         self.option_side = inputs["option_side"]
@@ -268,6 +292,25 @@ class Viral_ATR(Strategy):
                           "param2 alt": {'bullish': True, 'bearish': True},
                           "param3 alt": {'bullish': True, 'bearish': True},
                           "param4 alt": {'bullish': True, 'bearish': True}}
+
+        if self.spot_instrument == "NIFTY 50":
+            self.trade_file_name = "resources/atr_nf_trade.txt"
+        else:
+            self.trade_file_name = "resources/atr_bnf_trade.txt"
+
+        with open(self.trade_file_name, 'r') as file:
+            data = file.read()
+
+        prev_trade = json.loads(data)
+        if prev_trade['overnight']:
+            self.add_info_user_message('found overnight trade')
+            self.entry = True
+            self.target_price = prev_trade["target"]
+            self.stoploss_price = prev_trade["stoploss"]
+            self.option_entry_instrument = Instrument(symbol=["option_entry_instrument"])
+            self.entry_side = prev_trade["entry_side"]
+            self.order_quantity= prev_trade["order_quantity"]
+            self.option_quantity = prev_trade["option_quantity"]
 
         self.subscribe(self.instrument, self.on_ticks)
         self.add_info_user_message("Started ATR for symbol " + inputs["instrument"])
@@ -350,7 +393,11 @@ class Viral_ATR(Strategy):
 
                 # execute entry
                 self.entry = True
-                self.entry_price = candle['close']
+                data = MarketDataManager.get_instance().get_historical_data(instrument=self.spot_instrument,
+                                                                            from_date=from_date,
+                                                                            to_date=to_date,
+                                                                            interval=self.interval)[-1]
+                self.entry_price = data['close']
                 self.entry_side = trade_type.upper()
                 self.stoploss_price = 0.00
                 self.target_price = 0.00
