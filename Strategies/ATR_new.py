@@ -225,8 +225,12 @@ class Viral_ATR(Strategy):
     def _initiate_inputs(self, inputs):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
         expiries = list(sorted(set(str(instrument.expiry) for instrument in order_instruments)))
-        self.instrument = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY",
-                                                                                      expiry=expiries[0])
+        # TODO find better method
+        for instrument in order_instruments:
+            if instrument.expiry == expiries[0]:
+                break
+        self.instrument = instrument
+        print(self.instrument.tradingsymbol)
         self.spot_instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.order_type = inputs["orders_type"]
@@ -309,7 +313,7 @@ class Viral_ATR(Strategy):
             self.stoploss_price = prev_trade["stoploss"]
             self.option_entry_instrument = Instrument(symbol=["option_entry_instrument"])
             self.entry_side = prev_trade["entry_side"]
-            self.order_quantity= prev_trade["order_quantity"]
+            self.order_quantity = prev_trade["order_quantity"]
             self.option_quantity = prev_trade["option_quantity"]
 
         self.subscribe(self.instrument, self.on_ticks)
