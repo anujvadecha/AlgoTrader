@@ -356,7 +356,7 @@ class Viral_ATR(Strategy):
 
                 # calculate parameter
                 param = ""
-                self.add_info_user_message(f'psar {psar.trend} st {st.trend}')
+                self.add_info_user_message(f'psar {psar} st {st}')
                 # parameter determinations
                 if psar > 0 and st > 0:
                     # PSAR buy ST buy
