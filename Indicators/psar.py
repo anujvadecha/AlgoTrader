@@ -18,6 +18,9 @@ class ParabolicSAR(Indicator):
         super().__init__(instrument=instrument, timeframe=timeframe)
 
     def calculate(self, candle=None):
+        if self.last_candle["date"] == candle["date"]:
+            return
+        self.last_candle = candle
         # starting the psar
         if self.trend == 0:
             self.trend = 1

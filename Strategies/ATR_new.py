@@ -320,6 +320,7 @@ class Viral_ATR(Strategy):
             if self.state == StrategyState.STOPPED:
                 return
             now = datetime.now()
+
             if now.minute == 15:
                 # update indicators
                 from_date = datetime.now() - timedelta(hours=6)

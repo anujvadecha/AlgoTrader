@@ -19,6 +19,9 @@ class SuperTrend(Indicator):
         super().__init__(instrument=instrument, timeframe=timeframe)
 
     def calculate(self, candle=None):
+        if self.last_candle["date"] == candle["date"]:
+            return
+        self.last_candle = candle
         tr1 = candle["high"] - candle["low"]
         tr2 = abs(candle["high"] - self.previous_close)
         tr3 = abs(candle["low"] - self.previous_close)

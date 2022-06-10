@@ -14,6 +14,7 @@ class Indicator:
         self.message = Messages.getInstance()
         self.timeframe = timeframe
         self.instrument = instrument
+        self.last_candle = {"date":None}
         now = datetime.now()
         historical_data = self.datamanager.get_historical_data(instrument=self.instrument,
                                                                interval=timeframe,
