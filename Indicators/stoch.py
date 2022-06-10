@@ -19,6 +19,9 @@ class Stochastic(Indicator):
         super().__init__(instrument=instrument, timeframe=timeframe)
 
     def calculate(self, candle=None):
+        if self.last_candle["date"] == candle["date"]:
+            return
+        self.last_candle = candle
         if len(self.high_list) > self.k_length:
             self.high_list = self.high_list[1:]
         self.high_list.append(candle["high"])

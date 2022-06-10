@@ -209,7 +209,7 @@ class Viral_ATR(Strategy):
             "BANKNIFTY")
         expiries = sorted(set(str(instrument.expiry) for instrument in option_instruments))
         instruments = ["NIFTY 50", "NIFTY BANK"]
-        timeframes = ["15min", "30min", "hourly"]
+        timeframes = ["hourly"]
         return {
             "instrument": instruments,
             "timeframe": timeframes,
@@ -229,7 +229,7 @@ class Viral_ATR(Strategy):
             if instrument.expiry == expiries[0]:
                 break
         self.instrument = instrument
-        print(self.instrument.tradingsymbol)
+        # print(self.instrument.tradingsymbol)
         self.spot_instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.order_type = inputs["orders_type"]
@@ -237,11 +237,7 @@ class Viral_ATR(Strategy):
         self.option_quantity = inputs["option_quantity"]
         self.order_quantity = int(inputs["order_quantity"])
         self.option_expiry = inputs["option_expiry"]
-        self.interval = CandleInterval.fifteen_min
-        if inputs["timeframe"] == "30min":
-            self.interval = CandleInterval.thirty_min
-        elif inputs["timeframe"] == 'hourly':
-            self.interval = CandleInterval.hourly
+        self.interval = CandleInterval.hourly
 
     def on_create(self, inputs):
 
@@ -323,13 +319,8 @@ class Viral_ATR(Strategy):
             if self.state == StrategyState.STOPPED:
                 return
             now = datetime.now()
-            div = 15
-            if self.interval == CandleInterval.thirty_min:
-                div = 30
-            elif self.interval == CandleInterval.hourly:
-                div = 60
 
-            if now.minute % div == 0:
+            if now.minute == 15:
                 # update indicators
                 from_date = datetime.now() - timedelta(hours=6)
                 to_date = datetime.now()
@@ -374,10 +365,13 @@ class Viral_ATR(Strategy):
                     if atr < candle_size:
                         param = "param4"
 
-                # alternate condition check
-                alt = "alt" if candle_size > (atr * 2.00) else ""
+                if param == "":
+                    return
 
-                final_param = param + " " + alt
+                # alternate condition check
+                alt = " alt" if candle_size > (atr * 2.00) else ""
+
+                final_param = param + alt
 
                 if not self.can_trade[final_param][candle_type]:
                     return
