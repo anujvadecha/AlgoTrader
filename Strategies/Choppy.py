@@ -247,7 +247,7 @@ class Choppy(Strategy):
                 return
             now = datetime.now()
             # TODO REMOVE
-            self.place_entry_order(side="BUY")
+            # self.place_entry_order(side="BUY")
             if now.hour == 3 and now.minute==15 and self.entry:
                 self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
             # TODO MOD 15
