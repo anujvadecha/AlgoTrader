@@ -1,3 +1,5 @@
+from logging.handlers import TimedRotatingFileHandler
+
 from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
 from Strategies.Choppy import Choppy
 from Strategies.ViralATR import ViralATR
@@ -69,10 +71,10 @@ logging_config = {
             },
             'algo_trader_log_file': {
                 'level': 'DEBUG',
-                'class': 'logging.handlers.RotatingFileHandler',
+                'class': 'logging.handlers.TimedRotatingFileHandler',
                 'filename': os.path.join('', 'algotrader.log'),
-                'maxBytes': 16777216,  # 16megabytes
-                'backupCount': 5,
+                'interval': 1,
+                'when': "midnight",
                 'formatter': 'verbose'
             },
         },
@@ -92,3 +94,4 @@ logging_config = {
 #     "password": "Chiadi98@&",
 #     "pin": "141014"
 # }
+TimedRotatingFileHandler
