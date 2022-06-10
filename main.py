@@ -53,4 +53,5 @@ class Main():
 # MarketDataManager.get_instance()
 # OrderManager.get_instance()
 # BrokerManager.get_instance()
-
+if __name__ == '__main__':
+    main = Main()
