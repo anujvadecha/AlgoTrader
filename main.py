@@ -9,9 +9,7 @@ from PyQt5 import QtWidgets
 from MessageClasses import Messages
 import sys
 from qt_material import apply_stylesheet
-import logging
 import logging.config
-import os
 from config import logging_config
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "AlgoApplication.settings")
