@@ -3,863 +3,863 @@
 1,param1,bullish,ob,r3-r2,sell
 2,param1,bullish,ob,r2-pdh,sell
 3,param1,bullish,ob,r2-r1,buy
-4,param1,bullish,ob,pdh-r1,sell
+4,param1,bullish,ob,pdh-r1,no_trade
 5,param1,bullish,ob,r1-pdh,sell
-6,param1,bullish,ob,r1-tc,buy
+6,param1,bullish,ob,r1-tc,no_trade
 7,param1,bullish,ob,pdh-tc,buy
-8,param1,bullish,ob,tc-pp,buy
-9,param1,bullish,ob,pp-bc,buy
-10,param1,bullish,ob,bc-pdl,buy
-11,param1,bullish,ob,bc-s1,buy
-12,param1,bullish,ob,pdl-s1,buy
-13,param1,bullish,ob,s1-pdl,buy
-14,param1,bullish,ob,pdl-s2,buy
-15,param1,bullish,ob,s1-s2,buy
-16,param1,bullish,ob,s2-s3,buy
-17,param1,bullish,ob,< s3,buy
+8,param1,bullish,ob,tc-pp,no_trade
+9,param1,bullish,ob,pp-bc,no_trade
+10,param1,bullish,ob,bc-pdl,no_trade
+11,param1,bullish,ob,bc-s1,no_trade
+12,param1,bullish,ob,pdl-s1,no_trade
+13,param1,bullish,ob,s1-pdl,no_trade
+14,param1,bullish,ob,pdl-s2,no_trade
+15,param1,bullish,ob,s1-s2,no_trade
+16,param1,bullish,ob,s2-s3,no_trade
+17,param1,bullish,ob,< s3,no_trade
 18,param1,bullish,os,> r3,buy
-19,param1,bullish,os,r3-r2,sell
-20,param1,bullish,os,r2-pdh,buy
-21,param1,bullish,os,r2-r1,buy
-22,param1,bullish,os,pdh-r1,sell
-23,param1,bullish,os,r1-pdh,sell
-24,param1,bullish,os,r1-tc,buy
-25,param1,bullish,os,pdh-tc,buy
-26,param1,bullish,os,tc-pp,buy
-27,param1,bullish,os,pp-bc,buy
-28,param1,bullish,os,bc-pdl,buy
-29,param1,bullish,os,bc-s1,buy
-30,param1,bullish,os,pdl-s1,buy
-31,param1,bullish,os,s1-pdl,buy
-32,param1,bullish,os,pdl-s2,buy
-33,param1,bullish,os,s1-s2,buy
-34,param1,bullish,os,s2-s3,buy
-35,param1,bullish,os,< s3,buy
+19,param1,bullish,os,r3-r2,no_trade
+20,param1,bullish,os,r2-pdh,no_trade
+21,param1,bullish,os,r2-r1,no_trade
+22,param1,bullish,os,pdh-r1,no_trade
+23,param1,bullish,os,r1-pdh,no_trade
+24,param1,bullish,os,r1-tc,no_trade
+25,param1,bullish,os,pdh-tc,no_trade
+26,param1,bullish,os,tc-pp,no_trade
+27,param1,bullish,os,pp-bc,no_trade
+28,param1,bullish,os,bc-pdl,no_trade
+29,param1,bullish,os,bc-s1,no_trade
+30,param1,bullish,os,pdl-s1,no_trade
+31,param1,bullish,os,s1-pdl,no_trade
+32,param1,bullish,os,pdl-s2,no_trade
+33,param1,bullish,os,s1-s2,no_trade
+34,param1,bullish,os,s2-s3,no_trade
+35,param1,bullish,os,< s3,no_trade
 36,param1,bullish,nu,> r3,buy
-37,param1,bullish,nu,r3-r2,sell
+37,param1,bullish,nu,r3-r2,buy
 38,param1,bullish,nu,r2-pdh,buy
 39,param1,bullish,nu,r2-r1,sell
-40,param1,bullish,nu,pdh-r1,sell
+40,param1,bullish,nu,pdh-r1,buy
 41,param1,bullish,nu,r1-pdh,sell
-42,param1,bullish,nu,r1-tc,buy
+42,param1,bullish,nu,r1-tc,no_trade
 43,param1,bullish,nu,pdh-tc,buy
-44,param1,bullish,nu,tc-pp,buy
-45,param1,bullish,nu,pp-bc,buy
-46,param1,bullish,nu,bc-pdl,buy
-47,param1,bullish,nu,bc-s1,sell
-48,param1,bullish,nu,pdl-s1,buy
-49,param1,bullish,nu,s1-pdl,buy
-50,param1,bullish,nu,pdl-s2,buy
-51,param1,bullish,nu,s1-s2,buy
-52,param1,bullish,nu,s2-s3,buy
-53,param1,bullish,nu,< s3,buy
-54,param1,bearish,ob,> r3,buy
+44,param1,bullish,nu,tc-pp,no_trade
+45,param1,bullish,nu,pp-bc,no_trade
+46,param1,bullish,nu,bc-pdl,no_trade
+47,param1,bullish,nu,bc-s1,no_trade
+48,param1,bullish,nu,pdl-s1,no_trade
+49,param1,bullish,nu,s1-pdl,no_trade
+50,param1,bullish,nu,pdl-s2,no_trade
+51,param1,bullish,nu,s1-s2,no_trade
+52,param1,bullish,nu,s2-s3,no_trade
+53,param1,bullish,nu,< s3,no_trade
+54,param1,bearish,ob,> r3,no_trade
 55,param1,bearish,ob,r3-r2,sell
-56,param1,bearish,ob,r2-pdh,buy
+56,param1,bearish,ob,r2-pdh,no_trade
 57,param1,bearish,ob,r2-r1,sell
-58,param1,bearish,ob,pdh-r1,buy
-59,param1,bearish,ob,r1-pdh,buy
-60,param1,bearish,ob,r1-tc,sell
-61,param1,bearish,ob,pdh-tc,sell
+58,param1,bearish,ob,pdh-r1,no_trade
+59,param1,bearish,ob,r1-pdh,no_trade
+60,param1,bearish,ob,r1-tc,no_trade
+61,param1,bearish,ob,pdh-tc,buy
 62,param1,bearish,ob,tc-pp,buy
 63,param1,bearish,ob,pp-bc,buy
-64,param1,bearish,ob,bc-pdl,buy
-65,param1,bearish,ob,bc-s1,buy
-66,param1,bearish,ob,pdl-s1,buy
+64,param1,bearish,ob,bc-pdl,no_trade
+65,param1,bearish,ob,bc-s1,no_trade
+66,param1,bearish,ob,pdl-s1,no_trade
 67,param1,bearish,ob,s1-pdl,buy
 68,param1,bearish,ob,pdl-s2,buy
-69,param1,bearish,ob,s1-s2,buy
-70,param1,bearish,ob,s2-s3,buy
-71,param1,bearish,ob,< s3,buy
-72,param1,bearish,os,> r3,buy
-73,param1,bearish,os,r3-r2,buy
-74,param1,bearish,os,r2-pdh,buy
-75,param1,bearish,os,r2-r1,buy
-76,param1,bearish,os,pdh-r1,buy
-77,param1,bearish,os,r1-pdh,buy
-78,param1,bearish,os,r1-tc,buy
-79,param1,bearish,os,pdh-tc,buy
-80,param1,bearish,os,tc-pp,buy
-81,param1,bearish,os,pp-bc,buy
-82,param1,bearish,os,bc-pdl,buy
-83,param1,bearish,os,bc-s1,buy
-84,param1,bearish,os,pdl-s1,buy
-85,param1,bearish,os,s1-pdl,buy
-86,param1,bearish,os,pdl-s2,buy
-87,param1,bearish,os,s1-s2,buy
-88,param1,bearish,os,s2-s3,buy
-89,param1,bearish,os,< s3,buy
-90,param1,bearish,nu,> r3,buy
-91,param1,bearish,nu,r3-r2,buy
-92,param1,bearish,nu,r2-pdh,buy
-93,param1,bearish,nu,r2-r1,sell
-94,param1,bearish,nu,pdh-r1,buy
+69,param1,bearish,ob,s1-s2,no_trade
+70,param1,bearish,ob,s2-s3,no_trade
+71,param1,bearish,ob,< s3,no_trade
+72,param1,bearish,os,> r3,no_trade
+73,param1,bearish,os,r3-r2,no_trade
+74,param1,bearish,os,r2-pdh,no_trade
+75,param1,bearish,os,r2-r1,no_trade
+76,param1,bearish,os,pdh-r1,no_trade
+77,param1,bearish,os,r1-pdh,no_trade
+78,param1,bearish,os,r1-tc,no_trade
+79,param1,bearish,os,pdh-tc,no_trade
+80,param1,bearish,os,tc-pp,no_trade
+81,param1,bearish,os,pp-bc,no_trade
+82,param1,bearish,os,bc-pdl,no_trade
+83,param1,bearish,os,bc-s1,no_trade
+84,param1,bearish,os,pdl-s1,no_trade
+85,param1,bearish,os,s1-pdl,no_trade
+86,param1,bearish,os,pdl-s2,no_trade
+87,param1,bearish,os,s1-s2,no_trade
+88,param1,bearish,os,s2-s3,no_trade
+89,param1,bearish,os,< s3,no_trade
+90,param1,bearish,nu,> r3,sell
+91,param1,bearish,nu,r3-r2,no_trade
+92,param1,bearish,nu,r2-pdh,no_trade
+93,param1,bearish,nu,r2-r1,buy
+94,param1,bearish,nu,pdh-r1,no_trade
 95,param1,bearish,nu,r1-pdh,buy
-96,param1,bearish,nu,r1-tc,sell
-97,param1,bearish,nu,pdh-tc,sell
-98,param1,bearish,nu,tc-pp,buy
+96,param1,bearish,nu,r1-tc,no_trade
+97,param1,bearish,nu,pdh-tc,buy
+98,param1,bearish,nu,tc-pp,sell
 99,param1,bearish,nu,pp-bc,buy
-100,param1,bearish,nu,bc-pdl,buy
-101,param1,bearish,nu,bc-s1,buy
-102,param1,bearish,nu,pdl-s1,buy
-103,param1,bearish,nu,s1-pdl,buy
-104,param1,bearish,nu,pdl-s2,buy
-105,param1,bearish,nu,s1-s2,buy
-106,param1,bearish,nu,s2-s3,buy
-107,param1,bearish,nu,< s3,buy
+100,param1,bearish,nu,bc-pdl,sell
+101,param1,bearish,nu,bc-s1,sell
+102,param1,bearish,nu,pdl-s1,no_trade
+103,param1,bearish,nu,s1-pdl,sell
+104,param1,bearish,nu,pdl-s2,no_trade
+105,param1,bearish,nu,s1-s2,no_trade
+106,param1,bearish,nu,s2-s3,no_trade
+107,param1,bearish,nu,< s3,no_trade
 108,param1 alt,bullish,ob,> r3,sell
 109,param1 alt,bullish,ob,r3-r2,buy
-110,param1 alt,bullish,ob,r2-pdh,sell
-111,param1 alt,bullish,ob,r2-r1,sell
-112,param1 alt,bullish,ob,pdh-r1,sell
-113,param1 alt,bullish,ob,r1-pdh,sell
-114,param1 alt,bullish,ob,r1-tc,sell
-115,param1 alt,bullish,ob,pdh-tc,sell
-116,param1 alt,bullish,ob,tc-pp,sell
-117,param1 alt,bullish,ob,pp-bc,sell
-118,param1 alt,bullish,ob,bc-pdl,sell
-119,param1 alt,bullish,ob,bc-s1,sell
-120,param1 alt,bullish,ob,pdl-s1,sell
-121,param1 alt,bullish,ob,s1-pdl,sell
-122,param1 alt,bullish,ob,pdl-s2,sell
-123,param1 alt,bullish,ob,s1-s2,sell
-124,param1 alt,bullish,ob,s2-s3,sell
-125,param1 alt,bullish,ob,< s3,sell
-126,param1 alt,bullish,os,> r3,sell
-127,param1 alt,bullish,os,r3-r2,buy
-128,param1 alt,bullish,os,r2-pdh,sell
-129,param1 alt,bullish,os,r2-r1,sell
-130,param1 alt,bullish,os,pdh-r1,sell
-131,param1 alt,bullish,os,r1-pdh,sell
-132,param1 alt,bullish,os,r1-tc,buy
-133,param1 alt,bullish,os,pdh-tc,sell
-134,param1 alt,bullish,os,tc-pp,sell
-135,param1 alt,bullish,os,pp-bc,sell
-136,param1 alt,bullish,os,bc-pdl,sell
-137,param1 alt,bullish,os,bc-s1,sell
-138,param1 alt,bullish,os,pdl-s1,sell
-139,param1 alt,bullish,os,s1-pdl,sell
-140,param1 alt,bullish,os,pdl-s2,buy
-141,param1 alt,bullish,os,s1-s2,sell
-142,param1 alt,bullish,os,s2-s3,sell
-143,param1 alt,bullish,os,< s3,sell
+110,param1 alt,bullish,ob,r2-pdh,no_trade
+111,param1 alt,bullish,ob,r2-r1,no_trade
+112,param1 alt,bullish,ob,pdh-r1,no_trade
+113,param1 alt,bullish,ob,r1-pdh,no_trade
+114,param1 alt,bullish,ob,r1-tc,no_trade
+115,param1 alt,bullish,ob,pdh-tc,no_trade
+116,param1 alt,bullish,ob,tc-pp,no_trade
+117,param1 alt,bullish,ob,pp-bc,no_trade
+118,param1 alt,bullish,ob,bc-pdl,no_trade
+119,param1 alt,bullish,ob,bc-s1,no_trade
+120,param1 alt,bullish,ob,pdl-s1,no_trade
+121,param1 alt,bullish,ob,s1-pdl,no_trade
+122,param1 alt,bullish,ob,pdl-s2,no_trade
+123,param1 alt,bullish,ob,s1-s2,no_trade
+124,param1 alt,bullish,ob,s2-s3,no_trade
+125,param1 alt,bullish,ob,< s3,no_trade
+126,param1 alt,bullish,os,> r3,no_trade
+127,param1 alt,bullish,os,r3-r2,no_trade
+128,param1 alt,bullish,os,r2-pdh,no_trade
+129,param1 alt,bullish,os,r2-r1,no_trade
+130,param1 alt,bullish,os,pdh-r1,no_trade
+131,param1 alt,bullish,os,r1-pdh,no_trade
+132,param1 alt,bullish,os,r1-tc,no_trade
+133,param1 alt,bullish,os,pdh-tc,no_trade
+134,param1 alt,bullish,os,tc-pp,no_trade
+135,param1 alt,bullish,os,pp-bc,no_trade
+136,param1 alt,bullish,os,bc-pdl,no_trade
+137,param1 alt,bullish,os,bc-s1,no_trade
+138,param1 alt,bullish,os,pdl-s1,no_trade
+139,param1 alt,bullish,os,s1-pdl,no_trade
+140,param1 alt,bullish,os,pdl-s2,no_trade
+141,param1 alt,bullish,os,s1-s2,no_trade
+142,param1 alt,bullish,os,s2-s3,no_trade
+143,param1 alt,bullish,os,< s3,no_trade
 144,param1 alt,bullish,nu,> r3,sell
 145,param1 alt,bullish,nu,r3-r2,buy
 146,param1 alt,bullish,nu,r2-pdh,sell
-147,param1 alt,bullish,nu,r2-r1,sell
-148,param1 alt,bullish,nu,pdh-r1,buy
-149,param1 alt,bullish,nu,r1-pdh,buy
-150,param1 alt,bullish,nu,r1-tc,sell
-151,param1 alt,bullish,nu,pdh-tc,sell
-152,param1 alt,bullish,nu,tc-pp,sell
-153,param1 alt,bullish,nu,pp-bc,sell
-154,param1 alt,bullish,nu,bc-pdl,sell
-155,param1 alt,bullish,nu,bc-s1,sell
-156,param1 alt,bullish,nu,pdl-s1,buy
-157,param1 alt,bullish,nu,s1-pdl,sell
-158,param1 alt,bullish,nu,pdl-s2,buy
-159,param1 alt,bullish,nu,s1-s2,sell
-160,param1 alt,bullish,nu,s2-s3,sell
-161,param1 alt,bullish,nu,< s3,sell
-162,param1 alt,bearish,ob,> r3,sell
-163,param1 alt,bearish,ob,r3-r2,sell
-164,param1 alt,bearish,ob,r2-pdh,sell
-165,param1 alt,bearish,ob,r2-r1,sell
-166,param1 alt,bearish,ob,pdh-r1,sell
-167,param1 alt,bearish,ob,r1-pdh,sell
-168,param1 alt,bearish,ob,r1-tc,sell
-169,param1 alt,bearish,ob,pdh-tc,sell
-170,param1 alt,bearish,ob,tc-pp,sell
-171,param1 alt,bearish,ob,pp-bc,sell
-172,param1 alt,bearish,ob,bc-pdl,sell
-173,param1 alt,bearish,ob,bc-s1,sell
-174,param1 alt,bearish,ob,pdl-s1,sell
-175,param1 alt,bearish,ob,s1-pdl,sell
-176,param1 alt,bearish,ob,pdl-s2,sell
-177,param1 alt,bearish,ob,s1-s2,sell
-178,param1 alt,bearish,ob,s2-s3,sell
-179,param1 alt,bearish,ob,< s3,sell
-180,param1 alt,bearish,os,> r3,sell
-181,param1 alt,bearish,os,r3-r2,sell
-182,param1 alt,bearish,os,r2-pdh,sell
-183,param1 alt,bearish,os,r2-r1,sell
-184,param1 alt,bearish,os,pdh-r1,sell
-185,param1 alt,bearish,os,r1-pdh,sell
-186,param1 alt,bearish,os,r1-tc,sell
-187,param1 alt,bearish,os,pdh-tc,sell
-188,param1 alt,bearish,os,tc-pp,sell
-189,param1 alt,bearish,os,pp-bc,sell
-190,param1 alt,bearish,os,bc-pdl,sell
-191,param1 alt,bearish,os,bc-s1,sell
-192,param1 alt,bearish,os,pdl-s1,sell
-193,param1 alt,bearish,os,s1-pdl,sell
-194,param1 alt,bearish,os,pdl-s2,sell
-195,param1 alt,bearish,os,s1-s2,sell
-196,param1 alt,bearish,os,s2-s3,sell
-197,param1 alt,bearish,os,< s3,sell
-198,param1 alt,bearish,nu,> r3,sell
-199,param1 alt,bearish,nu,r3-r2,sell
-200,param1 alt,bearish,nu,r2-pdh,sell
-201,param1 alt,bearish,nu,r2-r1,sell
-202,param1 alt,bearish,nu,pdh-r1,sell
-203,param1 alt,bearish,nu,r1-pdh,sell
-204,param1 alt,bearish,nu,r1-tc,sell
-205,param1 alt,bearish,nu,pdh-tc,sell
-206,param1 alt,bearish,nu,tc-pp,sell
-207,param1 alt,bearish,nu,pp-bc,sell
-208,param1 alt,bearish,nu,bc-pdl,sell
-209,param1 alt,bearish,nu,bc-s1,sell
-210,param1 alt,bearish,nu,pdl-s1,sell
-211,param1 alt,bearish,nu,s1-pdl,sell
-212,param1 alt,bearish,nu,pdl-s2,sell
-213,param1 alt,bearish,nu,s1-s2,sell
-214,param1 alt,bearish,nu,s2-s3,sell
-215,param1 alt,bearish,nu,< s3,sell
-216,param2,bullish,ob,> r3,sell
-217,param2,bullish,ob,r3-r2,sell
-218,param2,bullish,ob,r2-pdh,sell
-219,param2,bullish,ob,r2-r1,sell
-220,param2,bullish,ob,pdh-r1,sell
-221,param2,bullish,ob,r1-pdh,sell
-222,param2,bullish,ob,r1-tc,buy
-223,param2,bullish,ob,pdh-tc,buy
-224,param2,bullish,ob,tc-pp,sell
-225,param2,bullish,ob,pp-bc,sell
-226,param2,bullish,ob,bc-pdl,sell
-227,param2,bullish,ob,bc-s1,sell
-228,param2,bullish,ob,pdl-s1,sell
-229,param2,bullish,ob,s1-pdl,sell
-230,param2,bullish,ob,pdl-s2,sell
-231,param2,bullish,ob,s1-s2,sell
-232,param2,bullish,ob,s2-s3,sell
-233,param2,bullish,ob,< s3,sell
-234,param2,bullish,os,> r3,sell
-235,param2,bullish,os,r3-r2,sell
-236,param2,bullish,os,r2-pdh,sell
-237,param2,bullish,os,r2-r1,sell
-238,param2,bullish,os,pdh-r1,sell
-239,param2,bullish,os,r1-pdh,sell
-240,param2,bullish,os,r1-tc,buy
-241,param2,bullish,os,pdh-tc,buy
-242,param2,bullish,os,tc-pp,sell
-243,param2,bullish,os,pp-bc,sell
-244,param2,bullish,os,bc-pdl,sell
-245,param2,bullish,os,bc-s1,sell
-246,param2,bullish,os,pdl-s1,sell
-247,param2,bullish,os,s1-pdl,sell
-248,param2,bullish,os,pdl-s2,sell
-249,param2,bullish,os,s1-s2,sell
-250,param2,bullish,os,s2-s3,sell
-251,param2,bullish,os,< s3,sell
-252,param2,bullish,nu,> r3,sell
-253,param2,bullish,nu,r3-r2,sell
-254,param2,bullish,nu,r2-pdh,sell
-255,param2,bullish,nu,r2-r1,buy
-256,param2,bullish,nu,pdh-r1,sell
-257,param2,bullish,nu,r1-pdh,sell
-258,param2,bullish,nu,r1-tc,buy
-259,param2,bullish,nu,pdh-tc,buy
-260,param2,bullish,nu,tc-pp,sell
-261,param2,bullish,nu,pp-bc,sell
-262,param2,bullish,nu,bc-pdl,sell
-263,param2,bullish,nu,bc-s1,sell
-264,param2,bullish,nu,pdl-s1,sell
-265,param2,bullish,nu,s1-pdl,sell
-266,param2,bullish,nu,pdl-s2,sell
-267,param2,bullish,nu,s1-s2,sell
-268,param2,bullish,nu,s2-s3,sell
-269,param2,bullish,nu,< s3,sell
-270,param2,bearish,ob,> r3,sell
-271,param2,bearish,ob,r3-r2,buy
-272,param2,bearish,ob,r2-pdh,buy
-273,param2,bearish,ob,r2-r1,sell
-274,param2,bearish,ob,pdh-r1,buy
-275,param2,bearish,ob,r1-pdh,sell
-276,param2,bearish,ob,r1-tc,buy
-277,param2,bearish,ob,pdh-tc,buy
-278,param2,bearish,ob,tc-pp,buy
+147,param1 alt,bullish,nu,r2-r1,buy
+148,param1 alt,bullish,nu,pdh-r1,no_trade
+149,param1 alt,bullish,nu,r1-pdh,no_trade
+150,param1 alt,bullish,nu,r1-tc,no_trade
+151,param1 alt,bullish,nu,pdh-tc,no_trade
+152,param1 alt,bullish,nu,tc-pp,no_trade
+153,param1 alt,bullish,nu,pp-bc,no_trade
+154,param1 alt,bullish,nu,bc-pdl,no_trade
+155,param1 alt,bullish,nu,bc-s1,no_trade
+156,param1 alt,bullish,nu,pdl-s1,no_trade
+157,param1 alt,bullish,nu,s1-pdl,no_trade
+158,param1 alt,bullish,nu,pdl-s2,no_trade
+159,param1 alt,bullish,nu,s1-s2,no_trade
+160,param1 alt,bullish,nu,s2-s3,no_trade
+161,param1 alt,bullish,nu,< s3,no_trade
+162,param1 alt,bearish,ob,> r3,no_trade
+163,param1 alt,bearish,ob,r3-r2,no_trade
+164,param1 alt,bearish,ob,r2-pdh,no_trade
+165,param1 alt,bearish,ob,r2-r1,no_trade
+166,param1 alt,bearish,ob,pdh-r1,no_trade
+167,param1 alt,bearish,ob,r1-pdh,no_trade
+168,param1 alt,bearish,ob,r1-tc,no_trade
+169,param1 alt,bearish,ob,pdh-tc,no_trade
+170,param1 alt,bearish,ob,tc-pp,no_trade
+171,param1 alt,bearish,ob,pp-bc,no_trade
+172,param1 alt,bearish,ob,bc-pdl,no_trade
+173,param1 alt,bearish,ob,bc-s1,no_trade
+174,param1 alt,bearish,ob,pdl-s1,no_trade
+175,param1 alt,bearish,ob,s1-pdl,no_trade
+176,param1 alt,bearish,ob,pdl-s2,no_trade
+177,param1 alt,bearish,ob,s1-s2,no_trade
+178,param1 alt,bearish,ob,s2-s3,no_trade
+179,param1 alt,bearish,ob,< s3,no_trade
+180,param1 alt,bearish,os,> r3,no_trade
+181,param1 alt,bearish,os,r3-r2,no_trade
+182,param1 alt,bearish,os,r2-pdh,no_trade
+183,param1 alt,bearish,os,r2-r1,no_trade
+184,param1 alt,bearish,os,pdh-r1,no_trade
+185,param1 alt,bearish,os,r1-pdh,no_trade
+186,param1 alt,bearish,os,r1-tc,no_trade
+187,param1 alt,bearish,os,pdh-tc,no_trade
+188,param1 alt,bearish,os,tc-pp,no_trade
+189,param1 alt,bearish,os,pp-bc,no_trade
+190,param1 alt,bearish,os,bc-pdl,no_trade
+191,param1 alt,bearish,os,bc-s1,no_trade
+192,param1 alt,bearish,os,pdl-s1,no_trade
+193,param1 alt,bearish,os,s1-pdl,no_trade
+194,param1 alt,bearish,os,pdl-s2,no_trade
+195,param1 alt,bearish,os,s1-s2,no_trade
+196,param1 alt,bearish,os,s2-s3,no_trade
+197,param1 alt,bearish,os,< s3,no_trade
+198,param1 alt,bearish,nu,> r3,no_trade
+199,param1 alt,bearish,nu,r3-r2,no_trade
+200,param1 alt,bearish,nu,r2-pdh,no_trade
+201,param1 alt,bearish,nu,r2-r1,buy
+202,param1 alt,bearish,nu,pdh-r1,no_trade
+203,param1 alt,bearish,nu,r1-pdh,no_trade
+204,param1 alt,bearish,nu,r1-tc,no_trade
+205,param1 alt,bearish,nu,pdh-tc,no_trade
+206,param1 alt,bearish,nu,tc-pp,no_trade
+207,param1 alt,bearish,nu,pp-bc,no_trade
+208,param1 alt,bearish,nu,bc-pdl,no_trade
+209,param1 alt,bearish,nu,bc-s1,no_trade
+210,param1 alt,bearish,nu,pdl-s1,no_trade
+211,param1 alt,bearish,nu,s1-pdl,no_trade
+212,param1 alt,bearish,nu,pdl-s2,no_trade
+213,param1 alt,bearish,nu,s1-s2,no_trade
+214,param1 alt,bearish,nu,s2-s3,no_trade
+215,param1 alt,bearish,nu,< s3,no_trade
+216,param2,bullish,ob,> r3,no_trade
+217,param2,bullish,ob,r3-r2,no_trade
+218,param2,bullish,ob,r2-pdh,no_trade
+219,param2,bullish,ob,r2-r1,no_trade
+220,param2,bullish,ob,pdh-r1,no_trade
+221,param2,bullish,ob,r1-pdh,no_trade
+222,param2,bullish,ob,r1-tc,no_trade
+223,param2,bullish,ob,pdh-tc,no_trade
+224,param2,bullish,ob,tc-pp,no_trade
+225,param2,bullish,ob,pp-bc,no_trade
+226,param2,bullish,ob,bc-pdl,no_trade
+227,param2,bullish,ob,bc-s1,no_trade
+228,param2,bullish,ob,pdl-s1,no_trade
+229,param2,bullish,ob,s1-pdl,no_trade
+230,param2,bullish,ob,pdl-s2,no_trade
+231,param2,bullish,ob,s1-s2,no_trade
+232,param2,bullish,ob,s2-s3,no_trade
+233,param2,bullish,ob,< s3,no_trade
+234,param2,bullish,os,> r3,no_trade
+235,param2,bullish,os,r3-r2,no_trade
+236,param2,bullish,os,r2-pdh,no_trade
+237,param2,bullish,os,r2-r1,no_trade
+238,param2,bullish,os,pdh-r1,no_trade
+239,param2,bullish,os,r1-pdh,no_trade
+240,param2,bullish,os,r1-tc,no_trade
+241,param2,bullish,os,pdh-tc,no_trade
+242,param2,bullish,os,tc-pp,no_trade
+243,param2,bullish,os,pp-bc,no_trade
+244,param2,bullish,os,bc-pdl,no_trade
+245,param2,bullish,os,bc-s1,no_trade
+246,param2,bullish,os,pdl-s1,no_trade
+247,param2,bullish,os,s1-pdl,no_trade
+248,param2,bullish,os,pdl-s2,no_trade
+249,param2,bullish,os,s1-s2,no_trade
+250,param2,bullish,os,s2-s3,no_trade
+251,param2,bullish,os,< s3,no_trade
+252,param2,bullish,nu,> r3,no_trade
+253,param2,bullish,nu,r3-r2,no_trade
+254,param2,bullish,nu,r2-pdh,no_trade
+255,param2,bullish,nu,r2-r1,no_trade
+256,param2,bullish,nu,pdh-r1,no_trade
+257,param2,bullish,nu,r1-pdh,no_trade
+258,param2,bullish,nu,r1-tc,sell
+259,param2,bullish,nu,pdh-tc,sell
+260,param2,bullish,nu,tc-pp,buy
+261,param2,bullish,nu,pp-bc,no_trade
+262,param2,bullish,nu,bc-pdl,no_trade
+263,param2,bullish,nu,bc-s1,no_trade
+264,param2,bullish,nu,pdl-s1,no_trade
+265,param2,bullish,nu,s1-pdl,no_trade
+266,param2,bullish,nu,pdl-s2,no_trade
+267,param2,bullish,nu,s1-s2,no_trade
+268,param2,bullish,nu,s2-s3,no_trade
+269,param2,bullish,nu,< s3,no_trade
+270,param2,bearish,ob,> r3,no_trade
+271,param2,bearish,ob,r3-r2,no_trade
+272,param2,bearish,ob,r2-pdh,no_trade
+273,param2,bearish,ob,r2-r1,no_trade
+274,param2,bearish,ob,pdh-r1,no_trade
+275,param2,bearish,ob,r1-pdh,no_trade
+276,param2,bearish,ob,r1-tc,no_trade
+277,param2,bearish,ob,pdh-tc,sell
+278,param2,bearish,ob,tc-pp,no_trade
 279,param2,bearish,ob,pp-bc,buy
-280,param2,bearish,ob,bc-pdl,buy
-281,param2,bearish,ob,bc-s1,sell
+280,param2,bearish,ob,bc-pdl,no_trade
+281,param2,bearish,ob,bc-s1,no_trade
 282,param2,bearish,ob,pdl-s1,buy
-283,param2,bearish,ob,s1-pdl,buy
-284,param2,bearish,ob,pdl-s2,buy
-285,param2,bearish,ob,s1-s2,sell
-286,param2,bearish,ob,s2-s3,buy
-287,param2,bearish,ob,< s3,buy
-288,param2,bearish,os,> r3,sell
-289,param2,bearish,os,r3-r2,buy
-290,param2,bearish,os,r2-pdh,buy
-291,param2,bearish,os,r2-r1,buy
-292,param2,bearish,os,pdh-r1,buy
-293,param2,bearish,os,r1-pdh,buy
-294,param2,bearish,os,r1-tc,buy
-295,param2,bearish,os,pdh-tc,buy
-296,param2,bearish,os,tc-pp,buy
-297,param2,bearish,os,pp-bc,buy
-298,param2,bearish,os,bc-pdl,buy
-299,param2,bearish,os,bc-s1,buy
-300,param2,bearish,os,pdl-s1,buy
-301,param2,bearish,os,s1-pdl,buy
+283,param2,bearish,ob,s1-pdl,no_trade
+284,param2,bearish,ob,pdl-s2,no_trade
+285,param2,bearish,ob,s1-s2,no_trade
+286,param2,bearish,ob,s2-s3,no_trade
+287,param2,bearish,ob,< s3,no_trade
+288,param2,bearish,os,> r3,no_trade
+289,param2,bearish,os,r3-r2,no_trade
+290,param2,bearish,os,r2-pdh,no_trade
+291,param2,bearish,os,r2-r1,no_trade
+292,param2,bearish,os,pdh-r1,no_trade
+293,param2,bearish,os,r1-pdh,no_trade
+294,param2,bearish,os,r1-tc,no_trade
+295,param2,bearish,os,pdh-tc,no_trade
+296,param2,bearish,os,tc-pp,no_trade
+297,param2,bearish,os,pp-bc,no_trade
+298,param2,bearish,os,bc-pdl,no_trade
+299,param2,bearish,os,bc-s1,no_trade
+300,param2,bearish,os,pdl-s1,no_trade
+301,param2,bearish,os,s1-pdl,no_trade
 302,param2,bearish,os,pdl-s2,buy
-303,param2,bearish,os,s1-s2,buy
-304,param2,bearish,os,s2-s3,buy
-305,param2,bearish,os,< s3,buy
-306,param2,bearish,nu,> r3,sell
-307,param2,bearish,nu,r3-r2,buy
-308,param2,bearish,nu,r2-pdh,buy
-309,param2,bearish,nu,r2-r1,buy
-310,param2,bearish,nu,pdh-r1,buy
-311,param2,bearish,nu,r1-pdh,sell
-312,param2,bearish,nu,r1-tc,buy
-313,param2,bearish,nu,pdh-tc,buy
-314,param2,bearish,nu,tc-pp,buy
-315,param2,bearish,nu,pp-bc,buy
-316,param2,bearish,nu,bc-pdl,buy
+303,param2,bearish,os,s1-s2,no_trade
+304,param2,bearish,os,s2-s3,no_trade
+305,param2,bearish,os,< s3,no_trade
+306,param2,bearish,nu,> r3,no_trade
+307,param2,bearish,nu,r3-r2,no_trade
+308,param2,bearish,nu,r2-pdh,no_trade
+309,param2,bearish,nu,r2-r1,no_trade
+310,param2,bearish,nu,pdh-r1,no_trade
+311,param2,bearish,nu,r1-pdh,no_trade
+312,param2,bearish,nu,r1-tc,no_trade
+313,param2,bearish,nu,pdh-tc,no_trade
+314,param2,bearish,nu,tc-pp,no_trade
+315,param2,bearish,nu,pp-bc,no_trade
+316,param2,bearish,nu,bc-pdl,sell
 317,param2,bearish,nu,bc-s1,sell
 318,param2,bearish,nu,pdl-s1,buy
 319,param2,bearish,nu,s1-pdl,buy
-320,param2,bearish,nu,pdl-s2,buy
+320,param2,bearish,nu,pdl-s2,no_trade
 321,param2,bearish,nu,s1-s2,buy
 322,param2,bearish,nu,s2-s3,buy
-323,param2,bearish,nu,< s3,buy
-324,param2 alt,bullish,ob,> r3,sell
-325,param2 alt,bullish,ob,r3-r2,sell
-326,param2 alt,bullish,ob,r2-pdh,sell
-327,param2 alt,bullish,ob,r2-r1,sell
-328,param2 alt,bullish,ob,pdh-r1,sell
-329,param2 alt,bullish,ob,r1-pdh,sell
-330,param2 alt,bullish,ob,r1-tc,sell
-331,param2 alt,bullish,ob,pdh-tc,sell
-332,param2 alt,bullish,ob,tc-pp,sell
-333,param2 alt,bullish,ob,pp-bc,sell
-334,param2 alt,bullish,ob,bc-pdl,sell
-335,param2 alt,bullish,ob,bc-s1,sell
-336,param2 alt,bullish,ob,pdl-s1,sell
-337,param2 alt,bullish,ob,s1-pdl,sell
-338,param2 alt,bullish,ob,pdl-s2,sell
-339,param2 alt,bullish,ob,s1-s2,sell
-340,param2 alt,bullish,ob,s2-s3,sell
-341,param2 alt,bullish,ob,< s3,sell
-342,param2 alt,bullish,os,> r3,sell
-343,param2 alt,bullish,os,r3-r2,sell
-344,param2 alt,bullish,os,r2-pdh,sell
-345,param2 alt,bullish,os,r2-r1,sell
-346,param2 alt,bullish,os,pdh-r1,sell
-347,param2 alt,bullish,os,r1-pdh,sell
-348,param2 alt,bullish,os,r1-tc,sell
-349,param2 alt,bullish,os,pdh-tc,sell
-350,param2 alt,bullish,os,tc-pp,sell
-351,param2 alt,bullish,os,pp-bc,sell
-352,param2 alt,bullish,os,bc-pdl,sell
-353,param2 alt,bullish,os,bc-s1,sell
-354,param2 alt,bullish,os,pdl-s1,sell
-355,param2 alt,bullish,os,s1-pdl,sell
-356,param2 alt,bullish,os,pdl-s2,sell
-357,param2 alt,bullish,os,s1-s2,sell
-358,param2 alt,bullish,os,s2-s3,sell
-359,param2 alt,bullish,os,< s3,sell
-360,param2 alt,bullish,nu,> r3,sell
-361,param2 alt,bullish,nu,r3-r2,sell
-362,param2 alt,bullish,nu,r2-pdh,sell
-363,param2 alt,bullish,nu,r2-r1,sell
-364,param2 alt,bullish,nu,pdh-r1,sell
-365,param2 alt,bullish,nu,r1-pdh,sell
-366,param2 alt,bullish,nu,r1-tc,sell
-367,param2 alt,bullish,nu,pdh-tc,sell
-368,param2 alt,bullish,nu,tc-pp,sell
-369,param2 alt,bullish,nu,pp-bc,sell
-370,param2 alt,bullish,nu,bc-pdl,sell
-371,param2 alt,bullish,nu,bc-s1,sell
-372,param2 alt,bullish,nu,pdl-s1,sell
-373,param2 alt,bullish,nu,s1-pdl,sell
-374,param2 alt,bullish,nu,pdl-s2,sell
-375,param2 alt,bullish,nu,s1-s2,sell
-376,param2 alt,bullish,nu,s2-s3,sell
-377,param2 alt,bullish,nu,< s3,sell
-378,param2 alt,bearish,ob,> r3,sell
-379,param2 alt,bearish,ob,r3-r2,sell
-380,param2 alt,bearish,ob,r2-pdh,sell
-381,param2 alt,bearish,ob,r2-r1,sell
-382,param2 alt,bearish,ob,pdh-r1,sell
-383,param2 alt,bearish,ob,r1-pdh,sell
-384,param2 alt,bearish,ob,r1-tc,sell
-385,param2 alt,bearish,ob,pdh-tc,sell
-386,param2 alt,bearish,ob,tc-pp,sell
-387,param2 alt,bearish,ob,pp-bc,sell
-388,param2 alt,bearish,ob,bc-pdl,sell
-389,param2 alt,bearish,ob,bc-s1,sell
-390,param2 alt,bearish,ob,pdl-s1,sell
-391,param2 alt,bearish,ob,s1-pdl,sell
-392,param2 alt,bearish,ob,pdl-s2,sell
-393,param2 alt,bearish,ob,s1-s2,sell
-394,param2 alt,bearish,ob,s2-s3,sell
-395,param2 alt,bearish,ob,< s3,sell
-396,param2 alt,bearish,os,> r3,sell
-397,param2 alt,bearish,os,r3-r2,sell
-398,param2 alt,bearish,os,r2-pdh,sell
-399,param2 alt,bearish,os,r2-r1,sell
-400,param2 alt,bearish,os,pdh-r1,sell
-401,param2 alt,bearish,os,r1-pdh,sell
-402,param2 alt,bearish,os,r1-tc,sell
-403,param2 alt,bearish,os,pdh-tc,sell
-404,param2 alt,bearish,os,tc-pp,sell
-405,param2 alt,bearish,os,pp-bc,sell
-406,param2 alt,bearish,os,bc-pdl,sell
-407,param2 alt,bearish,os,bc-s1,sell
-408,param2 alt,bearish,os,pdl-s1,sell
-409,param2 alt,bearish,os,s1-pdl,sell
-410,param2 alt,bearish,os,pdl-s2,sell
-411,param2 alt,bearish,os,s1-s2,sell
-412,param2 alt,bearish,os,s2-s3,sell
-413,param2 alt,bearish,os,< s3,sell
-414,param2 alt,bearish,nu,> r3,sell
-415,param2 alt,bearish,nu,r3-r2,sell
-416,param2 alt,bearish,nu,r2-pdh,sell
-417,param2 alt,bearish,nu,r2-r1,sell
-418,param2 alt,bearish,nu,pdh-r1,sell
-419,param2 alt,bearish,nu,r1-pdh,sell
-420,param2 alt,bearish,nu,r1-tc,sell
-421,param2 alt,bearish,nu,pdh-tc,sell
-422,param2 alt,bearish,nu,tc-pp,sell
-423,param2 alt,bearish,nu,pp-bc,sell
-424,param2 alt,bearish,nu,bc-pdl,sell
-425,param2 alt,bearish,nu,bc-s1,sell
-426,param2 alt,bearish,nu,pdl-s1,sell
-427,param2 alt,bearish,nu,s1-pdl,sell
-428,param2 alt,bearish,nu,pdl-s2,sell
-429,param2 alt,bearish,nu,s1-s2,sell
-430,param2 alt,bearish,nu,s2-s3,sell
-431,param2 alt,bearish,nu,< s3,sell
-432,param3,bullish,ob,> r3,buy
-433,param3,bullish,ob,r3-r2,buy
-434,param3,bullish,ob,r2-pdh,buy
-435,param3,bullish,ob,r2-r1,buy
-436,param3,bullish,ob,pdh-r1,buy
-437,param3,bullish,ob,r1-pdh,sell
-438,param3,bullish,ob,r1-tc,sell
-439,param3,bullish,ob,pdh-tc,sell
-440,param3,bullish,ob,tc-pp,sell
-441,param3,bullish,ob,pp-bc,sell
-442,param3,bullish,ob,bc-pdl,buy
-443,param3,bullish,ob,bc-s1,sell
-444,param3,bullish,ob,pdl-s1,buy
-445,param3,bullish,ob,s1-pdl,buy
-446,param3,bullish,ob,pdl-s2,buy
-447,param3,bullish,ob,s1-s2,buy
-448,param3,bullish,ob,s2-s3,buy
-449,param3,bullish,ob,< s3,buy
-450,param3,bullish,os,> r3,buy
-451,param3,bullish,os,r3-r2,buy
-452,param3,bullish,os,r2-pdh,buy
-453,param3,bullish,os,r2-r1,buy
-454,param3,bullish,os,pdh-r1,buy
-455,param3,bullish,os,r1-pdh,sell
-456,param3,bullish,os,r1-tc,buy
-457,param3,bullish,os,pdh-tc,buy
-458,param3,bullish,os,tc-pp,buy
-459,param3,bullish,os,pp-bc,buy
-460,param3,bullish,os,bc-pdl,buy
-461,param3,bullish,os,bc-s1,buy
-462,param3,bullish,os,pdl-s1,buy
-463,param3,bullish,os,s1-pdl,buy
-464,param3,bullish,os,pdl-s2,buy
-465,param3,bullish,os,s1-s2,buy
-466,param3,bullish,os,s2-s3,buy
-467,param3,bullish,os,< s3,buy
-468,param3,bullish,nu,> r3,buy
+323,param2,bearish,nu,< s3,no_trade
+324,param2 alt,bullish,ob,> r3,no_trade
+325,param2 alt,bullish,ob,r3-r2,no_trade
+326,param2 alt,bullish,ob,r2-pdh,no_trade
+327,param2 alt,bullish,ob,r2-r1,no_trade
+328,param2 alt,bullish,ob,pdh-r1,no_trade
+329,param2 alt,bullish,ob,r1-pdh,no_trade
+330,param2 alt,bullish,ob,r1-tc,no_trade
+331,param2 alt,bullish,ob,pdh-tc,no_trade
+332,param2 alt,bullish,ob,tc-pp,no_trade
+333,param2 alt,bullish,ob,pp-bc,no_trade
+334,param2 alt,bullish,ob,bc-pdl,no_trade
+335,param2 alt,bullish,ob,bc-s1,no_trade
+336,param2 alt,bullish,ob,pdl-s1,no_trade
+337,param2 alt,bullish,ob,s1-pdl,no_trade
+338,param2 alt,bullish,ob,pdl-s2,no_trade
+339,param2 alt,bullish,ob,s1-s2,no_trade
+340,param2 alt,bullish,ob,s2-s3,no_trade
+341,param2 alt,bullish,ob,< s3,no_trade
+342,param2 alt,bullish,os,> r3,no_trade
+343,param2 alt,bullish,os,r3-r2,no_trade
+344,param2 alt,bullish,os,r2-pdh,no_trade
+345,param2 alt,bullish,os,r2-r1,no_trade
+346,param2 alt,bullish,os,pdh-r1,no_trade
+347,param2 alt,bullish,os,r1-pdh,no_trade
+348,param2 alt,bullish,os,r1-tc,no_trade
+349,param2 alt,bullish,os,pdh-tc,no_trade
+350,param2 alt,bullish,os,tc-pp,no_trade
+351,param2 alt,bullish,os,pp-bc,no_trade
+352,param2 alt,bullish,os,bc-pdl,no_trade
+353,param2 alt,bullish,os,bc-s1,no_trade
+354,param2 alt,bullish,os,pdl-s1,no_trade
+355,param2 alt,bullish,os,s1-pdl,no_trade
+356,param2 alt,bullish,os,pdl-s2,no_trade
+357,param2 alt,bullish,os,s1-s2,no_trade
+358,param2 alt,bullish,os,s2-s3,no_trade
+359,param2 alt,bullish,os,< s3,no_trade
+360,param2 alt,bullish,nu,> r3,no_trade
+361,param2 alt,bullish,nu,r3-r2,no_trade
+362,param2 alt,bullish,nu,r2-pdh,no_trade
+363,param2 alt,bullish,nu,r2-r1,no_trade
+364,param2 alt,bullish,nu,pdh-r1,no_trade
+365,param2 alt,bullish,nu,r1-pdh,no_trade
+366,param2 alt,bullish,nu,r1-tc,no_trade
+367,param2 alt,bullish,nu,pdh-tc,no_trade
+368,param2 alt,bullish,nu,tc-pp,no_trade
+369,param2 alt,bullish,nu,pp-bc,no_trade
+370,param2 alt,bullish,nu,bc-pdl,no_trade
+371,param2 alt,bullish,nu,bc-s1,no_trade
+372,param2 alt,bullish,nu,pdl-s1,no_trade
+373,param2 alt,bullish,nu,s1-pdl,no_trade
+374,param2 alt,bullish,nu,pdl-s2,no_trade
+375,param2 alt,bullish,nu,s1-s2,no_trade
+376,param2 alt,bullish,nu,s2-s3,no_trade
+377,param2 alt,bullish,nu,< s3,no_trade
+378,param2 alt,bearish,ob,> r3,no_trade
+379,param2 alt,bearish,ob,r3-r2,no_trade
+380,param2 alt,bearish,ob,r2-pdh,no_trade
+381,param2 alt,bearish,ob,r2-r1,no_trade
+382,param2 alt,bearish,ob,pdh-r1,no_trade
+383,param2 alt,bearish,ob,r1-pdh,no_trade
+384,param2 alt,bearish,ob,r1-tc,no_trade
+385,param2 alt,bearish,ob,pdh-tc,no_trade
+386,param2 alt,bearish,ob,tc-pp,buy
+387,param2 alt,bearish,ob,pp-bc,no_trade
+388,param2 alt,bearish,ob,bc-pdl,no_trade
+389,param2 alt,bearish,ob,bc-s1,no_trade
+390,param2 alt,bearish,ob,pdl-s1,no_trade
+391,param2 alt,bearish,ob,s1-pdl,no_trade
+392,param2 alt,bearish,ob,pdl-s2,no_trade
+393,param2 alt,bearish,ob,s1-s2,no_trade
+394,param2 alt,bearish,ob,s2-s3,no_trade
+395,param2 alt,bearish,ob,< s3,no_trade
+396,param2 alt,bearish,os,> r3,no_trade
+397,param2 alt,bearish,os,r3-r2,no_trade
+398,param2 alt,bearish,os,r2-pdh,no_trade
+399,param2 alt,bearish,os,r2-r1,no_trade
+400,param2 alt,bearish,os,pdh-r1,no_trade
+401,param2 alt,bearish,os,r1-pdh,no_trade
+402,param2 alt,bearish,os,r1-tc,no_trade
+403,param2 alt,bearish,os,pdh-tc,no_trade
+404,param2 alt,bearish,os,tc-pp,no_trade
+405,param2 alt,bearish,os,pp-bc,no_trade
+406,param2 alt,bearish,os,bc-pdl,no_trade
+407,param2 alt,bearish,os,bc-s1,no_trade
+408,param2 alt,bearish,os,pdl-s1,no_trade
+409,param2 alt,bearish,os,s1-pdl,no_trade
+410,param2 alt,bearish,os,pdl-s2,no_trade
+411,param2 alt,bearish,os,s1-s2,no_trade
+412,param2 alt,bearish,os,s2-s3,no_trade
+413,param2 alt,bearish,os,< s3,no_trade
+414,param2 alt,bearish,nu,> r3,no_trade
+415,param2 alt,bearish,nu,r3-r2,no_trade
+416,param2 alt,bearish,nu,r2-pdh,no_trade
+417,param2 alt,bearish,nu,r2-r1,no_trade
+418,param2 alt,bearish,nu,pdh-r1,no_trade
+419,param2 alt,bearish,nu,r1-pdh,no_trade
+420,param2 alt,bearish,nu,r1-tc,no_trade
+421,param2 alt,bearish,nu,pdh-tc,no_trade
+422,param2 alt,bearish,nu,tc-pp,no_trade
+423,param2 alt,bearish,nu,pp-bc,no_trade
+424,param2 alt,bearish,nu,bc-pdl,no_trade
+425,param2 alt,bearish,nu,bc-s1,no_trade
+426,param2 alt,bearish,nu,pdl-s1,no_trade
+427,param2 alt,bearish,nu,s1-pdl,no_trade
+428,param2 alt,bearish,nu,pdl-s2,no_trade
+429,param2 alt,bearish,nu,s1-s2,buy
+430,param2 alt,bearish,nu,s2-s3,no_trade
+431,param2 alt,bearish,nu,< s3,no_trade
+432,param3,bullish,ob,> r3,no_trade
+433,param3,bullish,ob,r3-r2,no_trade
+434,param3,bullish,ob,r2-pdh,no_trade
+435,param3,bullish,ob,r2-r1,sell
+436,param3,bullish,ob,pdh-r1,no_trade
+437,param3,bullish,ob,r1-pdh,no_trade
+438,param3,bullish,ob,r1-tc,no_trade
+439,param3,bullish,ob,pdh-tc,no_trade
+440,param3,bullish,ob,tc-pp,no_trade
+441,param3,bullish,ob,pp-bc,no_trade
+442,param3,bullish,ob,bc-pdl,no_trade
+443,param3,bullish,ob,bc-s1,no_trade
+444,param3,bullish,ob,pdl-s1,no_trade
+445,param3,bullish,ob,s1-pdl,no_trade
+446,param3,bullish,ob,pdl-s2,no_trade
+447,param3,bullish,ob,s1-s2,no_trade
+448,param3,bullish,ob,s2-s3,no_trade
+449,param3,bullish,ob,< s3,no_trade
+450,param3,bullish,os,> r3,no_trade
+451,param3,bullish,os,r3-r2,no_trade
+452,param3,bullish,os,r2-pdh,no_trade
+453,param3,bullish,os,r2-r1,no_trade
+454,param3,bullish,os,pdh-r1,no_trade
+455,param3,bullish,os,r1-pdh,no_trade
+456,param3,bullish,os,r1-tc,no_trade
+457,param3,bullish,os,pdh-tc,no_trade
+458,param3,bullish,os,tc-pp,no_trade
+459,param3,bullish,os,pp-bc,no_trade
+460,param3,bullish,os,bc-pdl,no_trade
+461,param3,bullish,os,bc-s1,no_trade
+462,param3,bullish,os,pdl-s1,no_trade
+463,param3,bullish,os,s1-pdl,no_trade
+464,param3,bullish,os,pdl-s2,no_trade
+465,param3,bullish,os,s1-s2,no_trade
+466,param3,bullish,os,s2-s3,no_trade
+467,param3,bullish,os,< s3,no_trade
+468,param3,bullish,nu,> r3,no_trade
 469,param3,bullish,nu,r3-r2,buy
-470,param3,bullish,nu,r2-pdh,buy
-471,param3,bullish,nu,r2-r1,buy
+470,param3,bullish,nu,r2-pdh,no_trade
+471,param3,bullish,nu,r2-r1,sell
 472,param3,bullish,nu,pdh-r1,buy
-473,param3,bullish,nu,r1-pdh,sell
-474,param3,bullish,nu,r1-tc,buy
+473,param3,bullish,nu,r1-pdh,no_trade
+474,param3,bullish,nu,r1-tc,sell
 475,param3,bullish,nu,pdh-tc,buy
 476,param3,bullish,nu,tc-pp,buy
 477,param3,bullish,nu,pp-bc,sell
-478,param3,bullish,nu,bc-pdl,buy
-479,param3,bullish,nu,bc-s1,buy
-480,param3,bullish,nu,pdl-s1,buy
-481,param3,bullish,nu,s1-pdl,buy
-482,param3,bullish,nu,pdl-s2,buy
-483,param3,bullish,nu,s1-s2,buy
-484,param3,bullish,nu,s2-s3,buy
-485,param3,bullish,nu,< s3,buy
-486,param3,bearish,ob,> r3,buy
-487,param3,bearish,ob,r3-r2,buy
-488,param3,bearish,ob,r2-pdh,buy
-489,param3,bearish,ob,r2-r1,buy
-490,param3,bearish,ob,pdh-r1,buy
-491,param3,bearish,ob,r1-pdh,buy
-492,param3,bearish,ob,r1-tc,buy
+478,param3,bullish,nu,bc-pdl,sell
+479,param3,bullish,nu,bc-s1,sell
+480,param3,bullish,nu,pdl-s1,no_trade
+481,param3,bullish,nu,s1-pdl,no_trade
+482,param3,bullish,nu,pdl-s2,no_trade
+483,param3,bullish,nu,s1-s2,no_trade
+484,param3,bullish,nu,s2-s3,no_trade
+485,param3,bullish,nu,< s3,no_trade
+486,param3,bearish,ob,> r3,no_trade
+487,param3,bearish,ob,r3-r2,no_trade
+488,param3,bearish,ob,r2-pdh,no_trade
+489,param3,bearish,ob,r2-r1,no_trade
+490,param3,bearish,ob,pdh-r1,no_trade
+491,param3,bearish,ob,r1-pdh,no_trade
+492,param3,bearish,ob,r1-tc,no_trade
 493,param3,bearish,ob,pdh-tc,buy
-494,param3,bearish,ob,tc-pp,buy
-495,param3,bearish,ob,pp-bc,buy
-496,param3,bearish,ob,bc-pdl,sell
-497,param3,bearish,ob,bc-s1,buy
-498,param3,bearish,ob,pdl-s1,buy
-499,param3,bearish,ob,s1-pdl,buy
-500,param3,bearish,ob,pdl-s2,buy
-501,param3,bearish,ob,s1-s2,buy
-502,param3,bearish,ob,s2-s3,buy
-503,param3,bearish,ob,< s3,buy
-504,param3,bearish,os,> r3,buy
-505,param3,bearish,os,r3-r2,buy
-506,param3,bearish,os,r2-pdh,buy
-507,param3,bearish,os,r2-r1,buy
-508,param3,bearish,os,pdh-r1,buy
-509,param3,bearish,os,r1-pdh,buy
-510,param3,bearish,os,r1-tc,buy
-511,param3,bearish,os,pdh-tc,buy
-512,param3,bearish,os,tc-pp,buy
-513,param3,bearish,os,pp-bc,buy
-514,param3,bearish,os,bc-pdl,buy
-515,param3,bearish,os,bc-s1,buy
-516,param3,bearish,os,pdl-s1,buy
-517,param3,bearish,os,s1-pdl,buy
-518,param3,bearish,os,pdl-s2,buy
-519,param3,bearish,os,s1-s2,buy
-520,param3,bearish,os,s2-s3,buy
-521,param3,bearish,os,< s3,buy
-522,param3,bearish,nu,> r3,buy
-523,param3,bearish,nu,r3-r2,buy
-524,param3,bearish,nu,r2-pdh,buy
-525,param3,bearish,nu,r2-r1,buy
-526,param3,bearish,nu,pdh-r1,buy
-527,param3,bearish,nu,r1-pdh,buy
+494,param3,bearish,ob,tc-pp,no_trade
+495,param3,bearish,ob,pp-bc,no_trade
+496,param3,bearish,ob,bc-pdl,no_trade
+497,param3,bearish,ob,bc-s1,no_trade
+498,param3,bearish,ob,pdl-s1,no_trade
+499,param3,bearish,ob,s1-pdl,no_trade
+500,param3,bearish,ob,pdl-s2,sell
+501,param3,bearish,ob,s1-s2,no_trade
+502,param3,bearish,ob,s2-s3,no_trade
+503,param3,bearish,ob,< s3,no_trade
+504,param3,bearish,os,> r3,no_trade
+505,param3,bearish,os,r3-r2,no_trade
+506,param3,bearish,os,r2-pdh,no_trade
+507,param3,bearish,os,r2-r1,no_trade
+508,param3,bearish,os,pdh-r1,no_trade
+509,param3,bearish,os,r1-pdh,no_trade
+510,param3,bearish,os,r1-tc,no_trade
+511,param3,bearish,os,pdh-tc,no_trade
+512,param3,bearish,os,tc-pp,no_trade
+513,param3,bearish,os,pp-bc,no_trade
+514,param3,bearish,os,bc-pdl,no_trade
+515,param3,bearish,os,bc-s1,no_trade
+516,param3,bearish,os,pdl-s1,no_trade
+517,param3,bearish,os,s1-pdl,no_trade
+518,param3,bearish,os,pdl-s2,no_trade
+519,param3,bearish,os,s1-s2,no_trade
+520,param3,bearish,os,s2-s3,no_trade
+521,param3,bearish,os,< s3,no_trade
+522,param3,bearish,nu,> r3,no_trade
+523,param3,bearish,nu,r3-r2,no_trade
+524,param3,bearish,nu,r2-pdh,no_trade
+525,param3,bearish,nu,r2-r1,sell
+526,param3,bearish,nu,pdh-r1,no_trade
+527,param3,bearish,nu,r1-pdh,sell
 528,param3,bearish,nu,r1-tc,buy
 529,param3,bearish,nu,pdh-tc,buy
-530,param3,bearish,nu,tc-pp,buy
+530,param3,bearish,nu,tc-pp,no_trade
 531,param3,bearish,nu,pp-bc,sell
 532,param3,bearish,nu,bc-pdl,sell
-533,param3,bearish,nu,bc-s1,buy
-534,param3,bearish,nu,pdl-s1,buy
-535,param3,bearish,nu,s1-pdl,buy
-536,param3,bearish,nu,pdl-s2,buy
-537,param3,bearish,nu,s1-s2,sell
-538,param3,bearish,nu,s2-s3,buy
-539,param3,bearish,nu,< s3,buy
-540,param3 alt,bullish,ob,> r3,buy
-541,param3 alt,bullish,ob,r3-r2,buy
-542,param3 alt,bullish,ob,r2-pdh,buy
-543,param3 alt,bullish,ob,r2-r1,buy
-544,param3 alt,bullish,ob,pdh-r1,buy
-545,param3 alt,bullish,ob,r1-pdh,buy
-546,param3 alt,bullish,ob,r1-tc,buy
-547,param3 alt,bullish,ob,pdh-tc,buy
-548,param3 alt,bullish,ob,tc-pp,buy
-549,param3 alt,bullish,ob,pp-bc,buy
-550,param3 alt,bullish,ob,bc-pdl,buy
-551,param3 alt,bullish,ob,bc-s1,buy
-552,param3 alt,bullish,ob,pdl-s1,buy
-553,param3 alt,bullish,ob,s1-pdl,buy
-554,param3 alt,bullish,ob,pdl-s2,buy
-555,param3 alt,bullish,ob,s1-s2,buy
-556,param3 alt,bullish,ob,s2-s3,buy
-557,param3 alt,bullish,ob,< s3,buy
-558,param3 alt,bullish,os,> r3,buy
-559,param3 alt,bullish,os,r3-r2,buy
-560,param3 alt,bullish,os,r2-pdh,buy
-561,param3 alt,bullish,os,r2-r1,buy
-562,param3 alt,bullish,os,pdh-r1,buy
-563,param3 alt,bullish,os,r1-pdh,buy
-564,param3 alt,bullish,os,r1-tc,buy
-565,param3 alt,bullish,os,pdh-tc,buy
-566,param3 alt,bullish,os,tc-pp,buy
-567,param3 alt,bullish,os,pp-bc,buy
-568,param3 alt,bullish,os,bc-pdl,buy
-569,param3 alt,bullish,os,bc-s1,buy
-570,param3 alt,bullish,os,pdl-s1,buy
-571,param3 alt,bullish,os,s1-pdl,buy
-572,param3 alt,bullish,os,pdl-s2,buy
-573,param3 alt,bullish,os,s1-s2,buy
-574,param3 alt,bullish,os,s2-s3,buy
-575,param3 alt,bullish,os,< s3,buy
-576,param3 alt,bullish,nu,> r3,buy
-577,param3 alt,bullish,nu,r3-r2,buy
-578,param3 alt,bullish,nu,r2-pdh,buy
-579,param3 alt,bullish,nu,r2-r1,buy
-580,param3 alt,bullish,nu,pdh-r1,buy
-581,param3 alt,bullish,nu,r1-pdh,buy
-582,param3 alt,bullish,nu,r1-tc,buy
-583,param3 alt,bullish,nu,pdh-tc,buy
-584,param3 alt,bullish,nu,tc-pp,buy
-585,param3 alt,bullish,nu,pp-bc,buy
-586,param3 alt,bullish,nu,bc-pdl,buy
-587,param3 alt,bullish,nu,bc-s1,buy
-588,param3 alt,bullish,nu,pdl-s1,buy
-589,param3 alt,bullish,nu,s1-pdl,buy
-590,param3 alt,bullish,nu,pdl-s2,buy
-591,param3 alt,bullish,nu,s1-s2,buy
-592,param3 alt,bullish,nu,s2-s3,buy
-593,param3 alt,bullish,nu,< s3,buy
-594,param3 alt,bearish,ob,> r3,sell
-595,param3 alt,bearish,ob,r3-r2,sell
-596,param3 alt,bearish,ob,r2-pdh,sell
-597,param3 alt,bearish,ob,r2-r1,sell
-598,param3 alt,bearish,ob,pdh-r1,sell
-599,param3 alt,bearish,ob,r1-pdh,sell
-600,param3 alt,bearish,ob,r1-tc,sell
-601,param3 alt,bearish,ob,pdh-tc,sell
-602,param3 alt,bearish,ob,tc-pp,sell
-603,param3 alt,bearish,ob,pp-bc,sell
-604,param3 alt,bearish,ob,bc-pdl,sell
-605,param3 alt,bearish,ob,bc-s1,sell
-606,param3 alt,bearish,ob,pdl-s1,sell
-607,param3 alt,bearish,ob,s1-pdl,sell
-608,param3 alt,bearish,ob,pdl-s2,sell
-609,param3 alt,bearish,ob,s1-s2,sell
-610,param3 alt,bearish,ob,s2-s3,sell
-611,param3 alt,bearish,ob,< s3,sell
-612,param3 alt,bearish,os,> r3,sell
-613,param3 alt,bearish,os,r3-r2,sell
-614,param3 alt,bearish,os,r2-pdh,sell
-615,param3 alt,bearish,os,r2-r1,sell
-616,param3 alt,bearish,os,pdh-r1,sell
-617,param3 alt,bearish,os,r1-pdh,sell
-618,param3 alt,bearish,os,r1-tc,sell
-619,param3 alt,bearish,os,pdh-tc,sell
-620,param3 alt,bearish,os,tc-pp,sell
-621,param3 alt,bearish,os,pp-bc,sell
-622,param3 alt,bearish,os,bc-pdl,sell
-623,param3 alt,bearish,os,bc-s1,sell
-624,param3 alt,bearish,os,pdl-s1,sell
-625,param3 alt,bearish,os,s1-pdl,sell
-626,param3 alt,bearish,os,pdl-s2,sell
-627,param3 alt,bearish,os,s1-s2,sell
-628,param3 alt,bearish,os,s2-s3,sell
-629,param3 alt,bearish,os,< s3,sell
-630,param3 alt,bearish,nu,> r3,sell
-631,param3 alt,bearish,nu,r3-r2,sell
-632,param3 alt,bearish,nu,r2-pdh,sell
-633,param3 alt,bearish,nu,r2-r1,sell
-634,param3 alt,bearish,nu,pdh-r1,sell
-635,param3 alt,bearish,nu,r1-pdh,sell
-636,param3 alt,bearish,nu,r1-tc,sell
-637,param3 alt,bearish,nu,pdh-tc,sell
-638,param3 alt,bearish,nu,tc-pp,sell
-639,param3 alt,bearish,nu,pp-bc,sell
-640,param3 alt,bearish,nu,bc-pdl,sell
-641,param3 alt,bearish,nu,bc-s1,sell
-642,param3 alt,bearish,nu,pdl-s1,sell
-643,param3 alt,bearish,nu,s1-pdl,sell
-644,param3 alt,bearish,nu,pdl-s2,sell
+533,param3,bearish,nu,bc-s1,sell
+534,param3,bearish,nu,pdl-s1,no_trade
+535,param3,bearish,nu,s1-pdl,no_trade
+536,param3,bearish,nu,pdl-s2,no_trade
+537,param3,bearish,nu,s1-s2,no_trade
+538,param3,bearish,nu,s2-s3,no_trade
+539,param3,bearish,nu,< s3,no_trade
+540,param3 alt,bullish,ob,> r3,no_trade
+541,param3 alt,bullish,ob,r3-r2,no_trade
+542,param3 alt,bullish,ob,r2-pdh,no_trade
+543,param3 alt,bullish,ob,r2-r1,no_trade
+544,param3 alt,bullish,ob,pdh-r1,no_trade
+545,param3 alt,bullish,ob,r1-pdh,no_trade
+546,param3 alt,bullish,ob,r1-tc,no_trade
+547,param3 alt,bullish,ob,pdh-tc,no_trade
+548,param3 alt,bullish,ob,tc-pp,no_trade
+549,param3 alt,bullish,ob,pp-bc,no_trade
+550,param3 alt,bullish,ob,bc-pdl,no_trade
+551,param3 alt,bullish,ob,bc-s1,no_trade
+552,param3 alt,bullish,ob,pdl-s1,no_trade
+553,param3 alt,bullish,ob,s1-pdl,no_trade
+554,param3 alt,bullish,ob,pdl-s2,no_trade
+555,param3 alt,bullish,ob,s1-s2,no_trade
+556,param3 alt,bullish,ob,s2-s3,no_trade
+557,param3 alt,bullish,ob,< s3,no_trade
+558,param3 alt,bullish,os,> r3,no_trade
+559,param3 alt,bullish,os,r3-r2,no_trade
+560,param3 alt,bullish,os,r2-pdh,no_trade
+561,param3 alt,bullish,os,r2-r1,no_trade
+562,param3 alt,bullish,os,pdh-r1,no_trade
+563,param3 alt,bullish,os,r1-pdh,no_trade
+564,param3 alt,bullish,os,r1-tc,no_trade
+565,param3 alt,bullish,os,pdh-tc,no_trade
+566,param3 alt,bullish,os,tc-pp,no_trade
+567,param3 alt,bullish,os,pp-bc,no_trade
+568,param3 alt,bullish,os,bc-pdl,no_trade
+569,param3 alt,bullish,os,bc-s1,no_trade
+570,param3 alt,bullish,os,pdl-s1,no_trade
+571,param3 alt,bullish,os,s1-pdl,no_trade
+572,param3 alt,bullish,os,pdl-s2,no_trade
+573,param3 alt,bullish,os,s1-s2,no_trade
+574,param3 alt,bullish,os,s2-s3,no_trade
+575,param3 alt,bullish,os,< s3,no_trade
+576,param3 alt,bullish,nu,> r3,no_trade
+577,param3 alt,bullish,nu,r3-r2,no_trade
+578,param3 alt,bullish,nu,r2-pdh,no_trade
+579,param3 alt,bullish,nu,r2-r1,no_trade
+580,param3 alt,bullish,nu,pdh-r1,no_trade
+581,param3 alt,bullish,nu,r1-pdh,no_trade
+582,param3 alt,bullish,nu,r1-tc,no_trade
+583,param3 alt,bullish,nu,pdh-tc,no_trade
+584,param3 alt,bullish,nu,tc-pp,no_trade
+585,param3 alt,bullish,nu,pp-bc,no_trade
+586,param3 alt,bullish,nu,bc-pdl,no_trade
+587,param3 alt,bullish,nu,bc-s1,no_trade
+588,param3 alt,bullish,nu,pdl-s1,no_trade
+589,param3 alt,bullish,nu,s1-pdl,no_trade
+590,param3 alt,bullish,nu,pdl-s2,no_trade
+591,param3 alt,bullish,nu,s1-s2,no_trade
+592,param3 alt,bullish,nu,s2-s3,no_trade
+593,param3 alt,bullish,nu,< s3,no_trade
+594,param3 alt,bearish,ob,> r3,no_trade
+595,param3 alt,bearish,ob,r3-r2,no_trade
+596,param3 alt,bearish,ob,r2-pdh,no_trade
+597,param3 alt,bearish,ob,r2-r1,no_trade
+598,param3 alt,bearish,ob,pdh-r1,no_trade
+599,param3 alt,bearish,ob,r1-pdh,no_trade
+600,param3 alt,bearish,ob,r1-tc,no_trade
+601,param3 alt,bearish,ob,pdh-tc,no_trade
+602,param3 alt,bearish,ob,tc-pp,no_trade
+603,param3 alt,bearish,ob,pp-bc,no_trade
+604,param3 alt,bearish,ob,bc-pdl,no_trade
+605,param3 alt,bearish,ob,bc-s1,no_trade
+606,param3 alt,bearish,ob,pdl-s1,no_trade
+607,param3 alt,bearish,ob,s1-pdl,no_trade
+608,param3 alt,bearish,ob,pdl-s2,no_trade
+609,param3 alt,bearish,ob,s1-s2,no_trade
+610,param3 alt,bearish,ob,s2-s3,no_trade
+611,param3 alt,bearish,ob,< s3,no_trade
+612,param3 alt,bearish,os,> r3,no_trade
+613,param3 alt,bearish,os,r3-r2,no_trade
+614,param3 alt,bearish,os,r2-pdh,no_trade
+615,param3 alt,bearish,os,r2-r1,no_trade
+616,param3 alt,bearish,os,pdh-r1,no_trade
+617,param3 alt,bearish,os,r1-pdh,no_trade
+618,param3 alt,bearish,os,r1-tc,no_trade
+619,param3 alt,bearish,os,pdh-tc,no_trade
+620,param3 alt,bearish,os,tc-pp,no_trade
+621,param3 alt,bearish,os,pp-bc,no_trade
+622,param3 alt,bearish,os,bc-pdl,no_trade
+623,param3 alt,bearish,os,bc-s1,no_trade
+624,param3 alt,bearish,os,pdl-s1,no_trade
+625,param3 alt,bearish,os,s1-pdl,no_trade
+626,param3 alt,bearish,os,pdl-s2,no_trade
+627,param3 alt,bearish,os,s1-s2,no_trade
+628,param3 alt,bearish,os,s2-s3,no_trade
+629,param3 alt,bearish,os,< s3,no_trade
+630,param3 alt,bearish,nu,> r3,no_trade
+631,param3 alt,bearish,nu,r3-r2,no_trade
+632,param3 alt,bearish,nu,r2-pdh,no_trade
+633,param3 alt,bearish,nu,r2-r1,no_trade
+634,param3 alt,bearish,nu,pdh-r1,no_trade
+635,param3 alt,bearish,nu,r1-pdh,no_trade
+636,param3 alt,bearish,nu,r1-tc,no_trade
+637,param3 alt,bearish,nu,pdh-tc,no_trade
+638,param3 alt,bearish,nu,tc-pp,no_trade
+639,param3 alt,bearish,nu,pp-bc,no_trade
+640,param3 alt,bearish,nu,bc-pdl,no_trade
+641,param3 alt,bearish,nu,bc-s1,no_trade
+642,param3 alt,bearish,nu,pdl-s1,no_trade
+643,param3 alt,bearish,nu,s1-pdl,no_trade
+644,param3 alt,bearish,nu,pdl-s2,no_trade
 645,param3 alt,bearish,nu,s1-s2,sell
-646,param3 alt,bearish,nu,s2-s3,sell
-647,param3 alt,bearish,nu,< s3,sell
-648,param4,bullish,ob,> r3,buy
-649,param4,bullish,ob,r3-r2,buy
-650,param4,bullish,ob,r2-pdh,buy
-651,param4,bullish,ob,r2-r1,buy
-652,param4,bullish,ob,pdh-r1,buy
-653,param4,bullish,ob,r1-pdh,buy
-654,param4,bullish,ob,r1-tc,sell
-655,param4,bullish,ob,pdh-tc,sell
-656,param4,bullish,ob,tc-pp,buy
-657,param4,bullish,ob,pp-bc,sell
-658,param4,bullish,ob,bc-pdl,buy
-659,param4,bullish,ob,bc-s1,buy
-660,param4,bullish,ob,pdl-s1,buy
-661,param4,bullish,ob,s1-pdl,buy
-662,param4,bullish,ob,pdl-s2,buy
-663,param4,bullish,ob,s1-s2,buy
-664,param4,bullish,ob,s2-s3,buy
-665,param4,bullish,ob,< s3,buy
-666,param4,bullish,os,> r3,buy
-667,param4,bullish,os,r3-r2,buy
-668,param4,bullish,os,r2-pdh,buy
-669,param4,bullish,os,r2-r1,buy
-670,param4,bullish,os,pdh-r1,buy
-671,param4,bullish,os,r1-pdh,buy
-672,param4,bullish,os,r1-tc,sell
-673,param4,bullish,os,pdh-tc,buy
-674,param4,bullish,os,tc-pp,buy
-675,param4,bullish,os,pp-bc,buy
+646,param3 alt,bearish,nu,s2-s3,no_trade
+647,param3 alt,bearish,nu,< s3,no_trade
+648,param4,bullish,ob,> r3,no_trade
+649,param4,bullish,ob,r3-r2,no_trade
+650,param4,bullish,ob,r2-pdh,no_trade
+651,param4,bullish,ob,r2-r1,no_trade
+652,param4,bullish,ob,pdh-r1,no_trade
+653,param4,bullish,ob,r1-pdh,no_trade
+654,param4,bullish,ob,r1-tc,no_trade
+655,param4,bullish,ob,pdh-tc,no_trade
+656,param4,bullish,ob,tc-pp,no_trade
+657,param4,bullish,ob,pp-bc,no_trade
+658,param4,bullish,ob,bc-pdl,no_trade
+659,param4,bullish,ob,bc-s1,no_trade
+660,param4,bullish,ob,pdl-s1,no_trade
+661,param4,bullish,ob,s1-pdl,no_trade
+662,param4,bullish,ob,pdl-s2,no_trade
+663,param4,bullish,ob,s1-s2,no_trade
+664,param4,bullish,ob,s2-s3,no_trade
+665,param4,bullish,ob,< s3,no_trade
+666,param4,bullish,os,> r3,no_trade
+667,param4,bullish,os,r3-r2,no_trade
+668,param4,bullish,os,r2-pdh,no_trade
+669,param4,bullish,os,r2-r1,no_trade
+670,param4,bullish,os,pdh-r1,sell
+671,param4,bullish,os,r1-pdh,no_trade
+672,param4,bullish,os,r1-tc,buy
+673,param4,bullish,os,pdh-tc,no_trade
+674,param4,bullish,os,tc-pp,no_trade
+675,param4,bullish,os,pp-bc,no_trade
 676,param4,bullish,os,bc-pdl,sell
-677,param4,bullish,os,bc-s1,buy
-678,param4,bullish,os,pdl-s1,sell
-679,param4,bullish,os,s1-pdl,buy
+677,param4,bullish,os,bc-s1,no_trade
+678,param4,bullish,os,pdl-s1,buy
+679,param4,bullish,os,s1-pdl,no_trade
 680,param4,bullish,os,pdl-s2,buy
-681,param4,bullish,os,s1-s2,buy
-682,param4,bullish,os,s2-s3,buy
-683,param4,bullish,os,< s3,buy
-684,param4,bullish,nu,> r3,buy
-685,param4,bullish,nu,r3-r2,buy
-686,param4,bullish,nu,r2-pdh,buy
-687,param4,bullish,nu,r2-r1,buy
+681,param4,bullish,os,s1-s2,sell
+682,param4,bullish,os,s2-s3,no_trade
+683,param4,bullish,os,< s3,no_trade
+684,param4,bullish,nu,> r3,no_trade
+685,param4,bullish,nu,r3-r2,no_trade
+686,param4,bullish,nu,r2-pdh,sell
+687,param4,bullish,nu,r2-r1,sell
 688,param4,bullish,nu,pdh-r1,buy
-689,param4,bullish,nu,r1-pdh,buy
-690,param4,bullish,nu,r1-tc,sell
-691,param4,bullish,nu,pdh-tc,sell
-692,param4,bullish,nu,tc-pp,buy
-693,param4,bullish,nu,pp-bc,buy
+689,param4,bullish,nu,r1-pdh,no_trade
+690,param4,bullish,nu,r1-tc,buy
+691,param4,bullish,nu,pdh-tc,buy
+692,param4,bullish,nu,tc-pp,sell
+693,param4,bullish,nu,pp-bc,no_trade
 694,param4,bullish,nu,bc-pdl,sell
-695,param4,bullish,nu,bc-s1,buy
-696,param4,bullish,nu,pdl-s1,sell
-697,param4,bullish,nu,s1-pdl,buy
-698,param4,bullish,nu,pdl-s2,buy
-699,param4,bullish,nu,s1-s2,buy
-700,param4,bullish,nu,s2-s3,sell
-701,param4,bullish,nu,< s3,buy
-702,param4,bearish,ob,> r3,sell
-703,param4,bearish,ob,r3-r2,sell
-704,param4,bearish,ob,r2-pdh,sell
-705,param4,bearish,ob,r2-r1,sell
-706,param4,bearish,ob,pdh-r1,sell
-707,param4,bearish,ob,r1-pdh,sell
-708,param4,bearish,ob,r1-tc,sell
-709,param4,bearish,ob,pdh-tc,sell
-710,param4,bearish,ob,tc-pp,buy
-711,param4,bearish,ob,pp-bc,sell
-712,param4,bearish,ob,bc-pdl,sell
-713,param4,bearish,ob,bc-s1,buy
-714,param4,bearish,ob,pdl-s1,sell
-715,param4,bearish,ob,s1-pdl,buy
-716,param4,bearish,ob,pdl-s2,sell
-717,param4,bearish,ob,s1-s2,sell
-718,param4,bearish,ob,s2-s3,sell
-719,param4,bearish,ob,< s3,sell
-720,param4,bearish,os,> r3,sell
-721,param4,bearish,os,r3-r2,sell
-722,param4,bearish,os,r2-pdh,sell
-723,param4,bearish,os,r2-r1,sell
-724,param4,bearish,os,pdh-r1,sell
-725,param4,bearish,os,r1-pdh,sell
-726,param4,bearish,os,r1-tc,sell
-727,param4,bearish,os,pdh-tc,sell
-728,param4,bearish,os,tc-pp,buy
-729,param4,bearish,os,pp-bc,sell
-730,param4,bearish,os,bc-pdl,sell
+695,param4,bullish,nu,bc-s1,sell
+696,param4,bullish,nu,pdl-s1,buy
+697,param4,bullish,nu,s1-pdl,no_trade
+698,param4,bullish,nu,pdl-s2,no_trade
+699,param4,bullish,nu,s1-s2,sell
+700,param4,bullish,nu,s2-s3,no_trade
+701,param4,bullish,nu,< s3,no_trade
+702,param4,bearish,ob,> r3,no_trade
+703,param4,bearish,ob,r3-r2,no_trade
+704,param4,bearish,ob,r2-pdh,no_trade
+705,param4,bearish,ob,r2-r1,no_trade
+706,param4,bearish,ob,pdh-r1,no_trade
+707,param4,bearish,ob,r1-pdh,no_trade
+708,param4,bearish,ob,r1-tc,no_trade
+709,param4,bearish,ob,pdh-tc,no_trade
+710,param4,bearish,ob,tc-pp,no_trade
+711,param4,bearish,ob,pp-bc,no_trade
+712,param4,bearish,ob,bc-pdl,no_trade
+713,param4,bearish,ob,bc-s1,no_trade
+714,param4,bearish,ob,pdl-s1,no_trade
+715,param4,bearish,ob,s1-pdl,no_trade
+716,param4,bearish,ob,pdl-s2,no_trade
+717,param4,bearish,ob,s1-s2,no_trade
+718,param4,bearish,ob,s2-s3,no_trade
+719,param4,bearish,ob,< s3,no_trade
+720,param4,bearish,os,> r3,no_trade
+721,param4,bearish,os,r3-r2,no_trade
+722,param4,bearish,os,r2-pdh,no_trade
+723,param4,bearish,os,r2-r1,no_trade
+724,param4,bearish,os,pdh-r1,no_trade
+725,param4,bearish,os,r1-pdh,no_trade
+726,param4,bearish,os,r1-tc,no_trade
+727,param4,bearish,os,pdh-tc,no_trade
+728,param4,bearish,os,tc-pp,no_trade
+729,param4,bearish,os,pp-bc,no_trade
+730,param4,bearish,os,bc-pdl,buy
 731,param4,bearish,os,bc-s1,buy
 732,param4,bearish,os,pdl-s1,sell
-733,param4,bearish,os,s1-pdl,buy
-734,param4,bearish,os,pdl-s2,sell
+733,param4,bearish,os,s1-pdl,no_trade
+734,param4,bearish,os,pdl-s2,no_trade
 735,param4,bearish,os,s1-s2,sell
-736,param4,bearish,os,s2-s3,sell
-737,param4,bearish,os,< s3,sell
-738,param4,bearish,nu,> r3,sell
-739,param4,bearish,nu,r3-r2,sell
-740,param4,bearish,nu,r2-pdh,sell
-741,param4,bearish,nu,r2-r1,sell
-742,param4,bearish,nu,pdh-r1,sell
-743,param4,bearish,nu,r1-pdh,sell
+736,param4,bearish,os,s2-s3,buy
+737,param4,bearish,os,< s3,buy
+738,param4,bearish,nu,> r3,no_trade
+739,param4,bearish,nu,r3-r2,no_trade
+740,param4,bearish,nu,r2-pdh,no_trade
+741,param4,bearish,nu,r2-r1,no_trade
+742,param4,bearish,nu,pdh-r1,no_trade
+743,param4,bearish,nu,r1-pdh,no_trade
 744,param4,bearish,nu,r1-tc,sell
-745,param4,bearish,nu,pdh-tc,sell
-746,param4,bearish,nu,tc-pp,buy
+745,param4,bearish,nu,pdh-tc,buy
+746,param4,bearish,nu,tc-pp,no_trade
 747,param4,bearish,nu,pp-bc,sell
-748,param4,bearish,nu,bc-pdl,sell
+748,param4,bearish,nu,bc-pdl,buy
 749,param4,bearish,nu,bc-s1,buy
-750,param4,bearish,nu,pdl-s1,sell
-751,param4,bearish,nu,s1-pdl,buy
+750,param4,bearish,nu,pdl-s1,buy
+751,param4,bearish,nu,s1-pdl,no_trade
 752,param4,bearish,nu,pdl-s2,sell
 753,param4,bearish,nu,s1-s2,sell
 754,param4,bearish,nu,s2-s3,sell
 755,param4,bearish,nu,< s3,sell
-756,param4 alt,bullish,ob,> r3,sell
-757,param4 alt,bullish,ob,r3-r2,sell
-758,param4 alt,bullish,ob,r2-pdh,sell
-759,param4 alt,bullish,ob,r2-r1,sell
-760,param4 alt,bullish,ob,pdh-r1,sell
-761,param4 alt,bullish,ob,r1-pdh,sell
-762,param4 alt,bullish,ob,r1-tc,sell
-763,param4 alt,bullish,ob,pdh-tc,sell
-764,param4 alt,bullish,ob,tc-pp,sell
-765,param4 alt,bullish,ob,pp-bc,sell
-766,param4 alt,bullish,ob,bc-pdl,sell
-767,param4 alt,bullish,ob,bc-s1,sell
-768,param4 alt,bullish,ob,pdl-s1,sell
-769,param4 alt,bullish,ob,s1-pdl,sell
-770,param4 alt,bullish,ob,pdl-s2,sell
-771,param4 alt,bullish,ob,s1-s2,sell
-772,param4 alt,bullish,ob,s2-s3,sell
-773,param4 alt,bullish,ob,< s3,sell
-774,param4 alt,bullish,os,> r3,sell
-775,param4 alt,bullish,os,r3-r2,sell
-776,param4 alt,bullish,os,r2-pdh,sell
-777,param4 alt,bullish,os,r2-r1,sell
-778,param4 alt,bullish,os,pdh-r1,sell
-779,param4 alt,bullish,os,r1-pdh,sell
-780,param4 alt,bullish,os,r1-tc,sell
-781,param4 alt,bullish,os,pdh-tc,sell
-782,param4 alt,bullish,os,tc-pp,sell
-783,param4 alt,bullish,os,pp-bc,sell
-784,param4 alt,bullish,os,bc-pdl,sell
+756,param4 alt,bullish,ob,> r3,no_trade
+757,param4 alt,bullish,ob,r3-r2,no_trade
+758,param4 alt,bullish,ob,r2-pdh,no_trade
+759,param4 alt,bullish,ob,r2-r1,no_trade
+760,param4 alt,bullish,ob,pdh-r1,no_trade
+761,param4 alt,bullish,ob,r1-pdh,no_trade
+762,param4 alt,bullish,ob,r1-tc,no_trade
+763,param4 alt,bullish,ob,pdh-tc,no_trade
+764,param4 alt,bullish,ob,tc-pp,no_trade
+765,param4 alt,bullish,ob,pp-bc,no_trade
+766,param4 alt,bullish,ob,bc-pdl,no_trade
+767,param4 alt,bullish,ob,bc-s1,no_trade
+768,param4 alt,bullish,ob,pdl-s1,no_trade
+769,param4 alt,bullish,ob,s1-pdl,no_trade
+770,param4 alt,bullish,ob,pdl-s2,no_trade
+771,param4 alt,bullish,ob,s1-s2,no_trade
+772,param4 alt,bullish,ob,s2-s3,no_trade
+773,param4 alt,bullish,ob,< s3,no_trade
+774,param4 alt,bullish,os,> r3,no_trade
+775,param4 alt,bullish,os,r3-r2,no_trade
+776,param4 alt,bullish,os,r2-pdh,no_trade
+777,param4 alt,bullish,os,r2-r1,no_trade
+778,param4 alt,bullish,os,pdh-r1,no_trade
+779,param4 alt,bullish,os,r1-pdh,no_trade
+780,param4 alt,bullish,os,r1-tc,no_trade
+781,param4 alt,bullish,os,pdh-tc,no_trade
+782,param4 alt,bullish,os,tc-pp,no_trade
+783,param4 alt,bullish,os,pp-bc,no_trade
+784,param4 alt,bullish,os,bc-pdl,no_trade
 785,param4 alt,bullish,os,bc-s1,sell
-786,param4 alt,bullish,os,pdl-s1,sell
-787,param4 alt,bullish,os,s1-pdl,sell
-788,param4 alt,bullish,os,pdl-s2,sell
-789,param4 alt,bullish,os,s1-s2,sell
-790,param4 alt,bullish,os,s2-s3,buy
-791,param4 alt,bullish,os,< s3,sell
-792,param4 alt,bullish,nu,> r3,sell
-793,param4 alt,bullish,nu,r3-r2,sell
-794,param4 alt,bullish,nu,r2-pdh,sell
-795,param4 alt,bullish,nu,r2-r1,sell
-796,param4 alt,bullish,nu,pdh-r1,sell
-797,param4 alt,bullish,nu,r1-pdh,sell
+786,param4 alt,bullish,os,pdl-s1,no_trade
+787,param4 alt,bullish,os,s1-pdl,no_trade
+788,param4 alt,bullish,os,pdl-s2,no_trade
+789,param4 alt,bullish,os,s1-s2,no_trade
+790,param4 alt,bullish,os,s2-s3,no_trade
+791,param4 alt,bullish,os,< s3,no_trade
+792,param4 alt,bullish,nu,> r3,no_trade
+793,param4 alt,bullish,nu,r3-r2,no_trade
+794,param4 alt,bullish,nu,r2-pdh,no_trade
+795,param4 alt,bullish,nu,r2-r1,no_trade
+796,param4 alt,bullish,nu,pdh-r1,no_trade
+797,param4 alt,bullish,nu,r1-pdh,no_trade
 798,param4 alt,bullish,nu,r1-tc,sell
-799,param4 alt,bullish,nu,pdh-tc,sell
+799,param4 alt,bullish,nu,pdh-tc,no_trade
 800,param4 alt,bullish,nu,tc-pp,buy
 801,param4 alt,bullish,nu,pp-bc,sell
-802,param4 alt,bullish,nu,bc-pdl,buy
-803,param4 alt,bullish,nu,bc-s1,sell
-804,param4 alt,bullish,nu,pdl-s1,buy
-805,param4 alt,bullish,nu,s1-pdl,sell
-806,param4 alt,bullish,nu,pdl-s2,sell
-807,param4 alt,bullish,nu,s1-s2,sell
-808,param4 alt,bullish,nu,s2-s3,buy
-809,param4 alt,bullish,nu,< s3,sell
-810,param4 alt,bearish,ob,> r3,sell
-811,param4 alt,bearish,ob,r3-r2,sell
-812,param4 alt,bearish,ob,r2-pdh,sell
-813,param4 alt,bearish,ob,r2-r1,sell
-814,param4 alt,bearish,ob,pdh-r1,sell
-815,param4 alt,bearish,ob,r1-pdh,sell
-816,param4 alt,bearish,ob,r1-tc,sell
-817,param4 alt,bearish,ob,pdh-tc,sell
-818,param4 alt,bearish,ob,tc-pp,sell
-819,param4 alt,bearish,ob,pp-bc,sell
-820,param4 alt,bearish,ob,bc-pdl,sell
-821,param4 alt,bearish,ob,bc-s1,sell
-822,param4 alt,bearish,ob,pdl-s1,buy
-823,param4 alt,bearish,ob,s1-pdl,sell
-824,param4 alt,bearish,ob,pdl-s2,sell
-825,param4 alt,bearish,ob,s1-s2,buy
-826,param4 alt,bearish,ob,s2-s3,sell
-827,param4 alt,bearish,ob,< s3,sell
-828,param4 alt,bearish,os,> r3,sell
-829,param4 alt,bearish,os,r3-r2,sell
-830,param4 alt,bearish,os,r2-pdh,sell
-831,param4 alt,bearish,os,r2-r1,sell
-832,param4 alt,bearish,os,pdh-r1,sell
-833,param4 alt,bearish,os,r1-pdh,sell
-834,param4 alt,bearish,os,r1-tc,sell
-835,param4 alt,bearish,os,pdh-tc,sell
-836,param4 alt,bearish,os,tc-pp,sell
-837,param4 alt,bearish,os,pp-bc,sell
-838,param4 alt,bearish,os,bc-pdl,sell
-839,param4 alt,bearish,os,bc-s1,sell
-840,param4 alt,bearish,os,pdl-s1,buy
-841,param4 alt,bearish,os,s1-pdl,sell
-842,param4 alt,bearish,os,pdl-s2,sell
-843,param4 alt,bearish,os,s1-s2,buy
-844,param4 alt,bearish,os,s2-s3,sell
-845,param4 alt,bearish,os,< s3,sell
-846,param4 alt,bearish,nu,> r3,sell
-847,param4 alt,bearish,nu,r3-r2,sell
-848,param4 alt,bearish,nu,r2-pdh,sell
-849,param4 alt,bearish,nu,r2-r1,sell
-850,param4 alt,bearish,nu,pdh-r1,sell
-851,param4 alt,bearish,nu,r1-pdh,sell
-852,param4 alt,bearish,nu,r1-tc,sell
-853,param4 alt,bearish,nu,pdh-tc,sell
-854,param4 alt,bearish,nu,tc-pp,sell
-855,param4 alt,bearish,nu,pp-bc,sell
-856,param4 alt,bearish,nu,bc-pdl,sell
-857,param4 alt,bearish,nu,bc-s1,sell
-858,param4 alt,bearish,nu,pdl-s1,buy
-859,param4 alt,bearish,nu,s1-pdl,sell
+802,param4 alt,bullish,nu,bc-pdl,no_trade
+803,param4 alt,bullish,nu,bc-s1,no_trade
+804,param4 alt,bullish,nu,pdl-s1,no_trade
+805,param4 alt,bullish,nu,s1-pdl,no_trade
+806,param4 alt,bullish,nu,pdl-s2,no_trade
+807,param4 alt,bullish,nu,s1-s2,no_trade
+808,param4 alt,bullish,nu,s2-s3,no_trade
+809,param4 alt,bullish,nu,< s3,no_trade
+810,param4 alt,bearish,ob,> r3,no_trade
+811,param4 alt,bearish,ob,r3-r2,no_trade
+812,param4 alt,bearish,ob,r2-pdh,no_trade
+813,param4 alt,bearish,ob,r2-r1,no_trade
+814,param4 alt,bearish,ob,pdh-r1,no_trade
+815,param4 alt,bearish,ob,r1-pdh,no_trade
+816,param4 alt,bearish,ob,r1-tc,no_trade
+817,param4 alt,bearish,ob,pdh-tc,no_trade
+818,param4 alt,bearish,ob,tc-pp,no_trade
+819,param4 alt,bearish,ob,pp-bc,no_trade
+820,param4 alt,bearish,ob,bc-pdl,no_trade
+821,param4 alt,bearish,ob,bc-s1,no_trade
+822,param4 alt,bearish,ob,pdl-s1,no_trade
+823,param4 alt,bearish,ob,s1-pdl,no_trade
+824,param4 alt,bearish,ob,pdl-s2,no_trade
+825,param4 alt,bearish,ob,s1-s2,no_trade
+826,param4 alt,bearish,ob,s2-s3,no_trade
+827,param4 alt,bearish,ob,< s3,no_trade
+828,param4 alt,bearish,os,> r3,no_trade
+829,param4 alt,bearish,os,r3-r2,no_trade
+830,param4 alt,bearish,os,r2-pdh,no_trade
+831,param4 alt,bearish,os,r2-r1,no_trade
+832,param4 alt,bearish,os,pdh-r1,no_trade
+833,param4 alt,bearish,os,r1-pdh,no_trade
+834,param4 alt,bearish,os,r1-tc,no_trade
+835,param4 alt,bearish,os,pdh-tc,no_trade
+836,param4 alt,bearish,os,tc-pp,no_trade
+837,param4 alt,bearish,os,pp-bc,no_trade
+838,param4 alt,bearish,os,bc-pdl,no_trade
+839,param4 alt,bearish,os,bc-s1,no_trade
+840,param4 alt,bearish,os,pdl-s1,no_trade
+841,param4 alt,bearish,os,s1-pdl,no_trade
+842,param4 alt,bearish,os,pdl-s2,no_trade
+843,param4 alt,bearish,os,s1-s2,no_trade
+844,param4 alt,bearish,os,s2-s3,buy
+845,param4 alt,bearish,os,< s3,no_trade
+846,param4 alt,bearish,nu,> r3,no_trade
+847,param4 alt,bearish,nu,r3-r2,no_trade
+848,param4 alt,bearish,nu,r2-pdh,no_trade
+849,param4 alt,bearish,nu,r2-r1,no_trade
+850,param4 alt,bearish,nu,pdh-r1,no_trade
+851,param4 alt,bearish,nu,r1-pdh,no_trade
+852,param4 alt,bearish,nu,r1-tc,no_trade
+853,param4 alt,bearish,nu,pdh-tc,no_trade
+854,param4 alt,bearish,nu,tc-pp,no_trade
+855,param4 alt,bearish,nu,pp-bc,no_trade
+856,param4 alt,bearish,nu,bc-pdl,no_trade
+857,param4 alt,bearish,nu,bc-s1,no_trade
+858,param4 alt,bearish,nu,pdl-s1,sell
+859,param4 alt,bearish,nu,s1-pdl,no_trade
 860,param4 alt,bearish,nu,pdl-s2,sell
-861,param4 alt,bearish,nu,s1-s2,buy
+861,param4 alt,bearish,nu,s1-s2,no_trade
 862,param4 alt,bearish,nu,s2-s3,sell
 863,param4 alt,bearish,nu,< s3,sell
