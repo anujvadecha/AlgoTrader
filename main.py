@@ -15,10 +15,12 @@ import logging
 import logging.config
 import os
 from config import logging_config
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "AlgoApplication.settings")
+import django
 
 logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
-import sqlite3 as sl
 
 class Main():
 
@@ -42,13 +44,11 @@ class Main():
 
     def __init__(self):
         # self.start_instance_thread()
-        con = sl.connect('algo_trader.db')
+        # con = sl.connect('algo_trader.db')
         self.messages = Messages.getInstance()
+        django.setup()
         self.startMainWindow()
 
-
-
-main = Main()
 # InstrumentManager.get_instance()
 # MarketDataManager.get_instance()
 # OrderManager.get_instance()

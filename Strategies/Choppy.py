@@ -2,7 +2,7 @@ import traceback
 from datetime import datetime, timedelta
 import schedule
 import pandas as pd
-from Core.Enums import CandleInterval, StrategyState
+from Core.Enums import CandleInterval, StrategyState, TradeIdentifier
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
 from Managers.InstrumentManager import InstrumentManager
@@ -104,7 +104,7 @@ class Choppy(Strategy):
         pivot_range = final_band
         return pivot_range
 
-    def place_entry_order(self, side, identifier=None):
+    def place_entry_order(self, side, identifier=TradeIdentifier.ENTRY):
 
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
@@ -114,7 +114,7 @@ class Choppy(Strategy):
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         # Futures order
             self.place_market_order(instrument=self.order_instrument, side=side,
-                                       quantity=self.order_quantity, type="NRML")
+                                       quantity=self.order_quantity, type="NRML", identifer=identifier)
         # Options order
         if self.order_type != "FUTURES_ONLY":
             if self.entry_price % 100 < 50:
@@ -136,7 +136,7 @@ class Choppy(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                               quantity=self.option_quantity, type="NRML")
+                                               quantity=self.option_quantity, type="NRML", identifer=identifier)
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
 
@@ -149,13 +149,14 @@ class Choppy(Strategy):
                 f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
             self.place_market_order(instrument=self.order_instrument,
                                            side=side, quantity=self.order_quantity,
-                                           type="NRML")
+                                           type="NRML", identifer=identifier)
         if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
             self.add_info_user_message(
                 f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
             self.place_market_order(instrument=self.option_entry_instrument,
                                            side="SELL", quantity=self.option_quantity,
-                                           type="NRML")
+                                           type="NRML", identifer=identifier)
+
 
     def _initiate_inputs(self, inputs):
         self.instrument = Instrument(symbol=inputs["instrument"])
@@ -233,10 +234,10 @@ class Choppy(Strategy):
             if tick.symbol == self.instrument.tradingsymbol and self.entry:
                 if self.entry_side == "BUY":
                     if tick.ltp >= self.target_price:
-                        self.place_exit_order("SELL", "TARGET_ACHIEVED")
+                        self.place_exit_order("SELL",TradeIdentifier.TARGET_TRIGGERED)
                 if self.entry_side == "SELL":
                     if tick.ltp <= self.target_price:
-                        self.place_exit_order("BUY", "TARGET_ACHIEVED")
+                        self.place_exit_order("BUY", TradeIdentifier.TARGET_TRIGGERED)
         except Exception as e:
             LOGGER.exception(e)
 
@@ -245,8 +246,11 @@ class Choppy(Strategy):
             if self.state == StrategyState.STOPPED:
                 return
             now = datetime.now()
+            # TODO REMOVE
+            self.place_entry_order(side="BUY")
             if now.hour == 3 and now.minute==15 and self.entry:
-                self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", "AUTOMATIC_SQUARE_OFF")
+                self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
+            # TODO MOD 15
             if now.minute % 15 == 0:
             # if now.minute % 1 == 0:
                 LOGGER.info("Calculating triggers")
@@ -310,10 +314,10 @@ class Choppy(Strategy):
                     last_candle = recent_data[-1]
                     if self.entry_side == "BUY":
                         if last_candle["close"] <= self.sl:
-                            self.place_exit_order("SELL", "SL_TRIGGERED")
+                            self.place_exit_order("SELL", TradeIdentifier.STOP_LOSS_TRIGGERED)
                     if self.entry_side == "SELL":
                         if last_candle["close"] >= self.sl:
-                            self.place_exit_order("BUY", "SL_TRIGGERED")
+                            self.place_exit_order("BUY", TradeIdentifier.STOP_LOSS_TRIGGERED)
         except Exception as e:
             LOGGER.info(traceback.format_exc())
             self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")

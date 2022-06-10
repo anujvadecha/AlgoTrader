@@ -9,7 +9,6 @@ from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Models.Models import Instrument
 import logging
-
 from Indicators.PivotIndicator import PivotIndicator
 from Indicators.atr import AverageTrueRange
 from Indicators.supertrend import SuperTrend

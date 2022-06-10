@@ -1,0 +1,2 @@
+,instrument,orders_type,order_instrument,order_quantity,option_quantity,option_side,option_expiry,input_file
+0,"['NIFTY 50', 'NIFTY BANK']","['FUTURE_AND_OPTIONS', 'FUTURES_ONLY', 'OPTIONS_ONLY']","['NIFTY22JULFUT', 'NIFTY22JUNFUT', 'NIFTY22MAYFUT', 'BANKNIFTY22JULFUT', 'BANKNIFTY22JUNFUT', 'BANKNIFTY22MAYFUT']",50,50,['BUY'],"['2022-05-19', '2022-05-26', '2022-06-02', '2022-06-09', '2022-06-16', '2022-06-30', '2022-07-28', '2022-09-29', '2022-12-29', '2023-03-30']",resources/Choppy_conditions.csv

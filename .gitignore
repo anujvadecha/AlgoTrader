@@ -151,3 +151,5 @@ cython_debug/
 .idea/
 BrokerCache/
 logs/
+*migrations/
+*.db

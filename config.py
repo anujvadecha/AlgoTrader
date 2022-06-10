@@ -1,3 +1,4 @@
+from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
 from Strategies.ViralATR_nifty import ViralATRNifty
 from Strategies.Choppy import Choppy
 from Strategies.DemoStrategy import DemoStrategy
@@ -17,11 +18,11 @@ brokers = [
             "password": "mail0007",
             "pin": "123456",
             "totp_access_key": "UXD562SLG66TEGX7OTQ7YLFJILH5V5FG",
-            "live": True
+            "live": False
         },
         "dataSource": True,
-
-    },{
+    },
+    {
         "broker_alias": "viral_test",
         "broker": "ZERODHA",
         "config": {
@@ -42,7 +43,8 @@ brokers = [
 strategies = {
     "ViralATR": ViralATR,
     "ATR new": Viral_ATR,
-    "Choppy": Choppy
+    "Choppy": Choppy,
+    "Option Market Data": OptionMarketDataCollector
 }
 
 logging_config = {

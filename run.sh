@@ -3,4 +3,6 @@ echo "Hello starting script"
 cd ~/Desktop/AlgoTrader
 source venv/bin/activate
 cd AlgoTrader
+python manage.py makemigrations
+python manage.py migrate
 python main.py
