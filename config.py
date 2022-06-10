@@ -1,7 +1,5 @@
 from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
-from Strategies.ViralATR_nifty import ViralATRNifty
 from Strategies.Choppy import Choppy
-from Strategies.DemoStrategy import DemoStrategy
 from Strategies.ViralATR import ViralATR
 from Strategies.ATR_new import Viral_ATR
 import os

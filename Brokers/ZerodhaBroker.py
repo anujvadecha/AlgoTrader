@@ -117,10 +117,6 @@ class ZerodhaBroker(Broker):
         self.kws.on_order_update = self.__tickerOnOrderUpdate
         self.kws.on_noreconnect = self.__tickerOnNoReconnect
         self.kws.connect(threaded=True)
-        messages = Messages.getInstance()
-        messages.trades.addAll(self.get_trades())
-        messages.positions.addAll(self.get_positions())
-        messages.orders.addAll(self.get_orders())
 
     def get_ticker_connection(self):
         return KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=10000)

@@ -3,9 +3,7 @@ import time
 from Managers.BrokerManager import BrokerManager
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
-from Managers.OrderManager import OrderManager
 from Managers.StrategyManager import StrategyManager
-from Strategies.DemoStrategy import DemoStrategy
 from UIElements.UIFirst import Ui_MainWindow
 from PyQt5 import QtWidgets
 from MessageClasses import Messages
@@ -50,7 +48,7 @@ class Main():
         self.startMainWindow()
 
 # InstrumentManager.get_instance()
-# MarketDataManager.get_instance()
+MarketDataManager.get_instance()
 # OrderManager.get_instance()
 # BrokerManager.get_instance()
 if __name__ == '__main__':
