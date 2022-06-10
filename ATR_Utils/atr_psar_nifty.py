@@ -2,12 +2,12 @@ import datetime
 import logging
 
 import pandas as pd
+
+import ATR_Utils.indicators as indicators
 from ATR_Utils.execution_logic import ExecutionLogic
 from ATR_Utils.indicator_manager import IndicatorManager
 from ATR_Utils.position_manager import PositionManager
 from ATR_Utils.positions import Position
-import ATR_Utils.indicators as indicators
-
 
 LOGGER = logging.getLogger(__name__)
 
@@ -411,7 +411,8 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(
+                    f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -420,7 +421,8 @@ def stops():
                 exc_data.trade["exit_time"] = chart.running_cdl["timestamp"]
                 exc_data.trade["exit_price"] = exc_data.trade["stoploss"]
                 exc_data.trade["exit_type"] = "stoploss"
-                msg_obj.add_info_user_message(f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
+                msg_obj.add_info_user_message(
+                    f"stoploss @ {chart.running_cdl['close']} @ {chart.running_cdl['timestamp']}")
                 exc_data.last_trade = exc_data.trade.copy()
                 exc_data.in_trade = False
                 exc_data.trade_exit = True
@@ -493,7 +495,8 @@ def on_order_update(ws, data):
 kws1 = None
 
 
-def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging, strategy_obj):
+def ATR_trigger_start(connection_object, data_connection_object, ticker_connection_object, inputs, messaging,
+                      strategy_obj):
     global data_obj, con_obj, msg_obj, sys_inputs, kws1
     data_obj = data_connection_object
     con_obj = connection_object
@@ -526,7 +529,8 @@ def backtest():
     global data_obj, spot_data
     from_date = datetime.datetime.now()
     to_date = datetime.datetime.now()
-    hist = data_obj.historical_data(spot_data["instrument_token"], from_date.strftime("%Y-%m-%d"), to_date.strftime("%Y-%m-%d"), 'minute')
+    hist = data_obj.historical_data(spot_data["instrument_token"], from_date.strftime("%Y-%m-%d"),
+                                    to_date.strftime("%Y-%m-%d"), 'minute')
     hist_df = pd.DataFrame(hist)
     hist_df["cum_vol"] = hist_df["volume"].cumsum()
     print(hist_df.head())
@@ -545,17 +549,20 @@ def backtest():
         temp = [temp]
         ticks.append(temp.copy())
         del temp
-        temp = {"instrument_token": spot_data["instrument_token"], "exchange_timestamp": time + datetime.timedelta(seconds=12),
+        temp = {"instrument_token": spot_data["instrument_token"],
+                "exchange_timestamp": time + datetime.timedelta(seconds=12),
                 "last_price": row["high"], "volume_traded": row["cum_vol"] - 200}
         temp = [temp]
         ticks.append(temp.copy())
         del temp
-        temp = {"instrument_token": spot_data["instrument_token"], "exchange_timestamp": time + datetime.timedelta(seconds=12),
+        temp = {"instrument_token": spot_data["instrument_token"],
+                "exchange_timestamp": time + datetime.timedelta(seconds=12),
                 "last_price": row["low"], "volume_traded": row["cum_vol"] - 100}
         temp = [temp]
         ticks.append(temp.copy())
         del temp
-        temp = {"instrument_token": spot_data["instrument_token"], "exchange_timestamp": time + datetime.timedelta(seconds=12),
+        temp = {"instrument_token": spot_data["instrument_token"],
+                "exchange_timestamp": time + datetime.timedelta(seconds=12),
                 "last_price": row["close"], "volume_traded": row["cum_vol"]}
         temp = [temp]
         ticks.append(temp.copy())

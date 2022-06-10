@@ -52,4 +52,3 @@ class IndicatorManager:
         else:
             self.tick_triggered.append(logic.indicator)
         logic.indicator._preprocessing(self.kite)
-

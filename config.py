@@ -1,11 +1,8 @@
-from logging.handlers import TimedRotatingFileHandler
-
 from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
 from Strategies.Choppy import Choppy
 from Strategies.ViralATR import ViralATR
 from Strategies.ATR_new import Viral_ATR
 import os
-
 
 brokers = [
     {
@@ -39,7 +36,6 @@ brokers = [
 
 ]
 
-
 strategies = {
     "ViralATR": ViralATR,
     "ATR new": Viral_ATR,
@@ -48,50 +44,41 @@ strategies = {
 }
 
 logging_config = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'verbose': {
-                'format': "[%(asctime)s] %(levelname)s [%(name)s: %(funcName)s: %(lineno)s] %(message)s",
-                'datefmt': "%Y-%m-%dT%H:%M:%S%z"
-            },
-            'simple': {
-                'format': '%(levelname)s %(message)s'
-            },
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s: %(funcName)s: %(lineno)s] %(message)s",
+            'datefmt': "%Y-%m-%dT%H:%M:%S%z"
         },
-        'handlers': {
-            'null': {
-                'level': 'DEBUG',
-                'class': 'logging.NullHandler',
-            },
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'verbose'
-            },
-            'algo_trader_log_file': {
-                'level': 'DEBUG',
-                'class': 'logging.handlers.TimedRotatingFileHandler',
-                'filename': os.path.join('', 'algotrader.log'),
-                'interval': 1,
-                'when': "midnight",
-                'formatter': 'verbose'
-            },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
         },
-        'loggers': {
-            '': {
-                'handlers': ['console', 'algo_trader_log_file'],
-                'level': 'DEBUG',
-                'propagate': False,
-            },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
         },
-    }
-#
-# zerodhaconfigurations = {
-#     "apikey": "zcp3cclegx91hff7",
-#     "apisecret": "dl2si4dfxddj3t3fwk8zhd7xl0itl5k9",
-#     "userid": "XB5720",
-#     "password": "Chiadi98@&",
-#     "pin": "141014"
-# }
-TimedRotatingFileHandler
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'algo_trader_log_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join('', 'algotrader.log'),
+            'interval': 1,
+            'when': "midnight",
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'algo_trader_log_file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}

@@ -1,19 +1,21 @@
 import json
+import logging
 import traceback
 from datetime import datetime, timedelta
-import schedule
+
 import pandas as pd
+import schedule
+
 from Core.Enums import CandleInterval, StrategyState
 from Core.Strategy import Strategy
+from Indicators.PivotIndicator import PivotIndicator
+from Indicators.atr import AverageTrueRange
+from Indicators.psar import ParabolicSAR
+from Indicators.stoch import Stochastic
+from Indicators.supertrend import SuperTrend
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Models.Models import Instrument
-import logging
-from Indicators.PivotIndicator import PivotIndicator
-from Indicators.atr import AverageTrueRange
-from Indicators.supertrend import SuperTrend
-from Indicators.stoch import Stochastic
-from Indicators.psar import ParabolicSAR
 
 LOGGER = logging.getLogger(__name__)
 

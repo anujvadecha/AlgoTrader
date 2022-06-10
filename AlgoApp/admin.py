@@ -6,7 +6,7 @@ from AlgoApp.models import StrategyOrderHistory, Brokers
 
 @admin.register(StrategyOrderHistory)
 class OrderHistoryAdmin(admin.ModelAdmin):
-    list_display = ('created_at','broker', 'portfolio_id','instrument', 'quantity', 'side', 'type' )
+    list_display = ('created_at', 'broker', 'portfolio_id', 'instrument', 'quantity', 'side', 'type')
 
 
 @admin.register(Brokers)

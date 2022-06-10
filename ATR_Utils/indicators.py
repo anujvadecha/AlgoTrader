@@ -1,4 +1,5 @@
 import datetime
+
 import pandas as pd
 
 
@@ -548,7 +549,7 @@ class PivotPoints(Indicator):
     """
     """
 
-    def __init__(self,timeframe):
+    def __init__(self, timeframe):
         exc_trigger = "candle"
         super().__init__(exc_trigger, timeframe)
         self.pivots = {'pivot_point': None,

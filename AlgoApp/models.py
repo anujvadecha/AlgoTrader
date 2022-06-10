@@ -19,6 +19,7 @@ class StrategyOrderHistory(BaseModel):
     def __str__(self):
         return f"{self.portfolio_id}_{self.strategy}_{self.instrument}"
 
+
 class Brokers(BaseModel):
     # {
     #     "broker_alias": "viral_test",
