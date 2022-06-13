@@ -322,6 +322,8 @@ class Viral_ATR(Strategy):
             now = datetime.now()
 
             if now.minute == 15:
+                if now.hour == 9 and now.minute == 15:
+                    return
                 # update indicators
                 from_date = datetime.now() - timedelta(hours=6)
                 to_date = datetime.now()
