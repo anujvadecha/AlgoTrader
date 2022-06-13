@@ -9,6 +9,3 @@ class OrderHistoryAdmin(admin.ModelAdmin):
     list_display = ('created_at', 'broker', 'portfolio_id', 'instrument', 'quantity', 'side', 'type')
 
 
-@admin.register(Brokers)
-class BrokerAdmin(admin.ModelAdmin):
-    pass

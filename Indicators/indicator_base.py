@@ -23,7 +23,6 @@ class Indicator:
 
         for candle in historical_data:
             self.calculate(candle)
-        return
 
     def calculate(self, candle=None):
         """

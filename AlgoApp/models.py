@@ -5,6 +5,7 @@ from base.models import BaseModel
 
 class StrategyOrderHistory(BaseModel):
     portfolio_id = models.IntegerField(default=0)
+    broker = models.CharField(max_length=255, blank=True, null=True)
     strategy = models.CharField(max_length=255, blank=True, null=True)
     inputs = models.TextField(null=True, blank=True)
     instrument = models.CharField(max_length=255, null=True, blank=True)
@@ -14,7 +15,6 @@ class StrategyOrderHistory(BaseModel):
     remarks = models.TextField(blank=True, null=True)
     order_type = models.CharField(max_length=255, blank=True, null=True)
     identifier = models.CharField(max_length=255, blank=True, null=True)
-    broker = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return f"{self.portfolio_id}_{self.strategy}_{self.instrument}"

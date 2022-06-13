@@ -9,7 +9,7 @@ class StrategyState(Enum):
 class CandleInterval(Enum):
     min = "1minute"
     three_min = "3minute"
-    five_min = "5minute"
+    five_min = "5min"
     ten_min = "10minute"
     fifteen_min = "15minute"
     thirty_min = "30minute"
