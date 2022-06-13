@@ -15,8 +15,6 @@ LOGGER = logging.getLogger(__name__)
 class MarketDataManager():
     _market_data_map = {}
     _subscribed_callbacks = {}
-    _subscribed_candle = {}
-    _historical_data_cache = {}
     _historical_data_cache_v1 = {}
 
     def ceil_dt(self, dt, delta):
@@ -36,7 +34,6 @@ class MarketDataManager():
         #                 "15min": [{"date":"", "open": "" }]
         #               }
         # }
-        print(f"Interval {interval} timeparsed {timeparse(interval.value)}")
         time_series = get_candle_time_series_for_date_range(from_date, to_date, interval)
         if not self._historical_data_cache_v1.get(instrument.tradingsymbol, None):
             self._historical_data_cache_v1[instrument.tradingsymbol] = {interval: {}}
@@ -81,33 +78,6 @@ class MarketDataManager():
             return candles
         else:
             return None
-
-    def _update_candle_subscription_data(self, instrument, interval, data):
-        if len(data) <= 0: return
-        already_existing_data = self._subscribed_candle[instrument.tradingsymbol][interval]["data"]
-        if len(already_existing_data) > 0 :
-            if already_existing_data[-1]["date"] >= data[0]["date"]:
-                index = 0
-                while (already_existing_data[-1]["date"] >= data[0]["date"]):
-                    index = index + 1
-                already_existing_data[instrument.tradingsymbol][interval]["data"].extend(data[index:])
-            elif already_existing_data[-1]["date"] < data[0]["date"]:
-                self._subscribed_candle[instrument.tradingsymbol][interval]["data"].extend(data)
-        else:
-            self._subscribed_candle[instrument.tradingsymbol][interval]["data"].extend(data)
-
-    def subscribe_candle(self, instrument, interval, callback, initial_from_date, initial_to_date):
-        if not self._subscribed_candle.get(instrument.tradingsymbol):
-            self._subscribed_candle[instrument.tradingsymbol] = {}
-        if not self._subscribed_candle[instrument.tradingsymbol].get(interval):
-            self._subscribed_candle[instrument.tradingsymbol][interval] = {"data": [], "callbacks": [callback]}
-        else:
-            self._subscribed_candle[instrument.tradingsymbol][interval]["callbacks"].append(callback)
-        data = self.get_historical_data(instrument=instrument, from_date=initial_from_date,
-                                                    to_date=initial_to_date,
-                                                    interval=interval)
-        self._update_candle_subscription_data(instrument, interval, data)
-        return self._subscribed_candle[instrument.tradingsymbol][interval]["data"]
 
     def subscribe(self, instrument: Instrument, tick_callback=None):
         self._market_data_map[instrument.tradingsymbol] = Queue(maxsize=200)
