@@ -3,22 +3,20 @@ import time
 from Managers.BrokerManager import BrokerManager
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
-from Managers.OrderManager import OrderManager
 from Managers.StrategyManager import StrategyManager
-from Strategies.DemoStrategy import DemoStrategy
 from UIElements.UIFirst import Ui_MainWindow
 from PyQt5 import QtWidgets
 from MessageClasses import Messages
 import sys
 from qt_material import apply_stylesheet
-import logging
 import logging.config
-import os
 from config import logging_config
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "AlgoApplication.settings")
+import django
 
 logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
-import sqlite3 as sl
 
 class Main():
 
@@ -42,15 +40,14 @@ class Main():
 
     def __init__(self):
         # self.start_instance_thread()
-        con = sl.connect('algo_trader.db')
+        # con = sl.connect('algo_trader.db')
         self.messages = Messages.getInstance()
+        django.setup()
         self.startMainWindow()
 
-
-
-main = Main()
 # InstrumentManager.get_instance()
-# MarketDataManager.get_instance()
+MarketDataManager.get_instance()
 # OrderManager.get_instance()
 # BrokerManager.get_instance()
-
+if __name__ == '__main__':
+    main = Main()

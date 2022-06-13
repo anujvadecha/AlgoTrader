@@ -1,4 +1,6 @@
 import os
+from datetime import datetime
+
 import pyotp
 from kiteconnect import KiteConnect
 import time
@@ -107,26 +109,21 @@ class ZerodhaBroker(Broker):
             time.sleep(2)
             url = driver.current_url
             query_def = parse.parse_qs(parse.urlparse(url).query)
-            driver.close()
+            # driver.close()
             data = self.kite.generate_session(query_def["request_token"][0], api_secret=self.apisecret)
             self.kite.set_access_token(data["access_token"])
             self.__write_accesstocken(data["access_token"])
-        self.kws = KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000,
-                              reconnect_max_tries=10000)
+
+        self.kws = KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=300)
         self.kws.on_ticks = self.__tickerOnTicks
         self.kws.on_connect = self.on_connect
         self.kws.on_close = self.on_close
         self.kws.on_order_update = self.__tickerOnOrderUpdate
         self.kws.on_noreconnect = self.__tickerOnNoReconnect
         self.kws.connect(threaded=True)
-        messages = Messages.getInstance()
-        messages.trades.addAll(self.get_trades())
-        messages.positions.addAll(self.get_positions())
-        messages.orders.addAll(self.get_orders())
 
     def get_ticker_connection(self):
-        return KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000,
-                          reconnect_max_tries=10000)
+        return KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=300)
 
     def load_instruments(self):
         self.__instrument_store()
@@ -154,8 +151,11 @@ class ZerodhaBroker(Broker):
 
     def get_historical_data(self, instrument: Instrument, from_date, to_date, interval, continuous=False):
         try:
-            return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
+            historical_data = self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
                                              continuous, False)
+            for candle in historical_data:
+                candle["date"] = datetime.replace(candle["date"], tzinfo=None)
+            return historical_data
         except NetworkException as e:
             LOGGER.error(f"Too many requests error {e}", e)
             time.sleep(1)

@@ -55,7 +55,7 @@ class ChartBuilder:
         if self.last_tick is not None:
             # print(tick_time, self.running_cdl["timestamp"])
             candle_time = (self.running_cdl["timestamp"].hour * 100) + \
-                self.running_cdl["timestamp"].minute
+                          self.running_cdl["timestamp"].minute
             if (tick_time - candle_time) >= self.timeframe:
                 print(self.running_cdl)
                 self.chart[self.running_cdl["timestamp"]] = self.running_cdl.copy()

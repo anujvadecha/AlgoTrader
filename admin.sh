@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 echo "Hello starting script"
-cd ~/Desktop/AlgoTrader || exit
+cd ~/Desktop/AlgoTrader
 source venv/bin/activate
-cd AlgoTrader || exit
-pip install -r requirements.txt
+cd AlgoTrader
 python manage.py makemigrations
 python manage.py migrate
 git add -u
 git commit -m "server changes"
 git pull
 git push
-python main.py
+python manage.py runserver

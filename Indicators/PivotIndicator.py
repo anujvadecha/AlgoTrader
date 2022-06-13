@@ -1,8 +1,9 @@
 from datetime import timedelta
 
 from Managers.MarketDataManager import MarketDataManager
+import logging
 
-
+LOGGER = logging.getLogger(__name__)
 class PivotIndicator:
 
     def _calculate_pivot_points(self, candle):
@@ -26,6 +27,9 @@ class PivotIndicator:
     def calculate(self, instrument ,from_date, to_date, interval=None):
         historical_data = MarketDataManager.get_instance().get_historical_data(instrument=instrument, from_date=from_date, to_date=to_date, interval=interval)
         pivot_data = []
+        LOGGER.info(f"Historical data requested for pivot calculation is {historical_data}")
         for data in historical_data:
+            print(data)
+            print(type(data))
             pivot_data.append(self._calculate_pivot_points(data))
         return pivot_data

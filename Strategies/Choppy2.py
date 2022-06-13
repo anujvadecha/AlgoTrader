@@ -13,8 +13,8 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 
-class Choppy(Strategy):
-    strategy_name = "Choppy"
+class Choppy2(Strategy):
+    strategy_name = "Choppy2"
     trade_limit = 1
     number_of_trades = 0
 

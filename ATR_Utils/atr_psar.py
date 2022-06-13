@@ -3,12 +3,13 @@ import json
 import logging
 
 import pandas as pd
+
+import ATR_Utils.indicators as indicators
+import Core.Strategy
 from ATR_Utils.execution_logic import ExecutionLogic
 from ATR_Utils.indicator_manager import IndicatorManager
 from ATR_Utils.position_manager import PositionManager
-import ATR_Utils.indicators as indicators
 from Managers.InstrumentManager import InstrumentManager
-import Core.Strategy
 
 LOGGER = logging.getLogger(__name__)
 
@@ -136,7 +137,7 @@ def system_setup(inputs):  # add proper use of inputs
     populates the global variables
     """
     global instrument_list, spot_data, pm, IM, chart, psar, st, atr, stoch, pp, \
-        data_obj, exc_log, trade_dir, sub_token, msg_obj, orders_type, order_instrument, option_expiry, order_quantity,\
+        data_obj, exc_log, trade_dir, sub_token, msg_obj, orders_type, order_instrument, option_expiry, order_quantity, \
         option_quantity, symbol, exc_data, file_name, option_entry_instrument
 
     orders_type = inputs["orders_type"]

@@ -1,19 +1,19 @@
 import logging
 
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtWidgets
 
 from Managers.BrokerManager import BrokerManager
 from Managers.StrategyManager import StrategyManager
 from MessageClasses import Messages
 from UIElements.StrategyInputs import StrategyInputBox
-import os
 from config import strategies
 
 LOGGER = logging.getLogger(__name__)
 
+
 class GUIFunctions():
 
-    def add_update_order(self,order):
+    def add_update_order(self, order):
         self.populateRunningStrategies()
         root = self.GUI.ordersDisplay.invisibleRootItem()
         child_count = root.childCount()
@@ -22,16 +22,16 @@ class GUIFunctions():
             order_id = item.text(0)
             if str(order_id) == str(order["order_id"]):
                 keys = order.keys()
-                for j in range(0,len(keys)):
+                for j in range(0, len(keys)):
                     item.setText(j, str(order[keys[j]]))
                 return
-        if child_count==0:
+        if child_count == 0:
             self.GUI.ordersDisplay.setHeaderLabels(list(order.keys()))
         item = QtWidgets.QTreeWidgetItem(self.GUI.ordersDisplay)
         for j in range(0, len(list(order.keys()))):
             item.setText(j, str(order[list(order.keys())[j]]))
 
-    def add_update_running_strategy(self,running_strategy):
+    def add_update_running_strategy(self, running_strategy):
         root = self.GUI.runningStrategyBox.invisibleRootItem()
         child_count = root.childCount()
         for i in range(child_count):
@@ -48,13 +48,13 @@ class GUIFunctions():
         for j in range(0, len(list(running_strategy.keys()))):
             item.setText(j, str(running_strategy[list(running_strategy.keys())[j]]))
 
-    def add_user_message(self,message):
+    def add_user_message(self, message):
         LOGGER.info(f"Adding user message {message}")
         item = QtWidgets.QTreeWidgetItem(self.GUI.userMessageDisplay)
         for j in range(0, len(list(message.keys()))):
             item.setText(j, str(message[list(message.keys())[j]]))
 
-    def add_broker_message(self,message):
+    def add_broker_message(self, message):
         LOGGER.info(f"Adding broker message {message}")
         item = QtWidgets.QTreeWidgetItem(self.GUI.brokerMessagesDisplay)
         for j in range(0, len(list(message.keys()))):
@@ -72,7 +72,6 @@ class GUIFunctions():
                 for j in range(0, len(headers)):
                     item.setText(j, str(i[headers[j]]))
 
-
     def populateBrokerMessages(self):
         self.GUI.brokerMessagesDisplay.clear()
         brokermessages = Messages.getInstance().brokermessages.getMessages()
@@ -84,7 +83,6 @@ class GUIFunctions():
                 item = QtWidgets.QTreeWidgetItem(self.GUI.brokerMessagesDisplay)
                 for j in range(0, len(headers)):
                     item.setText(j, str(i[headers[j]]))
-
 
     def populateOrders(self):
         orders = Messages.getInstance().orders.getMessages()
@@ -99,7 +97,7 @@ class GUIFunctions():
 
     def populateTrades(self):
         orders = Messages.getInstance().trades.getMessages()
-        if(len(orders)!=0):
+        if (len(orders) != 0):
             headers = list(orders[0].keys())
             self.GUI.tradesDisplay.clear()
             self.GUI.tradesDisplay.setHeaderLabels(headers)
@@ -124,15 +122,15 @@ class GUIFunctions():
         self.GUI.strategyBox.setHeaderLabels(["Strategy"])
         keys = strategies.keys()
         LOGGER.info(keys)
-        for i in range (0,len(keys)):
+        for i in range(0, len(keys)):
             item = QtWidgets.QTreeWidgetItem(self.GUI.strategyBox)
-            item.setText(0,list(keys)[i])
+            item.setText(0, list(keys)[i])
 
     def populateRunningStrategies(self):
         root = self.GUI.strategyBox.invisibleRootItem()
         child_count = root.childCount()
         LOGGER.info("populateRunningStrategies")
-        none_checked=True
+        none_checked = True
         for i in range(child_count):
             item = root.child(i)
             checked = item.isSelected()
@@ -150,7 +148,7 @@ class GUIFunctions():
         try:
             import pandas as pd
             file_inputs = inputs.copy()
-            for key,value in file_inputs.items():
+            for key, value in file_inputs.items():
                 if isinstance(value, list):
                     file_inputs[key] = value[0]
             file_inputs['broker_alias'] = list(BrokerManager.get_instance().alias_brokers.keys())[0]
@@ -178,7 +176,7 @@ class GUIFunctions():
                 self.generateSampleFile(inputs, strategy)
                 for input, value in inputs.items():
                     if type(value) == list:
-                        ui.addAttrList(input,value)
+                        ui.addAttrList(input, value)
                     else:
                         ui.addAttr(input, value)
                 Dialog.exec()
@@ -223,7 +221,8 @@ class GUIFunctions():
         LOGGER.info("refresh trades is called")
 
     def refreshPositions(self):
-        self.positions = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_positions())
+        self.positions = Messages.getInstance().trades.reset(
+            BrokerManager.get_instance().get_data_broker().get_positions())
         self.populatePositions()
         LOGGER.info("refresh positions is called")
 
@@ -239,8 +238,8 @@ class GUIFunctions():
         self.GUI.tradesDisplay.clicked.connect(self.refreshTrades)
         self.GUI.positionsDisplay.clicked.connect(self.refreshPositions)
 
-    def executeInitialFunctions(self,GUI=None):
-        self.GUI=GUI
+    def executeInitialFunctions(self, GUI=None):
+        self.GUI = GUI
         self.populateTrades()
         self.populatePositions()
         self.populateUserMessages()
@@ -263,4 +262,3 @@ class GUIFunctions():
             raise Exception("This class is a singleton!")
         else:
             GUIFunctions.__instance = self
-

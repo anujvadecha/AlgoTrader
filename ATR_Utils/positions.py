@@ -1,4 +1,3 @@
-
 class Position:
     """
     class used for defining a position
@@ -7,7 +6,7 @@ class Position:
 
     """
     # Products
-    PRODUCT_MIS = "MIS"           # DEFAULT
+    PRODUCT_MIS = "MIS"  # DEFAULT
     PRODUCT_CNC = "CNC"
     PRODUCT_NRML = "NRML"
 
@@ -16,16 +15,16 @@ class Position:
     ORDER_TYPE_LIMIT = "LIMIT"
 
     # Varieties
-    VARIETY_REGULAR = "regular"   # DEFAULT
+    VARIETY_REGULAR = "regular"  # DEFAULT
 
     # Validity
-    VALIDITY_DAY = "DAY"          # DEFAULT
+    VALIDITY_DAY = "DAY"  # DEFAULT
 
     # Position Type
-    POSITION_TYPE_DAY = "day"     # DEFAULT
+    POSITION_TYPE_DAY = "day"  # DEFAULT
 
     # Trade Type
-    TYPE_LONG = "LONG"            # DEFAULT
+    TYPE_LONG = "LONG"  # DEFAULT
     TYPE_SHORT = "SHORT"
 
     # Transaction type
@@ -63,7 +62,7 @@ class Position:
         self.entry_price = 0.00
         self.running_quantity = None
         self.running_PNL = 0
-        self.exit_price = None                   # needs better implementation for multiple exits
+        self.exit_price = None  # needs better implementation for multiple exits
 
     def assign_uid(self, received_uid):
         self.UID = received_uid
@@ -197,5 +196,3 @@ class Position:
                 tick_data = tick
                 break
         self.__update_pnl(tick_data)
-
-

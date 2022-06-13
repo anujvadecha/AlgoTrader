@@ -2,6 +2,7 @@ from Indicators.indicator_base import Indicator
 
 
 class SuperTrend(Indicator):
+
     def __init__(self, instrument, timeframe, atr_length=10, factor=3):
         self.atr_length = atr_length
         self.factor = factor
