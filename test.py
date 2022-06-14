@@ -47,6 +47,7 @@ to_date = datetime.now()
 print(from_date)
 print(to_date)
 data = get_candle_time_series_for_date_range(from_date, to_date, CandleInterval.hourly)
+print(data)
 # for data in data:
 #     print(f"{data} {is_within_market_time_range(data)}")
 range = list(time for time in data if is_within_market_time_range(time))

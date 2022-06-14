@@ -1,3 +1,4 @@
+from Strategies.Eighteen import Eighteen
 from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
 from Strategies.Choppy import Choppy
 from Strategies.ViralATR import ViralATR
@@ -40,45 +41,7 @@ strategies = {
     "ViralATR": ViralATR,
     "ATR new": Viral_ATR,
     "Choppy": Choppy,
-    "Option Market Data": OptionMarketDataCollector
+    "Option Market Data": OptionMarketDataCollector,
+    "Eighteen": Eighteen
 }
 
-logging_config = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': "[%(asctime)s] %(levelname)s [%(name)s: %(funcName)s: %(lineno)s] %(message)s",
-            'datefmt': "%Y-%m-%dT%H:%M:%S%z"
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'algo_trader_log_file': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': os.path.join('', 'algotrader.log'),
-            'interval': 1,
-            'when': "midnight",
-            'formatter': 'verbose'
-        },
-    },
-    'loggers': {
-        '': {
-            'handlers': ['console', 'algo_trader_log_file'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}

@@ -10,12 +10,10 @@ from MessageClasses import Messages
 import sys
 from qt_material import apply_stylesheet
 import logging.config
-from config import logging_config
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "AlgoApplication.settings")
 import django
 
-logging.config.dictConfig(logging_config)
 logger = logging.getLogger(__name__)
 
 class Main():
