@@ -19,20 +19,20 @@ brokers = [
         },
         "dataSource": True,
     },
-    # {
-    #     "broker_alias": "viral_test",
-    #     "broker": "ZERODHA",
-    #     "config": {
-    #         "apikey": "kpnnt4xthv187j8p",
-    #         "apisecret": "lrmz7qdh8ell903yh8mujw4paegipm33",
-    #         "userid": "ZN8507",
-    #         "password": "mail0007",
-    #         "pin": "123456",
-    #         "totp_access_key": "UXD562SLG66TEGX7OTQ7YLFJILH5V5FG",
-    #         "live": False
-    #     },
-    #     "dataSource": False,
-    # }
+    {
+        "broker_alias": "viral_test",
+        "broker": "ZERODHA",
+        "config": {
+            "apikey": "kpnnt4xthv187j8p",
+            "apisecret": "lrmz7qdh8ell903yh8mujw4paegipm33",
+            "userid": "ZN8507",
+            "password": "mail0007",
+            "pin": "123456",
+            "totp_access_key": "UXD562SLG66TEGX7OTQ7YLFJILH5V5FG",
+            "live": False
+        },
+        "dataSource": False,
+    }
 
 ]
 
