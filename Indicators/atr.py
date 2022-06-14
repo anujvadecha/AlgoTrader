@@ -30,4 +30,4 @@ class AverageTrueRange(Indicator):
         self.ATR = round(self.tr_rma, 4)
         self.previous_close = candle["close"]
         self.last_candle = candle
-        LOGGER.debug("atr excution over")
+        LOGGER.debug("atr execution over")

@@ -16,15 +16,17 @@ from Managers.MarketDataManager import MarketDataManager
 from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
+
 LOGGER = logging.getLogger(__name__)
 
-class ZerodhaBroker(Broker):
 
-    subscribe_cache={}
+class ZerodhaBroker(Broker):
+    subscribe_cache = {}
 
     def place_market_order(self, instrument, side, quantity, type):
         from GUIFunctions import GUIFunctions
-        Messages.getInstance().brokermessages.info(f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
+        Messages.getInstance().brokermessages.info(
+            f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
         if not self.live:
             return
         try:
@@ -38,7 +40,6 @@ class ZerodhaBroker(Broker):
         except Exception as e:
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
-
 
     def place_limit_order(self, instrument, side, quantity, type, price):
         from GUIFunctions import GUIFunctions
@@ -61,7 +62,7 @@ class ZerodhaBroker(Broker):
             Messages.getInstance().brokermessages.info(
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
 
-    def subscribe(self, instrument:Instrument):
+    def subscribe(self, instrument: Instrument):
         self.subscribe_cache[instrument.instrument_token] = instrument.tradingsymbol
         self.tickerHandler.subscribe([int(instrument.instrument_token)])
 
@@ -74,7 +75,7 @@ class ZerodhaBroker(Broker):
         # ws.stop()
 
     def __readInstrumentsfromCsv(self):
-        with open(os.getcwd()+"/BrokerCache/instruments.csv", "r") as f:
+        with open(os.getcwd() + "/BrokerCache/instruments.csv", "r") as f:
             reader = csv.DictReader(f)
             a = list(reader)
         if (len(a) <= 0):
@@ -112,6 +113,7 @@ class ZerodhaBroker(Broker):
             data = self.kite.generate_session(query_def["request_token"][0], api_secret=self.apisecret)
             self.kite.set_access_token(data["access_token"])
             self.__write_accesstocken(data["access_token"])
+
         self.kws = KiteTicker(self.apikey, self.__read_accesstocken(), reconnect=True, reconnect_max_delay=100000000, reconnect_max_tries=300)
         self.kws.on_ticks = self.__tickerOnTicks
         self.kws.on_connect = self.on_connect
@@ -156,17 +158,17 @@ class ZerodhaBroker(Broker):
             return historical_data
         except NetworkException as e:
             LOGGER.error(f"Too many requests error {e}", e)
-            time.sleep(0.5)
-            return self.kite.historical_data(int(instrument.instrument_token), from_date, to_date, interval,
-                                             continuous, False)
+            time.sleep(1)
+            return self.get_historical_data(instrument, from_date, to_date, interval,
+                                            continuous)
 
     def __read_accesstocken(self):
-        file = open(os.getcwd()+"/BrokerCache/accesstoken.txt", "r")
+        file = open(os.getcwd() + "/BrokerCache/accesstoken.txt", "r")
         line = file.read()
         return line
 
     def __write_accesstocken(self, accesstocken):
-        f = open(os.getcwd()+"/BrokerCache/accesstoken.txt", "w")
+        f = open(os.getcwd() + "/BrokerCache/accesstoken.txt", "w")
         f.write(accesstocken)
         f.close()
 
@@ -180,7 +182,7 @@ class ZerodhaBroker(Broker):
     def __tickerOnNoReconnect(self):
         print("CANT RECONNECT")
 
-    def __writeDictToCSV(self,filename, dictofinst):
+    def __writeDictToCSV(self, filename, dictofinst):
         with open(filename, 'w', encoding='utf8', newline='') as output_file:
             fc = csv.DictWriter(
                 output_file,
@@ -221,7 +223,7 @@ class ZerodhaBroker(Broker):
             nfo_instruments = self.kite.instruments(exchange=self.kite.EXCHANGE_NFO)
             instruments.extend(nfo_instruments)
             # instruments.append(nfo_instruments)
-            self.__writeDictToCSV(os.getcwd()+"/BrokerCache/instruments.csv", instruments)
+            self.__writeDictToCSV(os.getcwd() + "/BrokerCache/instruments.csv", instruments)
         for instrument in instruments:
             self.push_instrument(Instrument(*instrument.values()))
         return instruments
@@ -231,6 +233,5 @@ class ZerodhaBroker(Broker):
         kite.set_access_token(self.__read_accesstocken())
         return kite
 
-    def __init__(self,config):
+    def __init__(self, config):
         self.initialize(config)
-
