@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 import schedule
 
-from Core.Enums import CandleInterval, StrategyState
+from Core.Enums import CandleInterval, StrategyState, TradeIdentifier
 from Core.Strategy import Strategy
 from Indicators.PivotIndicator import PivotIndicator
 from Indicators.atr import AverageTrueRange
@@ -128,7 +128,7 @@ class Viral_ATR(Strategy):
         pivot_range = final_band
         return pivot_range
 
-    def place_entry_order(self, side, identifier=None):
+    def place_entry_order(self, side, identifier=TradeIdentifier.ENTRY):
 
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
@@ -224,7 +224,7 @@ class Viral_ATR(Strategy):
         }
 
     def _initiate_inputs(self, inputs):
-        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
+        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol=inputs["instrument"])
         expiries = list(sorted(set(str(instrument.expiry) for instrument in order_instruments)))
         # TODO find better method
         for instrument in order_instruments:
@@ -440,17 +440,17 @@ class Viral_ATR(Strategy):
             if tick.symbol == self.instrument.tradingsymbol and self.entry:
                 if self.entry_side == "BUY":
                     if tick.ltp >= self.target_price:
-                        self.place_exit_order("SELL", "TARGET_ACHIEVED")
+                        self.place_exit_order("SELL", TradeIdentifier.TARGET_TRIGGERED)
 
                     if tick.ltp <= self.stoploss_price:
-                        self.place_exit_order("SELL", "STOPLOSS_HIT")
+                        self.place_exit_order("SELL", TradeIdentifier.STOP_LOSS_TRIGGERED)
 
                 if self.entry_side == "SELL":
                     if tick.ltp <= self.target_price:
-                        self.place_exit_order("BUY", "TARGET_ACHIEVED")
+                        self.place_exit_order("BUY", TradeIdentifier.TARGET_TRIGGERED)
 
                     if tick.ltp >= self.stoploss_price:
-                        self.place_exit_order("BUY", "STOPLOSS_HIT")
+                        self.place_exit_order("BUY", TradeIdentifier.STOP_LOSS_TRIGGERED)
         except Exception as e:
             LOGGER.exception(e)
 
@@ -459,7 +459,7 @@ class Viral_ATR(Strategy):
 
     def stop(self):
         if self.entry and self.entry_side == "BUY":
-            self.place_exit_order("SELL", "STOP_SQUARE_OFF")
+            self.place_exit_order("SELL", TradeIdentifier.STOP_SQUARE_OFF)
         if self.entry and self.entry_side == "SELL":
-            self.place_exit_order("BUY", "STOP_SQUARE_OFF")
+            self.place_exit_order("BUY", TradeIdentifier.STOP_SQUARE_OFF)
         super().stop()
