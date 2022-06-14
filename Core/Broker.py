@@ -35,7 +35,7 @@ class Broker():
     def get_historical_data(self,instrument,from_date,to_date,interval, continuous=False):
         raise NotImplementedError
 
-    def initialize(self):
+    def initialize(self, config):
         raise NotImplementedError
 
     def load_instruments(self):

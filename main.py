@@ -40,12 +40,14 @@ class Main():
         # self.start_instance_thread()
         # con = sl.connect('algo_trader.db')
         self.messages = Messages.getInstance()
-        django.setup()
+
         self.startMainWindow()
 
 # InstrumentManager.get_instance()
-MarketDataManager.get_instance()
+
 # OrderManager.get_instance()
 # BrokerManager.get_instance()
 if __name__ == '__main__':
+    django.setup()
+    MarketDataManager.get_instance()
     main = Main()
