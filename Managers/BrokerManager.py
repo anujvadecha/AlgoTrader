@@ -1,11 +1,10 @@
 from Brokers.ZerodhaBroker import ZerodhaBroker
 from MessageClasses import Messages
-from config import  brokers
+from config import brokers
 
 
 class BrokerManager():
-
-    alias_brokers = { }
+    alias_brokers = {}
     __datasource = None
 
     def get_broker(self, broker_alias):
@@ -17,14 +16,16 @@ class BrokerManager():
     def __load_brokers_from_config(self):
         for broker in brokers:
             try:
-                if(broker["broker"]=="ZERODHA"):
+                if broker["broker"] == "ZERODHA":
                     broker_to_connect = ZerodhaBroker(broker["config"])
                     broker_to_connect.connect()
                     self.alias_brokers[broker["broker_alias"]] = broker_to_connect
                 if broker["dataSource"]:
                     self.__datasource = self.alias_brokers[broker["broker_alias"]]
             except Exception as e:
-                Messages.getInstance().usermessages.info(f"Could not connect {broker['broker_alias']} due to exception {e}")
+                Messages.getInstance().usermessages.info(
+                    f"Could not connect {broker['broker_alias']} due to exception {e}")
+
     __instance = None
 
     @staticmethod
@@ -42,5 +43,5 @@ class BrokerManager():
         self.__datasource.load_instruments()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     BrokerManager.get_instance()

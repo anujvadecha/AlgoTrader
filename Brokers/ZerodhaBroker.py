@@ -1,18 +1,13 @@
 import os
 from datetime import datetime
-
 import pyotp
 from kiteconnect import KiteConnect
 import time
-
 from kiteconnect.exceptions import NetworkException
-from selenium import webdriver
 from urllib import parse
 from kiteconnect import KiteTicker
 import logging
 import csv
-from Managers.InstrumentManager import InstrumentManager
-from Managers.MarketDataManager import MarketDataManager
 from Core.Broker import Broker
 from Models.Models import Instrument, Tick
 from MessageClasses import Messages
@@ -24,7 +19,6 @@ class ZerodhaBroker(Broker):
     subscribe_cache = {}
 
     def place_market_order(self, instrument, side, quantity, type):
-        from GUIFunctions import GUIFunctions
         Messages.getInstance().brokermessages.info(
             f"Placing market order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
         if not self.live:
@@ -42,7 +36,6 @@ class ZerodhaBroker(Broker):
                 f"Placing order failed with exception {e} for {instrument.tradingsymbol} side {side} quantity {quantity} type {type}")
 
     def place_limit_order(self, instrument, side, quantity, type, price):
-        from GUIFunctions import GUIFunctions
         try:
             Messages.getInstance().brokermessages.info(
                 f"Placing limit order for {instrument.tradingsymbol} side {side} quantity {quantity} type {type} price {price}")
