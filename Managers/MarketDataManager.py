@@ -31,7 +31,10 @@ class MarketDataManager():
         # TODO Write logic for live candle maker (Priority low)
         # _historical_data_cache_v1 = {
         # "NIFTY 50": {
-        #                 "15min": [{"date":"", "open": "" }]
+        #                 "15min": {
+        #                 "2021: 21313":
+
+        #                 }
         #               }
         # }
         time_series = get_candle_time_series_for_date_range(from_date, to_date, interval)
@@ -58,7 +61,7 @@ class MarketDataManager():
             elif not last_candle_exists:
                 # Write logic to find latest data available
                 minimum_timestamp_available = None
-                for candle in self._historical_data_cache_v1[instrument.tradingsymbol][interval]:
+                for candle in self._historical_data_cache_v1[instrument.tradingsymbol][interval].values():
                     minimum_timestamp_available = min(from_date, candle["date"])
                 new_from_date = minimum_timestamp_available
                 new_historical_data = self.data_broker.get_historical_data(instrument=instrument, from_date=new_from_date,
