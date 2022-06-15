@@ -122,13 +122,13 @@ class ZerodhaBroker(Broker):
         self.__instrument_store()
 
     def initialize(self, config):
-        self.apikey = config["apikey"]
-        self.apisecret = config["apisecret"]
-        self.userid = config["userid"]
-        self.password = config["password"]
+        self.apikey = config.api_key
+        self.apisecret = config.api_secret
+        self.userid = config.user_id
+        self.password = config.password
         # self.pin = config["pin"]
-        self.totp_access_key = config['totp_access_key']
-        self.live = config["live"]
+        self.totp_access_key = config.totp_access_key
+        self.live = config.live
 
     def get_orders(self):
         return self.kite.orders()
