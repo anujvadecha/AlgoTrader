@@ -76,7 +76,6 @@ class MarketDataManager():
                 eligible_candle = self._historical_data_cache_v1[instrument.tradingsymbol][interval].get(time)
                 if eligible_candle:
                     candles.append(eligible_candle)
-            LOGGER.info(f"Historical data cache looks like {self._historical_data_cache_v1}")
             LOGGER.info(f"Returning historical data {candles} for  {from_date} {to_date} {interval} {instrument.tradingsymbol}")
             return candles
         else:
