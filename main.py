@@ -11,10 +11,12 @@ import sys
 from qt_material import apply_stylesheet
 import logging.config
 import os
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "AlgoApplication.settings")
 import django
 
 logger = logging.getLogger(__name__)
+
 
 class Main():
 
@@ -42,6 +44,7 @@ class Main():
         self.messages = Messages.getInstance()
         django.setup()
         self.startMainWindow()
+
 
 # InstrumentManager.get_instance()
 MarketDataManager.get_instance()
