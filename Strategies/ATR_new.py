@@ -147,11 +147,11 @@ class Viral_ATR(Strategy):
                 targeted_strike_price = self.entry_price + (100 - self.entry_price % 100)
             if side == "BUY":
                 option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
-                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
+                    "BANKNIFTY" if self.spot_instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
                     strike=targeted_strike_price)
             else:
                 option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
-                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
+                    "BANKNIFTY" if self.spot_instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
                     strike=targeted_strike_price)
             for optioninstr in option_intruments:
                 if str(optioninstr.expiry) == self.option_expiry:

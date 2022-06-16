@@ -13,6 +13,7 @@ class AverageTrueRange(Indicator):
         self.previous_close = 0.00
 
         super().__init__(instrument=instrument, timeframe=timeframe)
+        LOGGER.debug("atr execution over")
 
     def calculate(self, candle=None):
         if self.last_candle["date"] == candle["date"]:
@@ -30,4 +31,4 @@ class AverageTrueRange(Indicator):
         self.ATR = round(self.tr_rma, 4)
         self.previous_close = candle["close"]
         self.last_candle = candle
-        LOGGER.debug("atr execution over")
+

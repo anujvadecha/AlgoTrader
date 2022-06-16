@@ -18,7 +18,7 @@ class Indicator:
         now = datetime.now()
         historical_data = self.datamanager.get_historical_data(instrument=self.instrument,
                                                                interval=timeframe,
-                                                               from_date=now - timedelta(days=7),
+                                                               from_date=now - timedelta(days=45),
                                                                to_date=now)
 
         for candle in historical_data:
