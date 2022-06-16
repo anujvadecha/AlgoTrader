@@ -210,7 +210,8 @@ class Viral_ATR(Strategy):
         option_instruments = InstrumentManager.get_instance().get_call_options_for_instrument(
             "BANKNIFTY")
         expiries = sorted(set(str(instrument.expiry) for instrument in option_instruments))
-        instruments = ["NIFTY 50", "NIFTY BANK"]
+        # instruments = ["NIFTY 50", "NIFTY BANK"]
+        instruments = order_instrument_names
         timeframes = ["hourly"]
         return {
             "instrument": instruments,
@@ -224,15 +225,27 @@ class Viral_ATR(Strategy):
         }
 
     def _initiate_inputs(self, inputs):
-        order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol=inputs["instrument"])
-        expiries = list(sorted(set(str(instrument.expiry) for instrument in order_instruments)))
-        # TODO find better method
-        for instrument in order_instruments:
-            if instrument.expiry == expiries[0]:
-                break
-        self.instrument = instrument
+        order_instrument = None
+        # if inputs["instrument"] == "NIFTY 50":
+        #     order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
+        # else:
+        #     order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY")
+        # expiries = list(sorted(set(str(instrument.expiry) for instrument in order_instruments)))
+        # # TODO find better method
+        # if order_instruments is None:
+        #     self.add_info_user_message('no order instrument')
+        # for instrument in order_instruments:
+        #     if instrument.expiry == expiries[0]:
+        #         print("matched")
+        #         break
+        # print(expiries)
+        # self.instrument = inputs["instrument"]
         # print(self.instrument.tradingsymbol)
-        self.spot_instrument = Instrument(symbol=inputs["instrument"])
+        if "BANK" in inputs["instrument"]:
+            self.spot_instrument = Instrument(symbol="NIFTY BANK")
+        else:
+            self.spot_instrument = Instrument(symbol="NIFTY 50")
+        self.instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.order_type = inputs["orders_type"]
         self.option_side = inputs["option_side"]
@@ -350,7 +363,6 @@ class Viral_ATR(Strategy):
 
                 # calculate parameter
                 param = ""
-                self.add_info_user_message(f'psar {psar} st {st}')
                 # parameter determinations
                 if psar > 0 and st > 0:
                     # PSAR buy ST buy
@@ -379,6 +391,7 @@ class Viral_ATR(Strategy):
 
                 if not self.can_trade[final_param][candle_type]:
                     return
+                self.add_info_user_message(f'psar {psar} st {st}')
 
                 trade_type = None
                 for dec in self.trade_dir:
