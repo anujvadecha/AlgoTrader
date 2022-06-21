@@ -26,9 +26,7 @@ def get_candle_time_series_for_date_range(from_date, to_date, interval: CandleIn
 
     from_date = ceil_dt(from_date, timedelta(seconds=frequency_seconds)) if interval !=CandleInterval.hourly else ceil_dt(from_date, timedelta(seconds=timeparse(CandleInterval.fifteen_min.value))).replace(minute=15)
     LOGGER.info(f"date range requested from {from_date} to {to_date}")
-    print(f"date range requested from {from_date} to {to_date}")
     range = pd.date_range(start=from_date, end=to_date, freq=f"{frequency_seconds}S").to_pydatetime()
-    print(f"range from pandas is {range}")
     if interval == CandleInterval.day:
         return list(range)
     else:
