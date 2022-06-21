@@ -303,7 +303,7 @@ class Eighteen(Strategy):
         if recent_data[-1]["close"] > self.todays_candle_high or recent_data[-1]["close"] < self.todays_candle_low:
             self.add_info_user_message(f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
             bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
-
+            self.add_info_user_message(f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
             for condition in self.conditions:
                 if condition["para"] == self.param_indicator_value \
                         and condition["candle"] == bullish_bearish \
