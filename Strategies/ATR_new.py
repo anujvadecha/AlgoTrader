@@ -147,11 +147,11 @@ class Viral_ATR(Strategy):
                 targeted_strike_price = self.entry_price + (100 - self.entry_price % 100)
             if side == "BUY":
                 option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
-                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
+                    "BANKNIFTY" if self.spot_instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
                     strike=targeted_strike_price)
             else:
                 option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
-                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
+                    "BANKNIFTY" if self.spot_instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
                     strike=targeted_strike_price)
             for optioninstr in option_intruments:
                 if str(optioninstr.expiry) == self.option_expiry:
@@ -255,12 +255,13 @@ class Viral_ATR(Strategy):
         self.interval = CandleInterval.hourly
 
     def on_create(self, inputs):
+        self._initiate_inputs(inputs)
 
         input_file = None
-        if inputs["instrument"] == "NIFTY 50":
-            input_file = "resources/ATR_NF_disc.csv"
-        else:
+        if "BANK" in inputs["instrument"]:
             input_file = "resources/ATR_BNF_disc.csv"
+        else:
+            input_file = "resources/ATR_NF_disc.csv"
 
         input_df = None
         if input_file.endswith('.csv'):
@@ -268,7 +269,7 @@ class Viral_ATR(Strategy):
         elif input_file.endswith('.xlsx'):
             input_df = pd.read_excel(input_file)
         self.trade_dir = input_df.to_dict('records')
-        self._initiate_inputs(inputs)
+
         interval = CandleInterval.day
         from_date = datetime.now() - timedelta(days=7)
         to_date = datetime.now() - timedelta(hours=6)

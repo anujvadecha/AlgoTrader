@@ -1,2 +1,2 @@
 instrument,timeframe,orders_type,order_instrument,order_quantity,option_quantity,option_side,option_expiry,broker_alias
-NIFTY22AUGFUT,hourly,FUTURE_AND_OPTIONS,NIFTY22AUGFUT,50,50,BUY,2022-06-16,viral
+NIFTY22AUGFUT,hourly,FUTURE_AND_OPTIONS,NIFTY22AUGFUT,50,50,BUY,2022-06-23,viral
