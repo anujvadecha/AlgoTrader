@@ -5,6 +5,10 @@ import pandas as pd
 from Core.Enums import CandleInterval, StrategyState, TradeIdentifier
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
+from Indicators.paramindicator import ParamIndicator
+from Indicators.psar import ParabolicSAR
+from Indicators.stoch import Stochastic
+from Indicators.supertrend import SuperTrend
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Models.Models import Instrument
@@ -159,12 +163,42 @@ class Eighteen(Strategy):
 
 
     def _initiate_inputs(self, inputs):
+        print(inputs["instrument"])
         self.instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.option_side = inputs["option_side"]
         self.option_quantity = inputs["option_quantity"]
         self.order_quantity = int(inputs["order_quantity"])
         self.option_expiry = inputs["option_expiry"]
+
+    def _initialize_indicators(self):
+        self.param_indicator = ParamIndicator(instrument=self.instrument, timeframe=CandleInterval.fifteen_min)
+        self.stochastic = Stochastic(instrument=self.instrument,
+                                timeframe=CandleInterval.fifteen_min,
+                                k_length=5,
+                                k_smooth=3,
+                                d_smooth=3)
+        from_date = datetime.now() - timedelta(days=7)
+        to_date = datetime.now() - timedelta(hours=6)
+        interval = CandleInterval.day
+        indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
+                                                      interval=interval)
+        self.yesterdays_pivot_points = indicator_values[-2]
+        yesterdays_date = indicator_values[-1]["date"]
+        self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
+        self.pivot_points = indicator_values[-1]
+        from_date = datetime.now() - timedelta(days=5)
+        to_date = datetime.now()
+        yesterdays_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                               from_date=from_date, to_date=to_date,
+                                                                               interval=CandleInterval.fifteen_min)
+        last_candle = None
+        for data in yesterdays_data:
+            if data['date'].date() == yesterdays_date.date():
+                last_candle = data
+        yesterdays_candle = last_candle
+        self.yesterdays_choppy_range = self._check_pivot(yesterdays_candle, pivot=self.yesterdays_pivot_points)
+
 
     def on_create(self, inputs):
         logging.info("Adding test log")
@@ -175,40 +209,45 @@ class Eighteen(Strategy):
         elif input_file.endswith('.xlsx'):
             input_df = pd.read_excel(input_file)
         conditions = input_df.to_dict('records')
-        from_date = datetime.now() - timedelta(days=7)
-        to_date = datetime.now() - timedelta(hours=6)
-        interval = CandleInterval.day
+        self.conditions = conditions
         self._initiate_inputs(inputs)
-        indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
-                                                      interval=interval)
-        self.order_type = inputs["orders_type"]
-        self.yesterdays_pivot_points = indicator_values[-2]
-        self.yesterdays_date = indicator_values[-1]["date"]
-        self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
-        self.pivot_points = indicator_values[-1]
-        from_date = datetime.now() - timedelta(days=5)
-        to_date = datetime.now()
-        yesterdays_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                               from_date=from_date, to_date=to_date,
-                                                                               interval=CandleInterval.fifteen_min)
-        last_candle = None
-        for data in yesterdays_data:
-            if data['date'].date() == self.yesterdays_date.date():
-                last_candle = data
-        print(f"yesterdays close {last_candle}")
-        self.yesterdays_candle = last_candle
-        self.yesterdays_choppy_range = self._check_pivot(self.yesterdays_candle, pivot=self.yesterdays_pivot_points)
-
-        valid_conditions = []
-        for condition in conditions:
-            if condition['yesterdays_candle'] == self.yesterdays_choppy_range and condition['script'] == inputs[
-                "instrument"]:
-                valid_conditions.append(condition)
-        self.valid_conditions = valid_conditions
-        self.add_info_user_message(f"Pivot points {self.pivot_points}")
-        self.add_info_user_message(f"Yesterdays choppy range is {self.yesterdays_choppy_range}")
+        self._initialize_indicators()
         self.entry = False
         self.subscribe(self.instrument, self.on_ticks)
+        self.todays_candle_high = None
+        self.todays_candle_low = None
+        # from_date = datetime.now() - timedelta(days=7)
+        # to_date = datetime.now() - timedelta(hours=6)
+        # interval = CandleInterval.day
+        # indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
+        #                                               interval=interval)
+        # self.order_type = inputs["orders_type"]
+        # self.yesterdays_pivot_points = indicator_values[-2]
+        # self.yesterdays_date = indicator_values[-1]["date"]
+        # self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
+        # self.pivot_points = indicator_values[-1]
+        #
+        # from_date = datetime.now() - timedelta(days=5)
+        # to_date = datetime.now()
+        # yesterdays_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+        #                                                                        from_date=from_date, to_date=to_date,
+        #                                                                        interval=CandleInterval.fifteen_min)
+        # last_candle = None
+        # for data in yesterdays_data:
+        #     if data['date'].date() == self.yesterdays_date.date():
+        #         last_candle = data
+        # print(f"yesterdays close {last_candle}")
+        # self.yesterdays_candle = last_candle
+        # self.yesterdays_choppy_range = self._check_pivot(self.yesterdays_candle, pivot=self.yesterdays_pivot_points)
+        #
+        # valid_conditions = []
+        # for condition in conditions:
+        #     if condition['yesterdays_candle'] == self.yesterdays_choppy_range and condition['script'] == inputs[
+        #         "instrument"]:
+        #         valid_conditions.append(condition)
+        # self.valid_conditions = valid_conditions
+        # self.add_info_user_message(f"Pivot points {self.pivot_points}")
+        # self.add_info_user_message(f"Yesterdays choppy range is {self.yesterdays_choppy_range}")
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
@@ -219,14 +258,14 @@ class Eighteen(Strategy):
         expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
         instruments = ["NIFTY 50",  "NIFTY BANK" ]
         return {
-            "instrument": instruments,
+            "instrument": order_instrument_names,
             "orders_type": [ "FUTURE_AND_OPTIONS","FUTURES_ONLY", "OPTIONS_ONLY"],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
             "option_quantity": "50",
             "option_side": ["BUY"],
             "option_expiry": list(expiries),
-            "input_file": "resources/Choppy_conditions.csv",
+            "input_file": "resources/eighteen_banknifty.csv",
         }
 
     def on_ticks(self, tick):
@@ -241,83 +280,76 @@ class Eighteen(Strategy):
         except Exception as e:
             LOGGER.exception(e)
 
+    def calculate_exits_for_current_positions(self):
+        pass
+
+    def update_indicators(self):
+        from_date = datetime.now() - timedelta(hours=12)
+        to_date = datetime.now()
+        recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                           from_date=from_date,
+                                                                           to_date=to_date,
+                                                                           interval=CandleInterval.fifteen_min)
+        self.stochastic_value = self.stochastic.calculate(candle=recent_data[-1])
+        self.param_indicator_value = self.param_indicator.calculate(candle=recent_data[-1])
+
+    def calculate_entries(self):
+        from_date = datetime.now() - timedelta(hours=1)
+        to_date = datetime.now()
+        recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                           from_date=from_date,
+                                                                           to_date=to_date,
+                                                                           interval=CandleInterval.fifteen_min)
+        if recent_data[-1]["close"] > self.todays_candle_high or recent_data[-1]["close"] < self.todays_candle_low:
+            self.add_info_user_message(f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
+            bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
+            self.add_info_user_message(f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
+            for condition in self.conditions:
+                if condition["para"] == self.param_indicator_value \
+                        and condition["candle"] == bullish_bearish \
+                        and condition["level"] == self._check_pivot(recent_data[-1], self.yesterdays_pivot_points) \
+                        and condition["stoch"] == self.stochastic.signal:
+                    self.add_info_user_message(f"Entry Condition {condition} ")
+
+
     def calculate_triggers(self):
         try:
             if self.state == StrategyState.STOPPED:
                 return
             now = datetime.now()
-            # TODO REMOVE
-            # self.place_entry_order(side="BUY")
-            if now.hour == 3 and now.minute==15 and self.entry:
-                self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
+            # if now.hour == 3 and now.minute==15 and self.entry:
+            #     self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
             # TODO MOD 15
+            expected_timing = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
+            if not self.todays_candle_high and not self.todays_candle_low:
+                # TODO Refactor this for proper condition on 10:45
+                if now < expected_timing:
+                    LOGGER.info(f"Now {now} is lesser than expected timing {expected_timing}")
+                    return
+
+                LOGGER.info("Im here calculating todays candle high")
+                # TODO remove timedelta from from_date and to_date
+                from_date = datetime.now().replace(hour=9, minute=15, second=0, microsecond=0)
+                to_date = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
+                recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                                   from_date=from_date,
+                                                                                   to_date=to_date,
+                                                                                   interval=CandleInterval.fifteen_min)
+                LOGGER.info(f"Historical data to calculate candle for today is {recent_data}")
+                self.todays_candle_high = max(recent_data[-1]["high"], recent_data[-2]["high"], recent_data[-3]["high"],
+                                              recent_data[-4]["high"], recent_data[-5]["high"], recent_data[-6]["high"])
+                self.todays_candle_low = min(recent_data[-1]["low"], recent_data[-2]["low"], recent_data[-3]["low"],
+                                             recent_data[-4]["low"], recent_data[-5]["low"], recent_data[-6]["low"])
+                self.add_info_user_message(
+                    f"Todays 9:15-10:45 candle high:{self.todays_candle_high} low:{self.todays_candle_low}")
+
             if now.minute % 15 == 0:
             # if now.minute % 1 == 0:
-                LOGGER.info("Calculating triggers")
-                LOGGER.info(f"Entry variable is {self.entry} {self.number_of_trades}")
-                #     TODO to uncomment
-                if not self.entry and self.number_of_trades < self.trade_limit and now.hour == 9 and now.minute == 30:
-                    LOGGER.info(f"{datetime.now()} calculate triggers called")
-                    from_date = datetime.now() - timedelta(hours=6)
-                    to_date = datetime.now()
-                    recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                       from_date=from_date,
-                                                                                       to_date=to_date,
-                                                                                       interval=CandleInterval.fifteen_min)
-                    for data in recent_data:
-                        if data['date'].hour == 9 and data['date'].minute == 15:
-                            bullish_bearish = 'bullish' if data['close'] > data['open'] else 'bearish'
-                            candle_range = self._check_pivot(data, pivot=self.pivot_points)
-                            self.add_info_user_message(
-                                f"9:15 candle identified {bullish_bearish} with candle range {candle_range}")
-                            for condition in self.valid_conditions:
-                                if condition['todays_candle'] == candle_range \
-                                        and condition['candle_type'] == bullish_bearish:
-                                    if condition['decision'] != 'no_trade':
-                                        self.entry_price = data['close']
-                                        self.entry_side = condition['decision'].upper()
-                                        LOGGER.info(f"tc is {self.pivot_points['tc']}")
-                                        LOGGER.info(f"bc is {self.pivot_points['bc']}")
-                                        LOGGER.info(f"entry price is  is {self.entry_price}")
-                                        if self.entry_price > self.pivot_points["tc"] and self.entry_side == "SELL":
-                                            self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
-                                        elif self.entry_price > self.pivot_points["tc"] and self.entry_side == "BUY":
-                                            self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
-                                        elif self.entry_price < self.pivot_points["bc"] and self.entry_side == "SELL":
-                                            self.target_points = 180 if self.instrument.tradingsymbol=="NIFTY BANK" else 60
-                                        elif self.entry_price < self.pivot_points["bc"] and self.entry_side == "BUY":
-                                            self.target_points = 120 if self.instrument.tradingsymbol=="NIFTY BANK" else 40
-                                        else:
-                                            self.target_points = 120 if self.instrument.tradingsymbol == "NIFTY BANK" else 40
-                                        self.add_info_user_message(
-                                            f"Condition {condition} satisfied, triggering order")
-                                        self.entry = True
-                                        self.target_price = self.entry_price + self.target_points if self.entry_side == "BUY" else self.entry_price - self.target_points
-                                        self.place_entry_order(side=condition['decision'].upper())
-                                        ranges = candle_range.split("-")
-                                        upper_range = max(
-                                            self.pivot_points[range_identifer] for range_identifer in ranges)
-                                        lower_range = min(
-                                            self.pivot_points[range_identifer] for range_identifer in ranges)
-                                        self.sl = upper_range if self.entry_side == "SELL" else lower_range
-                                        self.add_info_user_message(
-                                            f"Target points{self.target_points} target {self.target_price} side {self.entry_side} SL {self.sl}")
-
-                if self.entry:
-                    # Calculating SL exit on 15 minute
-                    from_date = datetime.now() - timedelta(minutes=30)
-                    to_date = datetime.now()
-                    recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-                                                                                       from_date=from_date,
-                                                                                       to_date=to_date,
-                                                                                       interval=CandleInterval.fifteen_min)
-                    last_candle = recent_data[-1]
-                    if self.entry_side == "BUY":
-                        if last_candle["close"] <= self.sl:
-                            self.place_exit_order("SELL", TradeIdentifier.STOP_LOSS_TRIGGERED)
-                    if self.entry_side == "SELL":
-                        if last_candle["close"] >= self.sl:
-                            self.place_exit_order("BUY", TradeIdentifier.STOP_LOSS_TRIGGERED)
+                LOGGER.info(f"Calculating triggers for current time {now}")
+                self.calculate_exits_for_current_positions()
+                self.update_indicators()
+                if now > expected_timing:
+                    self.calculate_entries()
         except Exception as e:
             LOGGER.info(traceback.format_exc())
             self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")
@@ -329,8 +361,8 @@ class Eighteen(Strategy):
         schedule.every(1).seconds.do(self.calculate_triggers)
 
     def stop(self):
-        if self.entry and self.entry_side == "BUY":
-            self.place_exit_order("SELL", "STOP_SQUARE_OFF")
-        if self.entry and self.entry_side == "SELL":
-            self.place_exit_order("BUY", "STOP_SQUARE_OFF")
+        # if self.entry and self.entry_side == "BUY":
+        #     self.place_exit_order("SELL", "STOP_SQUARE_OFF")
+        # if self.entry and self.entry_side == "SELL":
+        #     self.place_exit_order("BUY", "STOP_SQUARE_OFF")
         super().stop()
