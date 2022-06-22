@@ -247,6 +247,8 @@ class Eighteen(Strategy):
 
     def on_ticks(self, tick):
         try:
+            if self.state == StrategyState.STOPPED:
+                return
             if tick.symbol != self.instrument.tradingsymbol:
                 return
             for position in self.open_positions:
