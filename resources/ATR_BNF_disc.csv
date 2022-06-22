@@ -1,5 +1,5 @@
 ,param,candle,stoch,pivot,decision
-0,param1,bullish,ob,> r3,buy
+0,param1,bullish,ob,> r3,sell
 1,param1,bullish,ob,r3-r2,sell
 2,param1,bullish,ob,r2-pdh,sell
 3,param1,bullish,ob,r2-r1,buy
