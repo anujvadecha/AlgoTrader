@@ -183,7 +183,7 @@ class Eighteen(Strategy):
         interval = CandleInterval.day
         indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
                                                       interval=interval)
-        self.yesterdays_pivot_points = indicator_values[-2]
+        self.yesterdays_pivot_points = indicator_values[-1]
         yesterdays_date = indicator_values[-1]["date"]
         self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
         self.pivot_points = indicator_values[-1]
@@ -321,8 +321,17 @@ class Eighteen(Strategy):
             #     self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
             # TODO MOD 15
             expected_timing = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
+            if now.minute % 15 == 0:
+            # if now.minute % 1 == 0:
+                LOGGER.info(f"Calculating triggers for current time {now}")
+                self.calculate_exits_for_current_positions()
+                self.update_indicators()
+                if now > expected_timing and self.todays_candle_high and self.todays_candle_low:
+                    self.calculate_entries()
+
             if not self.todays_candle_high and not self.todays_candle_low:
                 # TODO Refactor this for proper condition on 10:45
+
                 if now < expected_timing:
                     LOGGER.info(f"Now {now} is lesser than expected timing {expected_timing}")
                     return
@@ -343,13 +352,7 @@ class Eighteen(Strategy):
                 self.add_info_user_message(
                     f"Todays 9:15-10:45 candle high:{self.todays_candle_high} low:{self.todays_candle_low}")
 
-            if now.minute % 15 == 0:
-            # if now.minute % 1 == 0:
-                LOGGER.info(f"Calculating triggers for current time {now}")
-                self.calculate_exits_for_current_positions()
-                self.update_indicators()
-                if now > expected_timing:
-                    self.calculate_entries()
+
         except Exception as e:
             LOGGER.info(traceback.format_exc())
             self.add_info_user_message(f"Failure occured while calculating triggers {e} stopping strategy")
