@@ -312,6 +312,8 @@ class Eighteen(Strategy):
                         and condition["level"] == self._check_pivot(recent_data[-1], self.yesterdays_pivot_points) \
                         and condition["stoch"] == self.stochastic.signal:
                     self.add_info_user_message(f"Entry Condition {condition} ")
+                    if condition["signal"].upper() not in ("BUY", "SELL"):
+                        continue
                     self.place_entry_order(condition["signal"].upper(), recent_data[-1]["close"], TradeIdentifier.ENTRY)
         else:
             self.add_info_user_message(f"Levels {self.todays_candle_low} - {self.todays_candle_high}  not broken yet for close {recent_data[-1]['close']} {self.instrument.tradingsymbol} {recent_data[-1]['date']}")
