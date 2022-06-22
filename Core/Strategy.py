@@ -70,10 +70,10 @@ class Strategy():
     def add_info_user_message(self, message):
         self.messages.usermessages.info(message,self.portfolio_id)
 
-    def place_market_order(self, instrument, side, quantity, type="NRML", remarks=None, identifer=None):
+    def place_market_order(self, instrument, side, quantity, type="NRML", remarks=None, identifer=None, price=None):
         # TODO ADD orders to db with strategy identifier
         from AlgoApp.models import StrategyOrderHistory
-        StrategyOrderHistory.objects.create(instrument=instrument.name, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs)
+        StrategyOrderHistory.objects.create(instrument=instrument.name, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=price)
         self.broker.place_market_order(instrument=instrument, side=side, quantity=quantity, type=type)
 
     def main(self, inputs):

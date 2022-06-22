@@ -2,6 +2,7 @@ from Indicators.indicator_base import Indicator
 
 
 class ParabolicSAR(Indicator):
+
     def __init__(self, instrument, timeframe, start=0.02, increment_step=0.02, inc_max=0.2):
         self.start = start
         self.increment_step = increment_step

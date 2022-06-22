@@ -107,7 +107,7 @@ class MarketDataManager():
     def __process_ticks_thread_funct(self):
         while True:
             for key in self._market_data_map.keys():
-                if (self._market_data_map[key] != None):
+                if self._market_data_map[key] != None:
                     while not self._market_data_map[key].empty():
                         tick = self._market_data_map[key].get()
                         for callback in self._subscribed_callbacks[tick.symbol]:

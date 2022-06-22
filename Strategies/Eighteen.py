@@ -1,7 +1,10 @@
+import json
 import traceback
 from datetime import datetime, timedelta
 import schedule
 import pandas as pd
+
+
 from Core.Enums import CandleInterval, StrategyState, TradeIdentifier
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
@@ -21,6 +24,7 @@ class Eighteen(Strategy):
     strategy_name = "Eighteen"
     trade_limit = 1
     number_of_trades = 0
+    open_positions = []
 
     def _check_pivot(self, candle, pivot):
         print(f"Candle is {candle} pivot {pivot}")
@@ -108,28 +112,30 @@ class Eighteen(Strategy):
         pivot_range = final_band
         return pivot_range
 
-    def place_entry_order(self, side, identifier=TradeIdentifier.ENTRY):
-
+    def place_entry_order(self, side, price, identifier=TradeIdentifier.ENTRY):
         self.entry = True
         self.number_of_trades = self.number_of_trades + 1
         self.option_entry_instrument = None
+        target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
+        sl_points = 310 if "BANK" in self.instrument.tradingsymbol else 100
+        remarks  = {"target_points": target_points, "sl_points": sl_points}
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
         # Futures order
             self.place_market_order(instrument=self.order_instrument, side=side,
-                                       quantity=self.order_quantity, type="NRML", identifer=identifier)
+                                       quantity=self.order_quantity, type="NRML", identifer=identifier, remarks=json.dumps(remarks), price=price)
         # Options order
         if self.order_type != "FUTURES_ONLY":
-            if self.entry_price % 100 < 50:
-                targeted_strike_price = self.entry_price - self.entry_price%100
+            if price % 100 < 50:
+                targeted_strike_price = price - price%100
             else:
-                targeted_strike_price = self.entry_price + (100 - self.entry_price % 100)
+                targeted_strike_price = price + (100 - price % 100)
             if side=="BUY":
-                option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument("BANKNIFTY" if self.instrument.tradingsymbol=="NIFTY BANK" else "NIFTY", strike=targeted_strike_price)
+                option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument("BANKNIFTY" if "BANK" in self.instrument.tradingsymbol else "NIFTY", strike=targeted_strike_price)
             else:
                 option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
-                    "BANKNIFTY" if self.instrument.tradingsymbol == "NIFTY BANK" else "NIFTY",
+                    "BANKNIFTY" if "BANK" in self.instrument.tradingsymbol else "NIFTY",
                     strike=targeted_strike_price)
             for optioninstr in option_intruments:
                 if str(optioninstr.expiry) == self.option_expiry:
@@ -143,8 +149,10 @@ class Eighteen(Strategy):
                                                quantity=self.option_quantity, type="NRML", identifer=identifier)
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
+        self.add_open_positions()
 
-    def place_exit_order(self, side, identifier=None):
+
+    def place_exit_order(self, side, price, identifier=None):
         if self.state == StrategyState.STOPPED:
             return
         self.entry = False
@@ -152,14 +160,14 @@ class Eighteen(Strategy):
             self.add_info_user_message(
                 f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
             self.place_market_order(instrument=self.order_instrument,
-                                           side=side, quantity=self.order_quantity,
+                                           side=side, quantity=self.order_quantity, price=price,
                                            type="NRML", identifer=identifier)
         if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
             self.add_info_user_message(
                 f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
             self.place_market_order(instrument=self.option_entry_instrument,
                                            side="SELL", quantity=self.option_quantity,
-                                           type="NRML", identifer=identifier)
+                                           type="NRML", identifer=identifier, price=price)
 
 
     def _initiate_inputs(self, inputs):
@@ -170,6 +178,7 @@ class Eighteen(Strategy):
         self.option_quantity = inputs["option_quantity"]
         self.order_quantity = int(inputs["order_quantity"])
         self.option_expiry = inputs["option_expiry"]
+        self.order_type = inputs["orders_type"]
 
     def _initialize_indicators(self):
         self.param_indicator = ParamIndicator(instrument=self.instrument, timeframe=CandleInterval.fifteen_min)
@@ -212,42 +221,11 @@ class Eighteen(Strategy):
         self.conditions = conditions
         self._initiate_inputs(inputs)
         self._initialize_indicators()
-        self.entry = False
+        self.add_open_positions()
         self.subscribe(self.instrument, self.on_ticks)
+        self.entry = False
         self.todays_candle_high = None
         self.todays_candle_low = None
-        # from_date = datetime.now() - timedelta(days=7)
-        # to_date = datetime.now() - timedelta(hours=6)
-        # interval = CandleInterval.day
-        # indicator_values = PivotIndicator().calculate(instrument=self.instrument, from_date=from_date, to_date=to_date,
-        #                                               interval=interval)
-        # self.order_type = inputs["orders_type"]
-        # self.yesterdays_pivot_points = indicator_values[-2]
-        # self.yesterdays_date = indicator_values[-1]["date"]
-        # self.add_info_user_message(f"Yesterdays pivot points {self.yesterdays_pivot_points}")
-        # self.pivot_points = indicator_values[-1]
-        #
-        # from_date = datetime.now() - timedelta(days=5)
-        # to_date = datetime.now()
-        # yesterdays_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
-        #                                                                        from_date=from_date, to_date=to_date,
-        #                                                                        interval=CandleInterval.fifteen_min)
-        # last_candle = None
-        # for data in yesterdays_data:
-        #     if data['date'].date() == self.yesterdays_date.date():
-        #         last_candle = data
-        # print(f"yesterdays close {last_candle}")
-        # self.yesterdays_candle = last_candle
-        # self.yesterdays_choppy_range = self._check_pivot(self.yesterdays_candle, pivot=self.yesterdays_pivot_points)
-        #
-        # valid_conditions = []
-        # for condition in conditions:
-        #     if condition['yesterdays_candle'] == self.yesterdays_choppy_range and condition['script'] == inputs[
-        #         "instrument"]:
-        #         valid_conditions.append(condition)
-        # self.valid_conditions = valid_conditions
-        # self.add_info_user_message(f"Pivot points {self.pivot_points}")
-        # self.add_info_user_message(f"Yesterdays choppy range is {self.yesterdays_choppy_range}")
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
@@ -256,7 +234,6 @@ class Eighteen(Strategy):
         option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
             "BANKNIFTY" )
         expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
-        instruments = ["NIFTY 50",  "NIFTY BANK" ]
         return {
             "instrument": order_instrument_names,
             "orders_type": [ "FUTURE_AND_OPTIONS","FUTURES_ONLY", "OPTIONS_ONLY"],
@@ -270,21 +247,44 @@ class Eighteen(Strategy):
 
     def on_ticks(self, tick):
         try:
-            if tick.symbol == self.instrument.tradingsymbol and self.entry:
-                if self.entry_side == "BUY":
-                    if tick.ltp >= self.target_price:
-                        self.place_exit_order("SELL",TradeIdentifier.TARGET_TRIGGERED)
-                if self.entry_side == "SELL":
-                    if tick.ltp <= self.target_price:
-                        self.place_exit_order("BUY", TradeIdentifier.TARGET_TRIGGERED)
+            if tick.symbol != self.instrument.tradingsymbol:
+                return
+            for position in self.open_positions:
+                target_points = json.loads(position.remarks)["target_points"]
+                entry_price = position.entry_price
+                entry_side = position.side
+                target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
+                # Calculating targets
+                if entry_side == "BUY" and tick.ltp >= target_price:
+                    self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+                if entry_side == "SELL" and tick.ltp <= target_price:
+                    self.place_exit_order("BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
         except Exception as e:
             LOGGER.exception(e)
 
     def calculate_exits_for_current_positions(self):
-        pass
+        from_date = datetime.now() - timedelta(minutes=30)
+        to_date = datetime.now()
+        recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
+                                                                           from_date=from_date,
+                                                                           to_date=to_date,
+                                                                           interval=CandleInterval.fifteen_min)
+        close = recent_data[-1]["close"]
+        for position in self.open_positions:
+            target_points = json.loads(position.remarks)["target_points"]
+            entry_price = position.entry_price
+            entry_side = position.side
+            sl_points = json.loads(position.remarks)["sl_points"]
+            target_price = target_points+entry_price if entry_price == "BUY" else entry_price-target_points
+            sl_price = sl_points-entry_price if entry_price == "BUY" else entry_price+sl_points
+            # Calculating stoplosses
+            if entry_side == "BUY" and close <= sl_price:
+                self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+            if entry_side == "SELL" and close >= sl_price:
+                self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
 
     def update_indicators(self):
-        from_date = datetime.now() - timedelta(hours=12)
+        from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
         recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
                                                                            from_date=from_date,
@@ -300,9 +300,9 @@ class Eighteen(Strategy):
                                                                            from_date=from_date,
                                                                            to_date=to_date,
                                                                            interval=CandleInterval.fifteen_min)
-        if recent_data[-1]["close"] > self.todays_candle_high or recent_data[-1]["close"] < self.todays_candle_low:
+        bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
+        if recent_data[-1]["close"] >= self.todays_candle_high or recent_data[-1]["close"] <= self.todays_candle_low:
             self.add_info_user_message(f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
-            bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
             self.add_info_user_message(f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
             for condition in self.conditions:
                 if condition["para"] == self.param_indicator_value \
@@ -310,7 +310,11 @@ class Eighteen(Strategy):
                         and condition["level"] == self._check_pivot(recent_data[-1], self.yesterdays_pivot_points) \
                         and condition["stoch"] == self.stochastic.signal:
                     self.add_info_user_message(f"Entry Condition {condition} ")
-
+                    self.place_entry_order(condition["signal"].upper(), recent_data[-1]["close"], TradeIdentifier.ENTRY)
+        else:
+            self.add_info_user_message(f"Levels {self.todays_candle_low} - {self.todays_candle_high}  not broken yet for close {recent_data[-1]['close']} {self.instrument.tradingsymbol} {recent_data[-1]['date']}")
+            self.add_info_user_message(
+                f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
 
     def calculate_triggers(self):
         try:
@@ -339,7 +343,7 @@ class Eighteen(Strategy):
                 LOGGER.info("Im here calculating todays candle high")
                 # TODO remove timedelta from from_date and to_date
                 from_date = datetime.now().replace(hour=9, minute=15, second=0, microsecond=0)
-                to_date = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
+                to_date = datetime.now().replace(hour=10, minute=30, second=0, microsecond=0)
                 recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
                                                                                    from_date=from_date,
                                                                                    to_date=to_date,
@@ -369,3 +373,11 @@ class Eighteen(Strategy):
         # if self.entry and self.entry_side == "SELL":
         #     self.place_exit_order("BUY", "STOP_SQUARE_OFF")
         super().stop()
+
+    def add_open_positions(self):
+        from AlgoApp.models import StrategyOrderHistory
+        last_order = StrategyOrderHistory.objects.filter(instrument=self.instrument.name,
+                                            strategy=self.strategy_name,
+                                            broker=self.inputs["broker_alias"]).last()
+        if last_order and last_order.identifier== TradeIdentifier.ENTRY.name:
+            self.open_positions.append(last_order)
