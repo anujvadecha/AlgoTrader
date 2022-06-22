@@ -167,7 +167,7 @@ class ZerodhaBroker(Broker):
 
     def __tickerOnOrderUpdate(self, ws, data):
         from GUIFunctions import GUIFunctions
-        GUIFunctions.get_instance().refreshOrders()
+        # GUIFunctions.get_instance().refreshOrders()
 
     def __tickerOnError(self, ws, code, reason):
         print(str(code) + str(reason))

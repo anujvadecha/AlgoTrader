@@ -29,7 +29,7 @@ class Instrument():
             self.name = name
             self.last_price = last_price
             self.expiry = expiry
-            self.strike = float(strike)
+            self.strike = float(strike) if strike else None
             self.tick_size = tick_size
             self.lot_size = lot_size
             self.instrument_type = instrument_type
@@ -44,7 +44,7 @@ class Instrument():
             self.name = symbolfound.name
             self.last_price = symbolfound.last_price
             self.expiry  = symbolfound.expiry
-            self.strike = float(symbolfound.strike)
+            self.strike = float(symbolfound.strike) if symbolfound.strike else None
             self.tick_size = symbolfound.tick_size
             self.lot_size = symbolfound.lot_size
             self.instrument_type = symbolfound.instrument_type
