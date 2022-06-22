@@ -35,7 +35,7 @@ class Stochastic(Indicator):
         if highest - lowest <= 0:
             return
 
-        k = (candle["close"] - lowest) / (highest - lowest) * 100
+        k = ((candle["close"] - lowest) / (highest - lowest)) * 100
         if len(self.k_list) > self.k_smooth:
             self.k_list = self.k_list[1:]
         self.k_list.append(k)

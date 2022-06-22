@@ -361,6 +361,13 @@ class Viral_ATR(Strategy):
                 candle_size = abs(candle["open"] - candle["close"])
                 candle_type = "bullish" if candle["open"] > candle["close"] else "bearish"
                 pivot_range = self._check_pivot(candle, pivot=self.pivot_points)
+                
+                LOGGER.info(f"atr: {atr}")
+                LOGGER.info(f"psar: {psar}")
+                LOGGER.info(f"st: {st}")
+                LOGGER.info(f"stoch: {stoch}")
+                LOGGER.info(f"pivot_range: {pivot_range}")
+                LOGGER.info(f"candle_size: {candle_size}")
 
                 # calculate parameter
                 param = ""
