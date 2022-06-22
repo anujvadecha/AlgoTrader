@@ -146,7 +146,7 @@ class Eighteen(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                               quantity=self.option_quantity, type="NRML", identifer=identifier)
+                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price)
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.add_open_positions()
@@ -352,6 +352,7 @@ class Eighteen(Strategy):
                                                                                    from_date=from_date,
                                                                                    to_date=to_date,
                                                                                    interval=CandleInterval.fifteen_min)
+
                 LOGGER.info(f"Historical data to calculate candle for today is {recent_data}")
                 self.todays_candle_high = max(recent_data[-1]["high"], recent_data[-2]["high"], recent_data[-3]["high"],
                                               recent_data[-4]["high"], recent_data[-5]["high"], recent_data[-6]["high"])
@@ -385,3 +386,4 @@ class Eighteen(Strategy):
                                             broker=self.inputs["broker_alias"]).last()
         if last_order and last_order.identifier== TradeIdentifier.ENTRY.name:
             self.open_positions.append(last_order)
+            self.add_info_user_message(f"Open position for {self.instrument.name} {self.inputs['broker_alias']} {last_order.side} added ")
