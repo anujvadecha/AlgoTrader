@@ -84,38 +84,38 @@ class GUIFunctions():
                 for j in range(0, len(headers)):
                     item.setText(j, str(i[headers[j]]))
 
-    def populateOrders(self):
-        orders = Messages.getInstance().orders.getMessages()
-        self.GUI.ordersDisplay.clear()
-        if (len(orders) != 0):
-            headers = list(orders[0].keys())
-            self.GUI.ordersDisplay.setHeaderLabels(headers)
-            for i in orders:
-                item = QtWidgets.QTreeWidgetItem(self.GUI.ordersDisplay)
-                for j in range(0, len(headers)):
-                    item.setText(j, str(i[headers[j]]))
+    # def populateOrders(self):
+    #     orders = Messages.getInstance().orders.getMessages()
+    #     self.GUI.ordersDisplay.clear()
+    #     if (len(orders) != 0):
+    #         headers = list(orders[0].keys())
+    #         self.GUI.ordersDisplay.setHeaderLabels(headers)
+    #         for i in orders:
+    #             item = QtWidgets.QTreeWidgetItem(self.GUI.ordersDisplay)
+    #             for j in range(0, len(headers)):
+    #                 item.setText(j, str(i[headers[j]]))
 
-    def populateTrades(self):
-        orders = Messages.getInstance().trades.getMessages()
-        if (len(orders) != 0):
-            headers = list(orders[0].keys())
-            self.GUI.tradesDisplay.clear()
-            self.GUI.tradesDisplay.setHeaderLabels(headers)
-            for i in orders:
-                item = QtWidgets.QTreeWidgetItem(self.GUI.tradesDisplay)
-                for j in range(0, len(headers)):
-                    item.setText(j, str(i[headers[j]]))
+    # def populateTrades(self):
+    #     orders = Messages.getInstance().trades.getMessages()
+    #     if (len(orders) != 0):
+    #         headers = list(orders[0].keys())
+    #         self.GUI.tradesDisplay.clear()
+    #         self.GUI.tradesDisplay.setHeaderLabels(headers)
+    #         for i in orders:
+    #             item = QtWidgets.QTreeWidgetItem(self.GUI.tradesDisplay)
+    #             for j in range(0, len(headers)):
+    #                 item.setText(j, str(i[headers[j]]))
 
-    def populatePositions(self):
-        positions = Messages.getInstance().positions.getMessages()
-        if (len(positions) != 0):
-            headers = list(positions[0].keys())
-            self.GUI.positionsDisplay.clear()
-            self.GUI.positionsDisplay.setHeaderLabels(headers)
-            for i in positions:
-                item = QtWidgets.QTreeWidgetItem(self.GUI.positionsDisplay)
-                for j in range(0, len(headers)):
-                    item.setText(j, str(i[headers[j]]))
+    # def populatePositions(self):
+    #     positions = Messages.getInstance().positions.getMessages()
+    #     if (len(positions) != 0):
+    #         headers = list(positions[0].keys())
+    #         self.GUI.positionsDisplay.clear()
+    #         self.GUI.positionsDisplay.setHeaderLabels(headers)
+    #         for i in positions:
+    #             item = QtWidgets.QTreeWidgetItem(self.GUI.positionsDisplay)
+    #             for j in range(0, len(headers)):
+    #                 item.setText(j, str(i[headers[j]]))
 
     def populateStrategies(self):
         self.GUI.strategyBox.clear()
