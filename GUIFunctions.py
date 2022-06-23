@@ -13,23 +13,23 @@ LOGGER = logging.getLogger(__name__)
 
 class GUIFunctions():
 
-    def add_update_order(self, order):
-        self.populateRunningStrategies()
-        root = self.GUI.ordersDisplay.invisibleRootItem()
-        child_count = root.childCount()
-        for i in range(child_count):
-            item = root.child(i)
-            order_id = item.text(0)
-            if str(order_id) == str(order["order_id"]):
-                keys = order.keys()
-                for j in range(0, len(keys)):
-                    item.setText(j, str(order[keys[j]]))
-                return
-        if child_count == 0:
-            self.GUI.ordersDisplay.setHeaderLabels(list(order.keys()))
-        item = QtWidgets.QTreeWidgetItem(self.GUI.ordersDisplay)
-        for j in range(0, len(list(order.keys()))):
-            item.setText(j, str(order[list(order.keys())[j]]))
+    # def add_update_order(self, order):
+    #     self.populateRunningStrategies()
+    #     root = self.GUI.ordersDisplay.invisibleRootItem()
+    #     child_count = root.childCount()
+    #     for i in range(child_count):
+    #         item = root.child(i)
+    #         order_id = item.text(0)
+    #         if str(order_id) == str(order["order_id"]):
+    #             keys = order.keys()
+    #             for j in range(0, len(keys)):
+    #                 item.setText(j, str(order[keys[j]]))
+    #             return
+    #     if child_count == 0:
+    #         self.GUI.ordersDisplay.setHeaderLabels(list(order.keys()))
+    #     item = QtWidgets.QTreeWidgetItem(self.GUI.ordersDisplay)
+    #     for j in range(0, len(list(order.keys()))):
+    #         item.setText(j, str(order[list(order.keys())[j]]))
 
     def add_update_running_strategy(self, running_strategy):
         root = self.GUI.runningStrategyBox.invisibleRootItem()
@@ -211,20 +211,20 @@ class GUIFunctions():
     def refreshRunningStrategies(self):
         self.populateRunningStrategies()
 
-    def refreshOrders(self):
-        self.orders = Messages.getInstance().orders.reset(BrokerManager.get_instance().get_data_broker().get_orders())
-        self.populateOrders()
+    # def refreshOrders(self):
+    #     self.orders = Messages.getInstance().orders.reset(BrokerManager.get_instance().get_data_broker().get_orders())
+    #     self.populateOrders()
 
-    def refreshTrades(self):
-        self.trades = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_trades())
-        self.populateTrades()
-        LOGGER.info("refresh trades is called")
+    # def refreshTrades(self):
+    #     self.trades = Messages.getInstance().trades.reset(BrokerManager.get_instance().get_data_broker().get_trades())
+    #     self.populateTrades()
+    #     LOGGER.info("refresh trades is called")
 
-    def refreshPositions(self):
-        self.positions = Messages.getInstance().trades.reset(
-            BrokerManager.get_instance().get_data_broker().get_positions())
-        self.populatePositions()
-        LOGGER.info("refresh positions is called")
+    # def refreshPositions(self):
+    #     self.positions = Messages.getInstance().trades.reset(
+    #         BrokerManager.get_instance().get_data_broker().get_positions())
+    #     self.populatePositions()
+    #     LOGGER.info("refresh positions is called")
 
     def connect_components(self):
         self.GUI.startButton.clicked.connect(self.startButtonClicked)
@@ -234,17 +234,17 @@ class GUIFunctions():
         self.GUI.stopAllButton.clicked.connect(self.stopAllButtonClicked)
         self.GUI.pauseButton.clicked.connect(self.pauseButtonClicked)
         self.GUI.strategyBox.clicked.connect(self.refreshRunningStrategies)
-        self.GUI.ordersDisplay.clicked.connect(self.refreshOrders)
-        self.GUI.tradesDisplay.clicked.connect(self.refreshTrades)
-        self.GUI.positionsDisplay.clicked.connect(self.refreshPositions)
+        # self.GUI.ordersDisplay.clicked.connect(self.refreshOrders)
+        # self.GUI.tradesDisplay.clicked.connect(self.refreshTrades)
+        # self.GUI.positionsDisplay.clicked.connect(self.refreshPositions)
 
     def executeInitialFunctions(self, GUI=None):
         self.GUI = GUI
-        self.populateTrades()
-        self.populatePositions()
+        # self.populateTrades()
+        # self.populatePositions()
         self.populateUserMessages()
         self.populateBrokerMessages()
-        self.populateOrders()
+        # self.populateOrders()
         self.populateStrategies()
         self.populateRunningStrategies()
         self.connect_components()
