@@ -66,8 +66,7 @@ class MarketDataManager():
                 new_from_date = minimum_timestamp_available
                 new_historical_data = self.data_broker.get_historical_data(instrument=instrument, from_date=new_from_date,
                                                                            to_date=to_date, interval=interval.value)
-                LOGGER.info(
-                    f"Last candle doesnt exist for {from_date} {to_date} {interval} {instrument.tradingsymbol} returning fresh data with new from date {new_from_date}")
+                LOGGER.info(f"Last candle doesnt exist for {from_date} {to_date} {interval} {instrument.tradingsymbol} returning fresh data with new from date {new_from_date}")
                 for candle in new_historical_data:
                     self._historical_data_cache_v1[instrument.tradingsymbol][interval][candle["date"]] = candle
             # If data present in cache returning same data

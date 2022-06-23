@@ -253,7 +253,7 @@ class Eighteen(Strategy):
                 entry_side = position.side
                 target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
                 # Calculating targets
-                LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()} global vars {globals()}")
+                LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
                     self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
