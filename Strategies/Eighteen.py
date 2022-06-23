@@ -3,15 +3,11 @@ import traceback
 from datetime import datetime, timedelta
 import schedule
 import pandas as pd
-
-
 from Core.Enums import CandleInterval, StrategyState, TradeIdentifier
 from Indicators.PivotIndicator import PivotIndicator
 from Core.Strategy import Strategy
 from Indicators.paramindicator import ParamIndicator
-from Indicators.psar import ParabolicSAR
 from Indicators.stoch import Stochastic
-from Indicators.supertrend import SuperTrend
 from Managers.InstrumentManager import InstrumentManager
 from Managers.MarketDataManager import MarketDataManager
 from Models.Models import Instrument
@@ -257,6 +253,7 @@ class Eighteen(Strategy):
                 entry_side = position.side
                 target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
                 # Calculating targets
+                LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()} global vars {globals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
                     self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
@@ -303,6 +300,7 @@ class Eighteen(Strategy):
                                                                            to_date=to_date,
                                                                            interval=CandleInterval.fifteen_min)
         bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
+        LOGGER.info(f"Calculating exit for {self.instrument.tradingsymbol} with local vars {locals()} global vars {globals()}")
         if recent_data[-1]["close"] >= self.todays_candle_high or recent_data[-1]["close"] <= self.todays_candle_low:
             self.add_info_user_message(f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
             self.add_info_user_message(f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
@@ -381,9 +379,9 @@ class Eighteen(Strategy):
 
     def add_open_positions(self):
         from AlgoApp.models import StrategyOrderHistory
-        last_order = StrategyOrderHistory.objects.filter(instrument=self.instrument.name,
+        last_order = StrategyOrderHistory.objects.filter(instrument=self.instrument.tradingsymbol,
                                             strategy=self.strategy_name,
                                             broker=self.inputs["broker_alias"]).last()
-        if last_order and last_order.identifier== TradeIdentifier.ENTRY.name:
+        if last_order and last_order.identifier == TradeIdentifier.ENTRY.name:
             self.open_positions.append(last_order)
-            self.add_info_user_message(f"Open position for {self.instrument.name} {self.inputs['broker_alias']} {last_order.side} added ")
+            self.add_info_user_message(f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")

@@ -73,7 +73,7 @@ class Strategy():
     def place_market_order(self, instrument, side, quantity, type="NRML", remarks=None, identifer=None, price=None):
         # TODO ADD orders to db with strategy identifier
         from AlgoApp.models import StrategyOrderHistory
-        StrategyOrderHistory.objects.create(instrument=instrument.name, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=price)
+        StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=price)
         self.broker.place_market_order(instrument=instrument, side=side, quantity=quantity, type=type)
 
     def main(self, inputs):
