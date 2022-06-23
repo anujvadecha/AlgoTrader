@@ -3,6 +3,7 @@ import logging
 from Indicators.indicator_base import Indicator
 LOGGER = logging.getLogger(__name__)
 
+
 class AverageTrueRange(Indicator):
     def __init__(self, instrument, timeframe, length):
         self.length = length
@@ -13,7 +14,7 @@ class AverageTrueRange(Indicator):
         self.previous_close = 0.00
 
         super().__init__(instrument=instrument, timeframe=timeframe)
-        LOGGER.debug("atr execution over")
+        LOGGER.debug(f"atr execution over atr value {self.ATR}")
 
     def calculate(self, candle=None):
         if self.last_candle["date"] == candle["date"]:

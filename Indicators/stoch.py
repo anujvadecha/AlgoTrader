@@ -1,4 +1,6 @@
 from Indicators.indicator_base import Indicator
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 class Stochastic(Indicator):
@@ -17,6 +19,7 @@ class Stochastic(Indicator):
         self.signal = None
 
         super().__init__(instrument=instrument, timeframe=timeframe)
+        LOGGER.debug(f"stoch execution over stoch value k{self.k_value} d{self.d_value} sig {self.signal}")
 
     def calculate(self, candle=None):
         if self.last_candle["date"] == candle["date"]:
