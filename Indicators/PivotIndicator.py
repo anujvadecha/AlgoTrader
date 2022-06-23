@@ -29,7 +29,5 @@ class PivotIndicator:
         pivot_data = []
         LOGGER.info(f"Historical data requested for pivot calculation is {historical_data}")
         for data in historical_data:
-            print(data)
-            print(type(data))
             pivot_data.append(self._calculate_pivot_points(data))
         return pivot_data
