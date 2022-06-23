@@ -27,24 +27,24 @@ class messagemodel:
 
 
 class Messages():
-    class Orders(messagemodel):
-        def addOrder(self, order: Order):
-            message = DisplayOrder(order_id=order.order_id, order_timestamp=order.order_timestamp,
-                                   status=order.status, tradingsymbol=order.tradingsymbol,
-                                   order_type=order.order_type,
-                                   transaction_type=order.transaction_type, validity=order.validity,
-                                   quantity=order.quantity, price=order.price,
-                                   average_price=order.average_price, filled_quantity=order.filled_quantity,
-                                   pending_quantity=order.pending_quantity
-                                   )
-            self.messagefactory.append(asdict(message))
-            from GUIFunctions import GUIFunctions
-            GUIFunctions.get_instance().add_update_order(asdict(message))
-
-
-    class Trades(messagemodel):
-        def addTrade(self, trade):
-            pass
+    # class Orders(messagemodel):
+    #     def addOrder(self, order: Order):
+    #         message = DisplayOrder(order_id=order.order_id, order_timestamp=order.order_timestamp,
+    #                                status=order.status, tradingsymbol=order.tradingsymbol,
+    #                                order_type=order.order_type,
+    #                                transaction_type=order.transaction_type, validity=order.validity,
+    #                                quantity=order.quantity, price=order.price,
+    #                                average_price=order.average_price, filled_quantity=order.filled_quantity,
+    #                                pending_quantity=order.pending_quantity
+    #                                )
+    #         self.messagefactory.append(asdict(message))
+    #         from GUIFunctions import GUIFunctions
+    #         GUIFunctions.get_instance().add_update_order(asdict(message))
+    #
+    #
+    # class Trades(messagemodel):
+    #     def addTrade(self, trade):
+    #         pass
 
     class UserMessages(messagemodel):
 
@@ -100,8 +100,8 @@ class Messages():
             from GUIFunctions import GUIFunctions
             GUIFunctions.get_instance().add_update_running_strategy(message)
 
-    class Positions(messagemodel):
-        pass
+    # class Positions(messagemodel):
+    #     pass
 
     __instance = None
 
@@ -117,8 +117,8 @@ class Messages():
         else:
             Messages.__instance = self
         self.usermessages = self.UserMessages()
-        self.trades = self.Trades()
-        self.orders = self.Orders()
+        # self.trades = self.Trades()
+        # self.orders = self.Orders()
         self.brokermessages = self.BrokerMessages()
-        self.positions = self.Positions()
+        # self.positions = self.Positions()
         self.running_strategies = self.RunningStrategies()
