@@ -330,7 +330,7 @@ class Choppy(Strategy):
 
     def stop(self):
         if self.entry and self.entry_side == "BUY":
-            self.place_exit_order("SELL", "STOP_SQUARE_OFF")
+            self.place_exit_order("SELL",TradeIdentifier.STOP_SQUARE_OFF)
         if self.entry and self.entry_side == "SELL":
-            self.place_exit_order("BUY", "STOP_SQUARE_OFF")
+            self.place_exit_order("BUY", TradeIdentifier.STOP_SQUARE_OFF)
         super().stop()
