@@ -1,4 +1,6 @@
 from Indicators.indicator_base import Indicator
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 class SuperTrend(Indicator):
@@ -18,6 +20,7 @@ class SuperTrend(Indicator):
         self.trend = 0
 
         super().__init__(instrument=instrument, timeframe=timeframe)
+        LOGGER.debug(f"st execution over st value {self.supertrend} trend{self.trend}")
 
     def calculate(self, candle=None):
         if self.last_candle["date"] == candle["date"]:

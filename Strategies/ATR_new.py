@@ -359,15 +359,15 @@ class Viral_ATR(Strategy):
                 st = self.ST.trend
                 stoch = self.Stoch.signal
                 candle_size = abs(candle["open"] - candle["close"])
-                candle_type = "bullish" if candle["open"] > candle["close"] else "bearish"
+                candle_type = "bearish" if candle["open"] > candle["close"] else "bullish"
                 pivot_range = self._check_pivot(candle, pivot=self.pivot_points)
                 
-                LOGGER.info(f"atr: {atr}")
-                LOGGER.info(f"psar: {psar}")
-                LOGGER.info(f"st: {st}")
-                LOGGER.info(f"stoch: {stoch}")
-                LOGGER.info(f"pivot_range: {pivot_range}")
-                LOGGER.info(f"candle_size: {candle_size}")
+                self.add_info_user_message(f"atr: {atr}")
+                self.add_info_user_message(f"psar: {psar}")
+                self.add_info_user_message(f"st: {st}")
+                self.add_info_user_message(f"stoch: {stoch}")
+                self.add_info_user_message(f"pivot_range: {pivot_range}")
+                self.add_info_user_message(f"candle_size: {candle_size}")
 
                 # calculate parameter
                 param = ""
@@ -399,7 +399,7 @@ class Viral_ATR(Strategy):
 
                 if not self.can_trade[final_param][candle_type]:
                     return
-                self.add_info_user_message(f'psar {psar} st {st}')
+                self.add_info_user_message(f'param {final_param}')
 
                 trade_type = None
                 for dec in self.trade_dir:
@@ -408,6 +408,8 @@ class Viral_ATR(Strategy):
                             if dec['stoch'] == stoch:
                                 if dec['pivot'] == pivot_range:
                                     trade_type = (dec['decision'])
+                                    break
+                self.add_info_user_message(f'decision {trade_type}')
                 if trade_type == "no_trade":
                     return
 

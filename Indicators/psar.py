@@ -1,5 +1,6 @@
 from Indicators.indicator_base import Indicator
-
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class ParabolicSAR(Indicator):
     def __init__(self, instrument, timeframe, start=0.02, increment_step=0.02, inc_max=0.2):
@@ -16,6 +17,7 @@ class ParabolicSAR(Indicator):
         self.prev_PSAR = 0.00
 
         super().__init__(instrument=instrument, timeframe=timeframe)
+        LOGGER.debug(f"psar execution over psar value {self.PSAR}")
 
     def calculate(self, candle=None):
         if self.last_candle["date"] == candle["date"]:
