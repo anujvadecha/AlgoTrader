@@ -21,7 +21,7 @@ class Eighteen(Strategy):
     trade_limit = 1
     number_of_trades = 0
     open_positions = []
-
+    last_calculated_entry = None
     def _check_pivot(self, candle, pivot):
         print(f"Candle is {candle} pivot {pivot}")
         pivot["upper_band"] = pivot["tc"]
@@ -293,6 +293,9 @@ class Eighteen(Strategy):
         self.param_indicator_value = self.param_indicator.calculate(candle=recent_data[-1])
 
     def calculate_entries(self):
+        if self.last_calculated_entry and datetime.now().replace(second=0, microsecond=0) == self.last_calculated_entry:
+            return
+        last_calculated_entry = datetime.now().replace(second=0, microsecond=0)
         from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
         recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
