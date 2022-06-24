@@ -1,3 +1,4 @@
+import traceback
 from enum import Enum
 
 import schedule
@@ -78,7 +79,8 @@ class Strategy():
             StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks if remarks else None, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=price if price else None)
         except Exception as e:
             self.add_info_user_message("No Impact Error: creating the entry for trade in database")
-            LOGGER.exception(f"Error creating StrategyOrderHistory {e}", e)
+            LOGGER.error(f"Error creating StrategyOrderHistory {e}", e)
+            LOGGER.info(f"Could not create strategy order due to exception {traceback.format_exc(e)}")
         self.broker.place_market_order(instrument=instrument, side=side, quantity=quantity, type=type)
 
     def main(self, inputs):

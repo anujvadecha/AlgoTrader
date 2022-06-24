@@ -222,6 +222,7 @@ class Eighteen(Strategy):
         self.entry = False
         self.todays_candle_high = None
         self.todays_candle_low = None
+        # self.place_entry_order("BUY", 100)
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
