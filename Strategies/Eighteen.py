@@ -295,6 +295,8 @@ class Eighteen(Strategy):
     def calculate_entries(self):
         if self.last_calculated_entry and datetime.now().replace(second=0, microsecond=0) == self.last_calculated_entry:
             return
+        if self.entry:
+            return
         self.last_calculated_entry = datetime.now().replace(second=0, microsecond=0)
         from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
