@@ -24,7 +24,7 @@ class Viral_ATR(Strategy):
     strategy_name = "ViralATR"
     trade_limit = 1
     number_of_trades = 0
-
+    last_calculated_entry = None
     def __init__(self):
         self.target_price = None
         self.stoploss_price = None
@@ -339,6 +339,10 @@ class Viral_ATR(Strategy):
             if now.minute == 15:
                 if now.hour == 9 and now.minute == 15:
                     return
+                if self.last_calculated_entry and datetime.now().replace(second=0,
+                                                                         microsecond=0) == self.last_calculated_entry:
+                    return
+                self.last_calculated_entry = datetime.now().replace(second=0, microsecond=0)
                 # update indicators
                 from_date = datetime.now() - timedelta(hours=6)
                 to_date = datetime.now()
@@ -361,7 +365,7 @@ class Viral_ATR(Strategy):
                 candle_size = abs(candle["open"] - candle["close"])
                 candle_type = "bearish" if candle["open"] > candle["close"] else "bullish"
                 pivot_range = self._check_pivot(candle, pivot=self.pivot_points)
-                
+
                 self.add_info_user_message(f"atr: {atr}")
                 self.add_info_user_message(f"psar: {psar}")
                 self.add_info_user_message(f"st: {st}")
