@@ -1,1 +1,1 @@
-{"overnight": false, "trade action": null, "entry_price": null, "stoploss": null, "target": null, "option_entry_instrument": null, "order_instrument": null}
+{"overnight": false, "entry_side": "BUY", "entry_price": 33013.95, "stoploss": 32758.43, "target": 33237.17, "option_entry_instrument": "BANKNIFTY22JUN33000CE", "order_instrument": "BANKNIFTY22JUNFUT", "option_quantity": "25", "order_quantity": 25}
