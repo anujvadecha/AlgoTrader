@@ -295,7 +295,7 @@ class Eighteen(Strategy):
     def calculate_entries(self):
         if self.last_calculated_entry and datetime.now().replace(second=0, microsecond=0) == self.last_calculated_entry:
             return
-        last_calculated_entry = datetime.now().replace(second=0, microsecond=0)
+        self.last_calculated_entry = datetime.now().replace(second=0, microsecond=0)
         from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
         recent_data = MarketDataManager.get_instance().get_historical_data(instrument=self.instrument,
