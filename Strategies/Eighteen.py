@@ -252,10 +252,8 @@ class Eighteen(Strategy):
             if tick.symbol != self.instrument.tradingsymbol:
                 return
             for position in self.open_positions:
-                target_points = json.loads(position.remarks)["target_points"]
-                entry_price = position.price
                 entry_side = position.side
-                target_price = target_points + entry_price if entry_side == "BUY" else entry_price - target_points
+                target_price = json.loads(position.remarks)["target_price"]
                 # Calculating targets
                 LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
@@ -274,12 +272,8 @@ class Eighteen(Strategy):
                                                                            interval=CandleInterval.fifteen_min)
         close = recent_data[-1]["close"]
         for position in self.open_positions:
-            target_points = json.loads(position.remarks)["target_points"]
-            entry_price = position.price
             entry_side = position.side
-            sl_points = json.loads(position.remarks)["sl_points"]
-            target_price = target_points+entry_price if entry_side == "BUY" else entry_price-target_points
-            sl_price = sl_points-entry_price if entry_side == "BUY" else entry_price+sl_points
+            sl_price = json.loads(position.remarks)["sl_price"]
             # Calculating stoplosses
             if entry_side == "BUY" and close <= sl_price:
                 self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
