@@ -114,7 +114,10 @@ class Eighteen(Strategy):
         self.option_entry_instrument = None
         target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
         sl_points = 310 if "BANK" in self.instrument.tradingsymbol else 100
-        remarks  = {"target_points": target_points, "sl_points": sl_points}
+        remarks  = {"target_points": target_points,
+                    "sl_points": sl_points,
+                    "target_price": target_points + price if side == "BUY" else price - target_points,
+                    "sl_price":sl_points-price if side == "BUY" else price+sl_points}
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
@@ -252,7 +255,7 @@ class Eighteen(Strategy):
                 target_points = json.loads(position.remarks)["target_points"]
                 entry_price = position.price
                 entry_side = position.side
-                target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
+                target_price = target_points + entry_price if entry_side == "BUY" else entry_price - target_points
                 # Calculating targets
                 LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
@@ -275,8 +278,8 @@ class Eighteen(Strategy):
             entry_price = position.price
             entry_side = position.side
             sl_points = json.loads(position.remarks)["sl_points"]
-            target_price = target_points+entry_price if entry_price == "BUY" else entry_price-target_points
-            sl_price = sl_points-entry_price if entry_price == "BUY" else entry_price+sl_points
+            target_price = target_points+entry_price if entry_side == "BUY" else entry_price-target_points
+            sl_price = sl_points-entry_price if entry_side == "BUY" else entry_price+sl_points
             # Calculating stoplosses
             if entry_side == "BUY" and close <= sl_price:
                 self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
