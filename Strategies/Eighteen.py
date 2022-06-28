@@ -222,7 +222,7 @@ class Eighteen(Strategy):
         self.entry = False
         self.todays_candle_high = None
         self.todays_candle_low = None
-        # self.place_entry_order("BUY", 100)
+        # self.place_entry_order("BUY", 100.2)
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
@@ -250,7 +250,7 @@ class Eighteen(Strategy):
                 return
             for position in self.open_positions:
                 target_points = json.loads(position.remarks)["target_points"]
-                entry_price = position.entry_price
+                entry_price = position.price
                 entry_side = position.side
                 target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
                 # Calculating targets
