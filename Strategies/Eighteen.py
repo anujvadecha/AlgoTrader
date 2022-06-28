@@ -272,7 +272,7 @@ class Eighteen(Strategy):
         close = recent_data[-1]["close"]
         for position in self.open_positions:
             target_points = json.loads(position.remarks)["target_points"]
-            entry_price = position.entry_price
+            entry_price = position.price
             entry_side = position.side
             sl_points = json.loads(position.remarks)["sl_points"]
             target_price = target_points+entry_price if entry_price == "BUY" else entry_price-target_points
