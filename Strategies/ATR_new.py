@@ -416,7 +416,6 @@ class Viral_ATR(Strategy):
                 self.can_trade[final_param][candle_type] = False
 
                 # execute entry
-                self.entry = True
                 data = MarketDataManager.get_instance().get_historical_data(instrument=self.spot_instrument,
                                                                             from_date=from_date,
                                                                             to_date=to_date,
@@ -450,6 +449,8 @@ class Viral_ATR(Strategy):
                         self.target_price = round(
                             candle["close"] - atr, 2)
                         self.place_entry_order("SELL")
+
+                self.entry = True
 
         except Exception as e:
             LOGGER.info(traceback.format_exc())
