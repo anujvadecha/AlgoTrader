@@ -16,7 +16,7 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 
-class Eighteen(Strategy):
+class EighteenOrderTest(Strategy):
     strategy_name = "Eighteen"
     trade_limit = 1
     number_of_trades = 0
@@ -114,10 +114,7 @@ class Eighteen(Strategy):
         self.option_entry_instrument = None
         target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
         sl_points = 310 if "BANK" in self.instrument.tradingsymbol else 100
-        remarks  = {"target_points": target_points,
-                    "sl_points": sl_points,
-                    "target_price": target_points + price if side == "BUY" else price - target_points,
-                    "sl_price":sl_points-price if side == "BUY" else price+sl_points}
+        remarks  = {"target_points": target_points, "sl_points": sl_points}
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
@@ -225,7 +222,9 @@ class Eighteen(Strategy):
         self.entry = False
         self.todays_candle_high = None
         self.todays_candle_low = None
-        # self.place_entry_order("BUY", 100.2)
+        self.place_entry_order("BUY", 100.2222)
+        self.place_entry_order("BUY", 100.2)
+        self.place_entry_order("BUY", 100)
 
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
@@ -252,8 +251,10 @@ class Eighteen(Strategy):
             if tick.symbol != self.instrument.tradingsymbol:
                 return
             for position in self.open_positions:
+                target_points = json.loads(position.remarks)["target_points"]
+                entry_price = position.entry_price
                 entry_side = position.side
-                target_price = json.loads(position.remarks)["target_price"]
+                target_price = target_points + entry_price if entry_price == "BUY" else entry_price - target_points
                 # Calculating targets
                 LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
@@ -272,8 +273,12 @@ class Eighteen(Strategy):
                                                                            interval=CandleInterval.fifteen_min)
         close = recent_data[-1]["close"]
         for position in self.open_positions:
+            target_points = json.loads(position.remarks)["target_points"]
+            entry_price = position.entry_price
             entry_side = position.side
-            sl_price = json.loads(position.remarks)["sl_price"]
+            sl_points = json.loads(position.remarks)["sl_points"]
+            target_price = target_points+entry_price if entry_price == "BUY" else entry_price-target_points
+            sl_price = sl_points-entry_price if entry_price == "BUY" else entry_price+sl_points
             # Calculating stoplosses
             if entry_side == "BUY" and close <= sl_price:
                 self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)

@@ -1,4 +1,6 @@
+
 from Strategies.Eighteen import Eighteen
+from Strategies.EighteenOrderTest import EighteenOrderTest
 from Strategies.OptionMarketDataCollector import OptionMarketDataCollector
 from Strategies.Choppy import Choppy
 from Strategies.ViralATR import ViralATR
@@ -42,6 +44,7 @@ strategies = {
     "ATR new": Viral_ATR,
     "Choppy": Choppy,
     "Option Market Data": OptionMarketDataCollector,
-    "Eighteen": Eighteen
+    "Eighteen": Eighteen,
+    "EighteenOrderTest": EighteenOrderTest
 }
 

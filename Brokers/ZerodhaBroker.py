@@ -205,7 +205,7 @@ class ZerodhaBroker(Broker):
                 close=tick["ohlc"]["close"]
             )
             self.push_L1_data(tick_to_push)
-            logging.debug("Tick: {}".format(tick))
+            # logging.debug("Tick: {}".format(tick))
 
     def __instrument_store(self):
         try:

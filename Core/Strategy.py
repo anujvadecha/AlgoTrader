@@ -1,9 +1,11 @@
+import traceback
 from enum import Enum
 
 import schedule
 import datetime
 
 #
+from Core.Utils import to_decimal
 from Managers.MarketDataManager import MarketDataManager
 from Core.Enums import StrategyState
 import time
@@ -71,14 +73,16 @@ class Strategy():
     def add_info_user_message(self, message):
         self.messages.usermessages.info(message,self.portfolio_id)
 
-    def place_market_order(self, instrument, side, quantity, type="NRML", remarks=None, identifer=None, price=None):
+    def place_market_order(self, instrument, side, quantity, type="NRML", remarks=None, identifer=None, price=0):
         # TODO ADD orders to db with strategy identifier
         from AlgoApp.models import StrategyOrderHistory
         try:
-            StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=price)
+            LOGGER.info(f"Creating strategy order history with price {round(price,2)}")
+            StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks if remarks else None, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=to_decimal(price) if price else None)
         except Exception as e:
             self.add_info_user_message("No Impact Error: creating the entry for trade in database")
-            LOGGER.exception(f"Error creating StrategyOrderHistory {e}", e)
+            LOGGER.error(f"Error creating StrategyOrderHistory {e}", e)
+            LOGGER.info(f"Could not create strategy order due to exception {traceback.format_exc(e)}")
         self.broker.place_market_order(instrument=instrument, side=side, quantity=quantity, type=type)
 
     def main(self, inputs):

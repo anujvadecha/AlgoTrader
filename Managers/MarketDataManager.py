@@ -37,6 +37,7 @@ class MarketDataManager():
         #                 }
         #               }
         # }
+        frequency_seconds = timeparse(interval.value) if interval != CandleInterval.day else 86400
         time_series = get_candle_time_series_for_date_range(from_date, to_date, interval)
         if not self._historical_data_cache_v1.get(instrument.tradingsymbol, None):
             self._historical_data_cache_v1[instrument.tradingsymbol] = {interval: {}}
@@ -57,7 +58,8 @@ class MarketDataManager():
                 new_historical_data = self.data_broker.get_historical_data(instrument=instrument, from_date=from_date,
                                                      to_date=to_date, interval=interval.value)
                 for candle in new_historical_data:
-                    self._historical_data_cache_v1[instrument.tradingsymbol][interval][candle["date"]] = candle
+                    if candle['date'] < (datetime.now() - timedelta(seconds=frequency_seconds)):
+                        self._historical_data_cache_v1[instrument.tradingsymbol][interval][candle["date"]] = candle
             elif not last_candle_exists:
                 # Write logic to find latest data available
                 minimum_timestamp_available = None
@@ -66,10 +68,10 @@ class MarketDataManager():
                 new_from_date = minimum_timestamp_available
                 new_historical_data = self.data_broker.get_historical_data(instrument=instrument, from_date=new_from_date,
                                                                            to_date=to_date, interval=interval.value)
-                LOGGER.info(
-                    f"Last candle doesnt exist for {from_date} {to_date} {interval} {instrument.tradingsymbol} returning fresh data with new from date {new_from_date}")
+                LOGGER.info(f"Last candle doesnt exist for {from_date} {to_date} {interval} {instrument.tradingsymbol} returning fresh data with new from date {new_from_date}")
                 for candle in new_historical_data:
-                    self._historical_data_cache_v1[instrument.tradingsymbol][interval][candle["date"]] = candle
+                    if candle['date'] < (datetime.now() - timedelta(seconds=frequency_seconds)):
+                        self._historical_data_cache_v1[instrument.tradingsymbol][interval][candle["date"]] = candle
             # If data present in cache returning same data
             candles = []
             for time in time_series:
