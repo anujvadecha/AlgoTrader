@@ -316,16 +316,16 @@ class Viral_ATR(Strategy):
         with open(self.trade_file_name, 'r') as file:
             data = file.read()
 
-        prev_trade = json.loads(data)
-        if prev_trade['overnight']:
-            self.add_info_user_message('found overnight trade')
-            self.entry = True
-            self.target_price = prev_trade["target"]
-            self.stoploss_price = prev_trade["stoploss"]
-            self.option_entry_instrument = Instrument(symbol=["option_entry_instrument"])
-            self.entry_side = prev_trade["entry_side"]
-            self.order_quantity = prev_trade["order_quantity"]
-            self.option_quantity = prev_trade["option_quantity"]
+        # prev_trade = json.loads(data)
+        # if prev_trade['overnight']:
+        #     self.add_info_user_message('found overnight trade')
+        #     self.entry = True
+        #     self.target_price = prev_trade["target"]
+        #     self.stoploss_price = prev_trade["stoploss"]
+        #     self.option_entry_instrument = Instrument(symbol=["option_entry_instrument"])
+        #     self.entry_side = prev_trade["entry_side"]
+        #     self.order_quantity = prev_trade["order_quantity"]
+        #     self.option_quantity = prev_trade["option_quantity"]
 
         self.subscribe(self.instrument, self.on_ticks)
         self.add_info_user_message("Started ATR for symbol " + inputs["instrument"])
