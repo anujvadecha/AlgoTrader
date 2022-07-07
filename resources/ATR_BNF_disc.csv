@@ -37,7 +37,7 @@
 35,param1,bullish,os,< s3,no_trade
 36,param1,bullish,nu,> r3,buy
 37,param1,bullish,nu,r3-r2,buy
-38,param1,bullish,nu,r2-pdh,buy
+38,param1,bullish,nu,r2-pdh,no_trade
 39,param1,bullish,nu,r2-r1,sell
 40,param1,bullish,nu,pdh-r1,buy
 41,param1,bullish,nu,r1-pdh,sell
