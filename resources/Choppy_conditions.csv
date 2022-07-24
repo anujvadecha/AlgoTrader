@@ -703,7 +703,7 @@ s2-s3,r2-pdh,sell,bullish,NIFTY BANK
 < s3,r2-pdh,buy,bullish,NIFTY BANK
 > r3,r2-r1,sell,bullish,NIFTY BANK
 r3-r2,r2-r1,sell,bullish,NIFTY BANK
-r2-pdh,r2-r1,buy,bullish,NIFTY BANK
+r2-pdh,r2-r1,sell,bullish,NIFTY BANK
 r2-r1,r2-r1,sell,bullish,NIFTY BANK
 pdh-r1,r2-r1,sell,bullish,NIFTY BANK
 r1-pdh,r2-r1,sell,bullish,NIFTY BANK
