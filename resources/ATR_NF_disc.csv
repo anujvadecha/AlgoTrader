@@ -689,7 +689,7 @@
 687,param4,bullish,nu,r2-r1,no_trade
 688,param4,bullish,nu,pdh-r1,buy
 689,param4,bullish,nu,r1-pdh,no_trade
-690,param4,bullish,nu,r1-tc,buy
+690,param4,bullish,nu,r1-tc,no_trade
 691,param4,bullish,nu,pdh-tc,sell
 692,param4,bullish,nu,tc-pp,buy
 693,param4,bullish,nu,pp-bc,sell
