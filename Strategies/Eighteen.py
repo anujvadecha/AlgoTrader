@@ -145,7 +145,7 @@ class Eighteen(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price)
+                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price, remarks=json.dumps(remarks))
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.add_open_positions()
@@ -257,8 +257,12 @@ class Eighteen(Strategy):
                 # Calculating targets
                 LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
                 if entry_side == "BUY" and tick.ltp >= target_price:
+                    position.is_squared = True
+                    position.save()
                     self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
+                    position.is_squared = True
+                    position.save()
                     self.place_exit_order("BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
         except Exception as e:
             LOGGER.exception(e)
@@ -276,8 +280,12 @@ class Eighteen(Strategy):
             sl_price = json.loads(position.remarks)["sl_price"]
             # Calculating stoplosses
             if entry_side == "BUY" and close <= sl_price:
+                position.is_squared = True
+                position.save()
                 self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
             if entry_side == "SELL" and close >= sl_price:
+                position.is_squared = True
+                position.save()
                 self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
 
     def update_indicators(self):
@@ -382,9 +390,10 @@ class Eighteen(Strategy):
 
     def add_open_positions(self):
         from AlgoApp.models import StrategyOrderHistory
-        last_order = StrategyOrderHistory.objects.filter(instrument=self.instrument.tradingsymbol,
+        last_orders = StrategyOrderHistory.objects.filter(instrument=self.instrument.tradingsymbol,
                                             strategy=self.strategy_name,
-                                            broker=self.inputs["broker_alias"]).last()
-        if last_order and last_order.identifier == TradeIdentifier.ENTRY.name:
-            self.open_positions.append(last_order)
-            self.add_info_user_message(f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")
+                                            broker=self.inputs["broker_alias"], is_squared=False)
+        for last_order in last_orders:
+            if last_order and last_order.identifier == TradeIdentifier.ENTRY.name:
+                self.open_positions.append(last_order)
+                self.add_info_user_message(f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")
