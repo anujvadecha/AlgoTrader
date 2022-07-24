@@ -242,7 +242,7 @@ class Eighteen(Strategy):
             "option_quantity": "50",
             "option_side": ["BUY"],
             "option_expiry": list(expiries),
-            "input_file": "resources/eighteen_banknifty.csv",
+            "input_file": ["resources/eighteen_banknifty.csv", "resources/eighteen_nifty.csv"],
         }
 
     def on_ticks(self, tick):
