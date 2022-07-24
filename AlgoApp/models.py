@@ -16,6 +16,7 @@ class StrategyOrderHistory(BaseModel):
     order_type = models.CharField(max_length=255, blank=True, null=True)
     identifier = models.CharField(max_length=255, blank=True, null=True)
     price = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
+    is_squared = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.portfolio_id}_{self.strategy}_{self.instrument}"
