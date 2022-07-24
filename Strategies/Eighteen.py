@@ -274,19 +274,20 @@ class Eighteen(Strategy):
                                                                            from_date=from_date,
                                                                            to_date=to_date,
                                                                            interval=CandleInterval.fifteen_min)
-        close = recent_data[-1]["close"]
-        for position in self.open_positions:
-            entry_side = position.side
-            sl_price = json.loads(position.remarks)["sl_price"]
-            # Calculating stoplosses
-            if entry_side == "BUY" and close <= sl_price:
-                position.is_squared = True
-                position.save()
-                self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
-            if entry_side == "SELL" and close >= sl_price:
-                position.is_squared = True
-                position.save()
-                self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+        close = recent_data[-1]["close"] if len(recent_data) > 0 else None
+        if close:
+            for position in self.open_positions:
+                entry_side = position.side
+                sl_price = json.loads(position.remarks)["sl_price"]
+                # Calculating stoplosses
+                if entry_side == "BUY" and close <= sl_price:
+                    position.is_squared = True
+                    position.save()
+                    self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+                if entry_side == "SELL" and close >= sl_price:
+                    position.is_squared = True
+                    position.save()
+                    self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
 
     def update_indicators(self):
         from_date = datetime.now() - timedelta(hours=1)
