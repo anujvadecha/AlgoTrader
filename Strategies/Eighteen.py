@@ -251,6 +251,7 @@ class Eighteen(Strategy):
                 return
             if tick.symbol != self.instrument.tradingsymbol:
                 return
+            squared_off_positions = []
             for position in self.open_positions:
                 entry_side = position.side
                 target_price = json.loads(position.remarks)["target_price"]
@@ -259,11 +260,15 @@ class Eighteen(Strategy):
                 if entry_side == "BUY" and tick.ltp >= target_price:
                     position.is_squared = True
                     position.save()
+                    squared_off_positions.append(position)
                     self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
                     position.is_squared = True
                     position.save()
+                    squared_off_positions.append(position)
                     self.place_exit_order("BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+            for position in squared_off_positions:
+                self.open_positions.remove(position)
         except Exception as e:
             LOGGER.exception(e)
 
@@ -276,6 +281,7 @@ class Eighteen(Strategy):
                                                                            interval=CandleInterval.fifteen_min)
         close = recent_data[-1]["close"] if len(recent_data) > 0 else None
         if close:
+            squared_off_positions = []
             for position in self.open_positions:
                 entry_side = position.side
                 sl_price = json.loads(position.remarks)["sl_price"]
@@ -283,12 +289,15 @@ class Eighteen(Strategy):
                 if entry_side == "BUY" and close <= sl_price:
                     position.is_squared = True
                     position.save()
+                    squared_off_positions.append(position)
                     self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if entry_side == "SELL" and close >= sl_price:
                     position.is_squared = True
                     position.save()
+                    squared_off_positions.append(position)
                     self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
-
+            for position in squared_off_positions:
+                self.open_positions.remove(position)
     def update_indicators(self):
         from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
