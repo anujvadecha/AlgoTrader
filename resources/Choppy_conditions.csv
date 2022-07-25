@@ -524,7 +524,7 @@ s2-s3,bc-pdl,buy,bullish,NIFTY 50
 > r3,bc-s1,sell,bullish,NIFTY 50
 r3-r2,bc-s1,buy,bullish,NIFTY 50
 r2-pdh,bc-s1,buy,bullish,NIFTY 50
-r2-r1,bc-s1,buy,bullish,NIFTY 50
+r2-r1,bc-s1,sell,bullish,NIFTY 50
 pdh-r1,bc-s1,buy,bullish,NIFTY 50
 r1-pdh,bc-s1,buy,bullish,NIFTY 50
 r1-tc,bc-s1,buy,bullish,NIFTY 50
