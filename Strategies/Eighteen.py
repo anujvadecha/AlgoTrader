@@ -113,7 +113,7 @@ class Eighteen(Strategy):
         self.number_of_trades = self.number_of_trades + 1
         self.option_entry_instrument = None
         target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
-        sl_points = 310 if "BANK" in self.instrument.tradingsymbol else 100
+        sl_points = 300 if "BANK" in self.instrument.tradingsymbol else 100
         remarks  = {"target_points": target_points,
                     "sl_points": sl_points,
                     "target_price": target_points + price if side == "BUY" else price - target_points,
