@@ -152,22 +152,22 @@ class Eighteen(Strategy):
         self.add_open_positions()
 
 
-    def place_exit_order(self, side, price, identifier=None):
+    def place_exit_order(self, instrument, quantity,  side, price, identifier=None):
         if self.state == StrategyState.STOPPED:
             return
         self.entry = False
-        if self.order_type != "OPTIONS_ONLY":
-            self.add_info_user_message(
-                f"Placing exit order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
-            self.place_market_order(instrument=self.order_instrument,
-                                           side=side, quantity=self.order_quantity, price=price,
-                                           type="NRML", identifer=identifier)
-        if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
-            self.add_info_user_message(
-                f"Placing exit order for {self.option_entry_instrument} SELL {self.option_quantity} {identifier}")
-            self.place_market_order(instrument=self.option_entry_instrument,
-                                           side="SELL", quantity=self.option_quantity,
-                                           type="NRML", identifer=identifier, price=price)
+        # if self.order_type != "OPTIONS_ONLY":
+        self.add_info_user_message(
+            f"Placing exit order for {self.order_instrument} {side} {quantity} {identifier}")
+        self.place_market_order(instrument=instrument,
+                                       side=side, quantity=quantity, price=price,
+                                       type="NRML", identifer=identifier)
+        # if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
+        #     self.add_info_user_message(
+        #         f"Placing exit order for {instrument} SELL {quantity} {identifier}")
+        #     self.place_market_order(instrument=instrument,
+        #                                    side="SELL", quantity=self.option_quantity,
+        #                                    type="NRML", identifer=identifier, price=price)
 
 
     def _initiate_inputs(self, inputs):
@@ -262,12 +262,12 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order("SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order("BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)
         except Exception as e:
@@ -291,12 +291,12 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order("SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if entry_side == "SELL" and close >= sl_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order("BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)
     def update_indicators(self):
