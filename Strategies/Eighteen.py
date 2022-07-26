@@ -124,7 +124,7 @@ class Eighteen(Strategy):
             self.add_info_user_message(f"Entry remarks for {self.order_instrument} are {remarks}")
         # Futures order
             self.place_market_order(instrument=self.order_instrument, side=side,
-                                       quantity=self.order_quantity, type="NRML", identifer=identifier, remarks=json.dumps(remarks), price=price)
+                                       quantity=self.order_quantity, type="NRML", identifer=identifier, remarks=json.dumps(remarks), price=price, instrument_identifier=self.instrument.tradingsymbol)
         # Options order
         if self.order_type != "FUTURES_ONLY":
             if price % 100 < 50:
@@ -146,7 +146,7 @@ class Eighteen(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price, remarks=json.dumps(remarks))
+                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price, remarks=json.dumps(remarks), instrument_identifier=self.instrument.tradingsymbol)
             else:
                 self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.add_open_positions()
@@ -402,7 +402,7 @@ class Eighteen(Strategy):
 
     def add_open_positions(self):
         from AlgoApp.models import StrategyOrderHistory
-        last_orders = StrategyOrderHistory.objects.filter(instrument=self.instrument.tradingsymbol,
+        last_orders = StrategyOrderHistory.objects.filter(instrument_identifier=self.instrument.tradingsymbol,
                                             strategy=self.strategy_name,
                                             broker=self.inputs["broker_alias"], is_squared=False)
         for last_order in last_orders:
