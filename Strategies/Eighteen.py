@@ -121,6 +121,7 @@ class Eighteen(Strategy):
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
             f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
+            self.add_info_user_message(f"Entry remarks for {self.order_instrument} are {remarks}")
         # Futures order
             self.place_market_order(instrument=self.order_instrument, side=side,
                                        quantity=self.order_quantity, type="NRML", identifer=identifier, remarks=json.dumps(remarks), price=price)
@@ -353,7 +354,8 @@ class Eighteen(Strategy):
                 LOGGER.info(f"Calculating triggers for current time {now}")
                 self.calculate_exits_for_current_positions()
                 self.update_indicators()
-                if now > expected_timing and self.todays_candle_high and self.todays_candle_low:
+                if now > expected_timing and self.todays_candle_high and self.todays_candle_low \
+                        and not (now.hour >= 3 and now.minute >=15):
                     self.calculate_entries()
 
             if not self.todays_candle_high and not self.todays_candle_low:
