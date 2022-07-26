@@ -22,6 +22,7 @@ class Eighteen(Strategy):
     number_of_trades = 0
     open_positions = []
     last_calculated_entry = None
+
     def _check_pivot(self, candle, pivot):
         print(f"Candle is {candle} pivot {pivot}")
         pivot["upper_band"] = pivot["tc"]
@@ -114,25 +115,28 @@ class Eighteen(Strategy):
         self.option_entry_instrument = None
         target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
         sl_points = 300 if "BANK" in self.instrument.tradingsymbol else 100
-        remarks  = {"target_points": target_points,
-                    "sl_points": sl_points,
-                    "target_price": target_points + price if side == "BUY" else price - target_points,
-                    "sl_price":sl_points-price if side == "BUY" else price+sl_points}
+        remarks = {"target_points": target_points,
+                   "sl_points": sl_points,
+                   "target_price": target_points + price if side == "BUY" else price - target_points,
+                   "sl_price": sl_points - price if side == "BUY" else price + sl_points}
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
-            f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
+                f"Placing entry order for {self.order_instrument} {side} {self.order_quantity} {identifier}")
             self.add_info_user_message(f"Entry remarks for {self.order_instrument} are {remarks}")
-        # Futures order
+            # Futures order
             self.place_market_order(instrument=self.order_instrument, side=side,
-                                       quantity=self.order_quantity, type="NRML", identifer=identifier, remarks=json.dumps(remarks), price=price, instrument_identifier=self.instrument.tradingsymbol)
+                                    quantity=self.order_quantity, type="NRML", identifer=identifier,
+                                    remarks=json.dumps(remarks), price=price,
+                                    instrument_identifier=self.instrument.tradingsymbol)
         # Options order
         if self.order_type != "FUTURES_ONLY":
             if price % 100 < 50:
-                targeted_strike_price = price - price%100
+                targeted_strike_price = price - price % 100
             else:
                 targeted_strike_price = price + (100 - price % 100)
-            if side=="BUY":
-                option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument("BANKNIFTY" if "BANK" in self.instrument.tradingsymbol else "NIFTY", strike=targeted_strike_price)
+            if side == "BUY":
+                option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
+                    "BANKNIFTY" if "BANK" in self.instrument.tradingsymbol else "NIFTY", strike=targeted_strike_price)
             else:
                 option_intruments = InstrumentManager.get_instance().get_put_options_for_instrument(
                     "BANKNIFTY" if "BANK" in self.instrument.tradingsymbol else "NIFTY",
@@ -146,13 +150,15 @@ class Eighteen(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                               quantity=self.option_quantity, type="NRML", identifer=identifier, price=price, remarks=json.dumps(remarks), instrument_identifier=self.instrument.tradingsymbol)
+                                        quantity=self.option_quantity, type="NRML", identifer=identifier, price=price,
+                                        remarks=json.dumps(remarks),
+                                        instrument_identifier=self.instrument.tradingsymbol)
             else:
-                self.add_info_user_message(f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
+                self.add_info_user_message(
+                    f"Option entry not found for {targeted_strike_price} {self.instrument.tradingsymbol}")
         self.add_open_positions()
 
-
-    def place_exit_order(self, instrument, quantity,  side, price, identifier=None):
+    def place_exit_order(self, instrument, quantity, side, price, identifier=None):
         if self.state == StrategyState.STOPPED:
             return
         self.entry = False
@@ -160,15 +166,14 @@ class Eighteen(Strategy):
         self.add_info_user_message(
             f"Placing exit order for {self.order_instrument} {side} {quantity} {identifier}")
         self.place_market_order(instrument=instrument,
-                                       side=side, quantity=quantity, price=price,
-                                       type="NRML", identifer=identifier)
+                                side=side, quantity=quantity, price=price,
+                                type="NRML", identifer=identifier)
         # if self.order_type != "FUTURES_ONLY" and self.option_entry_instrument:
         #     self.add_info_user_message(
         #         f"Placing exit order for {instrument} SELL {quantity} {identifier}")
         #     self.place_market_order(instrument=instrument,
         #                                    side="SELL", quantity=self.option_quantity,
         #                                    type="NRML", identifer=identifier, price=price)
-
 
     def _initiate_inputs(self, inputs):
         print(inputs["instrument"])
@@ -183,10 +188,10 @@ class Eighteen(Strategy):
     def _initialize_indicators(self):
         self.param_indicator = ParamIndicator(instrument=self.instrument, timeframe=CandleInterval.fifteen_min)
         self.stochastic = Stochastic(instrument=self.instrument,
-                                timeframe=CandleInterval.fifteen_min,
-                                k_length=5,
-                                k_smooth=3,
-                                d_smooth=3)
+                                     timeframe=CandleInterval.fifteen_min,
+                                     k_length=5,
+                                     k_smooth=3,
+                                     d_smooth=3)
         from_date = datetime.now() - timedelta(days=7)
         to_date = datetime.now() - timedelta(hours=6)
         interval = CandleInterval.day
@@ -207,7 +212,6 @@ class Eighteen(Strategy):
                 last_candle = data
         yesterdays_candle = last_candle
         self.yesterdays_choppy_range = self._check_pivot(yesterdays_candle, pivot=self.yesterdays_pivot_points)
-
 
     def on_create(self, inputs):
         logging.info("Adding test log")
@@ -233,11 +237,11 @@ class Eighteen(Strategy):
         order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
         option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
-            "BANKNIFTY" )
+            "BANKNIFTY")
         expiries = sorted(set(str(instrument.expiry) for instrument in option_intruments))
         return {
             "instrument": order_instrument_names,
-            "orders_type": [ "FUTURE_AND_OPTIONS","FUTURES_ONLY", "OPTIONS_ONLY"],
+            "orders_type": ["FUTURE_AND_OPTIONS", "FUTURES_ONLY", "OPTIONS_ONLY"],
             "order_instrument": order_instrument_names,
             "order_quantity": "50",
             "option_quantity": "50",
@@ -262,12 +266,14 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"SELL", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "SELL", tick.ltp,
+                                          TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"BUY", tick.ltp, TradeIdentifier.TARGET_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "BUY", tick.ltp,
+                                          TradeIdentifier.TARGET_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)
         except Exception as e:
@@ -291,14 +297,17 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"SELL", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "SELL", close,
+                                          TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if entry_side == "SELL" and close >= sl_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity,"BUY", close, TradeIdentifier.STOP_LOSS_TRIGGERED)
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "BUY", close,
+                                          TradeIdentifier.STOP_LOSS_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)
+
     def update_indicators(self):
         from_date = datetime.now() - timedelta(hours=1)
         to_date = datetime.now()
@@ -324,8 +333,10 @@ class Eighteen(Strategy):
         bullish_bearish = 'bullish' if recent_data[-1]['close'] > recent_data[-1]['open'] else 'bearish'
         LOGGER.info(f"Calculating entry for {self.instrument.tradingsymbol} with local vars {locals()} ")
         if recent_data[-1]["close"] >= self.todays_candle_high or recent_data[-1]["close"] <= self.todays_candle_low:
-            self.add_info_user_message(f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
-            self.add_info_user_message(f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
+            self.add_info_user_message(
+                f"Todays Levels broken for candle {recent_data[-1]['date']} with close {recent_data[-1]['close']} Calculating entries")
+            self.add_info_user_message(
+                f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
             for condition in self.conditions:
                 if condition["para"] == self.param_indicator_value \
                         and condition["candle"] == bullish_bearish \
@@ -336,7 +347,8 @@ class Eighteen(Strategy):
                         continue
                     self.place_entry_order(condition["signal"].upper(), recent_data[-1]["close"], TradeIdentifier.ENTRY)
         else:
-            self.add_info_user_message(f"Levels {self.todays_candle_low} - {self.todays_candle_high}  not broken yet for close {recent_data[-1]['close']} {self.instrument.tradingsymbol} {recent_data[-1]['date']}")
+            self.add_info_user_message(
+                f"Levels {self.todays_candle_low} - {self.todays_candle_high}  not broken yet for close {recent_data[-1]['close']} {self.instrument.tradingsymbol} {recent_data[-1]['date']}")
             self.add_info_user_message(
                 f"System param {self.param_indicator_value} candle {bullish_bearish} level {self._check_pivot(recent_data[-1], self.yesterdays_pivot_points)} stoch {self.stochastic.signal}")
 
@@ -350,12 +362,12 @@ class Eighteen(Strategy):
             # TODO MOD 15
             expected_timing = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
             if now.minute % 15 == 0:
-            # if now.minute % 1 == 0:
+                # if now.minute % 1 == 0:
                 LOGGER.info(f"Calculating triggers for current time {now}")
                 self.calculate_exits_for_current_positions()
                 self.update_indicators()
                 if now > expected_timing and self.todays_candle_high and self.todays_candle_low \
-                        and not (now.hour >= 3 and now.minute >=15):
+                        and not (now.hour >= 3 and now.minute >= 15):
                     self.calculate_entries()
 
             if not self.todays_candle_high and not self.todays_candle_low:
@@ -403,9 +415,10 @@ class Eighteen(Strategy):
     def add_open_positions(self):
         from AlgoApp.models import StrategyOrderHistory
         last_orders = StrategyOrderHistory.objects.filter(instrument_identifier=self.instrument.tradingsymbol,
-                                            strategy=self.strategy_name,
-                                            broker=self.inputs["broker_alias"], is_squared=False)
+                                                          strategy=self.strategy_name,
+                                                          broker=self.inputs["broker_alias"], is_squared=False)
         for last_order in last_orders:
             if last_order and last_order.identifier == TradeIdentifier.ENTRY.name:
                 self.open_positions.append(last_order)
-                self.add_info_user_message(f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")
+                self.add_info_user_message(
+                    f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")
