@@ -117,12 +117,15 @@ class Eighteen(Strategy):
         target_points = 270 if "BANK" in self.instrument.tradingsymbol else 90
         sl_points = 300 if "BANK" in self.instrument.tradingsymbol else 100
         if reversal:
-            sl_points = abs(entry_candle["close"] - entry_candle["high"]) if side == "SELL" else abs(entry_candle["close"] - entry_candle["low"])
+            sl_points = abs(entry_candle["close"] - entry_candle["high"]) if side == "SELL" else abs(
+                entry_candle["close"] - entry_candle["low"])
         remarks = {"target_points": target_points,
                    "sl_points": sl_points,
-                   "target_price": target_points + entry_candle["close"] if side == "BUY" else entry_candle["close"] - target_points,
-                   "sl_price": entry_candle["close"] - sl_points if side == "BUY" else entry_candle["close"] + sl_points,
-                   "vwap_reversal": self.entry_condition["vwap_reversal"] == "vwap_reversal" and not reversal }
+                   "target_price": target_points + entry_candle["close"] if side == "BUY" else entry_candle[
+                                                                                                   "close"] - target_points,
+                   "sl_price": entry_candle["close"] - sl_points if side == "BUY" else entry_candle[
+                                                                                           "close"] + sl_points,
+                   "vwap_reversal": self.entry_condition["vwap_reversal"] == "vwap_reversal" and not reversal}
 
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
@@ -155,7 +158,8 @@ class Eighteen(Strategy):
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
 
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
-                                        quantity=self.option_quantity, type="NRML", identifer=identifier, price=entry_candle["close"],
+                                        quantity=self.option_quantity, type="NRML", identifer=identifier,
+                                        price=entry_candle["close"],
                                         remarks=json.dumps(remarks),
                                         instrument_identifier=self.instrument.tradingsymbol)
             else:
@@ -217,7 +221,8 @@ class Eighteen(Strategy):
                 last_candle = data
         yesterdays_candle = last_candle
         self.yesterdays_choppy_range = self._check_pivot(yesterdays_candle, pivot=self.yesterdays_pivot_points)
-        self.vwap_indicator = VolumeWeightedAveragePrice(instrument=self.instrument, interval=CandleInterval.fifteen_min)
+        self.vwap_indicator = VolumeWeightedAveragePrice(instrument=self.instrument,
+                                                         interval=CandleInterval.fifteen_min)
         print(f"VWAP Value is {self.vwap_indicator.vwap_value}")
 
     def on_create(self, inputs):
@@ -242,6 +247,7 @@ class Eighteen(Strategy):
     def define_inputs(self):
         order_instruments = InstrumentManager.get_instance().get_futures_for_instrument(symbol="NIFTY")
         order_instruments.extend(InstrumentManager.get_instance().get_futures_for_instrument(symbol="BANKNIFTY"))
+        order_instruments = sorted(order_instruments, key=lambda instrument: instrument.expiry)
         order_instrument_names = [instrument.tradingsymbol for instrument in order_instruments]
         option_intruments = InstrumentManager.get_instance().get_call_options_for_instrument(
             "BANKNIFTY")
@@ -314,7 +320,8 @@ class Eighteen(Strategy):
                     self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "BUY", close,
                                           TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if vwap_reversal and entry_side == "SELL" and close > self.vwap_value:
-                    self.add_info_user_message(f"VWAP Reversal since {close} greater than {self.vwap_value} for position {position.instrument}")
+                    self.add_info_user_message(
+                        f"VWAP Reversal since {close} greater than {self.vwap_value} for position {position.instrument}")
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
@@ -330,7 +337,7 @@ class Eighteen(Strategy):
                     squared_off_positions.append(position)
                     self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "SELL", close,
                                           TradeIdentifier.TRADE_REVERSAL)
-                    self.place_entry_order("SELL", recent_data[-1],TradeIdentifier.ENTRY, True)
+                    self.place_entry_order("SELL", recent_data[-1], TradeIdentifier.ENTRY, True)
 
             for position in squared_off_positions:
                 self.open_positions.remove(position)
