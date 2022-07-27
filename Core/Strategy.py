@@ -78,7 +78,7 @@ class Strategy():
         from AlgoApp.models import StrategyOrderHistory
         try:
             LOGGER.info(f"Creating strategy order history with price {round(price,2)}")
-            StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks if remarks else None, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=to_decimal(price) if price else None, instrument_identifier=instrument_identifer)
+            StrategyOrderHistory.objects.create(instrument=instrument.tradingsymbol, side=side, quantity=quantity, type=type, portfolio_id=self.portfolio_id, strategy=self.strategy_name, remarks=remarks if remarks else None, identifier=identifer.name if identifer else None, broker=self.inputs["broker_alias"], order_type="MARKET", inputs=self.inputs, price=to_decimal(price) if price else None, instrument_identifier=instrument_identifier)
         except Exception as e:
             self.add_info_user_message("No Impact Error: creating the entry for trade in database")
             LOGGER.error(f"Error creating StrategyOrderHistory {e}", e)
