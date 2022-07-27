@@ -21,5 +21,6 @@ class TradeIdentifier(Enum):
     SQUARE_OFF = "square_off"
     STOP_SQUARE_OFF = "stop_square_off"
     STOP_LOSS_TRIGGERED = "stop_loss_triggered"
+    TRADE_REVERSAL = "trade_reversal"
     TARGET_TRIGGERED = "target_triggered"
     DAY_END_SQUARE_OFF = "day_end_square_off"

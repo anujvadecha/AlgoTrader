@@ -1,4 +1,4 @@
-para,candle,level,stoch,cpr,signal,
+para,candle,level,stoch,cpr,signal,vwap_reversal
 param4,bearish,<s3,nu,,buy,
 param4,bearish,<s3,os,,sell,
 param4,bearish,bc-pdl,os,,buy,
@@ -14,7 +14,7 @@ param4,bearish,s1-pdl,nu,,sell,
 param4,bearish,s1-s2,os,,buy,
 param4,bearish,s1-s2,nu,,sell,
 param4,bearish,s2-s3,os,,sell,
-param4,bearish,s2-s3,nu,,sell,reversal trade abv vwap 
+param4,bearish,s2-s3,nu,,sell,vwap_reversal
 param4,bearish,tc-pp,os,,buy,
 param4,bearish,tc-pp,nu,,sell,
 param4,bullish,pdl-s2,nu,,buy,
@@ -69,6 +69,6 @@ param1,bullish,r2-pdh,nu,,buy,
 param1,bullish,r2-r1,nu,,sell,
 param1,bullish,r2-r1,ob,,no trade,
 param1,bullish,r3-r2,nu,,buy,
-param1,bullish,r3-r2,ob,,no trade,reversal trade below vwap 
+param1,bullish,r3-r2,ob,,no trade,vwap_reversal
 param1,bullish,tc-pp,nu,,buy,
 param1,bearish,r2-r1,nu,,buy,

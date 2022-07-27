@@ -42,7 +42,6 @@ class Main():
         # self.start_instance_thread()
         # con = sl.connect('algo_trader.db')
         self.messages = Messages.getInstance()
-
         self.startMainWindow()
 
 
