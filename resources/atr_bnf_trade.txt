@@ -1,1 +1,1 @@
-{"overnight": true, "entry_side": "SELL", "entry_price": 16512.05, "stoploss": 16585.86, "target": 16464.54, "option_entry_instrument": "NIFTY22JUL16500PE", "order_instrument": "NIFTY22JULFUT", "option_quantity": "50", "order_quantity": 50}
+{"overnight": false, "entry_side": "BUY", "entry_price": 16819.95, "stoploss": 16800.75, "target": 16925.65, "option_entry_instrument": "NIFTY2280416800CE", "order_instrument": "NIFTY22AUGFUT", "option_quantity": "50", "order_quantity": 50}
