@@ -733,7 +733,7 @@
 731,param4,bearish,os,bc-s1,no_trade
 732,param4,bearish,os,pdl-s1,buy
 733,param4,bearish,os,s1-pdl,no_trade
-734,param4,bearish,os,pdl-s2,no_trade
+734,param4,bearish,os,pdl-s2,buy
 735,param4,bearish,os,s1-s2,sell
 736,param4,bearish,os,s2-s3,sell
 737,param4,bearish,os,< s3,buy
