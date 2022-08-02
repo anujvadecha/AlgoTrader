@@ -125,7 +125,9 @@ class Eighteen(Strategy):
                                                                                                    "close"] - target_points,
                    "sl_price": entry_candle["close"] - sl_points if side == "BUY" else entry_candle[
                                                                                            "close"] + sl_points,
-                   "vwap_reversal": self.entry_condition["vwap_reversal"] == "vwap_reversal" and not reversal}
+                   "vwap_reversal": self.entry_condition["vwap_reversal"] == "vwap_reversal" and not reversal,
+                   "exit_calculation_side": side
+                   }
 
         if self.order_type != "OPTIONS_ONLY":
             self.add_info_user_message(
@@ -156,7 +158,8 @@ class Eighteen(Strategy):
             if self.option_entry_instrument:
                 self.add_info_user_message(
                     f"Placing entry order for {self.option_entry_instrument} BUY {self.option_quantity} {identifier}")
-
+                exit_calculation_side = "BUY" if "CE" in self.option_entry_instrument.tradingsymbol else "SELL"
+                remarks["exit_calculation_side"] = exit_calculation_side
                 self.place_market_order(instrument=self.option_entry_instrument, side="BUY",
                                         quantity=self.option_quantity, type="NRML", identifer=identifier,
                                         price=entry_candle["close"],
@@ -270,7 +273,7 @@ class Eighteen(Strategy):
                 return
             squared_off_positions = []
             for position in self.open_positions:
-                entry_side = position.side
+                entry_side = json.loads(position.remarks)["exit_calculation_side"]
                 target_price = json.loads(position.remarks)["target_price"]
                 # Calculating targets
                 LOGGER.info(f"Calculating exit for {position.instrument} with local vars {locals()}")
@@ -278,13 +281,15 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, "SELL", tick.ltp,
+                    exit_side = "BUY" if position.side == "SELL" else "SELL"
+                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, exit_side, tick.ltp,
                                           TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, "BUY", tick.ltp,
+                    exit_side = "BUY" if position.side == "SELL" else "SELL"
+                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, exit_side, tick.ltp,
                                           TradeIdentifier.TARGET_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)
@@ -302,7 +307,7 @@ class Eighteen(Strategy):
         if close:
             squared_off_positions = []
             for position in self.open_positions:
-                entry_side = position.side
+                entry_side = json.loads(position.remarks)["exit_calculation_side"]
                 sl_price = json.loads(position.remarks)["sl_price"]
                 vwap_reversal = json.loads(position.remarks)["vwap_reversal"]
                 # Calculating stoplosses
@@ -310,13 +315,15 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "SELL", close,
+                    exit_side = "BUY" if position.side=="SELL" else "SELL"
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, exit_side, close,
                                           TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if entry_side == "SELL" and close >= sl_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "BUY", close,
+                    exit_side = "BUY" if position.side == "SELL" else "SELL"
+                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, exit_side, close,
                                           TradeIdentifier.STOP_LOSS_TRIGGERED)
                 if vwap_reversal and entry_side == "SELL" and close > self.vwap_value:
                     self.add_info_user_message(
