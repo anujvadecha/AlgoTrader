@@ -1,2 +1,2 @@
 instrument,orders_type,order_instrument,order_quantity,option_quantity,option_side,option_expiry,input_file,broker_alias
-NIFTY 50,FUTURE_AND_OPTIONS,NIFTY22AUGFUT,50,50,BUY,2022-07-28,resources/Choppy_conditions.csv,viral
+NIFTY 50,FUTURE_AND_OPTIONS,NIFTY22AUGFUT,50,50,BUY,2022-08-04,resources/Choppy_conditions.csv,viral
