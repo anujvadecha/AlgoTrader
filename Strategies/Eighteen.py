@@ -170,10 +170,9 @@ class Eighteen(Strategy):
     def place_exit_order(self, instrument, quantity, side, price, identifier=None):
         if self.state == StrategyState.STOPPED:
             return
-        self.entry = False
         # if self.order_type != "OPTIONS_ONLY":
         self.add_info_user_message(
-            f"Placing exit order for {self.order_instrument} {side} {quantity} {identifier}")
+            f"Placing exit order for {locals()}")
         self.place_market_order(instrument=instrument,
                                 side=side, quantity=quantity, price=price,
                                 type="NRML", identifer=identifier)
@@ -279,13 +278,13 @@ class Eighteen(Strategy):
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "SELL", tick.ltp,
+                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, "SELL", tick.ltp,
                                           TradeIdentifier.TARGET_TRIGGERED)
                 if entry_side == "SELL" and tick.ltp <= target_price:
                     position.is_squared = True
                     position.save()
                     squared_off_positions.append(position)
-                    self.place_exit_order(Instrument(str(position.instrument)), position.quantity, "BUY", tick.ltp,
+                    self.place_exit_order(Instrument(symbol=str(position.instrument)), position.quantity, "BUY", tick.ltp,
                                           TradeIdentifier.TARGET_TRIGGERED)
             for position in squared_off_positions:
                 self.open_positions.remove(position)

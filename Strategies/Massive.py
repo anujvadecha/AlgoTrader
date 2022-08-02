@@ -173,7 +173,7 @@ class Massive(Strategy):
         self.entry = False
         # if self.order_type != "OPTIONS_ONLY":
         self.add_info_user_message(
-            f"Placing exit order for {self.order_instrument} {side} {quantity} {identifier}")
+            f"Placing exit order for {instrument.tradingsymbol} {side} {quantity} {identifier}")
         self.place_market_order(instrument=instrument,
                                 side=side, quantity=quantity, price=price,
                                 type="NRML", identifer=identifier)
@@ -185,7 +185,6 @@ class Massive(Strategy):
         #                                    type="NRML", identifer=identifier, price=price)
 
     def _initiate_inputs(self, inputs):
-        print(inputs["instrument"])
         self.instrument = Instrument(symbol=inputs["instrument"])
         self.order_instrument = Instrument(symbol=inputs["order_instrument"])
         self.option_side = inputs["option_side"]
