@@ -443,10 +443,6 @@ class Eighteen(Strategy):
         schedule.every(1).seconds.do(self.calculate_triggers)
 
     def stop(self):
-        # if self.entry and self.entry_side == "BUY":
-        #     self.place_exit_order("SELL", "STOP_SQUARE_OFF")
-        # if self.entry and self.entry_side == "SELL":
-        #     self.place_exit_order("BUY", "STOP_SQUARE_OFF")
         super().stop()
 
     def add_open_positions(self):
@@ -458,4 +454,4 @@ class Eighteen(Strategy):
             if last_order and last_order.identifier == TradeIdentifier.ENTRY.name:
                 self.open_positions.append(last_order)
                 self.add_info_user_message(
-                    f"Open position for {self.instrument.tradingsymbol} {self.inputs['broker_alias']} {last_order.side} added ")
+                    f"Open position for {last_order.instrument} {self.inputs['broker_alias']} {last_order.side} added ")
