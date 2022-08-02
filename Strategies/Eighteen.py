@@ -404,8 +404,8 @@ class Eighteen(Strategy):
             #     self.place_exit_order("BUY" if self.entry_side=="SELL" else "SELL", TradeIdentifier.DAY_END_SQUARE_OFF)
             # TODO MOD 15
             expected_timing = datetime.now().replace(hour=10, minute=45, second=0, microsecond=0)
-            # if now.minute % 15 == 0:
-            if now.minute % 1 == 0:
+            if now.minute % 15 == 0:
+            # if now.minute % 1 == 0:
                 LOGGER.info(f"Calculating triggers for current time {now}")
                 self.calculate_exits_for_current_positions()
                 self.update_indicators()
